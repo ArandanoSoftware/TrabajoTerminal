@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/02/2017 08:19:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Sinodalia" table="SINODALIA" catalog="db_catt1" optimistic-lock="version">
+        <id name="idTt" type="string">
+            <column name="IdTT" length="9" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="profesorByS1" class="model.Profesor" fetch="select">
+            <column name="S1" not-null="true" />
+        </many-to-one>
+        <many-to-one name="profesorByS3" class="model.Profesor" fetch="select">
+            <column name="S3" />
+        </many-to-one>
+        <many-to-one name="profesorByS2" class="model.Profesor" fetch="select">
+            <column name="S2" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -7,5 +7,16 @@
     <property name="hibernate.connection.url">jdbc:mysql://db.ch898q6grkrv.us-west-2.rds.amazonaws.com:3307/db_catt1?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">hazzrob7</property>
     <property name="hibernate.connection.password">juanita1</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <mapping resource="model/Tt.hbm.xml"/>
+    <mapping resource="model/Horario.hbm.xml"/>
+    <mapping resource="model/Profesor.hbm.xml"/>
+    <mapping resource="model/Alumno.hbm.xml"/>
+    <mapping resource="model/Sala.hbm.xml"/>
+    <mapping resource="model/Sinodalia.hbm.xml"/>
+    <mapping resource="model/Dirige.hbm.xml"/>
+    <mapping resource="model/Calendario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
