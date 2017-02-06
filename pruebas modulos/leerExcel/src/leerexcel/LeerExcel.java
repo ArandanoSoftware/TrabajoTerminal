@@ -5,11 +5,8 @@
  */
 package leerexcel;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -29,50 +26,50 @@ public class LeerExcel {
      * @param args the command line arguments
      * @throws java.io.FileNotFoundException
      */
-    public static void main(String[] args) throws FileNotFoundException, IOException {
-        int a = 132, b = 133;
-        FileInputStream file = new FileInputStream(new File("../Estructura 2017 1.xls"));
-        List<Profesor> profesores = ExtraeExcel(file);
-        for(int j = 0;j<profesores.size();j++)
-        {
-            profesores.get(j).setIdProfesor(j+1);
-            System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getaPaterno() + ", "+ profesores.get(j).getaMaterno() + ", " + profesores.get(j).getNombre());
-            List<Horario> horarios = Arrays.asList(profesores.get(j).getHorario().toArray(new Horario[0]));
-            for(int i = 0; i < horarios.size(); i++)
-            {
-                Horario hor = horarios.get(i);
-                System.out.println("\tHorario: " + hor.getLun() + " " + hor.getMar() + " " + hor.getMie() + " " + hor.getJue() + " " + hor.getVie() );
-            }
-        }
-        
-        boolean[] pbin = new boolean[20];
-//        Profesor p = new Profesor();
-        pbin = profebin(profesores.get(a), pbin);
-        pbin = lunbin(profesores.get(a),pbin);
-        boolean[] pai = new boolean[20];
-        pai = profebin(profesores.get(b), pai);
-        pai = lunbin(profesores.get(b), pai);
-        
-        boolean[] c = disponibilidad(pbin, pai);
-        
-        System.out.println("disponibilidad: " + c[0] + " " + c[1] + " " + c[2] + " " + c[3] + " " + c[4] + " " + c[5] + " " + c[6] + " " + c[7] + " " + c[8] + " ");
-        
-        System.out.println("son: " + profesores.size() + " Profesores");
-        System.out.println("id: " + pbin[0] + " " + pbin[1] + " " + pbin[2] + " " + pbin[3] + " " + pbin[4] + " " + pbin[5] + " " + pbin[6] + " " + pbin[7]);
-        System.out.println("Día: " + pbin[8] + " " + pbin[9] + " " + pbin[10]);
-        System.out.println("Lunes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-        pbin = marbin(profesores.get(a),pbin);
-        System.out.println("Martes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-        pbin = miebin(profesores.get(a),pbin);
-        System.out.println("Miercoles: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-        pbin = juebin(profesores.get(a),pbin);
-        System.out.println("Jueves: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-        pbin = viebin(profesores.get(a),pbin);
-        System.out.println("Viernes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-        
-//System.out.println(Inrteger.parseInt(a) + b + " ");
-
-    }
+//    public static void main(String[] args) throws FileNotFoundException, IOException {
+//        int a = 132, b = 133;
+//        FileInputStream file = new FileInputStream(new File("../Estructura 2017 1.xls"));
+//        List<Profesor> profesores = ExtraeExcel(file);
+//        for(int j = 0;j<profesores.size();j++)
+//        {
+//            profesores.get(j).setIdProfesor(j+1);
+//            System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getaPaterno() + ", "+ profesores.get(j).getaMaterno() + ", " + profesores.get(j).getNombre());
+//            List<Horario> horarios = Arrays.asList(profesores.get(j).getHorario().toArray(new Horario[0]));
+//            for(int i = 0; i < horarios.size(); i++)
+//            {
+//                Horario hor = horarios.get(i);
+//                System.out.println("\tHorario: " + hor.getLun() + " " + hor.getMar() + " " + hor.getMie() + " " + hor.getJue() + " " + hor.getVie() );
+//            }
+//        }
+//        
+//        boolean[] pbin = new boolean[20];
+////        Profesor p = new Profesor();
+//        pbin = profebin(profesores.get(a), pbin);
+//        pbin = lunbin(profesores.get(a),pbin);
+//        boolean[] pai = new boolean[20];
+//        pai = profebin(profesores.get(b), pai);
+//        pai = lunbin(profesores.get(b), pai);
+//        
+//        boolean[] c = disponibilidad(pbin, pai);
+//        
+//        System.out.println("disponibilidad: " + c[0] + " " + c[1] + " " + c[2] + " " + c[3] + " " + c[4] + " " + c[5] + " " + c[6] + " " + c[7] + " " + c[8] + " ");
+//        
+//        System.out.println("son: " + profesores.size() + " Profesores");
+//        System.out.println("id: " + pbin[0] + " " + pbin[1] + " " + pbin[2] + " " + pbin[3] + " " + pbin[4] + " " + pbin[5] + " " + pbin[6] + " " + pbin[7]);
+//        System.out.println("Día: " + pbin[8] + " " + pbin[9] + " " + pbin[10]);
+//        System.out.println("Lunes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+//        pbin = marbin(profesores.get(a),pbin);
+//        System.out.println("Martes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+//        pbin = miebin(profesores.get(a),pbin);
+//        System.out.println("Miercoles: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+//        pbin = juebin(profesores.get(a),pbin);
+//        System.out.println("Jueves: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+//        pbin = viebin(profesores.get(a),pbin);
+//        System.out.println("Viernes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+//        
+////System.out.println(Inrteger.parseInt(a) + b + " ");
+//
+//    }
     /**
      *
      * @param file
