@@ -9,7 +9,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -35,9 +37,10 @@ public class LeerExcel {
         {
             profesores.get(j).setIdProfesor(j+1);
             System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getaPaterno() + ", "+ profesores.get(j).getaMaterno() + ", " + profesores.get(j).getNombre());
-            for(int i = 0; i < profesores.get(j).getHorario().size(); i++)
+            List<Horario> horarios = Arrays.asList(profesores.get(j).getHorario().toArray(new Horario[0]));
+            for(int i = 0; i < horarios.size(); i++)
             {
-                Horario hor = profesores.get(j).getHorario().get(i);
+                Horario hor = horarios.get(i);
                 System.out.println("\tHorario: " + hor.getLun() + " " + hor.getMar() + " " + hor.getMie() + " " + hor.getJue() + " " + hor.getVie() );
             }
         }
@@ -54,18 +57,18 @@ public class LeerExcel {
         
         System.out.println("disponibilidad: " + c[0] + " " + c[1] + " " + c[2] + " " + c[3] + " " + c[4] + " " + c[5] + " " + c[6] + " " + c[7] + " " + c[8] + " ");
         
-//        System.out.println("son: " + profesores.size() + " Profesores");
-//        System.out.println("id: " + pbin[0] + " " + pbin[1] + " " + pbin[2] + " " + pbin[3] + " " + pbin[4] + " " + pbin[5] + " " + pbin[6] + " " + pbin[7]);
-//        System.out.println("Día: " + pbin[8] + " " + pbin[9] + " " + pbin[10]);
-//        System.out.println("Lunes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-//        pbin = marbin(profesores.get(a),pbin);
-//        System.out.println("Martes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-//        pbin = miebin(profesores.get(a),pbin);
-//        System.out.println("Miercoles: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-//        pbin = juebin(profesores.get(a),pbin);
-//        System.out.println("Jueves: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
-//        pbin = viebin(profesores.get(a),pbin);
-//        System.out.println("Viernes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+        System.out.println("son: " + profesores.size() + " Profesores");
+        System.out.println("id: " + pbin[0] + " " + pbin[1] + " " + pbin[2] + " " + pbin[3] + " " + pbin[4] + " " + pbin[5] + " " + pbin[6] + " " + pbin[7]);
+        System.out.println("Día: " + pbin[8] + " " + pbin[9] + " " + pbin[10]);
+        System.out.println("Lunes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+        pbin = marbin(profesores.get(a),pbin);
+        System.out.println("Martes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+        pbin = miebin(profesores.get(a),pbin);
+        System.out.println("Miercoles: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+        pbin = juebin(profesores.get(a),pbin);
+        System.out.println("Jueves: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
+        pbin = viebin(profesores.get(a),pbin);
+        System.out.println("Viernes: " + pbin[11] + " " + pbin[12] + " " + pbin[13] + " " + pbin[14] + " " + pbin[15] + " " + pbin[16] + " " + pbin[17] + " " + pbin[18] + " " + pbin[19]);
         
 //System.out.println(Inrteger.parseInt(a) + b + " ");
 
@@ -190,17 +193,18 @@ public class LeerExcel {
     {
         bin[8] = false; bin[9] = false; bin[10] = true;
         bin[11]=bin[12]=bin[13]=bin[14]=bin[15]=bin[16]=bin[17]=bin[18]=bin[19]=false;
-        for(int i = 0; i < p.getHorario().size(); i++)
+        List<Horario> h = Arrays.asList(p.getHorario().toArray(new Horario[0]));
+        for(int i = 0; i < h.size(); i++)
         {
-            if(p.getHorario().get(i).getLun().contains("7:00-"))bin[11] = true;
-            if(p.getHorario().get(i).getLun().contains("8:30-"))bin[12] = true;
-            if(p.getHorario().get(i).getLun().contains("10:30-"))bin[13] = true;
-            if(p.getHorario().get(i).getLun().contains("12:00-"))bin[14] = true;
-            if(p.getHorario().get(i).getLun().contains("13:30-"))bin[15] = true;
-            if(p.getHorario().get(i).getLun().contains("15:00-"))bin[16] = true;
-            if(p.getHorario().get(i).getLun().contains("16:30-"))bin[17] = true;
-            if(p.getHorario().get(i).getLun().contains("18:30-"))bin[18] = true;
-            if(p.getHorario().get(i).getLun().contains("20:00-"))bin[19] = true;
+            if(h.get(i).getLun().contains("7:00-"))bin[11] = true;
+            if(h.get(i).getLun().contains("8:30-"))bin[12] = true;
+            if(h.get(i).getLun().contains("10:30-"))bin[13] = true;
+            if(h.get(i).getLun().contains("12:00-"))bin[14] = true;
+            if(h.get(i).getLun().contains("13:30-"))bin[15] = true;
+            if(h.get(i).getLun().contains("15:00-"))bin[16] = true;
+            if(h.get(i).getLun().contains("16:30-"))bin[17] = true;
+            if(h.get(i).getLun().contains("18:30-"))bin[18] = true;
+            if(h.get(i).getLun().contains("20:00-"))bin[19] = true;
         }
         return bin;
     }
@@ -209,17 +213,18 @@ public class LeerExcel {
     {
         bin[8] = false; bin[9] = true; bin[10] = false;
         bin[11]=bin[12]=bin[13]=bin[14]=bin[15]=bin[16]=bin[17]=bin[18]=bin[19]=false;
-        for(int i = 0; i < p.getHorario().size(); i++)
+        List<Horario> h = Arrays.asList(p.getHorario().toArray(new Horario[0]));
+        for(int i = 0; i < h.size(); i++)
         {
-            if(p.getHorario().get(i).getMar().contains("7:00-"))bin[11] = true;
-            if(p.getHorario().get(i).getMar().contains("8:30-"))bin[12] = true;
-            if(p.getHorario().get(i).getMar().contains("10:30-"))bin[13] = true;
-            if(p.getHorario().get(i).getMar().contains("12:00-"))bin[14] = true;
-            if(p.getHorario().get(i).getMar().contains("13:30-"))bin[15] = true;
-            if(p.getHorario().get(i).getMar().contains("15:00-"))bin[16] = true;
-            if(p.getHorario().get(i).getMar().contains("16:30-"))bin[17] = true;
-            if(p.getHorario().get(i).getMar().contains("18:30-"))bin[18] = true;
-            if(p.getHorario().get(i).getMar().contains("20:00-"))bin[19] = true;
+            if(h.get(i).getMar().contains("7:00-"))bin[11] = true;
+            if(h.get(i).getMar().contains("8:30-"))bin[12] = true;
+            if(h.get(i).getMar().contains("10:30-"))bin[13] = true;
+            if(h.get(i).getMar().contains("12:00-"))bin[14] = true;
+            if(h.get(i).getMar().contains("13:30-"))bin[15] = true;
+            if(h.get(i).getMar().contains("15:00-"))bin[16] = true;
+            if(h.get(i).getMar().contains("16:30-"))bin[17] = true;
+            if(h.get(i).getMar().contains("18:30-"))bin[18] = true;
+            if(h.get(i).getMar().contains("20:00-"))bin[19] = true;
         }
         return bin;
     }
@@ -228,17 +233,18 @@ public class LeerExcel {
     {
         bin[8] = false; bin[9] = true; bin[10] = true;
         bin[11]=bin[12]=bin[13]=bin[14]=bin[15]=bin[16]=bin[17]=bin[18]=bin[19]=false;
-        for(int i = 0; i < p.getHorario().size(); i++)
+        List<Horario> h = Arrays.asList(p.getHorario().toArray(new Horario[0]));
+        for(int i = 0; i < h.size(); i++)
         {
-            if(p.getHorario().get(i).getMie().contains("7:00-"))bin[11] = true;
-            if(p.getHorario().get(i).getMie().contains("8:30-"))bin[12] = true;
-            if(p.getHorario().get(i).getMie().contains("10:30-"))bin[13] = true;
-            if(p.getHorario().get(i).getMie().contains("12:00-"))bin[14] = true;
-            if(p.getHorario().get(i).getMie().contains("13:30-"))bin[15] = true;
-            if(p.getHorario().get(i).getMie().contains("15:00-"))bin[16] = true;
-            if(p.getHorario().get(i).getMie().contains("16:30-"))bin[17] = true;
-            if(p.getHorario().get(i).getMie().contains("18:30-"))bin[18] = true;
-            if(p.getHorario().get(i).getMie().contains("20:00-"))bin[19] = true;
+            if(h.get(i).getMie().contains("7:00-"))bin[11] = true;
+            if(h.get(i).getMie().contains("8:30-"))bin[12] = true;
+            if(h.get(i).getMie().contains("10:30-"))bin[13] = true;
+            if(h.get(i).getMie().contains("12:00-"))bin[14] = true;
+            if(h.get(i).getMie().contains("13:30-"))bin[15] = true;
+            if(h.get(i).getMie().contains("15:00-"))bin[16] = true;
+            if(h.get(i).getMie().contains("16:30-"))bin[17] = true;
+            if(h.get(i).getMie().contains("18:30-"))bin[18] = true;
+            if(h.get(i).getMie().contains("20:00-"))bin[19] = true;
         }
         return bin;
     }
@@ -247,17 +253,18 @@ public class LeerExcel {
     {
         bin[8] = true; bin[9] = false; bin[10] = false;
         bin[11]=bin[12]=bin[13]=bin[14]=bin[15]=bin[16]=bin[17]=bin[18]=bin[19]=false;
-        for(int i = 0; i < p.getHorario().size(); i++)
+        List<Horario> h = Arrays.asList(p.getHorario().toArray(new Horario[0]));
+        for(int i = 0; i < h.size(); i++)
         {
-            if(p.getHorario().get(i).getJue().contains("7:00-"))bin[11] = true;
-            if(p.getHorario().get(i).getJue().contains("8:30-"))bin[12] = true;
-            if(p.getHorario().get(i).getJue().contains("10:30-"))bin[13] = true;
-            if(p.getHorario().get(i).getJue().contains("12:00-"))bin[14] = true;
-            if(p.getHorario().get(i).getJue().contains("13:30-"))bin[15] = true;
-            if(p.getHorario().get(i).getJue().contains("15:00-"))bin[16] = true;
-            if(p.getHorario().get(i).getJue().contains("16:30-"))bin[17] = true;
-            if(p.getHorario().get(i).getJue().contains("18:30-"))bin[18] = true;
-            if(p.getHorario().get(i).getJue().contains("20:00-"))bin[19] = true;
+            if(h.get(i).getJue().contains("7:00-"))bin[11] = true;
+            if(h.get(i).getJue().contains("8:30-"))bin[12] = true;
+            if(h.get(i).getJue().contains("10:30-"))bin[13] = true;
+            if(h.get(i).getJue().contains("12:00-"))bin[14] = true;
+            if(h.get(i).getJue().contains("13:30-"))bin[15] = true;
+            if(h.get(i).getJue().contains("15:00-"))bin[16] = true;
+            if(h.get(i).getJue().contains("16:30-"))bin[17] = true;
+            if(h.get(i).getJue().contains("18:30-"))bin[18] = true;
+            if(h.get(i).getJue().contains("20:00-"))bin[19] = true;
         }
         return bin;
     }
@@ -266,17 +273,18 @@ public class LeerExcel {
     {
         bin[8] = true; bin[9] = false; bin[10] = true;
         bin[11]=bin[12]=bin[13]=bin[14]=bin[15]=bin[16]=bin[17]=bin[18]=bin[19]=false;
-        for(int i = 0; i < p.getHorario().size(); i++)
+        List<Horario> h = Arrays.asList(p.getHorario().toArray(new Horario[0]));
+        for(int i = 0; i < h.size(); i++)
         {
-            if(p.getHorario().get(i).getVie().contains("7:00-"))bin[11] = true;
-            if(p.getHorario().get(i).getVie().contains("8:30-1"))bin[12] = true;
-            if(p.getHorario().get(i).getVie().contains("10:30-"))bin[13] = true;
-            if(p.getHorario().get(i).getVie().contains("12:00-"))bin[14] = true;
-            if(p.getHorario().get(i).getVie().contains("13:30-"))bin[15] = true;
-            if(p.getHorario().get(i).getVie().contains("15:00-"))bin[16] = true;
-            if(p.getHorario().get(i).getVie().contains("16:30-"))bin[17] = true;
-            if(p.getHorario().get(i).getVie().contains("18:30-"))bin[18] = true;
-            if(p.getHorario().get(i).getVie().contains("20:00-"))bin[19] = true;
+            if(h.get(i).getVie().contains("7:00-"))bin[11] = true;
+            if(h.get(i).getVie().contains("8:30-1"))bin[12] = true;
+            if(h.get(i).getVie().contains("10:30-"))bin[13] = true;
+            if(h.get(i).getVie().contains("12:00-"))bin[14] = true;
+            if(h.get(i).getVie().contains("13:30-"))bin[15] = true;
+            if(h.get(i).getVie().contains("15:00-"))bin[16] = true;
+            if(h.get(i).getVie().contains("16:30-"))bin[17] = true;
+            if(h.get(i).getVie().contains("18:30-"))bin[18] = true;
+            if(h.get(i).getVie().contains("20:00-"))bin[19] = true;
         }
         return bin;
     }

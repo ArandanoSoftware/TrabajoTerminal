@@ -5,26 +5,26 @@
  */
 package leerexcel;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author hazzy76
  */
-public class Profesor {
+public class Profesor  implements java.io.Serializable {
     private int idProfesor;
     private String nombre;
     private String aPaterno;
     private String aMaterno;
     private String email;
-    private List<Horario> horario;
+    private Set<Horario> horario;
 
     public Profesor() {
         this.nombre = "";
         this.aPaterno = "";
         this.aMaterno = "";
-        this.horario = new ArrayList<>();
+        this.horario = new HashSet(0);
     }
     
     public int getIdProfesor() {
@@ -66,13 +66,11 @@ public class Profesor {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public List<Horario> getHorario() {
-        return horario;
+    public Set<Horario> getHorario() {
+        return this.horario;
     }
-
-    public void setHorario(List<Horario> horario) {
+    
+    public void setHorario(Set<Horario> horario) {
         this.horario = horario;
     }
-
 }
