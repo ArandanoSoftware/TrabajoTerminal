@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/02/2017 08:19:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="db_catt1" name="com.myapp.model.Profesor" optimistic-lock="version" table="PROFESOR">
+    <id name="idProfesor" type="java.lang.Integer">
+      <column name="IdProfesor"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="50" name="Nombre" not-null="true"/>
+    </property>
+    <property name="apaterno" type="string">
+      <column length="50" name="APaterno" not-null="true"/>
+    </property>
+    <property name="amaterno" type="string">
+      <column length="50" name="AMaterno" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="140" name="Email"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="dirigesForD2" table="DIRIGE">
+      <key>
+        <column name="D2"/>
+      </key>
+      <one-to-many class="com.myapp.model.Dirige"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="sinodaliasForS1" table="SINODALIA">
+      <key>
+        <column name="S1" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Sinodalia"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="dirigesForD1" table="DIRIGE">
+      <key>
+        <column name="D1" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Dirige"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="horarios" table="HORARIO">
+      <key>
+        <column name="IdProfesor" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Horario"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="sinodaliasForS3" table="SINODALIA">
+      <key>
+        <column name="S3"/>
+      </key>
+      <one-to-many class="com.myapp.model.Sinodalia"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="sinodaliasForS2" table="SINODALIA">
+      <key>
+        <column name="S2" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Sinodalia"/>
+    </set>
+  </class>
+</hibernate-mapping>

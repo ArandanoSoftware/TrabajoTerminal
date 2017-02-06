@@ -10,13 +10,13 @@
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="model/Tt.hbm.xml"/>
-    <mapping resource="model/Horario.hbm.xml"/>
-    <mapping resource="model/Profesor.hbm.xml"/>
-    <mapping resource="model/Alumno.hbm.xml"/>
-    <mapping resource="model/Sala.hbm.xml"/>
-    <mapping resource="model/Sinodalia.hbm.xml"/>
-    <mapping resource="model/Dirige.hbm.xml"/>
-    <mapping resource="model/Calendario.hbm.xml"/>
+    <mapping resource="com/myapp/model/Tt.hbm.xml"/>
+    <mapping resource="com/myapp/model/Horario.hbm.xml"/>
+    <mapping resource="com/myapp/model/Profesor.hbm.xml"/>
+    <mapping resource="com/myapp/model/Alumno.hbm.xml"/>
+    <mapping resource="com/myapp/model/Sala.hbm.xml"/>
+    <mapping resource="com/myapp/model/Sinodalia.hbm.xml"/>
+    <mapping resource="com/myapp/model/Dirige.hbm.xml"/>
+    <mapping resource="com/myapp/model/Calendario.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

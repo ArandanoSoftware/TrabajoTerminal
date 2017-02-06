@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/02/2017 08:19:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="db_catt1" name="com.myapp.model.Sala" optimistic-lock="version" table="SALA">
+    <id name="idSala" type="java.lang.Integer">
+      <column name="IdSala"/>
+      <generator class="identity"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="50" name="Nombre" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="calendarios" table="CALENDARIO">
+      <key>
+        <column name="IdSala" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Calendario"/>
+    </set>
+  </class>
+</hibernate-mapping>

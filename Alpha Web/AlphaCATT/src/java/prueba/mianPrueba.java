@@ -6,8 +6,8 @@
 package prueba;
 
 import java.util.List;
-import model.CreoDAO;
-import model.Sala;
+import com.myapp.model.CreoDAO;
+import com.myapp.model.Sala;
 
 /**
  *

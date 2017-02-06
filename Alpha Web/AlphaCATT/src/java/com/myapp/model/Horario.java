@@ -1,4 +1,4 @@
-package model;
+package com.myapp.model;
 // Generated 4/02/2017 08:19:46 PM by Hibernate Tools 4.3.1
 
 

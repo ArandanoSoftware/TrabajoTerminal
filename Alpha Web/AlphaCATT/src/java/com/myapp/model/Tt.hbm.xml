@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4/02/2017 08:19:47 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="db_catt1" name="com.myapp.model.Tt" optimistic-lock="version" table="TT">
+    <id name="idTt" type="string">
+      <column length="9" name="IdTT"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="140" name="Nombre" not-null="true"/>
+    </property>
+    <property name="nivel" type="int">
+      <column name="Nivel" not-null="true"/>
+    </property>
+    <one-to-one class="com.myapp.model.Calendario" name="calendario"/>
+    <set fetch="select" inverse="true" lazy="true" name="alumnos" table="ALUMNO">
+      <key>
+        <column length="9" name="IdTT" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Alumno"/>
+    </set>
+  </class>
+</hibernate-mapping>
