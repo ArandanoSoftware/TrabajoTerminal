@@ -24,6 +24,9 @@ public class Profesor  implements java.io.Serializable {
      private Set<Sinodalia> sinodaliasForS2 = new HashSet(0);
 
     public Profesor() {
+        this.nombre = "";
+        this.apaterno = "";
+        this.amaterno = "";
     }
 
 	
