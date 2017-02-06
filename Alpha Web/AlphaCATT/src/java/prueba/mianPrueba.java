@@ -28,28 +28,23 @@ public class mianPrueba {
         List<Sala> salas;
         
         Sala s = new Sala("nueva sala");
-        SalaBs.save(s);
-        System.out.println(SalaBs.findById(4).getNombre());
-        salas = SalaBs.findAll();
-        for(int i = 0; i < salas.size(); i++)
+        for(int i = 18; i < 53; i++)
         {
-            System.out.println("id: " + salas.get(i).getIdSala() + " Nombre: " + salas.get(i).getNombre());
+            if(i == 24)continue;
+            s.setIdSala(i);
+            SalaBs.delete(s);
         }
-        s.setNombre("la sala nueva nueva");
-        s.setIdSala(54);
-        SalaBs.update(s);
-        salas = SalaBs.findAll();
-        for(int i = 0; i < salas.size(); i++)
-        {
-            System.out.println("id: " + salas.get(i).getIdSala() + " Nombre: " + salas.get(i).getNombre());
-        }
+        s.setIdSala(56);
+        SalaBs.delete(s);
+        s.setIdSala(57);
+        SalaBs.delete(s);
+        s.setIdSala(58);
         SalaBs.delete(s);
         salas = SalaBs.findAll();
         for(int i = 0; i < salas.size(); i++)
         {
             System.out.println("id: " + salas.get(i).getIdSala() + " Nombre: " + salas.get(i).getNombre());
         }
-        //s.setCalendarios((Set<Calendario>) new Calendario());
     }
     
 }

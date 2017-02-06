@@ -8,7 +8,6 @@ package com.myapp.dao;
 import com.myapp.model.HibernateUtil;
 import com.myapp.model.Sala;
 import java.util.List;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -22,11 +21,12 @@ public class SalaDao {
     
     public SalaDao()
     {
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
     }
     
     public void create(Sala s)
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.save(s);
         tx.commit();
@@ -34,7 +34,7 @@ public class SalaDao {
     
     public void modify(Sala s)
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         //s = (Sala)session.load(Sala.class, s.getIdSala());
         session.update(s);
@@ -43,7 +43,7 @@ public class SalaDao {
     
     public void erase(Sala p)
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         session.delete(p);
         tx.commit();
@@ -51,7 +51,7 @@ public class SalaDao {
     
     public Sala finfById(int id)
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         Sala p = (Sala)session.get(Sala.class, id);
         tx.commit();
@@ -60,7 +60,7 @@ public class SalaDao {
     
     public List<Sala> findAll()
     {   
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        //session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         List<Sala> salas = (List<Sala>)session.createCriteria(Sala.class).list();
         tx.commit();

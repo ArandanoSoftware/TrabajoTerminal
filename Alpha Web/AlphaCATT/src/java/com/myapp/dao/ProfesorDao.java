@@ -9,6 +9,7 @@ import com.myapp.model.HibernateUtil;
 import com.myapp.model.Profesor;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -25,30 +26,39 @@ public class ProfesorDao {
     
     public void create(Profesor p)
     {
+        Transaction tx = session.beginTransaction();
         session.save(p);
+        tx.commit();
     }
     
     public void modify(Profesor p)
     {
+        Transaction tx = session.beginTransaction();
         session.update(p);
+        tx.commit();
     }
     
     public void erase(Profesor p)
     {
+        Transaction tx = session.beginTransaction();
         session.delete(p);
+        tx.commit();
     }
     
     public Profesor finfById(int id)
     {
-        session.clear();
+        Transaction tx = session.beginTransaction();
         Profesor p = (Profesor)session.get(Profesor.class, id);
+        tx.commit();
         return p;
     }
     
     public List<Profesor> findAll()
     {
-        session.clear();
-        return (List<Profesor>)session.createCriteria(Profesor.class).list();
+        Transaction tx = session.beginTransaction();
+        List<Profesor> p = (List<Profesor>)session.createCriteria(Profesor.class).list();
+        tx.commit();
+        return p;
     }
     
 }
