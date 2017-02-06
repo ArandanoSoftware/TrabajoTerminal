@@ -16,12 +16,12 @@ public class Profesor  implements java.io.Serializable {
      private String apaterno;
      private String amaterno;
      private String email;
-     private Set<Dirige> dirigesForD2 = new HashSet<Dirige>(0);
-     private Set<Sinodalia> sinodaliasForS1 = new HashSet<Sinodalia>(0);
-     private Set<Dirige> dirigesForD1 = new HashSet<Dirige>(0);
-     private Set<Horario> horarios = new HashSet<Horario>(0);
-     private Set<Sinodalia> sinodaliasForS3 = new HashSet<Sinodalia>(0);
-     private Set<Sinodalia> sinodaliasForS2 = new HashSet<Sinodalia>(0);
+     private Set<Dirige> dirigesForD2 = new HashSet(0);
+     private Set<Sinodalia> sinodaliasForS1 = new HashSet(0);
+     private Set<Dirige> dirigesForD1 = new HashSet(0);
+     private Set<Horario> horarios = new HashSet(0);
+     private Set<Sinodalia> sinodaliasForS3 = new HashSet(0);
+     private Set<Sinodalia> sinodaliasForS2 = new HashSet(0);
 
     public Profesor() {
     }

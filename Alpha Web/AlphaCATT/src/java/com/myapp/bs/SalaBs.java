@@ -15,33 +15,36 @@ import java.util.List;
  */
 public class SalaBs {
     
-    protected static SalaDao profesorDao = new SalaDao();
-    
     public static Sala findById(int id)
     {
-        Sala p;
-        p = profesorDao.finfById(id);
-        return p;
+        SalaDao salaDao = new SalaDao();
+        Sala s;
+        s = salaDao.finfById(id);
+        return s;
     }
     
     public static List<Sala> findAll()
     {
-        List<Sala> p = profesorDao.findAll();
-                return p;
+        SalaDao salaDao = new SalaDao();
+        List<Sala> s = salaDao.findAll();
+        return s;
     }
     
-    public static void save(Sala p)
+    public static void save(Sala s)
     {
-        profesorDao.create(p);
+        SalaDao salaDao = new SalaDao();
+        salaDao.create(s);
     }
     
-    public static void update(Sala p)
+    public static void update(Sala s)
     {
-        profesorDao.modify(p);
+        SalaDao salaDao = new SalaDao();
+        salaDao.modify(s);
     }
     
-    public static void delete(Sala p)
+    public static void delete(Sala s)
     {
-        profesorDao.erase(p);
+        SalaDao salaDao = new SalaDao();
+        salaDao.erase(s);
     }
 }
