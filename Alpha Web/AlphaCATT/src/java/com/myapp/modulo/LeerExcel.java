@@ -83,7 +83,7 @@ public class LeerExcel {
         {
             p.setNombre("Saúl");
             p.setApaterno("De la O");
-            p.setApaterno("Torres");
+            p.setAmaterno("Torres");
             return p;
         }
         nom = nom.replaceAll(" +"," ");
