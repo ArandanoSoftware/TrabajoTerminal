@@ -6,15 +6,11 @@
 package prueba;
 
 import com.myapp.bs.ProfesorBs;
-import com.myapp.bs.SalaBs;
-import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
 import java.util.List;
-import com.myapp.model.Sala;
 import com.myapp.modulo.LeerExcel;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Arrays;
 
 /**
  *
@@ -55,6 +51,11 @@ public class mianPrueba {
         
         FileInputStream file = new FileInputStream(new File("../Estructura 2017 1.xls"));
         List<Profesor> profesores = LeerExcel.ExtraeExcel(file);
+        
+        for(int i = 0; i < profesores.size(); i++)
+        {
+            ProfesorBs.save(profesores.get(i));
+        }
 //        for(int j = 0;j<profesores.size();j++)
 //        {
 //            //profesores.get(j).setIdProfesor(j+1);
@@ -66,10 +67,12 @@ public class mianPrueba {
 //                System.out.println("\tHorario: " + hor.getLun() + " " + hor.getMar() + " " + hor.getMie() + " " + hor.getJue() + " " + hor.getVie() );
 //            }
 //        }
-        for(int i = 0; i < profesores.size(); i++)
-        {
-            ProfesorBs.save(profesores.get(i));
-        }
-        
+
+////        List<Profesor> profesores = ProfesorBs.findAll();
+////        for(int i = 0; i < profesores.size(); i++)
+////        {
+////            ProfesorBs.delete(profesores.get(i));
+////        }
+        System.out.println("Ya terminó !!!!!");
     }    
 }
