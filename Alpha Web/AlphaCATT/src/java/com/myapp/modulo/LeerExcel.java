@@ -69,7 +69,8 @@ public class LeerExcel {
                     }
                 }
             }catch(Exception e){}
-                p.getHorarios().add(h);
+            h.setProfesor(p);
+            p.getHorarios().add(h);
 	}
         // cerramos el libro excel
 	workbook.close();

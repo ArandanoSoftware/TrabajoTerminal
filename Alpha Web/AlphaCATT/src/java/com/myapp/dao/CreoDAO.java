@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.myapp.model;
+package com.myapp.dao;
 
+import com.myapp.hibernate.HibernateUtil;
+import com.myapp.model.Sala;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;

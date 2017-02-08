@@ -6,7 +6,9 @@
 package com.myapp.bs;
 
 import com.myapp.dao.ProfesorDao;
+import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,6 +36,11 @@ public class ProfesorBs {
     {
         ProfesorDao profesorDao = new ProfesorDao();
         profesorDao.create(p);
+        List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
+        for(int i = 0; i < h.size(); i++)
+        {
+            HorarioBs.save(h.get(i));
+        }
     }
     
     public static void update(Profesor p)

@@ -5,7 +5,7 @@
  */
 package com.myapp.dao;
 
-import com.myapp.model.HibernateUtil;
+import com.myapp.hibernate.HibernateUtil;
 import com.myapp.model.Horario;
 import java.util.List;
 import org.hibernate.Session;
