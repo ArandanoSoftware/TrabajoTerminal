@@ -9,6 +9,7 @@ import com.myapp.dao.ProfesorDao;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -29,6 +30,10 @@ public class ProfesorBs {
     {
         ProfesorDao profesorDao = new ProfesorDao();
         List<Profesor> p = profesorDao.findAll();
+        for(int i = 0; i < p.size();i++)
+        {
+            p.get(i).setHorarios(new HashSet<>(HorarioBs.findByProf(p.get(i))));
+        }
         return p;
     }
     

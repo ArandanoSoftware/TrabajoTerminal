@@ -7,9 +7,11 @@ package com.myapp.dao;
 
 import com.myapp.hibernate.HibernateUtil;
 import com.myapp.model.Horario;
+import com.myapp.model.Profesor;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -63,6 +65,14 @@ public class HorarioDao {
         //session = HibernateUtil.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
         List<Horario> horarios = (List<Horario>)session.createCriteria(Horario.class).list();
+        tx.commit();
+        return horarios;
+    }
+    
+    public List<Horario> findByProf(Profesor p)
+    {
+        Transaction tx = session.beginTransaction();
+        List<Horario> horarios = (List<Horario>) session.createCriteria(Horario.class).add(Restrictions.eq("profesor", p)).list();
         tx.commit();
         return horarios;
     }

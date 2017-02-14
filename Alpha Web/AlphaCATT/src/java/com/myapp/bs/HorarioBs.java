@@ -7,6 +7,7 @@ package com.myapp.bs;
 
 import com.myapp.dao.HorarioDao;
 import com.myapp.model.Horario;
+import com.myapp.model.Profesor;
 import java.util.List;
 
 /**
@@ -46,5 +47,12 @@ public class HorarioBs {
     {
         HorarioDao horarioDao = new HorarioDao();
         horarioDao.erase(s);
+    }
+    
+    public static List<Horario> findByProf(Profesor p)
+    {
+        HorarioDao horarioDao = new HorarioDao();
+        List<Horario> hrs = horarioDao.findByProf(p);
+        return hrs;
     }
 }
