@@ -11,7 +11,8 @@ de trabajo terminal
   <head>
     <meta charset="utf-8">
     <%--CSS --%>
-    <link rel="stylesheet" href="CSS/calendarioGeneral.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/calendarioGeneral.css">
 
     <title>Calendario general de Trabajos Terminales</title>
   </head>
