@@ -52,10 +52,4 @@ public class Calendario  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
-
-
-
 }
-
-

@@ -7,10 +7,13 @@ package prueba;
 
 import com.myapp.bs.ProfesorBs;
 import com.myapp.model.Profesor;
+import com.myapp.modulo.Genetico;
 import java.util.List;
 import com.myapp.modulo.LeerExcel;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -49,13 +52,13 @@ public class mianPrueba {
 //            System.out.println("id: " + salas.get(i).getIdSala() + " Nombre: " + salas.get(i).getNombre());
 //        }
         
-        FileInputStream file = new FileInputStream(new File("../Estructura 2017 1.xls"));
-        List<Profesor> profesores = LeerExcel.ExtraeExcel(file);
+//        FileInputStream file = new FileInputStream(new File("../Estructura 2017 1.xls"));
+//        List<Profesor> profesores = LeerExcel.ExtraeExcel(file);
         
-        for(int i = 0; i < profesores.size(); i++)
-        {
-            ProfesorBs.save(profesores.get(i));
-        }
+//        for(int i = 0; i < profesores.size(); i++)
+//        {
+//            ProfesorBs.save(profesores.get(i));
+ //       }
 //        for(int j = 0;j<profesores.size();j++)
 //        {
 //            //profesores.get(j).setIdProfesor(j+1);
@@ -73,6 +76,12 @@ public class mianPrueba {
 ////        {
 ////            ProfesorBs.delete(profesores.get(i));
 ////        }
+
+        Date date = new Date();
+        date.setDate(15);
+        boolean[] bo = Genetico.getBinDay(date);
+        System.out.println(bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3] + " "  + bo[4]);
+         
         System.out.println("Ya terminó !!!!!");
     }    
 }
