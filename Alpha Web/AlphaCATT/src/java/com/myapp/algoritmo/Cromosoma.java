@@ -17,6 +17,11 @@ public class Cromosoma {
     public Cromosoma() {
     }
 
+    public Cromosoma(GMDHS gen1, GTT gen2) {
+        this.gen1 = gen1;
+        this.gen2 = gen2;
+    }
+
     public GMDHS getGen1() {
         return gen1;
     }

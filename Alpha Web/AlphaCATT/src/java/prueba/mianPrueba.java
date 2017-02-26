@@ -7,13 +7,16 @@ package prueba;
 
 import com.myapp.bs.ProfesorBs;
 import com.myapp.model.Profesor;
+import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
 import java.util.List;
 import com.myapp.modulo.LeerExcel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 /**
  *
@@ -78,8 +81,8 @@ public class mianPrueba {
 ////        }
 
         Date date = new Date();
-        date.setMonth(11);
-        date.setDate(31);
+        date.setMonth(2);
+        date.setDate(14);
         boolean[] bo = Genetico.getBinDay(date);
         System.out.println("Dia: " + bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3] + " "  + bo[4]);
         bo = Genetico.getBinMonth(date);
@@ -88,10 +91,18 @@ public class mianPrueba {
         System.out.println("Sala: " + bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3]);
         
         Date nueva = new Date();
-        nueva.setDate(45);
-        nueva.setMonth(2);
+        nueva.setDate(14);
+        nueva.setMonth(3);
         
-        System.out.println(nueva);
+        Set<Tt> tts = new HashSet();
+        
+        for(int i = 0; i < 100; i++)
+        {
+            Genetico.crearPoblacion(nueva, date, tts, 1);
+        }
+        
+        
+        System.out.println(nueva.getDate() + " " + nueva.getMonth());
         
         System.out.println("Ya terminó !!!!!");
     }    

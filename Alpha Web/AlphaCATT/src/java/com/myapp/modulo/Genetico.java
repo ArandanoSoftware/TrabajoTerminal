@@ -9,6 +9,8 @@ import com.myapp.algoritmo.Cromosoma;
 import com.myapp.model.Tt;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.Random;
@@ -22,11 +24,31 @@ public class Genetico {
     {
         List<Cromosoma> poblacion = new ArrayList();
         Random random = new Random();
+ 
+        Set<Integer> dias = new HashSet();
+        
+        while(dias.size() != tt.size())
+        {
+            int diaR = random.nextInt(16) + inicio.getDate();
+            dias.add(diaR);
+        }
         
         Date fecha = new Date();
-        fecha.setDate(2);
+        fecha.setMonth(inicio.getMonth());
         
-        int d;
+        List<Integer> diaR = new ArrayList(dias);
+        List<Tt> tts = new ArrayList(tt);
+        
+        for(int i = 0; i < tt.size(); i++)
+        {
+            Cromosoma cromosoma = new Cromosoma();
+            fecha.setDate(diaR.get(i));
+            cromosoma.getGen1().setDia(getBinDay(fecha));
+            cromosoma.getGen1().setMes(getBinMonth(fecha));
+            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)));
+            cromosoma.getGen2().setTt(tts.get(i).getIdTt());
+            poblacion.add(cromosoma);
+        }
         
         return poblacion;
     }
