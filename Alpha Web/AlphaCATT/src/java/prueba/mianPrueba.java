@@ -78,10 +78,21 @@ public class mianPrueba {
 ////        }
 
         Date date = new Date();
-        date.setDate(15);
+        date.setMonth(11);
+        date.setDate(31);
         boolean[] bo = Genetico.getBinDay(date);
-        System.out.println(bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3] + " "  + bo[4]);
-         
+        System.out.println("Dia: " + bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3] + " "  + bo[4]);
+        bo = Genetico.getBinMonth(date);
+        System.out.println("Mes: " + bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3]);
+        bo = Genetico.getBinSala(1);
+        System.out.println("Sala: " + bo[0] + " " + bo[1] + " "  + bo[2] + " "  + bo[3]);
+        
+        Date nueva = new Date();
+        nueva.setDate(45);
+        nueva.setMonth(2);
+        
+        System.out.println(nueva);
+        
         System.out.println("Ya terminó !!!!!");
     }    
 }
