@@ -6,11 +6,11 @@
 package com.myapp.modulo;
 
 import com.myapp.algoritmo.Cromosoma;
+import com.myapp.model.Calendario;
 import com.myapp.model.Tt;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.Random;
@@ -27,24 +27,26 @@ public class Genetico {
  
         Set<Integer> dias = new HashSet();
         
-        while(dias.size() != tt.size())
-        {
-            int diaR = random.nextInt(16) + inicio.getDate();
-            dias.add(diaR);
-        }
-        
         Date fecha = new Date();
         fecha.setMonth(inicio.getMonth());
         
+        while(dias.size() != (tt.size()/3)+1)
+        {
+            int diaR = random.nextInt(16) + inicio.getDate();
+            fecha.setDate(diaR);
+            if(fecha.getDay() == 0 || fecha.getDay() == 6)
+                dias.add(diaR);
+        }
+        
         List<Integer> diaR = new ArrayList(dias);
         List<Tt> tts = new ArrayList(tt);
-        
         for(int i = 0; i < tt.size(); i++)
         {
             Cromosoma cromosoma = new Cromosoma();
-            fecha.setDate(diaR.get(i));
+            fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
+            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
             cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
@@ -52,7 +54,7 @@ public class Genetico {
         
         return poblacion;
     }
-    public static boolean[] getBinDay(Date fecha)
+    protected static boolean[] getBinDay(Date fecha)
     {
         boolean[] dia = {false,false,false,false,false};
         int day = fecha.getDate();
@@ -68,7 +70,7 @@ public class Genetico {
         return dia;
     }
     
-    public static boolean[] getBinMonth(Date fecha)
+    protected static boolean[] getBinMonth(Date fecha)
     {
         boolean[] mes =  {false, false, false, false};
         int month = fecha.getMonth() + 1;
@@ -82,7 +84,7 @@ public class Genetico {
         return mes;
     }
     
-    public static boolean[] getBinSala(int s)
+    protected static boolean[] getBinSala(int s)
     {
         boolean[] sal =  {false, false, false, false};
         if(s/8 > 0)sal[0]=true;
@@ -95,7 +97,7 @@ public class Genetico {
         return sal;
     }
     
-    public static boolean[] getBinHorario(int h)
+    protected static boolean[] getBinHorario(int h)
     {
         boolean[] hora = new boolean[9];
         hora[0]=hora[1]=hora[2]=hora[3]=hora[4]=hora[5]=hora[6]=hora[7]=hora[8]=false;
@@ -104,5 +106,43 @@ public class Genetico {
         if(h == 3)hora[5]=true;
         if(h == 4)hora[6]=true;
         return hora;
+    }
+    
+    public static List<Calendario> crearCalendario(List<Cromosoma>  poblacion)
+    {
+        List<Calendario> calendario = new ArrayList();
+        
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            
+        }
+        
+        return calendario;
+    }
+    
+    protected static Date getDateC(Cromosoma c)
+    {
+        Date fecha = new Date();
+        
+        fecha.setDate(binToInt(c.getGen1().getDia()));
+        fecha.setMonth(binToInt(c.getGen1().getMes()));
+        int hora = binToInt(c.getGen1().getHora());
+        if(hora == 4)fecha.setHours(10);fecha.setMinutes(0);
+        if(hora == 8)fecha.setHours(12);fecha.setMinutes(0);
+        if(hora == 32)fecha.setHours(14);fecha.setMinutes(0);
+        if(hora == 64)fecha.setHours(16);fecha.setMinutes(0);
+        return fecha;
+    }
+    
+    public static int binToInt(boolean[] bool)
+    {
+        int entero = 0;
+        
+        for(int i = 0; i < bool.length; i++)
+        {
+            if(bool[i])entero+=(Math.pow(2, i));
+        }
+        
+        return entero;
     }
 }
