@@ -15,6 +15,8 @@ public class Cromosoma {
     private GTT gen2;
 
     public Cromosoma() {
+        gen1 = new GMDHS();
+        gen2 = new GTT();
     }
 
     public Cromosoma(GMDHS gen1, GTT gen2) {

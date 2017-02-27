@@ -6,6 +6,7 @@
 package prueba;
 
 import com.myapp.bs.ProfesorBs;
+import com.myapp.model.Calendario;
 import com.myapp.model.Profesor;
 import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
@@ -13,6 +14,7 @@ import java.util.List;
 import com.myapp.modulo.LeerExcel;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -80,21 +82,43 @@ public class mianPrueba {
 ////            ProfesorBs.delete(profesores.get(i));
 ////        }
 
-        Date date = new Date();
-        date.setMonth(2);
-        date.setDate(14);
+////        Date date = new Date();
+////        date.setMonth(2);
+////        date.setDate(14);
+////        
+////        
+////        Date nueva = new Date();
+////        nueva.setDate(14);
+////        nueva.setMonth(3);
+////        
+////        Set<Tt> tts = new HashSet();
+////        
+////        for(int i = 0; i < 100; i++)
+////        {
+////            Genetico.crearPoblacion(nueva, date, tts, 1);
+////        }
         
-        
-        Date nueva = new Date();
-        nueva.setDate(14);
-        nueva.setMonth(3);
-        
+        Date fechaI = new Date();
+        fechaI.setDate(14);
+        fechaI.setMonth(2);
+        Date fechaF = new Date();
+        fechaF.setDate(12);
+        fechaF.setMonth(3);
         Set<Tt> tts = new HashSet();
-        
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 12; i++)
         {
-            Genetico.crearPoblacion(nueva, date, tts, 1);
+            Tt tt = new Tt();
+            tt.setIdTt("Trabajo Terminal " + i);
+            tts.add(tt);
         }
+        
+        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacion(fechaI, fechaF, tts, 9));
+        
+        for(int i = 0; i < cal.size(); i++)
+        {
+            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
+        }
+        
         
         System.out.println("Ya terminó !!!!!");
     }    

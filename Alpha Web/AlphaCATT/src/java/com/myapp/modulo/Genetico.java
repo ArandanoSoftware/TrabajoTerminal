@@ -7,6 +7,7 @@ package com.myapp.modulo;
 
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.model.Calendario;
+import com.myapp.model.Sala;
 import com.myapp.model.Tt;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,9 +25,7 @@ public class Genetico {
     {
         List<Cromosoma> poblacion = new ArrayList();
         Random random = new Random();
- 
         Set<Integer> dias = new HashSet();
-        
         Date fecha = new Date();
         fecha.setMonth(inicio.getMonth());
         
@@ -34,7 +33,7 @@ public class Genetico {
         {
             int diaR = random.nextInt(16) + inicio.getDate();
             fecha.setDate(diaR);
-            if(fecha.getDay() == 0 || fecha.getDay() == 6)
+            if(fecha.getDay() != 0 && fecha.getDay() != 6)
                 dias.add(diaR);
         }
         
@@ -47,7 +46,7 @@ public class Genetico {
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
             cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
-            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)));
+            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas + 1)));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
         }
@@ -114,7 +113,16 @@ public class Genetico {
         
         for(int i = 0; i < poblacion.size(); i++)
         {
-            
+            Calendario vale = new Calendario();
+            Tt titi = new Tt();
+            Sala sala = new Sala();
+            Date fecha = getDateC(poblacion.get(i));
+            titi.setIdTt(poblacion.get(i).getGen2().getTt());
+            sala.setIdSala(binToInt(poblacion.get(i).getGen1().getSala()));
+            vale.setFecha(fecha);
+            vale.setTt(titi);
+            vale.setSala(sala);
+            calendario.add(vale);
         }
         
         return calendario;
@@ -123,9 +131,8 @@ public class Genetico {
     protected static Date getDateC(Cromosoma c)
     {
         Date fecha = new Date();
-        
         fecha.setDate(binToInt(c.getGen1().getDia()));
-        fecha.setMonth(binToInt(c.getGen1().getMes()));
+        fecha.setMonth(binToInt(c.getGen1().getMes())-1);
         int hora = binToInt(c.getGen1().getHora());
         if(hora == 4)fecha.setHours(10);fecha.setMinutes(0);
         if(hora == 8)fecha.setHours(12);fecha.setMinutes(0);
@@ -134,15 +141,14 @@ public class Genetico {
         return fecha;
     }
     
-    public static int binToInt(boolean[] bool)
+    protected static int binToInt(boolean[] bool)
     {
         int entero = 0;
         
         for(int i = 0; i < bool.length; i++)
         {
-            if(bool[i])entero+=(Math.pow(2, i));
+            if(bool[bool.length - i - 1])entero+=(Math.pow(2, i));
         }
-        
         return entero;
     }
 }
