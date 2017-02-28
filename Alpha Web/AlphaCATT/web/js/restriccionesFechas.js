@@ -1,3 +1,5 @@
+
+// Función para seleccionar  el rango de fechas
 $(function() {
 
   $('input[name="datefilter"]').daterangepicker({

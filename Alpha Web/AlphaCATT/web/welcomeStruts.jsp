@@ -12,16 +12,16 @@
         <html:base/>
     </head>
     <body style="background-color: white">
-        
+        <h1>Que peddoo</h1>
         <logic:notPresent name="org.apache.struts.action.MESSAGE" scope="application">
             <div  style="color: red">
                 ERROR:  Application resources not loaded -- check servlet container
                 logs for error messages.
             </div>
         </logic:notPresent>
-        
+
         <h3><bean:message key="welcome.heading"/></h3>
         <p><bean:message key="welcome.message"/></p>
-        
+
     </body>
 </html:html>
