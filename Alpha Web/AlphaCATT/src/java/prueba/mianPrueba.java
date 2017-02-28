@@ -99,20 +99,21 @@ public class mianPrueba {
 ////        }
         
         Date fechaI = new Date();
-        fechaI.setDate(14);
-        fechaI.setMonth(2);
+        fechaI.setDate(2);
+        fechaI.setMonth(4);
         Date fechaF = new Date();
-        fechaF.setDate(12);
-        fechaF.setMonth(3);
+        fechaF.setDate(2);
+        fechaF.setMonth(5);
+        
         Set<Tt> tts = new HashSet();
-        for(int i = 0; i < 12; i++)
+        for(int i = 0; i < 100; i++)
         {
             Tt tt = new Tt();
             tt.setIdTt("Trabajo Terminal " + i);
             tts.add(tt);
         }
         
-        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacion(fechaI, fechaF, tts, 9));
+        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacionTT1(fechaI, fechaF, tts, 9));
         
         for(int i = 0; i < cal.size(); i++)
         {
