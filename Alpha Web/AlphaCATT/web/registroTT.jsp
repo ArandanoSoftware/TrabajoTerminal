@@ -1,10 +1,9 @@
 <%--
-Trabajo terminal - Restricciones de Fechas
-Pagina para ingresar las restricciones de fechas para las presentaciones de
-Trabajos terminales
- --%>
-<%--Basic Java Stuff --%>
+Trabajo Terminal - pagina para registrar los trabajos terminales
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,37 +36,6 @@ Trabajos terminales
         </div>
     </div>
   <section class="General">
-
-    <p>
-      <b>Instrucciones:</b> <br>En esta página ingresa la información de las fechas
-       para la calendarización así  como los restricciones que tengas para el
-       sistema en sí, recuerda llenar correctamente bien las fechas ya que el
-        sistema tomará estas como base para generar el calendario.
-
-    </p>
-
-    <b>Rango de fechas:  </b>
-    <input type="text" name="datefilter" value="" />
-    <script type="text/javascript" src="js/restriccionesFechas.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-      $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-              cancelLabel: 'Clear'
-          }
-      });
-      $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-      });
-      $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-          $(this).val('');
-      });
-      });
-    </script>
-
-
 
   </section>
   </body>

@@ -5,14 +5,11 @@ html{
   font-family: sans-serif;
 }
 
-.Page{
-  position: relative;
-  margin-top: 75px;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
-}
-
+ .General{
+  margin-top: 100px;
+  margin-right: 10%;
+  margin-left: 10%;
+ }
 
 
 /*Barra de Menu*/
@@ -25,6 +22,7 @@ html{
   height: 70px;
   text-align: left;
   background: #6D6D6D;
+  margin-bottom: 100px;
 }
 .Title{
     display: inline-block;
