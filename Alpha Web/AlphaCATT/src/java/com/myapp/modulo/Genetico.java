@@ -21,20 +21,25 @@ import java.util.Random;
  * @author root
  */
 public class Genetico {
-    public static List<Cromosoma> crearPoblacion(Date inicio, Date fin, Set<Tt> tt, int salas)
+    public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
         Random random = new Random();
         Set<Integer> dias = new HashSet();
         Date fecha = new Date();
         fecha.setMonth(inicio.getMonth());
+        int rango = difFecha(fin, inicio)/2;
+        
+        int jj = 0;
         
         while(dias.size() != (tt.size()/3)+1)
         {
-            int diaR = random.nextInt(16) + inicio.getDate();
+            int diaR = random.nextInt(rango + 1) + inicio.getDate();
             fecha.setDate(diaR);
             if(fecha.getDay() != 0 && fecha.getDay() != 6)
                 dias.add(diaR);
+            jj++;
+            if(jj >= (tt.size()/3)+1)System.out.println("va en " + jj + " con dias guardados " + dias.size());
         }
         
         List<Integer> diaR = new ArrayList(dias);
@@ -151,4 +156,12 @@ public class Genetico {
         }
         return entero;
     }
+    
+    protected static int difFecha(Date fecha1, Date fecha2)
+    {
+        int resultado = (int)((fecha1.getTime()-fecha2.getTime())/86400000) + 1;
+        
+        return resultado;
+    }
+    
 }
