@@ -27,19 +27,17 @@ public class Genetico {
         Random random = new Random();
         Set<Integer> dias = new HashSet();
         Date fecha = new Date();
+        fecha.setDate(inicio.getDate());
         fecha.setMonth(inicio.getMonth());
         int rango = difFecha(fin, inicio)/2;
-        
-        int jj = 0;
-        
-        while(dias.size() != (tt.size()/3)+1)
+        int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
+        System.out.println("ttxdia = " + ttxdia);
+        while(dias.size() != (tt.size()/ttxdia))
         {
             int diaR = random.nextInt(rango + 1) + inicio.getDate();
             fecha.setDate(diaR);
             if(fecha.getDay() != 0 && fecha.getDay() != 6)
                 dias.add(diaR);
-            jj++;
-            if(jj >= (tt.size()/3)+1)System.out.println("va en " + jj + " con dias guardados " + dias.size());
         }
         
         List<Integer> diaR = new ArrayList(dias);
@@ -159,9 +157,19 @@ public class Genetico {
     
     protected static int difFecha(Date fecha1, Date fecha2)
     {
-        int resultado = (int)((fecha1.getTime()-fecha2.getTime())/86400000) + 1;
+        int resultado = (int)((fecha1.getTime()-fecha2.getTime())/86400000);
         
         return resultado;
     }
     
+    protected static int diaHabil(Date fecha, int rango, int dias)
+    {
+        if(fecha.getDay() != 0 && fecha.getDay() != 6)
+            dias++;
+        fecha.setDate(fecha.getDate()+1);
+        rango--;
+        if(rango == -1)
+            return dias;
+        return diaHabil(fecha, rango, dias);
+    }
 }

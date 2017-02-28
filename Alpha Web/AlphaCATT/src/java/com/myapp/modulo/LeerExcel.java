@@ -5,17 +5,25 @@
  */
 package com.myapp.modulo;
 
+import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 
 /**
@@ -252,4 +260,50 @@ public class LeerExcel {
         return c;
     }
     
+    public static void inportaExcel(List<Calendario> calendario, int num) throws FileNotFoundException, IOException
+    {
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet();
+        workbook.setSheetName(0, "Calendario" + num);
+        
+        String[] headers = {"IdTT", "Nombre tt", "Presentacion", "Sala"};
+        
+        CellStyle headerStyle = workbook.createCellStyle();
+        Font font = workbook.createFont();
+        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+        headerStyle.setFont(font);
+
+        CellStyle style = workbook.createCellStyle();
+        style.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+
+        HSSFRow headerRow = sheet.createRow(0);
+        for (int i = 0; i < headers.length; ++i) {
+            String header = headers[i];
+            HSSFCell cell = headerRow.createCell(i);
+            cell.setCellStyle(headerStyle);
+            cell.setCellValue(header);
+        }
+        
+        for(int i = 0; i < calendario.size(); i++)
+        {
+            HSSFRow fila = sheet.createRow(i+1);
+            HSSFCell celda = fila.createCell(0);
+            celda.setCellValue(calendario.get(i).getIdTt());
+            celda = fila.createCell(1);
+            celda.setCellValue(calendario.get(i).getTt().getNombre());
+            celda = fila.createCell(2);
+            celda.setCellValue(calendario.get(i).getFecha());
+            celda = fila.createCell(0);
+            celda.setCellValue(calendario.get(i).getSala().getIdSala());
+        }
+        
+
+        try
+        {
+            FileOutputStream file = new FileOutputStream("../calendar.xls");
+            workbook.write(file);
+            file.close();
+        }catch(Exception e){}
+    }
 }

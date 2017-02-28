@@ -106,7 +106,7 @@ public class mianPrueba {
         fechaF.setMonth(5);
         
         Set<Tt> tts = new HashSet();
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 89; i++)
         {
             Tt tt = new Tt();
             tt.setIdTt("Trabajo Terminal " + i);
@@ -120,6 +120,7 @@ public class mianPrueba {
             System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
         }
         
+        LeerExcel.inportaExcel(cal, 1);
         
         System.out.println("Ya terminó !!!!!");
     }    
