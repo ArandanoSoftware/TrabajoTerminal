@@ -11,7 +11,7 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
     <%--CSS --%>
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/breadstyle.css">
     <%--Javascript--%>
 
     <%--Date picker--%>
@@ -36,6 +36,33 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
         </div>
     </div>
   <section class="General">
+    <p>
+      <b>Instrucciones:</b><br>
+      En esta página ingresa el trabaj que quieras registrar para tu trabajo, revisa que todos los datos sean correctos.
+    </p>
+
+    <form class="" action="index.html" method="post">
+
+
+    <table>
+      <tr>
+        <th># De Trabajo  Terminal:   </th>
+        <th><input type="text" name="" value=""></th>
+      </tr>
+      <tr>
+        <th>Nombre del Trabajo  Terminal:   </th>
+        <th><input type="text" name="" value=""></th>
+      </tr>
+      <tr>
+        <th># De Trabajo  Terminal:   </th>
+        <th>   <input type="text" name="" value=""></th>
+      </tr>
+
+
+
+    </table>
+
+    </form>
 
   </section>
   </body>
