@@ -110,10 +110,11 @@ public class mianPrueba {
         {
             Tt tt = new Tt();
             tt.setIdTt("Trabajo Terminal " + i);
+            tt.setNombre("Nombre de  " + i);
             tts.add(tt);
         }
         
-        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacionTT1(fechaI, fechaF, tts, 9));
+        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacionTT2(fechaI, fechaF, tts, 9));
         
         for(int i = 0; i < cal.size(); i++)
         {

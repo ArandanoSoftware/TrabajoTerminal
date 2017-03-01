@@ -35,6 +35,7 @@ public class Genetico {
         while(dias.size() != (tt.size()/ttxdia))
         {
             int diaR = random.nextInt(rango + 1) + inicio.getDate();
+            fecha.setMonth(fin.getMonth());
             fecha.setDate(diaR);
             if(fecha.getDay() != 0 && fecha.getDay() != 6)
                 dias.add(diaR);
@@ -48,14 +49,57 @@ public class Genetico {
             fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
-            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
-            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas + 1)));
+            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(4)+1));
+            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
         }
         
         return poblacion;
     }
+    
+    public static List<Cromosoma> crearPoblacionTT2(Date inicio, Date fin, Set<Tt> tt, int salas)
+    {
+        List<Cromosoma> poblacion = new ArrayList();
+        Random random = new Random();
+        Set<Integer> dias = new HashSet();
+        Date fecha = new Date();
+        int rango = difFecha(fin, inicio)/2;
+        fecha.setMonth(fin.getMonth());
+        fecha.setDate(fin.getDate()-rango+1);
+        System.out.println(fecha);
+        int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
+        System.out.println("ttxdia = " + ttxdia);
+        System.out.println(rango);
+        while(dias.size() != (tt.size()/ttxdia))
+        {
+            fecha.setDate(fin.getDay());
+            fecha.setMonth(fin.getMonth());
+            int diaR = fin.getDate() - random.nextInt(rango + 1);
+            System.out.println("se le asigna este numero: " + diaR);
+            fecha.setDate(diaR);
+            System.out.println(fecha);
+            if(fecha.getDay() != 0 && fecha.getDay() != 6)
+                dias.add(diaR);
+        }
+        
+        List<Integer> diaR = new ArrayList(dias);
+        List<Tt> tts = new ArrayList(tt);
+        for(int i = 0; i < tt.size(); i++)
+        {
+            Cromosoma cromosoma = new Cromosoma();
+            fecha.setDate(diaR.get(i%diaR.size()));
+            cromosoma.getGen1().setDia(getBinDay(fecha));
+            cromosoma.getGen1().setMes(getBinMonth(fecha));
+            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(4)+1));
+            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
+            cromosoma.getGen2().setTt(tts.get(i).getIdTt());
+            poblacion.add(cromosoma);
+        }
+        
+        return poblacion;
+    }
+    
     protected static boolean[] getBinDay(Date fecha)
     {
         boolean[] dia = {false,false,false,false,false};

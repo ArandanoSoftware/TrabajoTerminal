@@ -266,7 +266,7 @@ public class LeerExcel {
         HSSFSheet sheet = workbook.createSheet();
         workbook.setSheetName(0, "Calendario" + num);
         
-        String[] headers = {"IdTT", "Nombre tt", "Presentacion", "Sala"};
+        String[] headers = {"IdTT", "Nombre tt", "hora", "dia", "mes", "Sala"};
         
         CellStyle headerStyle = workbook.createCellStyle();
         Font font = workbook.createFont();
@@ -288,20 +288,24 @@ public class LeerExcel {
         for(int i = 0; i < calendario.size(); i++)
         {
             HSSFRow fila = sheet.createRow(i+1);
-            HSSFCell celda = fila.createCell(0);
-            celda.setCellValue(calendario.get(i).getIdTt());
-            celda = fila.createCell(1);
-            celda.setCellValue(calendario.get(i).getTt().getNombre());
-            celda = fila.createCell(2);
-            celda.setCellValue(calendario.get(i).getFecha());
-            celda = fila.createCell(0);
-            celda.setCellValue(calendario.get(i).getSala().getIdSala());
+            HSSFCell celda0 = fila.createCell(0);
+            celda0.setCellValue(calendario.get(i).getTt().getIdTt());
+            HSSFCell celda1 = fila.createCell(1);
+            celda1.setCellValue(calendario.get(i).getTt().getNombre());
+            HSSFCell celda2 = fila.createCell(2);
+            celda2.setCellValue(calendario.get(i).getFecha().getHours());
+            HSSFCell celda3 = fila.createCell(3);
+            celda3.setCellValue(calendario.get(i).getFecha().getDate());
+            HSSFCell celda4 = fila.createCell(4);
+            celda4.setCellValue(calendario.get(i).getFecha().getMonth());
+            HSSFCell celda5 = fila.createCell(5);
+            celda5.setCellValue(calendario.get(i).getSala().getIdSala());
         }
         
 
         try
         {
-            FileOutputStream file = new FileOutputStream("../calendar.xls");
+            FileOutputStream file = new FileOutputStream("../calendar2.xls");
             workbook.write(file);
             file.close();
         }catch(Exception e){}
