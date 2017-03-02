@@ -35,7 +35,7 @@ public class Genetico {
         while(dias.size() != (tt.size()/ttxdia))
         {
             int diaR = random.nextInt(rango + 1) + inicio.getDate();
-            fecha.setMonth(fin.getMonth());
+            fecha.setMonth(inicio.getMonth());
             fecha.setDate(diaR);
             if(fecha.getDay() != 0 && fecha.getDay() != 6)
                 dias.add(diaR);
@@ -46,6 +46,7 @@ public class Genetico {
         for(int i = 0; i < tt.size(); i++)
         {
             Cromosoma cromosoma = new Cromosoma();
+            fecha.setMonth(inicio.getMonth());
             fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
@@ -65,20 +66,17 @@ public class Genetico {
         Set<Integer> dias = new HashSet();
         Date fecha = new Date();
         int rango = difFecha(fin, inicio)/2;
-        fecha.setMonth(fin.getMonth());
-        fecha.setDate(fin.getDate()-rango+1);
-        System.out.println(fecha);
+        inicio.setDate(inicio.getDate() + rango + 1);
+        fecha.setDate(inicio.getDate());
+        fecha.setMonth(inicio.getMonth());
         int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
         System.out.println("ttxdia = " + ttxdia);
-        System.out.println(rango);
+        System.out.println("acá es : " + inicio);
         while(dias.size() != (tt.size()/ttxdia))
         {
-            fecha.setDate(fin.getDay());
-            fecha.setMonth(fin.getMonth());
-            int diaR = fin.getDate() - random.nextInt(rango + 1);
-            System.out.println("se le asigna este numero: " + diaR);
+            int diaR = random.nextInt(rango + 1) + inicio.getDate();
+            fecha.setMonth(inicio.getMonth());
             fecha.setDate(diaR);
-            System.out.println(fecha);
             if(fecha.getDay() != 0 && fecha.getDay() != 6)
                 dias.add(diaR);
         }
@@ -88,6 +86,7 @@ public class Genetico {
         for(int i = 0; i < tt.size(); i++)
         {
             Cromosoma cromosoma = new Cromosoma();
+            fecha.setMonth(inicio.getMonth());
             fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
