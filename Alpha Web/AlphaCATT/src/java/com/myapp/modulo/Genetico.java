@@ -71,7 +71,6 @@ public class Genetico {
         fecha.setMonth(inicio.getMonth());
         int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
         System.out.println("ttxdia = " + ttxdia);
-        System.out.println("acá es : " + inicio);
         while(dias.size() != (tt.size()/ttxdia))
         {
             int diaR = random.nextInt(rango + 1) + inicio.getDate();
