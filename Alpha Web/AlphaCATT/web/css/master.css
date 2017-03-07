@@ -39,3 +39,11 @@ html{
     margin-right: 35px;
     font-size: 30px;
 }
+
+/*Panels*/
+.panel > .panel-heading {
+    background-image: none;
+    background-color: red;
+    color: white;
+
+}
