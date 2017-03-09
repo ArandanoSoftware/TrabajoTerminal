@@ -5,6 +5,10 @@ Trabajos terminales
  --%>
 <%--Basic Java Stuff --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- <%@page import="java.io.*,java.util.*,java.sql.*"%>
+<%@page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%> --%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,7 +29,11 @@ Trabajos terminales
     <div class="MainMenu">
         <div class="Title">
          <ul>
-             <li class="Title-item-name"><b>CATT</b> </li>
+           <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+           <li class="Title-item">
+            <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
+          </li>
+          <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
          </ul>
         </div>
     </div>

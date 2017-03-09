@@ -23,13 +23,17 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
     <title>Registro de Profesor Externo:</title>
   </head>
   <body>
-  <div class="MainMenu">
-      <div class="Title">
-       <ul>
-           <li class="Title-item-name"><b>CATT</b> </li>
-       </ul>
-      </div>
-  </div>
+    <div class="MainMenu">
+        <div class="Title">
+         <ul>
+           <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+           <li class="Title-item">
+            <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
+          </li>
+          <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
+         </ul>
+        </div>
+    </div>
   <div class="General">
     <h1>Registro de directores/asesores Externos:</h2>
     <hr />

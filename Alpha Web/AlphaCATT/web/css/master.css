@@ -19,9 +19,17 @@ html{
 
 
 /*Barra de Menu*/
+#logoEscom{
+ height: 40px;
+ width: 60px;
+}
+
+.LogoTitle{
+  display: inline-block;
+}
 
 .MainMenu{
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -38,22 +46,18 @@ html{
 }
 .Title-item{
     display: inline-block;
-    font-size: 20px;
+    font-size: 30px;
 }
 .Title-item-name{
     display: inline-block;
     margin-right: 35px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 /*Panels*/
-.panel > .panel-heading {
-    background-image: none;
-    background-color: red;
-    color: white;
+.Panel{
 
 }
-
 
 
 /*Cuestionarios*/
