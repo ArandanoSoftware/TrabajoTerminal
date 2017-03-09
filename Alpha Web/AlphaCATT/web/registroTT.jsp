@@ -8,6 +8,7 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%> --%>
 
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,24 +32,28 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
       </div>
   </div>
   <div class="General">
-    <h1>Instrucciones:</h1>
+    <h1>Registro de trabajos terminales</h1>
+    <hr />
+    <h3>Instrucciones:</h3>
     <p>
       En este cuestionario ingresa los datos del trabajo terminal que quieres
-      registra, revisa cuidadosamente que los datos sean correctos.
+      registrar, revisa cuidadosamente que los datos sean correctos.
     </p>
-    <hr />
+
     <table>
       <tr>
-        <th>"#" De Trabajo  Terminal:</th>
+        <th>Número de Trabajo  Terminal:</th>
         <th><input type="text" name="" value=""></th>
       </tr>
       <tr>
         <th>Nombre del Trabajo  Terminal:</th>
         <th><input type="text" name="" value=""></th>
       </tr>
-   </table>
-   <h3>Ingresa el Nombre de tus Directores: </h3>
-   <table>
+
+      <tr>
+        <th><h3>Ingresa el Nombre de tus Directores: </h3></th>
+      </tr>
+
       <tr>
         <th> Director 1:</th>
         <th> <input type="text" name="" value=""></th>
@@ -57,11 +62,11 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
         <th> Director 2:</th>
         <th> <input type="text" id="texBoxDirector" ></th>
         <th><input type="checkbox" id="checkbox"
-          onclick="enableDisable(this.checked, 'texBoxDirector')">Nulo</th>
+          onclick="enableDisable(this.checked, 'texBoxDirector')"> No Nulo</th>
       </tr>
-   </table>
-   <h3>Ingresa el nombre de tus sinodales: </h3>
-   <table>
+      <tr>
+        <th><h3>Ingresa el Nombre de tus sinodales: </h3></th>
+      </tr>
       <tr>
         <th> Sinodal 1:</th>
         <th> <input type="text" name="" value=""></th>
@@ -74,9 +79,19 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
         <th> Sinodal 3:</th>
         <th><input type="text" id="texBoxSinodal" ></th>
         <th><input type="checkbox" id="checkbox"
-          onclick="enableDisable(this.checked, 'texBoxSinodal')">Nulo</th>
+          onclick="enableDisable(this.checked, 'texBoxSinodal')">No Nulo</th>
       </tr>
    </table>
+   <h2>Restricciones de Trabajo terminal</h2>
+   <table>
+     <tr>
+       <th><p>¿Este trabajo requiere una sala en especifico?:</p></th>
+       <th> <input type="radio" name="" value=""></th>
+     </tr>
+
+
+  </table>
+
  </div>
   </body>
 </html>

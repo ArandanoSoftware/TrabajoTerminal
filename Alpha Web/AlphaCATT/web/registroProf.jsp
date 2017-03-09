@@ -32,6 +32,7 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
   </div>
   <div class="General">
     <h1>Registro de directores/asesores Externos:</h2>
+    <hr />
     <h3>Instrucciones:</h3>
     <p>
       Si tu director o asesor es una persona externa a la institución registra sus datos
@@ -42,6 +43,19 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
         <th> Nombre:</th>
         <th> <input type="text" name="" value=""></th>
       </tr>
+      <tr>
+        <th> Apellido paterno:</th>
+        <th> <input type="text" name="" value=""></th>
+      </tr>
+      <tr>
+        <th> Apellido materno:</th>
+        <th> <input type="text" name="" value=""></th>
+      </tr>
+      <tr>
+        <th> E-mail:</th>
+        <th> <input type="email" name="" value=""></th>
+      </tr>
+
     </table>
 
   </div>

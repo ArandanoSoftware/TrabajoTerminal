@@ -9,24 +9,17 @@ Trabajos terminales
 <html>
   <head>
     <meta charset="utf-8">
-    <%--CSS --%>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="">
-    <%--Javascript--%>
+      <%--DefaultCSS --%>
+      <link rel="stylesheet" href="css/normalize.css">
+      <link rel="stylesheet" href="css/breadstyle.css">
+      <%--PersonalCSS--%>
+      <link rel="stylesheet" href="css/master.css">
+      <link rel="stylesheet" href="css/registroTT.css.css">
+      <%--Javascript--%>
+      <script type="text/javascript" src="js/restriccionesFechas.js"></script>
+      <%--Date picker--%>
 
-    <%--Date picker--%>
-    <!-- Include Required Prerequisites -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css"/>
-
-    <!-- Include Date Range Picker -->
-    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css"/>
-
-    <title>Restricciones de Fechas para las restricciones de Trabajos
-    terminales</title>
+    <title>Configuración de Fechas</title>
   </head>
   <body>
     <div class="MainMenu">
@@ -36,39 +29,37 @@ Trabajos terminales
          </ul>
         </div>
     </div>
-  <section class="General">
 
+  <div class="General">
+    <h1>Configuración del rango de fechas y las restricciones de calendario.</h1>
+    <hr />
     <p>
       <b>Instrucciones:</b> <br>En esta página ingresa la información de las fechas
        para la calendarización así  como los restricciones que tengas para el
        sistema en sí, recuerda llenar correctamente bien las fechas ya que el
-        sistema tomará estas como base para generar el calendario.
-
+       sistema tomará estas como base para generar el calendario.
     </p>
+    <table>
+      <tr>
+        <th><h3>Rango de fecha para calendarizar:</h3></th>
+      </tr>
+      <tr>
+        <th>Fecha de Inicio:</th>
+        <th><input type="date" name="" value=""><i>   mm/dd/yyyy</i></th>
+      </tr>
+      <tr>
+        <th>Fecha de Final:</th>
+        <th><input type="date" name="" value=""><i>   mm/dd/yyyy</i></th>
+      </tr>
+      <tr>
+        <th><h3>Restricciones por día:</h3></th>
+      </tr>
+      <tr>
 
-    <b>Rango de fechas:  </b>
-    <input type="text" name="datefilter" value="" />
-    <script type="text/javascript" src="js/restriccionesFechas.js"></script>
-
-    <script type="text/javascript">
-      $(function() {
-      $('input[name="datefilter"]').daterangepicker({
-          autoUpdateInput: false,
-          locale: {
-              cancelLabel: 'Clear'
-          }
-      });
-      $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-      });
-      $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-          $(this).val('');
-      });
-      });
-    </script>
+      </tr>
+    </table>
 
 
-
-  </section>
+  </div>
   </body>
 </html>
