@@ -36,11 +36,24 @@ informar sobre la situación actual para la generación deñ calendario
 
    <div class="General">
      <p><script type="text/javascript">
-       
      </script></p>
-
-
-
+   </div>
+   <div class="PanelGeneral PanelHome">
+     <div class="Panel-Title">
+       <b>Estado de la Calendarización:</b>
+     </div>
+     <div class="PanelContent">
+       <table>
+         <tr>
+           <th>Registro de los Profesores:</th>
+           <th> Completo! <progress value="0" max="100">100%</progress></th>
+         </tr>
+         <tr>
+           <th>Registro de los Trabajos terminales:</th>
+           <th> Completo! <progress value="0" max="100">100%</progress></th>
+         </tr>
+       </table>
+     </div>
    </div>
    </body>
 </html>

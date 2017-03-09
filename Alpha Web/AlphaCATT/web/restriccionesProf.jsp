@@ -38,7 +38,9 @@ Trabajo terminal - Restricciones de Profesores
     </div>
     <div class="General">
       <h1>Pagina para Restricciones de Fechas en el horario de los profesores:</h1>
-      <h2>Instrucciones:</h2>
+      <hr  />
+      <p><b>Instrucciones:</b>
+      </p>
     </div>
  </body>
 </html>

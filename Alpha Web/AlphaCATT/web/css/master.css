@@ -4,13 +4,15 @@ html{
   color: #2F343A;
   font-family: sans-serif;
   font-size: xx-small;
+
 }
 
  .General{
-   width: 60%;
+  width: 60%;
   margin-top: 150px;
   margin-right: 20%;
   margin-left: 20%;
+  margin-bottom: 50px;
  }
 
  h2,h3{
@@ -55,7 +57,47 @@ html{
 }
 
 /*Panels*/
-.Panel{
+.PanelBlue{
+  background-color: #003366;
+  border-color: #003366;
+}
+.PanelRed{
+  background-color: #993333;
+  border-color: #993333;
+}
+.PanelHome{
+  background-color: #669999;
+  border-color: #669999;
+}
+
+.PanelGeneral{
+  border-style: solid;
+  border width: 100px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  /*border-radius: 25px;*/
+  margin-bottom: 15px;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+.Panel-Title{
+  color: white;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-left: 15px;
+  margin-left: 30%;
+}
+.PanelContent{
+  background-color: white;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  margin-top: 15px;
 
 }
 
