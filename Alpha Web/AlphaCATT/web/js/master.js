@@ -1,4 +1,10 @@
-// TestGreeting 
+/*
+Trabajo terminal 2017-A088
+Funciones generales de Java Script
+@robb_1999
+*/
+
+//Función de Saludo para Home(Prueba)
 function greeting(){
   var today= new Date();
   var hournow= today.getHours();
@@ -16,10 +22,7 @@ function greeting(){
 
   document.write('<h1>'+ greeting +'</h1>');
 }
-
-
-
-// Disable  Checkbox
+// Disable Input Text
 function enableDisable(bEnable, textBoxID)
    {
         document.getElementById(textBoxID).disabled = !bEnable
