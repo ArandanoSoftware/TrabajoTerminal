@@ -8,6 +8,7 @@ package com.myapp.modulo;
 import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
+import com.myapp.model.Sala;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -82,7 +83,7 @@ public class LeerExcel {
         return profes;
     }
     
-    public static List<Profesor> ExtraeExcel(FileInputStream file) throws IOException
+    public static List<Profesor> extraeExcelJuanita(FileInputStream file) throws IOException
     {
         // Crear el objeto que tendra el libro de Excel
 	HSSFWorkbook workbook = new HSSFWorkbook(file);
@@ -128,6 +129,24 @@ public class LeerExcel {
         // cerramos el libro excel
 	workbook.close();
         return profes;
+    }
+    
+        public static List<Sala> extraeExcelSala(FileInputStream file) throws IOException
+    {
+        HSSFWorkbook workbook = new HSSFWorkbook(file);
+        HSSFSheet sheet = workbook.getSheetAt(3);
+        Iterator<Row> filas = sheet.iterator();
+        filas.next();
+        List<Sala> salas = new ArrayList<>();
+        
+        while (filas.hasNext())
+        {
+            Sala s = new Sala();
+            s.setNombre(filas.next().getCell(0).toString());
+            salas.add(s);
+        }
+        workbook.close();
+        return salas;
     }
     
     public static Profesor añadeNombre(String nom)

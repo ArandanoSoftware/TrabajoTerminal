@@ -6,9 +6,11 @@
 package prueba;
 
 import com.myapp.bs.ProfesorBs;
+import com.myapp.bs.SalaBs;
 import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
+import com.myapp.model.Sala;
 import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
 import java.util.List;
@@ -58,33 +60,46 @@ public class mianPrueba {
 //        {
 //            System.out.println("id: " + salas.get(i).getIdSala() + " Nombre: " + salas.get(i).getNombre());
 //        }
+////        
+        FileInputStream file = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
+        List<Profesor> profesores = LeerExcel.extraerExcelSamara(file);
+////        List<Profesor> profesores = ProfesorBs.findAll();
         
-        FileInputStream file = new FileInputStream(new File("../Estructura 2017 1.xls"));
-        List<Profesor> profesores = LeerExcel.ExtraeExcel(file);
-        
-        for(int i = 0; i < profesores.size();i++)
+        for(int i = 0; i < profesores.size(); i++)
         {
-            System.out.println("nombre: " + profesores.get(i).getNombre() + " " + profesores.get(i).getApaterno()+ " " + profesores.get(i).getAmaterno()+ " ");
+            ProfesorBs.save(profesores.get(i));
         }
         
+        profesores = ProfesorBs.findAll();
         
-//        for(int i = 0; i < profesores.size(); i++)
-//        {
-//            ProfesorBs.save(profesores.get(i));
-//       }
         for(int j = 0;j<profesores.size();j++)
         {
-            //profesores.get(j).setIdProfesor(j+1);
             System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getApaterno() + ", "+ profesores.get(j).getAmaterno() + ", " + profesores.get(j).getNombre());
-            List<Horario> horarios = Arrays.asList(profesores.get(j).getHorarios().toArray(new Horario[0]));
+            List<Horario> horarios = new ArrayList(profesores.get(j).getHorarios());
             for(int i = 0; i < horarios.size(); i++)
             {
                 Horario hor = horarios.get(i);
-                System.out.println("\tHorario: " + hor.getLun() + " " + hor.getMar() + " " + hor.getMie() + " " + hor.getJue() + " " + hor.getVie() );
+                System.out.println("\tHorario: L:" + hor.getLun() + " M:" + hor.getMar() + " M:" + hor.getMie() + " J:" + hor.getJue() + " V:" + hor.getVie() );
             }
         }
+        FileInputStream file2 = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
+        List<Sala> salas = LeerExcel.extraeExcelSala(file2);
+        
+        for(int i = 0; i < salas.size(); i++)
+        {
+            SalaBs.save(salas.get(i));
+        }
+        
+        salas = SalaBs.findAll();
+        
+        for(int i = 0; i < salas.size(); i++)
+        {
+            System.out.println("id: " + salas.get(i).getIdSala() + " sala: " + salas.get(i).getNombre());
+        }
+        
+        
+        
 
-////        List<Profesor> profesores = ProfesorBs.findAll();
 ////        for(int i = 0; i < profesores.size(); i++)
 ////        {
 ////            ProfesorBs.delete(profesores.get(i));
@@ -106,31 +121,32 @@ public class mianPrueba {
 ////            Genetico.crearPoblacion(nueva, date, tts, 1);
 ////        }
         
-////        Date fechaI = new Date();
-////        fechaI.setDate(2);
-////        fechaI.setMonth(4);
-////        Date fechaF = new Date();
-////        fechaF.setDate(2);
-////        fechaF.setMonth(5);
-////        
-////        Set<Tt> tts = new HashSet();
-////        for(int i = 0; i < 89; i++)
-////        {
-////            Tt tt = new Tt();
-////            tt.setIdTt("Trabajo Terminal " + i);
-////            tt.setNombre("Nombre de  " + i);
-////            tts.add(tt);
-////        }
-////        
-////        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacionTT2(fechaI, fechaF, tts, 9));
-////        
-////        for(int i = 0; i < cal.size(); i++)
-////        {
-////            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
-////        }
-////        
-////        LeerExcel.inportaExcel(cal, 1);
+//        Date fechaI = new Date();
+//        fechaI.setDate(2);
+//        fechaI.setMonth(4);
+//        Date fechaF = new Date();
+//        fechaF.setDate(2);
+//        fechaF.setMonth(5);
+//        
+//        Set<Tt> tts = new HashSet();
+//        for(int i = 0; i < 89; i++)
+//        {
+//            Tt tt = new Tt();
+//            tt.setIdTt("Trabajo Terminal " + i);
+//            tt.setNombre("Nombre de  " + i);
+//            tts.add(tt);
+//        }
+//        
+//        List<Calendario> cal = Genetico.crearCalendario(Genetico.crearPoblacionTT2(fechaI, fechaF, tts, 9));
+//        
+//        for(int i = 0; i < cal.size(); i++)
+//        {
+//            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
+//        }
+//        
+//        LeerExcel.inportaExcel(cal, 1);
         
+        file.close();
         System.out.println("Ya terminó !!!!!");
     }    
 }
