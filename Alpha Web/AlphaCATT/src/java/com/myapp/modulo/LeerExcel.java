@@ -37,6 +37,51 @@ public class LeerExcel {
      * @return
      * @throws java.io.IOException
      */
+    
+        public static List<Profesor> extraerExcelSamara(FileInputStream file)throws IOException
+    {
+        	HSSFWorkbook workbook = new HSSFWorkbook(file);
+        HSSFSheet sheet = workbook.getSheetAt(2);
+        Iterator<Row> filas = sheet.iterator();
+        filas.next();
+        Row row;
+        List<Profesor> profes = new ArrayList<>();
+        String compara = "no es igual xD";
+        Profesor p = new Profesor();
+        while (filas.hasNext()){
+	    row = filas.next();
+	    //Obtenemos el iterator que permite recorres todas las celdas de una fil
+            Horario h = new Horario();
+            int ultimo = 0;
+            try{h.setLun(row.getCell(4).getStringCellValue());}catch(Exception e){h.setLun("-");ultimo++;}
+            try{h.setMar(row.getCell(5).getStringCellValue());}catch(Exception e){h.setMar("-");ultimo++;}
+            try{h.setMie(row.getCell(6).getStringCellValue());}catch(Exception e){h.setMie("-");ultimo++;}
+            try{h.setJue(row.getCell(7).getStringCellValue());}catch(Exception e){h.setJue("-");ultimo++;}
+            try{h.setVie(row.getCell(8).getStringCellValue());}catch(Exception e){h.setVie("-");ultimo++;}
+            if(ultimo == 5)break;
+            try
+            {
+                Cell celda = row.getCell(0);
+                if(!celda.getStringCellValue().equals(compara))
+                {
+                    compara = celda.getStringCellValue();
+                    if(!celda.getStringCellValue().contains("("))
+                    {
+                    p = new Profesor();
+                    if(compara.equals("SIN ASIGNAR"))continue;
+                    p = añadeNombre(compara);
+                    profes.add(p);
+                    }
+                }
+            }catch(Exception e){}
+            h.setProfesor(p);
+            p.getHorarios().add(h);
+	}
+        // cerramos el libro excel
+	workbook.close();
+        return profes;
+    }
+    
     public static List<Profesor> ExtraeExcel(FileInputStream file) throws IOException
     {
         // Crear el objeto que tendra el libro de Excel
