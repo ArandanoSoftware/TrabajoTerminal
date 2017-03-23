@@ -29,7 +29,7 @@ CREATE TABLE `alumno` (
   `AMaterno` varchar(50) NOT NULL,
   `Email` varchar(75) NOT NULL,
   `Telefono` varchar(15) DEFAULT NULL,
-  `IdTT` varchar(9) NOT NULL,
+  `IdTT` varchar(10) NOT NULL,
   PRIMARY KEY (`IdAlumno`),
   KEY `IdTT` (`IdTT`),
   CONSTRAINT `ALUMNO_ibfk_1` FOREIGN KEY (`IdTT`) REFERENCES `tt` (`IdTT`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -222,8 +222,8 @@ DROP TABLE IF EXISTS `tt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tt` (
-  `IdTT` varchar(9) NOT NULL,
-  `Nombre` varchar(140) NOT NULL,
+  `IdTT` varchar(10) NOT NULL,
+  `Nombre` varchar(444) NOT NULL,
   `Nivel` int(11) NOT NULL,
   PRIMARY KEY (`IdTT`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -271,4 +271,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-21  6:59:48
+-- Dump completed on 2017-03-22 22:03:29
