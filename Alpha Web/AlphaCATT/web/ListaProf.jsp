@@ -17,7 +17,7 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
     <link rel="stylesheet" href="css/breadstyle.css">
     <%--PersonalCSS--%>
     <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/registroTT.css.css">
+    <link rel="stylesheet" href="css/registroTT.css">
     <%--Javascript--%>
     <script type="text/javascript" src="js/master.js"></script>
     <title>Registro de Profesor Externo:</title>
