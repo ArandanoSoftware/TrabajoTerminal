@@ -1,18 +1,20 @@
 /*CSS para el calendario general de los trabajos terminales*/
 
 body {
-
 	font-family: sans-serif;;
 }
 
 header {
 	text-align: center;
 }
+#calendar-zone{
+	width: 100%;
+	margin-top: 50px;
 
+}
 #calendar {
-	width: 90%;
-  padding:5%;
-
+	padding-left: 5%;
+	padding-right: 5%;
 }
 
 #calendar a {
@@ -24,13 +26,13 @@ header {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	width: 100%;
+	/*width: 100%;*/
 }
 
 #calendar li {
 	display: block;
 	float: left;
-	width:14.342%;
+	width:20%;
 	padding: 5px;
 	box-sizing:border-box;
 	border: 1px solid #ccc;
@@ -39,7 +41,7 @@ header {
 }
 
 #calendar ul.weekdays {
-	height: 40px;
+	height: 30px;
 	background: rgb(135, 37, 28);
 }
 
@@ -67,8 +69,8 @@ header {
 	padding: 4px;
 	background: #333;
 	color: #fff;
-	width: 20px;
-	border-radius: 50%;
+	width: 25px;
+	border-radius: 100%;
 	float: right;
 }
 
@@ -108,7 +110,7 @@ color: red;
    ============================*/
 
 
-@media(max-width: 768px) {
+@media(max-width: 9768px) {
 
 	#calendar .weekdays, #calendar .other-month {
 		display: none;
@@ -127,7 +129,7 @@ color: red;
 	}
 }
 
-@media(min-width: 769px){
+@media(min-width: 9769px){
 
 
   #calendar .event-time{
