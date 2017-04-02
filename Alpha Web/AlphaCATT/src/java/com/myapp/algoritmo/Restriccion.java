@@ -13,13 +13,12 @@ public class Restriccion {
     private boolean[] mes;
     private boolean[] dia;
     private boolean[] hora;
-    private boolean[] profesor;
+    private int profesor;
 
     public Restriccion() {
         this.mes = new boolean[4];
         this.dia = new boolean[5];
         this.hora = new boolean[9];
-        this.profesor = new boolean[8];
     }
 
     public boolean[] getDia() {
@@ -46,11 +45,11 @@ public class Restriccion {
         this.mes = mes;
     }
 
-    public boolean[] getProfesor() {
+    public int getProfesor() {
         return profesor;
     }
 
-    public void setProfesor(boolean[] profesor) {
+    public void setProfesor(int profesor) {
         this.profesor = profesor;
     }
     
