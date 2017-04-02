@@ -7,6 +7,7 @@ package prueba;
 
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
+import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
@@ -61,41 +62,41 @@ public class mianPrueba {
 //            System.out.println("id: " + salas.get(i).getIdSala() + " Nombre: " + salas.get(i).getNombre());
 //        }
 ////        
-        FileInputStream file = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
-        List<Profesor> profesores = LeerExcel.extraerExcelSamara(file);
+//////        FileInputStream file = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
+//////        List<Profesor> profesores = LeerExcel.extraerExcelSamara(file);
 ////        List<Profesor> profesores = ProfesorBs.findAll();
         
-        for(int i = 0; i < profesores.size(); i++)
-        {
-            ProfesorBs.save(profesores.get(i));
-        }
-        
-        profesores = ProfesorBs.findAll();
-        
-        for(int j = 0;j<profesores.size();j++)
-        {
-            System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getApaterno() + ", "+ profesores.get(j).getAmaterno() + ", " + profesores.get(j).getNombre());
-            List<Horario> horarios = new ArrayList(profesores.get(j).getHorarios());
-            for(int i = 0; i < horarios.size(); i++)
-            {
-                Horario hor = horarios.get(i);
-                System.out.println("\tHorario: L:" + hor.getLun() + " M:" + hor.getMar() + " M:" + hor.getMie() + " J:" + hor.getJue() + " V:" + hor.getVie() );
-            }
-        }
-        FileInputStream file2 = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
-        List<Sala> salas = LeerExcel.extraeExcelSala(file2);
-        
-        for(int i = 0; i < salas.size(); i++)
-        {
-            SalaBs.save(salas.get(i));
-        }
-        
-        salas = SalaBs.findAll();
-        
-        for(int i = 0; i < salas.size(); i++)
-        {
-            System.out.println("id: " + salas.get(i).getIdSala() + " sala: " + salas.get(i).getNombre());
-        }
+//////        for(int i = 0; i < profesores.size(); i++)
+//////        {
+//////            ProfesorBs.save(profesores.get(i));
+//////        }
+//////        
+//////        profesores = ProfesorBs.findAll();
+//////        
+//////        for(int j = 0;j<profesores.size();j++)
+//////        {
+//////            System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getApaterno() + ", "+ profesores.get(j).getAmaterno() + ", " + profesores.get(j).getNombre());
+//////            List<Horario> horarios = new ArrayList(profesores.get(j).getHorarios());
+//////            for(int i = 0; i < horarios.size(); i++)
+//////            {
+//////                Horario hor = horarios.get(i);
+//////                System.out.println("\tHorario: L:" + hor.getLun() + " M:" + hor.getMar() + " M:" + hor.getMie() + " J:" + hor.getJue() + " V:" + hor.getVie() );
+//////            }
+//////        }
+//////        FileInputStream file2 = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
+//////        List<Sala> salas = LeerExcel.extraeExcelSala(file2);
+//////        
+//////        for(int i = 0; i < salas.size(); i++)
+//////        {
+//////            SalaBs.save(salas.get(i));
+//////        }
+//////        
+//////        salas = SalaBs.findAll();
+//////        
+//////        for(int i = 0; i < salas.size(); i++)
+//////        {
+//////            System.out.println("id: " + salas.get(i).getIdSala() + " sala: " + salas.get(i).getNombre());
+//////        }
         
         
         
@@ -146,7 +147,15 @@ public class mianPrueba {
 //        
 //        LeerExcel.inportaExcel(cal, 1);
         
-        file.close();
+////        file.close();
+        
+        List<Tt> tts = TTBs.findAll();
+        
+        for (int i = 0; i < tts.size(); i++)
+        {
+            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
+        }
+        
         System.out.println("Ya terminó !!!!!");
     }    
 }

@@ -214,4 +214,11 @@ public class Genetico {
             return dias;
         return diaHabil(fecha, rango, dias);
     }
+    
+    
+    
+    protected static List<Cromosoma> NuevaGeneracion()
+    {
+        return new ArrayList();
+    }
 }
