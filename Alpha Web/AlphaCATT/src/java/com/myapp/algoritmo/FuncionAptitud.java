@@ -11,46 +11,40 @@ import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;
 import com.myapp.model.Profesor;
 import com.myapp.model.Sinodalia;
-import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
 import java.util.Date;
 import java.util.List;
-
+//////////////recuerda hazziely que tienes que remplazar!!!!
 /**
  *
  * @author Hazzy76
  */
 public class FuncionAptitud {
     
-    private static List<Tt> tts;
-    private final Integer dir1;
-    private final Integer dir2;
-    private final Integer sin1;
-    private final Integer sin2;
-    private final Integer sin3;
+    private final List<Cromosoma> poblacion;
+    private final Dirige dirige;
+    private final Sinodalia sinodalia;
     private final Cromosoma cc;
     private final List<Restriccion> restricciones;
     
-    public FuncionAptitud(Cromosoma cc, List<Restriccion> restricciones)
+    public FuncionAptitud(Cromosoma cc, List<Restriccion> restricciones, List<Cromosoma> poblacion)
     {
         Dirige dirige = DirigeBs.findById(cc.getGen2().getTt());
         Sinodalia sinodalia = SinodaliaBs.findById(cc.getGen2().getTt());
         this.cc = cc;
-        this.dir1 = dirige.getProfesorByD1().getIdProfesor();
-        this.dir2 = dirige.getProfesorByD2().getIdProfesor();
-        this.sin1 = sinodalia.getProfesorByS1().getIdProfesor();
-        this.sin2 = sinodalia.getProfesorByS2().getIdProfesor();
-        this.sin3 = sinodalia.getProfesorByS3().getIdProfesor();
         this.restricciones = restricciones;
+        this.poblacion = poblacion;
     }
     
     public int evaluar(Cromosoma individuo)
     {
-        int aptitud = 0, directors = 0, sinodals = 0;
+        int aptitud = 0, directors = 0, sinodals = 0, saladisp = 0;
         directors += funcionDirector();
         if(directors == 0) return 0;
         sinodals += funcionSinodal();
         if(sinodals == 0) return 0;
+        saladisp = salaLibre();
+        aptitud += directors + sinodals + saladisp;
         return aptitud;
     }
     
@@ -190,5 +184,17 @@ public class FuncionAptitud {
         for(int i = 0; i < hp.length; i++)
             if(hp[i] == false && ht[i] == true)return true;
         return false;
+    }
+    
+    protected int salaLibre()
+    {
+        for(int i = 0; i < poblacion.size();i++)
+        {
+            if(igualBin(cc.getGen1().getSala(),poblacion.get(i).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(i).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(i).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(i).getGen1().getHora()))
+            {
+                return -100;
+            }
+        }
+        return 0;
     }
 }
