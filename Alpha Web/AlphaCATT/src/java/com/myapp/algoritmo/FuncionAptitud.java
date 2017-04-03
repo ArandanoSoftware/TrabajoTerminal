@@ -11,8 +11,8 @@ import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;
 import com.myapp.model.Profesor;
 import com.myapp.model.Sinodalia;
+import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -22,13 +22,14 @@ import java.util.List;
  */
 public class FuncionAptitud {
     
-    Integer dir1;
-    Integer dir2;
-    Integer sin1;
-    Integer sin2;
-    Integer sin3;
-    Cromosoma cc;
-    List<Restriccion> restricciones;
+    private static List<Tt> tts;
+    private final Integer dir1;
+    private final Integer dir2;
+    private final Integer sin1;
+    private final Integer sin2;
+    private final Integer sin3;
+    private final Cromosoma cc;
+    private final List<Restriccion> restricciones;
     
     public FuncionAptitud(Cromosoma cc, List<Restriccion> restricciones)
     {
@@ -45,8 +46,11 @@ public class FuncionAptitud {
     
     public int evaluar(Cromosoma individuo)
     {
-        int aptitud = 0;
-        
+        int aptitud = 0, directors = 0, sinodals = 0;
+        directors += funcionDirector();
+        if(directors == 0) return 0;
+        sinodals += funcionSinodal();
+        if(sinodals == 0) return 0;
         return aptitud;
     }
     
@@ -171,14 +175,6 @@ public class FuncionAptitud {
         return (personal1 + personal2 + hora1 + hora2)/2;
     }
     
-    protected List<Restriccion> buscarRestriccion(int director)
-    {
-        List<Restriccion> res = new ArrayList<>();
-        for(int i = 0; i < restricciones.size(); i++)
-            if(restricciones.get(i).getProfesor() == director) res.add(restricciones.get(i));
-        return res;
-    }
-    
     protected boolean igualBin(boolean[] bin1, boolean[] bin2)
     {
         for(int i = 0; i < bin1.length; i++)
@@ -195,5 +191,4 @@ public class FuncionAptitud {
             if(hp[i] == false && ht[i] == true)return true;
         return false;
     }
-    
 }
