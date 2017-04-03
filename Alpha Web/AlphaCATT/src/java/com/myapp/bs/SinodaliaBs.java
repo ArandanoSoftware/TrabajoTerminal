@@ -18,6 +18,9 @@ public class SinodaliaBs {
     {
         SinodaliaDao sinodaliaDao = new SinodaliaDao();
         Sinodalia sinodalia = sinodaliaDao.findById(id);
+        sinodalia.setProfesorByS1(ProfesorBs.findById(sinodalia.getProfesorByS1().getIdProfesor()));
+        sinodalia.setProfesorByS2(ProfesorBs.findById(sinodalia.getProfesorByS2().getIdProfesor()));
+        sinodalia.setProfesorByS3(ProfesorBs.findById(sinodalia.getProfesorByS3().getIdProfesor()));
         return sinodalia;
     }
     
