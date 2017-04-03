@@ -4,7 +4,7 @@ Función home:
 Mostrar las opciones.
 informar sobre la situación actual para la generación deñ calendario
 --%>
-
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

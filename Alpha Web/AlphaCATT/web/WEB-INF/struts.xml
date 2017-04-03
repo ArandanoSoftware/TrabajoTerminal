@@ -5,7 +5,18 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
-        
     </package>
+    <package name= "controllers" namespace="/" extends="struts-default">
 
+
+      <action name= "Login" class="com.struts.controllers.LoginController" method="Login">
+        <result  name= "success" type="redirectAction">home</result>
+         <result name="error">/index.jsp</result>
+      </action>
+
+      <!--Redirect Actions -->
+      <action name="home" class="com.struts.controllers.HomeController" method="execute">
+        <result>/home.jsp</result>
+      </action>
+    <package>
 </struts>

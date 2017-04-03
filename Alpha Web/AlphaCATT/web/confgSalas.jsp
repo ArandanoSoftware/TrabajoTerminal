@@ -4,6 +4,8 @@ Pagina para registrar las salas disponibles
  --%>
 <%--Basic Java Stuff --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 <%-- <%@page import="java.io.*,java.util.*,java.sql.*"%>
 <%@page import="javax.servlet.http.*,javax.servlet.*" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
