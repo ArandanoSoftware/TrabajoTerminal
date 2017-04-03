@@ -5,10 +5,12 @@
  */
 package prueba;
 
+import com.myapp.bs.DirigeBs;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
+import com.myapp.model.Dirige;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
 import com.myapp.model.Sala;
@@ -149,12 +151,17 @@ public class mianPrueba {
         
 ////        file.close();
         
-        List<Tt> tts = TTBs.findAll();
+////        List<Tt> tts = TTBs.findAll();
+////        
+////        for (int i = 0; i < tts.size(); i++)
+////        {
+////            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
+////        }
+        Dirige dirige = DirigeBs.findById("2016-A088");
         
-        for (int i = 0; i < tts.size(); i++)
-        {
-            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
-        }
+        //System.out.println(dirige.getIdTt() + dirige.getProfesorByD1().getNombre());
+        
+        System.out.println("direcotor 1: " + dirige.getProfesorByD1().getNombre() + " " + dirige.getProfesorByD1().getApaterno()+ " " + dirige.getProfesorByD1().getAmaterno()+ "\nDirector2: " + dirige.getProfesorByD2().getNombre() + " " + dirige.getProfesorByD2().getApaterno() + " " + dirige.getProfesorByD2().getAmaterno()+ " ");
         
         System.out.println("Ya terminó !!!!!");
     }    

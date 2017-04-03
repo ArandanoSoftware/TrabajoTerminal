@@ -6,10 +6,14 @@
 package com.myapp.algoritmo;
 
 import com.myapp.bs.DirigeBs;
+import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;
+import com.myapp.model.Profesor;
 import com.myapp.model.Sinodalia;
+import com.myapp.modulo.Genetico;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,7 +52,7 @@ public class FuncionAptitud {
     
     protected int funcionDirector()
     {
-        int num = 1;
+        int num = 1, personal1 = 0, personal2 = 0;
         List<Restriccion> res = buscarRestriccion(dir1);
         if(dir2 != null)
         {
@@ -57,9 +61,34 @@ public class FuncionAptitud {
         }
         for(int i = 0; i < res.size(); i++)
         {
-            if(igualBin(cc.getGen1().getMes(),res.get(i).getMes()) && igualBin(cc.getGen1().getDia(),res.get(i).getDia())){}
-                //estan en el mismo dia del mismo mes y se hace algo xD
+            if(!(igualBin(cc.getGen1().getMes(),res.get(i).getMes()) && igualBin(cc.getGen1().getDia(),res.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
+            {
+                if(restricciones.get(i).getProfesor() == dir1)personal1 += 70;
+                if(restricciones.get(i).getProfesor() == dir2)personal2 += 70;
+            }
+            else
+                break;
         }
+        
+        if(personal1 == 0 && personal2 == 0)return 0;
+        //Hasta aqui ya se comprobó si pueden o no xD
+        Date date = new Date();
+        date.setMonth(Genetico.binToInt(cc.getGen1().getMes()));
+        date.setDate(Genetico.binToInt(cc.getGen1().getDia()));
+        int diaSem = date.getDay();//0 = sunday
+        boolean[] director1 = new boolean[20];
+        boolean[] director2 = new boolean[20];
+        Profesor d1 = ProfesorBs.findById(dir1);
+        Profesor d2 = ProfesorBs.findById(dir2);
+        Genetico.profebin(d1, director1);
+        Genetico.profebin(d2, director2);
+        if(diaSem == 1){director1 = Genetico.lunbin(d1, director1); director2 = Genetico.lunbin(d2, director2);}
+        if(diaSem == 2){director1 = Genetico.marbin(d1, director1); director2 = Genetico.marbin(d2, director2);}
+        if(diaSem == 3){director1 = Genetico.miebin(d1, director1); director2 = Genetico.miebin(d2, director2);}
+        if(diaSem == 4){director1 = Genetico.juebin(d1, director1); director2 = Genetico.juebin(d2, director2);}
+        if(diaSem == 5){director1 = Genetico.viebin(d1, director1); director2 = Genetico.viebin(d2, director2);}
+        
+        
         return new Integer(2);
     }
         
