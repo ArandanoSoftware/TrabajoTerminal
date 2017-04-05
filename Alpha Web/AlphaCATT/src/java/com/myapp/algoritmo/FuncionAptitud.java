@@ -29,8 +29,8 @@ public class FuncionAptitud {
     
     public FuncionAptitud(Cromosoma cc, List<Restriccion> restricciones, List<Cromosoma> poblacion)
     {
-        Dirige dirige = DirigeBs.findById(cc.getGen2().getTt());
-        Sinodalia sinodalia = SinodaliaBs.findById(cc.getGen2().getTt());
+        this.dirige = DirigeBs.findById(cc.getGen2().getTt());
+        this.sinodalia = SinodaliaBs.findById(cc.getGen2().getTt());
         this.cc = cc;
         this.restricciones = restricciones;
         this.poblacion = poblacion;
@@ -38,7 +38,7 @@ public class FuncionAptitud {
     
     public int evaluar(Cromosoma individuo)
     {
-        int aptitud = 0, directors = 0, sinodals = 0, saladisp = 0;
+        int aptitud = 0, directors = 0, sinodals = 0, saladisp;
         directors += funcionDirector();
         if(directors == 0) return 0;
         sinodals += funcionSinodal();
@@ -55,8 +55,8 @@ public class FuncionAptitud {
         {
             if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
-                if(restricciones.get(i).getProfesor() == dir1)personal1 += 70;
-                if(restricciones.get(i).getProfesor() == dir2)personal2 += 70;
+                if(restricciones.get(i).getProfesor() == dirige.getProfesorByD1().getIdProfesor())personal1 += 70;
+                if(restricciones.get(i).getProfesor() == dirige.getProfesorByD2().getIdProfesor())personal2 += 70;
             }
         }
         if(personal1 == 0 && personal2 == 0)return 0;
@@ -68,15 +68,13 @@ public class FuncionAptitud {
         int diaSem = date.getDay();//0 = sunday
         boolean[] director1 = new boolean[20];
         boolean[] director2 = new boolean[20];
-        Profesor d1 = ProfesorBs.findById(dir1);
-        Profesor d2 = ProfesorBs.findById(dir2);
-        Genetico.profebin(d1, director1);
-        Genetico.profebin(d2, director2);
-        if(diaSem == 1){director1 = Genetico.lunbin(d1, director1); director2 = Genetico.lunbin(d2, director2);}
-        if(diaSem == 2){director1 = Genetico.marbin(d1, director1); director2 = Genetico.marbin(d2, director2);}
-        if(diaSem == 3){director1 = Genetico.miebin(d1, director1); director2 = Genetico.miebin(d2, director2);}
-        if(diaSem == 4){director1 = Genetico.juebin(d1, director1); director2 = Genetico.juebin(d2, director2);}
-        if(diaSem == 5){director1 = Genetico.viebin(d1, director1); director2 = Genetico.viebin(d2, director2);}
+        Genetico.profebin(dirige.getProfesorByD1(), director1);
+        Genetico.profebin(dirige.getProfesorByD2(), director2);
+        if(diaSem == 1){director1 = Genetico.lunbin(dirige.getProfesorByD1(), director1); director2 = Genetico.lunbin(dirige.getProfesorByD2(), director2);}
+        if(diaSem == 2){director1 = Genetico.marbin(dirige.getProfesorByD1(), director1); director2 = Genetico.marbin(dirige.getProfesorByD2(), director2);}
+        if(diaSem == 3){director1 = Genetico.miebin(dirige.getProfesorByD1(), director1); director2 = Genetico.miebin(dirige.getProfesorByD2(), director2);}
+        if(diaSem == 4){director1 = Genetico.juebin(dirige.getProfesorByD1(), director1); director2 = Genetico.juebin(dirige.getProfesorByD2(), director2);}
+        if(diaSem == 5){director1 = Genetico.viebin(dirige.getProfesorByD1(), director1); director2 = Genetico.viebin(dirige.getProfesorByD2(), director2);}
         boolean[] horario  = new boolean[9];
         director1[11] = horario[0];
         director1[12] = horario[1];
@@ -98,6 +96,13 @@ public class FuncionAptitud {
         director2[18] = horario[7];
         director2[19] = horario[8];
         if(disponible(horario, cc.getGen1().getHora()))hora2 += 30;
+        
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            if(dirige.getIdTt() == poblacion.get(i).getGen2().getTt())
+                System.out.println("");
+        }
+        
         return (personal1 + personal2 + hora1 + hora2)/2;
     }
         
@@ -108,9 +113,9 @@ public class FuncionAptitud {
         {
             if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
-                if(restricciones.get(i).getProfesor() == sin1)personal1 += 70;
-                if(restricciones.get(i).getProfesor() == sin2)personal2 += 70;
-                if(restricciones.get(i).getProfesor() == sin3)personal3 += 70;
+                if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS1().getIdProfesor())personal1 += 70;
+                if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS2().getIdProfesor())personal2 += 70;
+                if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS3().getIdProfesor())personal3 += 70;
             }
         }
         
@@ -124,17 +129,14 @@ public class FuncionAptitud {
         boolean[] sinodal1 = new boolean[20];
         boolean[] sinodal2 = new boolean[20];
         boolean[] sinodal3 = new boolean[20];
-        Profesor s1 = ProfesorBs.findById(sin1);
-        Profesor s2 = ProfesorBs.findById(sin2);
-        Profesor s3 = ProfesorBs.findById(sin3);
-        Genetico.profebin(s1, sinodal1);
-        Genetico.profebin(s2, sinodal2);
-        Genetico.profebin(s3, sinodal2);
-        if(diaSem == 1){sinodal1 = Genetico.lunbin(s1, sinodal1); sinodal2 = Genetico.lunbin(s2, sinodal2); sinodal3 = Genetico.lunbin(s3, sinodal3);}
-        if(diaSem == 1){sinodal1 = Genetico.marbin(s1, sinodal1); sinodal2 = Genetico.marbin(s2, sinodal2); sinodal3 = Genetico.marbin(s3, sinodal3);}
-        if(diaSem == 1){sinodal1 = Genetico.miebin(s1, sinodal1); sinodal2 = Genetico.miebin(s2, sinodal2); sinodal3 = Genetico.miebin(s3, sinodal3);}
-        if(diaSem == 1){sinodal1 = Genetico.juebin(s1, sinodal1); sinodal2 = Genetico.juebin(s2, sinodal2); sinodal3 = Genetico.juebin(s3, sinodal3);}
-        if(diaSem == 1){sinodal1 = Genetico.viebin(s1, sinodal1); sinodal2 = Genetico.viebin(s2, sinodal2); sinodal3 = Genetico.viebin(s3, sinodal3);}
+        Genetico.profebin(sinodalia.getProfesorByS1(), sinodal1);
+        Genetico.profebin(sinodalia.getProfesorByS2(), sinodal2);
+        Genetico.profebin(sinodalia.getProfesorByS3(), sinodal2);
+        if(diaSem == 1){sinodal1 = Genetico.lunbin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.lunbin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.lunbin(sinodalia.getProfesorByS3(), sinodal3);}
+        if(diaSem == 1){sinodal1 = Genetico.marbin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.marbin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.marbin(sinodalia.getProfesorByS3(), sinodal3);}
+        if(diaSem == 1){sinodal1 = Genetico.miebin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.miebin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.miebin(sinodalia.getProfesorByS3(), sinodal3);}
+        if(diaSem == 1){sinodal1 = Genetico.juebin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.juebin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.juebin(sinodalia.getProfesorByS3(), sinodal3);}
+        if(diaSem == 1){sinodal1 = Genetico.viebin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.viebin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.viebin(sinodalia.getProfesorByS3(), sinodal3);}
         boolean[] horario  = new boolean[9];
         sinodal1[11] = horario[0];
         sinodal1[12] = horario[1];
