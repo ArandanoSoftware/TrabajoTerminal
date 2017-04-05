@@ -97,6 +97,7 @@ public class FuncionAptitud {
         director2[19] = horario[8];
         if(disponible(horario, cc.getGen1().getHora()))hora2 += 30;
         
+        
         for(int i = 0; i < poblacion.size(); i++)
         {
             if(dirige.getIdTt() == poblacion.get(i).getGen2().getTt())
