@@ -21,6 +21,9 @@ import java.util.List;
  */
 public class FuncionAptitud {
     
+    private static List<Dirige> directores = DirigeBs.findAll();
+    private static List<Sinodalia> sinodales = SinodaliaBs.findAll();
+    
     private final List<Cromosoma> poblacion;
     private final Dirige dirige;
     private final Sinodalia sinodalia;
@@ -97,8 +100,7 @@ public class FuncionAptitud {
         director2[19] = horario[8];
         if(disponible(horario, cc.getGen1().getHora()))hora2 += 30;
         
-        
-        for(int i = 0; i < poblacion.size(); i++)
+        for(int i = 0; i < directores.size(); i++)
         {
             if(dirige.getIdTt() == poblacion.get(i).getGen2().getTt())
                 System.out.println("");

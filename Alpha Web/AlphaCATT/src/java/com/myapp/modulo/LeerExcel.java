@@ -31,14 +31,13 @@ import org.apache.poi.ss.usermodel.Row;
  *
  * @author hazzy76
  */
-public class LeerExcel {
+public class LeerExcel {    
     /**
      *
      * @param file
      * @return
      * @throws java.io.IOException
      */
-    
         public static List<Profesor> extraerExcelSamara(FileInputStream file)throws IOException
     {
         	HSSFWorkbook workbook = new HSSFWorkbook(file);
