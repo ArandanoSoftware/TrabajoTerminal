@@ -29,6 +29,20 @@ public class TTBs {
         return tt;
     }
     
+    public static List<Tt> findAllTT1()
+    {
+        TTDao ttDao = new TTDao();
+        List<Tt> tt = ttDao.findAllTT1();
+        return tt;
+    }
+    
+    public static List<Tt> findAllTT2()
+    {
+        TTDao ttDao = new TTDao();
+        List<Tt> tt = ttDao.findAllTT2();
+        return tt;
+    }
+    
     public static void save(Tt tt)
     {
         TTDao ttDao = new TTDao();

@@ -92,7 +92,7 @@ public class Genetico {
             fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
-            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(4)+1));
+            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
             cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
@@ -176,7 +176,7 @@ public class Genetico {
         return calendario;
     }
     
-    protected static Date getDateC(Cromosoma c)
+    public static Date getDateC(Cromosoma c)//Protected
     {
         Date fecha = new Date();
         fecha.setDate(binToInt(c.getGen1().getDia()));
@@ -321,7 +321,7 @@ public class Genetico {
         bin[9] = false;
         bin[10] = true;
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
-        List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
+        List<Horario> h = new ArrayList<>(p.getHorarios());
         for (int i = 0; i < h.size(); i++) {
             if (h.get(i).getVie().contains("7:00-")) {
                 bin[11] = true;

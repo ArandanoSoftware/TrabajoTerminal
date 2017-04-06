@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 4/02/2017 08:19:47 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="db_catt1" name="com.myapp.model.Horario" optimistic-lock="version" table="HORARIO">
+  <class catalog="db_catt1" name="com.myapp.model.Horario" optimistic-lock="version" table="horario">
     <id name="idHorario" type="java.lang.Integer">
       <column name="IdHorario"/>
       <generator class="identity"/>

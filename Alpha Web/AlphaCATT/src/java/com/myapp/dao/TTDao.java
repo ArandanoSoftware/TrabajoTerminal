@@ -5,11 +5,13 @@
  */
 package com.myapp.dao;
 
+import com.myapp.algoritmo.Restriccion;
 import com.myapp.hibernate.HibernateUtil;
 import com.myapp.model.Tt;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -61,6 +63,23 @@ public class TTDao {
         tx.commit();
         return tt;
     }
+    
+    public List<Tt> findAllTT1()
+    {   
+        Transaction tx = session.beginTransaction();
+        List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).createCriteria("nivel", "1").list();
+        tx.commit();
+        return tt;
+    }
+    
+    public List<Tt> findAllTT2()
+    {   
+        Transaction tx = session.beginTransaction();
+        List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).add(Restrictions.eq("nivel", 2)).list();
+        tx.commit();
+        return tt;
+    }
+    
     
     public void close()
     {

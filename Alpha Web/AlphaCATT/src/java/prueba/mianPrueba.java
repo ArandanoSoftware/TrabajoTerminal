@@ -5,6 +5,9 @@
  */
 package prueba;
 
+import com.myapp.algoritmo.Cromosoma;
+import com.myapp.algoritmo.FuncionAptitud;
+import com.myapp.algoritmo.Restriccion;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
@@ -16,8 +19,10 @@ import com.myapp.model.Profesor;
 import com.myapp.model.Sala;
 import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
+import static com.myapp.modulo.Genetico.crearPoblacionTT1;
 import java.util.List;
 import com.myapp.modulo.LeerExcel;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -157,13 +162,24 @@ public class mianPrueba {
 ////        {
 ////            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
 ////        }
-        Dirige dirige = DirigeBs.findById("2016-A088");
-        
-        //System.out.println(dirige.getIdTt() + dirige.getProfesorByD1().getNombre());
-        
-        System.out.println("direcotor 1: " + dirige.getProfesorByD1().getNombre() + " " + dirige.getProfesorByD1().getApaterno()+ " " + dirige.getProfesorByD1().getAmaterno()+ "\nDirector2: " + dirige.getProfesorByD2().getNombre() + " " + dirige.getProfesorByD2().getApaterno() + " " + dirige.getProfesorByD2().getAmaterno()+ " ");
-            
-        
+        Set<Tt> tt1s = new HashSet(TTBs.findAllTT2());
+        List<Cromosoma> poblacion;
+        Date inicio = new Date();
+        inicio.setDate(2);
+        inicio.setMonth(4);
+        Date fin = new Date();
+        fin.setDate(6);
+        fin.setMonth(5);
+        poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
+        List<Restriccion> restricciones = new ArrayList<>();
+        List<Cromosoma> poblacionNueva = new ArrayList<>();
+        for(int i = 0; i < poblacion.size(); i++)
+        {   
+            FuncionAptitud funcion = new FuncionAptitud(restricciones);
+            System.out.println("TT:" + poblacion.get(i).getGen2().getTt() + " Aptitud:" + funcion.evaluar(poblacion.get(i),poblacionNueva));
+            poblacionNueva.add(poblacion.get(i));
+        }
+
         System.out.println("Ya terminó !!!!!");
     }    
 }
