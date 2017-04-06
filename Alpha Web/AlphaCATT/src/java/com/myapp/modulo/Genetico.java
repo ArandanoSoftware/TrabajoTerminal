@@ -53,7 +53,7 @@ public class Genetico {
             fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
-            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(4)+1));
+            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
             cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
@@ -151,7 +151,7 @@ public class Genetico {
         if(h == 1)hora[2]=true;
         if(h == 2)hora[3]=true;
         if(h == 3)hora[5]=true;
-        if(h == 4)hora[6]=true;
+        //if(h == 4)hora[6]=true;
         return hora;
     }
     
