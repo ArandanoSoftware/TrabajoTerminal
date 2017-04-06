@@ -79,31 +79,43 @@ public class FuncionAptitud {
         if(diaSem == 4){director1 = Genetico.juebin(dirige.getProfesorByD1(), director1); director2 = Genetico.juebin(dirige.getProfesorByD2(), director2);}
         if(diaSem == 5){director1 = Genetico.viebin(dirige.getProfesorByD1(), director1); director2 = Genetico.viebin(dirige.getProfesorByD2(), director2);}
         boolean[] horario  = new boolean[9];
-        director1[11] = horario[0];
-        director1[12] = horario[1];
-        director1[13] = horario[2];
-        director1[14] = horario[3];
-        director1[15] = horario[4];
-        director1[16] = horario[5];
-        director1[17] = horario[6];
-        director1[18] = horario[7];
-        director1[19] = horario[8];
+        horario[0] = director1[11];
+        horario[1] = director1[12];
+        horario[2] = director1[13];
+        horario[3] = director1[14];
+        horario[4] = director1[15];
+        horario[5] = director1[16];
+        horario[6] = director1[17];
+        horario[7] = director1[18];
+        horario[8] = director1[19];
         if(disponible(horario, cc.getGen1().getHora()))hora1 += 30;
-        director2[11] = horario[0];
-        director2[12] = horario[1];
-        director2[13] = horario[2];
-        director2[14] = horario[3];
-        director2[15] = horario[4];
-        director2[16] = horario[5];
-        director2[17] = horario[6];
-        director2[18] = horario[7];
-        director2[19] = horario[8];
+        horario[0] = director2[11];
+        horario[1] = director2[12];
+        horario[2] = director2[13];
+        horario[3] = director2[14];
+        horario[4] = director2[15];
+        horario[5] = director2[16];
+        horario[6] = director2[17];
+        horario[7] = director2[18];
+        horario[8] = director2[19];
         if(disponible(horario, cc.getGen1().getHora()))hora2 += 30;
         
+        int dir1 = dirige.getProfesorByD1().getIdProfesor();
+        int dir2 = dirige.getProfesorByD1().getIdProfesor();
         for(int i = 0; i < directores.size(); i++)
         {
-            if(dirige.getIdTt() == poblacion.get(i).getGen2().getTt())
-                System.out.println("");
+            int d1 = directores.get(i).getProfesorByD1().getIdProfesor();
+            int d2 = directores.get(i).getProfesorByD2().getIdProfesor();
+            for(int j = 0; j < poblacion.size(); j++)
+            {
+                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()))
+                {
+                    if(dir1 == d1 || dir1 == d2)
+                        personal1 -= 70;
+                    if(dir2 == d1 || dir2 == d2)
+                        personal2 -= 70;
+                }
+            }
         }
         
         return (personal1 + personal2 + hora1 + hora2)/2;
@@ -141,37 +153,60 @@ public class FuncionAptitud {
         if(diaSem == 1){sinodal1 = Genetico.juebin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.juebin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.juebin(sinodalia.getProfesorByS3(), sinodal3);}
         if(diaSem == 1){sinodal1 = Genetico.viebin(sinodalia.getProfesorByS1(), sinodal1); sinodal2 = Genetico.viebin(sinodalia.getProfesorByS2(), sinodal2); sinodal3 = Genetico.viebin(sinodalia.getProfesorByS3(), sinodal3);}
         boolean[] horario  = new boolean[9];
-        sinodal1[11] = horario[0];
-        sinodal1[12] = horario[1];
-        sinodal1[13] = horario[2];
-        sinodal1[14] = horario[3];
-        sinodal1[15] = horario[4];
-        sinodal1[16] = horario[5];
-        sinodal1[17] = horario[6];
-        sinodal1[18] = horario[7];
-        sinodal1[19] = horario[8];
+        horario[0] = sinodal1[11];
+        horario[1] = sinodal1[12];
+        horario[2] = sinodal1[13];
+        horario[3] = sinodal1[14];
+        horario[4] = sinodal1[15];
+        horario[5] = sinodal1[16];
+        horario[6] = sinodal1[17];
+        horario[7] = sinodal1[18];
+        horario[8] = sinodal1[19];
         if(disponible(horario, cc.getGen1().getHora()))hora1 += 30;
-        sinodal2[11] = horario[0];
-        sinodal2[12] = horario[1];
-        sinodal2[13] = horario[2];
-        sinodal2[14] = horario[3];
-        sinodal2[15] = horario[4];
-        sinodal2[16] = horario[5];
-        sinodal2[17] = horario[6];
-        sinodal2[18] = horario[7];
-        sinodal2[19] = horario[8];
+        horario[0] = sinodal2[11];
+        horario[1] = sinodal2[12];
+        horario[2] = sinodal2[13];
+        horario[3] = sinodal2[14];
+        horario[4] = sinodal2[15];
+        horario[5] = sinodal2[16];
+        horario[6] = sinodal2[17];
+        horario[7] = sinodal2[18];
+        horario[8] = sinodal2[19];
         if(disponible(horario, cc.getGen1().getHora()))hora2 += 30;
-        sinodal3[11] = horario[0];
-        sinodal3[12] = horario[1];
-        sinodal3[13] = horario[2];
-        sinodal3[14] = horario[3];
-        sinodal3[15] = horario[4];
-        sinodal3[16] = horario[5];
-        sinodal3[17] = horario[6];
-        sinodal3[18] = horario[7];
-        sinodal3[19] = horario[8];
+        horario[0] = sinodal3[11];
+        horario[1] = sinodal3[12];
+        horario[2] = sinodal3[13];
+        horario[3] = sinodal3[14];
+        horario[4] = sinodal3[15];
+        horario[5] = sinodal3[16];
+        horario[6] = sinodal3[17];
+        horario[7] = sinodal3[18];
+        horario[8] = sinodal3[19];
         if(disponible(horario, cc.getGen1().getHora()))hora3 += 30;
-        return (personal1 + personal2 + hora1 + hora2)/2;
+        
+        int sin1 = dirige.getProfesorByD1().getIdProfesor();
+        int sin2 = dirige.getProfesorByD1().getIdProfesor();
+        int sin3 = dirige.getProfesorByD1().getIdProfesor();
+        for(int i = 0; i < directores.size(); i++)
+        {
+            int s1 = directores.get(i).getProfesorByD1().getIdProfesor();
+            int s2 = directores.get(i).getProfesorByD2().getIdProfesor();
+            int s3 = directores.get(i).getProfesorByD2().getIdProfesor();
+            for(int j = 0; j < poblacion.size(); j++)
+            {
+                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()))
+                {
+                    if(sin1 == s1 || sin1 == s2 || sin1 == s3)
+                        personal1 -= 70;
+                    if(sin2 == s1 || sin2 == s2 || sin2 == s3)
+                        personal2 -= 70;
+                    if(sin3 == s1 || sin3 == s2 || sin3 == s3)
+                        personal3 -= 70;
+                }
+            }
+        }
+        
+        return (personal1 + personal2 + personal3 + hora1 + hora2 + hora3)/3;
     }
     
     protected boolean igualBin(boolean[] bin1, boolean[] bin2)

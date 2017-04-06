@@ -162,6 +162,7 @@ public class mianPrueba {
         //System.out.println(dirige.getIdTt() + dirige.getProfesorByD1().getNombre());
         
         System.out.println("direcotor 1: " + dirige.getProfesorByD1().getNombre() + " " + dirige.getProfesorByD1().getApaterno()+ " " + dirige.getProfesorByD1().getAmaterno()+ "\nDirector2: " + dirige.getProfesorByD2().getNombre() + " " + dirige.getProfesorByD2().getApaterno() + " " + dirige.getProfesorByD2().getAmaterno()+ " ");
+            
         
         System.out.println("Ya terminó !!!!!");
     }    
