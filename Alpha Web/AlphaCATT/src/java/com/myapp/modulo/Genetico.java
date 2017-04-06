@@ -479,6 +479,55 @@ public class Genetico {
     protected static Cromosoma[] cruza(Cromosoma padre1, Cromosoma padre2)
     {
         Cromosoma[] hijos = new Cromosoma[2];
+        Random random = new Random();
+        boolean[] mascara = {random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean()};
+        
+        if(mascara[0])
+        {
+            hijos[0].getGen1().setDia(padre1.getGen1().getDia());
+            hijos[1].getGen1().setDia(padre2.getGen1().getDia());
+        }else
+        {
+            hijos[0].getGen1().setDia(padre2.getGen1().getDia());
+            hijos[1].getGen1().setDia(padre1.getGen1().getDia());
+        }
+        if(mascara[1])
+        {
+            hijos[0].getGen1().setHora(padre1.getGen1().getHora());
+            hijos[1].getGen1().setHora(padre2.getGen1().getHora());
+        }else
+        {
+            hijos[0].getGen1().setHora(padre2.getGen1().getHora());
+            hijos[1].getGen1().setHora(padre1.getGen1().getHora());
+        }
+        if(mascara[2])
+        {
+            hijos[0].getGen1().setMes(padre1.getGen1().getMes());
+            hijos[1].getGen1().setMes(padre2.getGen1().getMes());
+        }else
+        {
+            hijos[0].getGen1().setMes(padre2.getGen1().getMes());
+            hijos[1].getGen1().setMes(padre1.getGen1().getMes());
+        }
+        if(mascara[3])
+        {
+            hijos[0].getGen1().setSala(padre1.getGen1().getSala());
+            hijos[1].getGen1().setDia(padre2.getGen1().getSala());
+        }else
+        {
+            hijos[0].getGen1().setSala(padre2.getGen1().getSala());
+            hijos[1].getGen1().setSala(padre1.getGen1().getSala());
+        }
+        if(mascara[4])
+        {
+            hijos[0].getGen2().setTt(padre1.getGen2().getTt());
+            hijos[1].getGen2().setTt(padre2.getGen2().getTt());
+        }else
+        {
+            hijos[0].getGen2().setTt(padre2.getGen2().getTt());
+            hijos[1].getGen2().setTt(padre1.getGen2().getTt());
+        }
+        
         return hijos;
     }
 }
