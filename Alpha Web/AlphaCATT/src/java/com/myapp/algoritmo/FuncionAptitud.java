@@ -6,10 +6,8 @@
 package com.myapp.algoritmo;
 
 import com.myapp.bs.DirigeBs;
-import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;
-import com.myapp.model.Profesor;
 import com.myapp.model.Sinodalia;
 import com.myapp.modulo.Genetico;
 import java.util.Date;

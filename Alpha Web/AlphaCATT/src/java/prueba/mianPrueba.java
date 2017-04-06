@@ -173,11 +173,16 @@ public class mianPrueba {
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
         List<Restriccion> restricciones = new ArrayList<>();
         List<Cromosoma> poblacionNueva = new ArrayList<>();
+        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        List<Integer> aptitudes = new ArrayList<>();
         for(int i = 0; i < poblacion.size(); i++)
-        {   
-            FuncionAptitud funcion = new FuncionAptitud(restricciones);
-            System.out.println("TT:" + poblacion.get(i).getGen2().getTt() + " Aptitud:" + funcion.evaluar(poblacion.get(i),poblacionNueva));
+        {
+            aptitudes.add(funcion.evaluar(poblacion.get(i), poblacionNueva));
             poblacionNueva.add(poblacion.get(i));
+        }
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            System.out.println("TT:" + poblacion.get(i).getGen2().getTt() + " Aptitud:" + aptitudes.get(i) +" Fecha: " + Genetico.getDateC(poblacion.get(i)));
         }
 
         System.out.println("Ya terminó !!!!!");

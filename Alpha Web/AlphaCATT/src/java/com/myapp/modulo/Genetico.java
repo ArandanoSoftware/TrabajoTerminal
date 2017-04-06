@@ -150,8 +150,8 @@ public class Genetico {
         hora[0]=hora[1]=hora[2]=hora[3]=hora[4]=hora[5]=hora[6]=hora[7]=hora[8]=false;
         if(h == 1)hora[2]=true;
         if(h == 2)hora[3]=true;
-        if(h == 3)hora[5]=true;
-        //if(h == 4)hora[6]=true;
+        if(h == 3)hora[4]=true;
+        if(h == 4)hora[6]=true;
         return hora;
     }
     
@@ -182,10 +182,10 @@ public class Genetico {
         fecha.setDate(binToInt(c.getGen1().getDia()));
         fecha.setMonth(binToInt(c.getGen1().getMes())-1);
         int hora = binToInt(c.getGen1().getHora());
-        if(hora == 4)fecha.setHours(10);fecha.setMinutes(0);
-        if(hora == 8)fecha.setHours(12);fecha.setMinutes(0);
-        if(hora == 32)fecha.setHours(14);fecha.setMinutes(0);
-        if(hora == 64)fecha.setHours(16);fecha.setMinutes(0);
+        if(hora == 4)fecha.setHours(16);fecha.setMinutes(0);
+        if(hora == 16)fecha.setHours(14);fecha.setMinutes(0);
+        if(hora == 32)fecha.setHours(12);fecha.setMinutes(0);
+        if(hora == 64)fecha.setHours(10);fecha.setMinutes(0);
         return fecha;
     }
     
@@ -474,5 +474,11 @@ public class Genetico {
             c[i] = !(a[11 + i] || b[i + 11]);
         }
         return c;
+    }
+    
+    protected static Cromosoma[] cruza(Cromosoma padre1, Cromosoma padre2)
+    {
+        Cromosoma[] hijos = new Cromosoma[2];
+        return hijos;
     }
 }
