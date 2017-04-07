@@ -11,13 +11,13 @@ informar sobre la situación actual para la generación deñ calendario
     <head>
       <meta charset="utf-8">
       <%--DefaultCSS --%>
-      <link rel="stylesheet" href="css/normalize.css">
-      <link rel="stylesheet" href="css/breadstyle.css">
+      <link rel="stylesheet" href="../../css/normalize.css">
+      <link rel="stylesheet" href="../../css/breadstyle.css">
       <%--PersonalCSS--%>
-      <link rel="stylesheet" href="css/master.css">
-      <link rel="stylesheet" href="css/registroTT.css.css">
+      <link rel="stylesheet" href="../../css/master.css">
+      <link rel="stylesheet" href="../../css/registroTT.css.css">
       <%--Javascript--%>
-      <script type="text/javascript" src="js/master.js"></script>
+      <script type="text/javascript" src="../../js/master.js"></script>
 
       <title> Sistema CATT </title>
     </head>

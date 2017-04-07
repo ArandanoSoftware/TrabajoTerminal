@@ -16,20 +16,20 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
   <head>
     <meta charset="utf-8">
     <%--DefaultCSS --%>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/breadstyle.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/breadstyle.css">
     <%--PersonalCSS--%>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/registroTT.css.css">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="stylesheet" href="../../css/registroTT.css.css">
     <%--Javascript--%>
-    <script type="text/javascript" src="js/master.js"></script>
+    <script type="text/javascript" src="../../js/master.js"></script>
     <title>Registro de trabajos terminales</title>
   </head>
   <body>
     <div class="MainMenu">
         <div class="Title">
          <ul>
-           <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+           <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
            <li class="Title-item">
             <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
           </li>
@@ -87,11 +87,11 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
         <th><input type="checkbox" id="checkbox"
           onclick="enableDisable(this.checked, 'texBoxSinodal')">No Nulo</th>
       </tr>
-   </table>
    <h2>Restricciones de Trabajo terminal</h2>
    <table>
      <tr>
        <th><p>¿Este trabajo requiere una sala en especifico?:</p></th>
+     </table>
        <th> <input type="radio" name="" value=""></th>
      </tr>
 

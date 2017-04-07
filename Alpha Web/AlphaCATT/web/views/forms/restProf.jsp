@@ -15,13 +15,13 @@ Trabajo terminal - Restricciones de Profesores
   <head>
     <meta charset="utf-8">
       <%--DefaultCSS --%>
-      <link rel="stylesheet" href="css/normalize.css">
-      <link rel="stylesheet" href="css/breadstyle.css">
+      <link rel="stylesheet" href="../../css/normalize.css">
+      <link rel="stylesheet" href="../../css/breadstyle.css">
       <%--PersonalCSS--%>
-      <link rel="stylesheet" href="css/master.css">
-      <link rel="stylesheet" href="css/registroTT.css.css">
+      <link rel="stylesheet" href="../../css/master.css">
+      <link rel="stylesheet" href="../../css/registroTT.css.css">
       <%--Javascript--%>
-      <script type="text/javascript" src="js/restriccionesFechas.js"></script>
+      <script type="text/javascript" src="../../js/restriccionesFechas.js"></script>
       <%--Date picker--%>
 
     <title>Configuración de Fechas para profesores</title>
@@ -30,7 +30,7 @@ Trabajo terminal - Restricciones de Profesores
     <div class="MainMenu">
         <div class="Title">
          <ul>
-           <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+           <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
            <li class="Title-item">
             <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
           </li>
