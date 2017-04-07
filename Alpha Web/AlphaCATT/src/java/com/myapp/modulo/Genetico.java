@@ -6,6 +6,8 @@
 package com.myapp.modulo;
 
 import com.myapp.algoritmo.Cromosoma;
+import com.myapp.algoritmo.FuncionAptitud;
+import com.myapp.algoritmo.Restriccion;
 import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
@@ -24,6 +26,9 @@ import java.util.Random;
  * @author root
  */
 public class Genetico {
+    
+    public static int aptitudPoblacion;
+    
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
@@ -478,7 +483,7 @@ public class Genetico {
     
     protected static Cromosoma[] cruza(Cromosoma padre1, Cromosoma padre2)
     {
-        Cromosoma[] hijos = new Cromosoma[2];
+        Cromosoma[] hijos = {new Cromosoma(), new Cromosoma()};
         Random random = new Random();
         boolean[] mascara = {random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean()};
         
@@ -529,5 +534,33 @@ public class Genetico {
         }
         
         return hijos;
+    }
+    
+    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion)
+    {
+        List<Cromosoma> nuevaPoblacion = new ArrayList<>();
+        List<Restriccion> restricciones = new ArrayList<>();
+        List<Cromosoma> feos = new ArrayList<>();
+        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        for( int i = 0; i < poblacion.size(); i++)
+        {
+            int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
+            aptitudPoblacion += aptitud;
+            if(aptitud > 140)
+                nuevaPoblacion.add(poblacion.get(i));
+            else
+                feos.add(poblacion.get(i));
+        }
+        for(int i = 0; i < feos.size(); i++)
+        {
+            if(i < feos.size() - 1)
+            {
+                Cromosoma[] hijo = cruza(feos.get(i),feos.get(i+1));
+                nuevaPoblacion.add(hijo[0]);
+                nuevaPoblacion.add(hijo[1]);
+            }
+        }
+        
+        return nuevaPoblacion;
     }
 }

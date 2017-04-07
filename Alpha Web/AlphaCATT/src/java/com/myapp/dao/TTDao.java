@@ -67,7 +67,7 @@ public class TTDao {
     public List<Tt> findAllTT1()
     {   
         Transaction tx = session.beginTransaction();
-        List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).createCriteria("nivel", "1").list();
+        List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).add(Restrictions.eq("nivel", 1)).list();
         tx.commit();
         return tt;
     }

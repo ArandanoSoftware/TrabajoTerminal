@@ -162,7 +162,9 @@ public class mianPrueba {
 ////        {
 ////            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
 ////        }
-        Set<Tt> tt1s = new HashSet(TTBs.findAllTT2());
+        
+        
+        Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
         List<Cromosoma> poblacion;
         Date inicio = new Date();
         inicio.setDate(2);
@@ -172,18 +174,30 @@ public class mianPrueba {
         fin.setMonth(5);
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
         List<Restriccion> restricciones = new ArrayList<>();
-        List<Cromosoma> poblacionNueva = new ArrayList<>();
-        FuncionAptitud funcion = new FuncionAptitud(restricciones);
-        List<Integer> aptitudes = new ArrayList<>();
+        
         for(int i = 0; i < poblacion.size(); i++)
         {
-            aptitudes.add(funcion.evaluar(poblacion.get(i), poblacionNueva));
-            poblacionNueva.add(poblacion.get(i));
+            System.out.println("tt: " + poblacion.get(i).getGen2().getTt() + " fecha: " + Genetico.getDateC(poblacion.get(i)));
         }
+        
+        List<Cromosoma> poblacionNueva = Genetico.generaNuevaGen(poblacion);
         for(int i = 0; i < poblacion.size(); i++)
         {
-            System.out.println("TT:" + poblacion.get(i).getGen2().getTt() + " Aptitud:" + aptitudes.get(i) +" Fecha: " + Genetico.getDateC(poblacion.get(i)));
+            System.out.println("tt: " + poblacionNueva.get(i).getGen2().getTt() + " fecha: " + Genetico.getDateC(poblacionNueva.get(i)));
         }
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion);
+        Genetico.aptitudPoblacion = 0;
+        
+        
+        poblacionNueva = Genetico.generaNuevaGen(poblacionNueva);
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            System.out.println("tt: " + poblacionNueva.get(i).getGen2().getTt() + " fecha: " + Genetico.getDateC(poblacionNueva.get(i)));
+        }
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion);
+        Genetico.aptitudPoblacion = 0;
+        //FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        //List<Integer> aptitudes = new ArrayList<>();
 
         System.out.println("Ya terminó !!!!!");
     }    

@@ -370,4 +370,9 @@ public class FuncionAptitud {
         }
         return 0;
     }
+    
+    public static double aptitudPoblacional(int suma, int poblacion)
+    {
+        return suma/poblacion;
+    }
 }
