@@ -486,7 +486,7 @@ public class Genetico {
         Cromosoma[] hijos = {new Cromosoma(), new Cromosoma()};
         Random random = new Random();
         boolean[] mascara = {random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean()};
-        
+        System.out.print("\tse cruzaron con esta mascara xD " + mascara[0] + mascara[1] + mascara[2] + mascara[3] + mascara[4]);
         if(mascara[0])
         {
             hijos[0].getGen1().setDia(padre1.getGen1().getDia());
@@ -517,7 +517,7 @@ public class Genetico {
         if(mascara[3])
         {
             hijos[0].getGen1().setSala(padre1.getGen1().getSala());
-            hijos[1].getGen1().setDia(padre2.getGen1().getSala());
+            hijos[1].getGen1().setSala(padre2.getGen1().getSala());
         }else
         {
             hijos[0].getGen1().setSala(padre2.getGen1().getSala());
@@ -546,10 +546,18 @@ public class Genetico {
         {
             int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
             aptitudPoblacion += aptitud;
+                System.out.print("el tt " + poblacion.get(i).getGen2().getTt() + " con fecha: " + getDateC(poblacion.get(i)) + " y aptitud " + aptitud);
             if(aptitud > 140)
+            {
+                System.out.print("\tsi entro");
                 nuevaPoblacion.add(poblacion.get(i));
+            }
             else
+            {
+                System.out.print("\tse fue a feos");
                 feos.add(poblacion.get(i));
+            }
+            System.out.println("");
         }
         for(int i = 0; i < feos.size(); i++)
         {
@@ -558,7 +566,12 @@ public class Genetico {
                 Cromosoma[] hijo = cruza(feos.get(i),feos.get(i+1));
                 nuevaPoblacion.add(hijo[0]);
                 nuevaPoblacion.add(hijo[1]);
+            }else
+            {
+                nuevaPoblacion.add(feos.get(i));
             }
+            
+            i++;
         }
         
         return nuevaPoblacion;

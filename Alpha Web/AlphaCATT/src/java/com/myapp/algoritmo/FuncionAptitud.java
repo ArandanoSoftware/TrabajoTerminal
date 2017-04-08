@@ -35,7 +35,7 @@ public class FuncionAptitud {
         this.restricciones = restricciones;
     }
     
-    public int evaluar(Cromosoma cc, List<Cromosoma>poblacion)
+    public int evaluar(Cromosoma cc, List<Cromosoma> poblacion)
     {
         this.dirige = DirigeBs.findById(cc.getGen2().getTt());
         this.sinodalia = SinodaliaBs.findById(cc.getGen2().getTt());
@@ -364,7 +364,7 @@ public class FuncionAptitud {
         for(int i = 0; i < poblacion.size();i++)
         {
             if(igualBin(cc.getGen1().getSala(),poblacion.get(i).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(i).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(i).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(i).getGen1().getHora()))
-            {
+            {                
                 return -100;
             }
         }

@@ -173,31 +173,36 @@ public class mianPrueba {
         fin.setDate(6);
         fin.setMonth(5);
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
-        List<Restriccion> restricciones = new ArrayList<>();
+        //List<Restriccion> restricciones = new ArrayList<>();
         
-        for(int i = 0; i < poblacion.size(); i++)
-        {
-            System.out.println("tt: " + poblacion.get(i).getGen2().getTt() + " fecha: " + Genetico.getDateC(poblacion.get(i)));
-        }
+
+        System.out.println("fueron: " + poblacion.size());
         
-        List<Cromosoma> poblacionNueva = Genetico.generaNuevaGen(poblacion);
-        for(int i = 0; i < poblacion.size(); i++)
-        {
-            System.out.println("tt: " + poblacionNueva.get(i).getGen2().getTt() + " fecha: " + Genetico.getDateC(poblacionNueva.get(i)));
-        }
+        poblacion = Genetico.generaNuevaGen(poblacion);
+        
         System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion);
+
+        
+        System.out.println("fueron: " + poblacion.size());
         Genetico.aptitudPoblacion = 0;
         
         
-        poblacionNueva = Genetico.generaNuevaGen(poblacionNueva);
-        for(int i = 0; i < poblacion.size(); i++)
-        {
-            System.out.println("tt: " + poblacionNueva.get(i).getGen2().getTt() + " fecha: " + Genetico.getDateC(poblacionNueva.get(i)));
-        }
+        poblacion = Genetico.generaNuevaGen(poblacion);
+        
+        
         System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion);
+
+        System.out.println("fueron: " + poblacion.size());
         Genetico.aptitudPoblacion = 0;
         //FuncionAptitud funcion = new FuncionAptitud(restricciones);
         //List<Integer> aptitudes = new ArrayList<>();
+
+        for(int i = 0; i < 4444; i++)
+        {
+            poblacion = Genetico.generaNuevaGen(poblacion);
+            //System.out.println(Genetico.aptitudPoblacion + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            Genetico.aptitudPoblacion = 0;
+        }
 
         System.out.println("Ya terminó !!!!!");
     }    
