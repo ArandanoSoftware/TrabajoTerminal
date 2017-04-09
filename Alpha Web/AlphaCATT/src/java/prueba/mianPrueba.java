@@ -164,6 +164,19 @@ public class mianPrueba {
 ////        }
         
         
+        List<Integer> prueba = new ArrayList<>();
+        prueba.add(4);
+        prueba.add(7);
+        prueba.add(5);
+        prueba.add(3);
+        prueba.add(1);
+        prueba.add(8);
+        prueba.add(6);
+        prueba.add(9);
+        prueba.add(2);
+        
+        System.out.println("Este se quita xD " + prueba.remove(4) + " Ahora este es el de la pos uno" + prueba.get(1) + " y este donde esta la pos " + prueba.get(4));
+        
         Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
         List<Cromosoma> poblacion;
         Date inicio = new Date();
@@ -197,10 +210,10 @@ public class mianPrueba {
         //FuncionAptitud funcion = new FuncionAptitud(restricciones);
         //List<Integer> aptitudes = new ArrayList<>();
 
-        for(int i = 0; i < 4444; i++)
+        for(int i = 0; i < 100; i++)
         {
             poblacion = Genetico.generaNuevaGen(poblacion);
-            //System.out.println(Genetico.aptitudPoblacion + "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+            System.out.println(Genetico.aptitudPoblacion);
             Genetico.aptitudPoblacion = 0;
         }
 

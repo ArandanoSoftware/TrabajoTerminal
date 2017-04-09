@@ -237,9 +237,7 @@ public class Genetico {
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
         List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getMar().contains("7:00-")) {
-                bin[11] = true;
-            }
+            if (h.get(i).getMar().contains("7:00-")) bin[11] = true;
             if (h.get(i).getMar().contains("8:30-")) {
                 bin[12] = true;
             }
@@ -486,7 +484,6 @@ public class Genetico {
         Cromosoma[] hijos = {new Cromosoma(), new Cromosoma()};
         Random random = new Random();
         boolean[] mascara = {random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean()};
-        System.out.print("\tse cruzaron con esta mascara xD " + mascara[0] + mascara[1] + mascara[2] + mascara[3] + mascara[4]);
         if(mascara[0])
         {
             hijos[0].getGen1().setDia(padre1.getGen1().getDia());
@@ -542,23 +539,29 @@ public class Genetico {
         List<Restriccion> restricciones = new ArrayList<>();
         List<Cromosoma> feos = new ArrayList<>();
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        int tamaño = poblacion.size();
+        aptitudPoblacion = 0;
+        List<Integer> aptitudes = new ArrayList<>();
         for( int i = 0; i < poblacion.size(); i++)
         {
-            int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
-            aptitudPoblacion += aptitud;
-                System.out.print("el tt " + poblacion.get(i).getGen2().getTt() + " con fecha: " + getDateC(poblacion.get(i)) + " y aptitud " + aptitud);
-            if(aptitud > 140)
-            {
-                System.out.print("\tsi entro");
-                nuevaPoblacion.add(poblacion.get(i));
-            }
-            else
-            {
-                System.out.print("\tse fue a feos");
-                feos.add(poblacion.get(i));
-            }
-            System.out.println("");
+            aptitudes.add(funcion.evaluar(poblacion.get(i), nuevaPoblacion));
+            aptitudPoblacion += aptitudes.get(i);
         }
+        while(!poblacion.isEmpty())
+        {
+            Random random = new Random();
+            Double r = random.nextDouble() + random.nextInt(poblacion.size());
+            int v = -1, sum = 0;
+            while(sum < r)
+            {   
+                v++;
+                int valorEsperado = tamaño*aptitudPoblacion/aptitudes.get(v);
+                sum += valorEsperado;
+            }
+            aptitudes.remove(v);
+            feos.add(poblacion.remove(v));
+        }
+        
         for(int i = 0; i < feos.size(); i++)
         {
             if(i < feos.size() - 1)
