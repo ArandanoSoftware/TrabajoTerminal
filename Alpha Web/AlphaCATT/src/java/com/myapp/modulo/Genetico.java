@@ -575,7 +575,7 @@ public class Genetico {
             if(aptitudes.get(v) == 200)nuevaPoblacion.add(poblacion.remove(v));
             else feos.add(poblacion.remove(v));
 //            feos.add(poblacion.remove(v));
-            if(aptitudes.get(v) == 0){nel = true;ceros++;}
+            if(aptitudes.get(v) == 0){ceros++;}
             aptitudes.remove(v);
         }
         for(int i = 0; i < feos.size(); i++)
@@ -592,22 +592,25 @@ public class Genetico {
             
             i++;
         }
-        
+        nel = aptitudGneral(nuevaPoblacion, restricciones);
         return nuevaPoblacion;
     }
     
-    public static int aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
+    public static boolean aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
     {
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
         int sum = 0;
+        boolean cero = false;
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         for(int i = 0; i < poblacion.size(); i++)
         {
             int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
+            if(aptitud == 0) cero = true;
             sum += aptitud;
-            System.out.println(aptitud);
+            //System.out.println(aptitud);
             nuevaPoblacion.add(poblacion.get(i));
         }
-        return sum;
+        aptitudPoblacion = sum;
+        return cero;
     }
 }

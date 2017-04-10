@@ -218,14 +218,13 @@ public class mianPrueba {
             System.out.println("iteracion " + i);
             poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
-            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
-            Genetico.aptitudPoblacion = 0;
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
             i++;
         }
-        System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudGneral(poblacion, restricciones));
+        System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
         
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
-        System.out.println("Ya terminó !!!!! en " + tiempo);
+        System.out.println("Ya terminó !!!!! en " + tiempo/1000);
     }    
 }
