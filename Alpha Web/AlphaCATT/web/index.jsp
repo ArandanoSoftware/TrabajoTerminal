@@ -30,12 +30,14 @@
 
     <div class="LoginForm, General" align="center" >
       <h1> CATT Login : </h1>
+
       <s:actionerror/>
-      <s:form action="Login">
+      <s:form action="home" method="post">
           <s:textfield  name="userName" label="Username" size="20"/>
           <s:password   name="passWord" label="Password" size="20"/>
           <s:submit align="center" value="Login"/>
       </s:form>
+
     </div>
   </body>
 </html>

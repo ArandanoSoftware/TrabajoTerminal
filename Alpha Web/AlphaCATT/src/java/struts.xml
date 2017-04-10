@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="default" extends="struts-default">
+  </package>
+  <!--Requiere de 3 paramentros el paquere
+      name, namespace, extends
+      name: Nombre del paquete que representa
+      namespace: Define el espacio en el que es valida la acción-->
+  <package name="StrutsControllers" namespace="/" extends="struts-default">
+      <!--Parametros:
+          Name: La forma en que es invocada desde la url
+          Class: La clase a la que pertenece-->
+      <action name="home" class="StrutsControllers.HomeController" method="execute">
+        <result name="success">/views/general/home.jsp</result>
+      </action>
+  </package>
+</struts>
