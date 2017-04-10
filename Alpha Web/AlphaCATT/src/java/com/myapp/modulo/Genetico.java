@@ -29,6 +29,7 @@ public class Genetico {
     
     public static int aptitudPoblacion;
     public static boolean nel;
+    public static int ceros;
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
@@ -552,6 +553,7 @@ public class Genetico {
         
         nuevaPoblacion.clear();
         double aptitudSum = aptitudPoblacion;
+        ceros = 0;
         nel = false;
         while(!poblacion.isEmpty())
         {
@@ -570,10 +572,10 @@ public class Genetico {
             }
             //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
             aptitudSum -= aptitudes.get(v);
-//            if(aptitudes.get(v) > 180)nuevaPoblacion.add(poblacion.remove(v));
-//            else feos.add(poblacion.remove(v));
-            feos.add(poblacion.remove(v));
-            if(aptitudes.get(v) == 0)nel = true;
+            if(aptitudes.get(v) == 200)nuevaPoblacion.add(poblacion.remove(v));
+            else feos.add(poblacion.remove(v));
+//            feos.add(poblacion.remove(v));
+            if(aptitudes.get(v) == 0){nel = true;ceros++;}
             aptitudes.remove(v);
         }
         for(int i = 0; i < feos.size(); i++)

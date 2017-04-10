@@ -187,7 +187,7 @@ public class mianPrueba {
         
         mayor = Genetico.aptitudPoblacion;
         
-        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
 
         
         System.out.println("fueron: " + poblacion.size());
@@ -198,7 +198,7 @@ public class mianPrueba {
         
         
         if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
-        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
 
         System.out.println("fueron: " + poblacion.size());
         Genetico.aptitudPoblacion = 0;
@@ -218,7 +218,7 @@ public class mianPrueba {
             System.out.println("iteracion " + i);
             poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
-            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
             Genetico.aptitudPoblacion = 0;
             i++;
         }
