@@ -28,6 +28,7 @@ import java.util.Random;
 public class Genetico {
     
     public static int aptitudPoblacion;
+    public static boolean nel;
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
@@ -533,10 +534,9 @@ public class Genetico {
         return hijos;
     }
     
-    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion)
+    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion, List<Restriccion> restricciones)
     {
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
-        List<Restriccion> restricciones = new ArrayList<>();
         List<Cromosoma> feos = new ArrayList<>();
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
         int tamaño = poblacion.size();
@@ -545,23 +545,37 @@ public class Genetico {
         for( int i = 0; i < poblacion.size(); i++)
         {
             aptitudes.add(funcion.evaluar(poblacion.get(i), nuevaPoblacion));
+            nuevaPoblacion.add(poblacion.get(i));
+            //System.out.println(aptitudes.get(i));
             aptitudPoblacion += aptitudes.get(i);
         }
+        
+        nuevaPoblacion.clear();
+        double aptitudSum = aptitudPoblacion;
+        nel = false;
         while(!poblacion.isEmpty())
         {
             Random random = new Random();
-            Double r = random.nextDouble() + random.nextInt(poblacion.size());
-            int v = -1, sum = 0;
-            while(sum < r)
+            double r = random.nextDouble() + random.nextInt(poblacion.size());
+            int v = -1;
+            double sum = 0;
+            //System.out.println("\n\naqui empezamos: \tPoblacion:" + poblacion.size() +"\taptitud general: " + aptitudPoblacion);
+            while(sum <= r)
             {   
                 v++;
-                int valorEsperado = tamaño*aptitudPoblacion/aptitudes.get(v);
+                if(aptitudSum == 0)break;
+                double valorEsperado = aptitudes.get(v)*poblacion.size()/aptitudSum;
                 sum += valorEsperado;
+                //System.out.println("ve = " + aptitudes.get(v) + " * " + poblacion.size() + " / " + aptitudPoblacion + " = " + valorEsperado + "\tr = " + r + "\tsum = " + sum);
             }
-            aptitudes.remove(v);
+            //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
+            aptitudSum -= aptitudes.get(v);
+//            if(aptitudes.get(v) > 180)nuevaPoblacion.add(poblacion.remove(v));
+//            else feos.add(poblacion.remove(v));
             feos.add(poblacion.remove(v));
+            if(aptitudes.get(v) == 0)nel = true;
+            aptitudes.remove(v);
         }
-        
         for(int i = 0; i < feos.size(); i++)
         {
             if(i < feos.size() - 1)
@@ -578,5 +592,20 @@ public class Genetico {
         }
         
         return nuevaPoblacion;
+    }
+    
+    public static int aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
+    {
+        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        int sum = 0;
+        List<Cromosoma> nuevaPoblacion = new ArrayList<>();
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
+            sum += aptitud;
+            System.out.println(aptitud);
+            nuevaPoblacion.add(poblacion.get(i));
+        }
+        return sum;
     }
 }

@@ -41,13 +41,13 @@ public class FuncionAptitud {
         this.sinodalia = SinodaliaBs.findById(cc.getGen2().getTt());
         this.cc = cc;
         this.poblacion = poblacion;
-        int aptitud = 0, directors = 0, sinodals = 0, saladisp;
+        if(!salaLibre())return 0;
+        int aptitud = 0, directors = 0, sinodals = 0;
         directors += funcionDirector();
-        if(directors == 0) return 0;
+        if(directors < 35) return 0;
         sinodals += funcionSinodal();
-        if(sinodals == 0) return 0;
-        saladisp = salaLibre();
-        aptitud += directors + sinodals + saladisp;
+        if(sinodals < 46) return 0;
+        aptitud += directors + sinodals;
         return aptitud;
     }
     
@@ -112,12 +112,12 @@ public class FuncionAptitud {
             try{d2= directores.get(i).getProfesorByD2().getIdProfesor();}catch(Exception e){d2 = d1;}
             for(int j = 0; j < poblacion.size(); j++)
             {
-                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()))
+                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
                     if(dir1 == d1 || dir1 == d2)
-                        personal1 -= 70;
+                        personal1 = 0;
                     if(dir2 == d1 || dir2 == d2)
-                        personal2 -= 70;
+                        personal2 = 0;
                 }
             }
         }
@@ -169,10 +169,10 @@ public class FuncionAptitud {
             try{d2= directores.get(i).getProfesorByD2().getIdProfesor();}catch(Exception e){d2 = d1;}
             for(int j = 0; j < poblacion.size(); j++)
             {
-                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()))
+                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
                     if(dir1 == d1 || dir1 == d2)
-                        personal1 -= 70;
+                        personal1 = 0;
                 }
             }
         }
@@ -256,17 +256,18 @@ public class FuncionAptitud {
             try{s3 = sinodales.get(i).getProfesorByS3().getIdProfesor();}catch(Exception e){s3 = s1;}
             for(int j = 0; j < poblacion.size(); j++)
             {
-                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()))
+                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
                     if(sin1 == s1 || sin1 == s2 || sin1 == s3)
-                        personal1 -= 70;
+                        personal1 = 0;
                     if(sin2 == s1 || sin2 == s2 || sin2 == s3)
-                        personal2 -= 70;
+                        personal2 = 0;
                     if(sin3 == s1 || sin3 == s2 || sin3 == s3)
-                        personal3 -= 70;
+                        personal3 = 0;
                 }
             }
         }
+        if(personal1 == 0 || personal2 == 0)return 0;
         return (personal1 + personal2 + personal3 + hora1 + hora2 + hora3)/3;
     }
     
@@ -330,12 +331,12 @@ public class FuncionAptitud {
             try{s3 = sinodales.get(i).getProfesorByS3().getIdProfesor();}catch(Exception e){if(sinodales.get(i).getProfesorByS3() == null)s3 = s1;}
            for(int j = 0; j < poblacion.size(); j++)
             {
-                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()))
+                if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
                     if(sin1 == s1 || sin1 == s2 || sin1 == s3)
-                        personal1 -= 70;
+                        personal1 = 0;
                     if(sin2 == s1 || sin2 == s2 || sin2 == s3)
-                        personal2 -= 70;
+                        personal2 = 0;
                 }
             }
         }
@@ -359,16 +360,16 @@ public class FuncionAptitud {
         return false;
     }
     
-    protected int salaLibre()
+    protected boolean salaLibre()
     {
         for(int i = 0; i < poblacion.size();i++)
         {
             if(igualBin(cc.getGen1().getSala(),poblacion.get(i).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(i).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(i).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(i).getGen1().getHora()))
             {                
-                return -100;
+                return false;
             }
         }
-        return 0;
+        return true;
     }
     
     public static double aptitudPoblacional(int suma, int poblacion)

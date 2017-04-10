@@ -40,6 +40,8 @@ public class mianPrueba {
     
     public static void main(String[] args) throws Exception 
     {
+        long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
+        tinicio = System.currentTimeMillis(); 
 //        List<Sala> salas;
 //        salas = SalaBs.findAll();
 //        System.out.println(salas.get(0).getNombre());
@@ -164,21 +166,11 @@ public class mianPrueba {
 ////        }
         
         
-        List<Integer> prueba = new ArrayList<>();
-        prueba.add(4);
-        prueba.add(7);
-        prueba.add(5);
-        prueba.add(3);
-        prueba.add(1);
-        prueba.add(8);
-        prueba.add(6);
-        prueba.add(9);
-        prueba.add(2);
-        
-        System.out.println("Este se quita xD " + prueba.remove(4) + " Ahora este es el de la pos uno" + prueba.get(1) + " y este donde esta la pos " + prueba.get(4));
+        int mayor;
         
         Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
         List<Cromosoma> poblacion;
+        List<Restriccion> restricciones = new ArrayList<>();
         Date inicio = new Date();
         inicio.setDate(2);
         inicio.setMonth(4);
@@ -191,32 +183,49 @@ public class mianPrueba {
 
         System.out.println("fueron: " + poblacion.size());
         
-        poblacion = Genetico.generaNuevaGen(poblacion);
+        poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
         
-        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion);
+        mayor = Genetico.aptitudPoblacion;
+        
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
 
         
         System.out.println("fueron: " + poblacion.size());
         Genetico.aptitudPoblacion = 0;
         
         
-        poblacion = Genetico.generaNuevaGen(poblacion);
+        poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
         
         
-        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion);
+        if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
 
         System.out.println("fueron: " + poblacion.size());
         Genetico.aptitudPoblacion = 0;
         //FuncionAptitud funcion = new FuncionAptitud(restricciones);
         //List<Integer> aptitudes = new ArrayList<>();
 
-        for(int i = 0; i < 100; i++)
+//        for(int i = 0; i < 100; i++)
+//        {
+//            poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+//            if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+//            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
+//            Genetico.aptitudPoblacion = 0;
+//        }
+        int i = 0;
+        while(Genetico.nel)
         {
-            poblacion = Genetico.generaNuevaGen(poblacion);
-            System.out.println(Genetico.aptitudPoblacion);
+            System.out.println("iteracion " + i);
+            poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+            if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
             Genetico.aptitudPoblacion = 0;
+            i++;
         }
-
-        System.out.println("Ya terminó !!!!!");
+        System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudGneral(poblacion, restricciones));
+        
+        tfin = System.currentTimeMillis();
+        tiempo = tfin - tinicio;
+        System.out.println("Ya terminó !!!!! en " + tiempo);
     }    
 }
