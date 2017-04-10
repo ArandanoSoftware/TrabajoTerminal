@@ -30,14 +30,48 @@ informar sobre la situación actual para la generación deñ calendario
               <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
             </li>
             <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
+            <li class="Title-item-name">
+                <div class="dropdown">
+                  <button class="dropbtn">Profesores</button>
+                    <div class="dropdown-content">
+                          <a href="#">Registro de Profesores</a>
+                          <a href="#">Restricciones de Profesores</a>
+                          <a href="#">Consulta de profesores</a>
+                    </div>
+               </div>
+            </li>
+            <li class="Title-item">
+                <div class="dropdown">
+                  <button class="dropbtn">Alumnos</button>
+                    <div class="dropdown-content">
+                          <a href="#">Link 1</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                    </div>
+               </div>
+            </li>
+            <li class="Title-item">
+                <div class="dropdown">
+                  <button class="dropbtn">Trabajos Terminales</button>
+                    <div class="dropdown-content">
+                          <a href="#">Link 1</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                    </div>
+               </div>
+            </li>
+
            </ul>
           </div>
       </div>
 
+
+
+
    <div class="General">
      <p><script type="text/javascript">
      </script></p>
-   </div>
+
    <div class="PanelGeneral PanelHome">
      <div class="Panel-Title">
        <b>Estado de la Calendarización:</b>
@@ -54,6 +88,7 @@ informar sobre la situación actual para la generación deñ calendario
          </tr>
        </table>
      </div>
+   </div>
    </div>
    </body>
 </html>
