@@ -6,6 +6,8 @@
 package com.myapp.modulo;
 
 import com.myapp.algoritmo.Cromosoma;
+import com.myapp.algoritmo.FuncionAptitud;
+import com.myapp.algoritmo.Restriccion;
 import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
@@ -24,6 +26,11 @@ import java.util.Random;
  * @author root
  */
 public class Genetico {
+    
+    public static int aptitudPoblacion;
+    public static boolean nel;
+    public static int ceros;
+    
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
@@ -92,7 +99,7 @@ public class Genetico {
             fecha.setDate(diaR.get(i%diaR.size()));
             cromosoma.getGen1().setDia(getBinDay(fecha));
             cromosoma.getGen1().setMes(getBinMonth(fecha));
-            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(4)+1));
+            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
             cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
@@ -150,8 +157,8 @@ public class Genetico {
         hora[0]=hora[1]=hora[2]=hora[3]=hora[4]=hora[5]=hora[6]=hora[7]=hora[8]=false;
         if(h == 1)hora[2]=true;
         if(h == 2)hora[3]=true;
-        if(h == 3)hora[5]=true;
-        //if(h == 4)hora[6]=true;
+        if(h == 3)hora[4]=true;
+        if(h == 4)hora[6]=true;
         return hora;
     }
     
@@ -176,16 +183,16 @@ public class Genetico {
         return calendario;
     }
     
-    protected static Date getDateC(Cromosoma c)
+    public static Date getDateC(Cromosoma c)//Protected
     {
         Date fecha = new Date();
         fecha.setDate(binToInt(c.getGen1().getDia()));
         fecha.setMonth(binToInt(c.getGen1().getMes())-1);
         int hora = binToInt(c.getGen1().getHora());
-        if(hora == 4)fecha.setHours(10);fecha.setMinutes(0);
-        if(hora == 8)fecha.setHours(12);fecha.setMinutes(0);
-        if(hora == 32)fecha.setHours(14);fecha.setMinutes(0);
-        if(hora == 64)fecha.setHours(16);fecha.setMinutes(0);
+        if(hora == 4)fecha.setHours(16);fecha.setMinutes(0);
+        if(hora == 16)fecha.setHours(14);fecha.setMinutes(0);
+        if(hora == 32)fecha.setHours(12);fecha.setMinutes(0);
+        if(hora == 64)fecha.setHours(10);fecha.setMinutes(0);
         return fecha;
     }
     
@@ -232,9 +239,7 @@ public class Genetico {
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
         List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getMar().contains("7:00-")) {
-                bin[11] = true;
-            }
+            if (h.get(i).getMar().contains("7:00-")) bin[11] = true;
             if (h.get(i).getMar().contains("8:30-")) {
                 bin[12] = true;
             }
@@ -321,7 +326,7 @@ public class Genetico {
         bin[9] = false;
         bin[10] = true;
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
-        List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
+        List<Horario> h = new ArrayList<>(p.getHorarios());
         for (int i = 0; i < h.size(); i++) {
             if (h.get(i).getVie().contains("7:00-")) {
                 bin[11] = true;
@@ -474,5 +479,135 @@ public class Genetico {
             c[i] = !(a[11 + i] || b[i + 11]);
         }
         return c;
+    }
+    
+    protected static Cromosoma[] cruza(Cromosoma padre1, Cromosoma padre2)
+    {
+        Cromosoma[] hijos = {new Cromosoma(), new Cromosoma()};
+        Random random = new Random();
+        boolean[] mascara = {random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean(),random.nextBoolean()};
+        if(mascara[0])
+        {
+            hijos[0].getGen1().setDia(padre1.getGen1().getDia());
+            hijos[1].getGen1().setDia(padre2.getGen1().getDia());
+        }else
+        {
+            hijos[0].getGen1().setDia(padre2.getGen1().getDia());
+            hijos[1].getGen1().setDia(padre1.getGen1().getDia());
+        }
+        if(mascara[1])
+        {
+            hijos[0].getGen1().setHora(padre1.getGen1().getHora());
+            hijos[1].getGen1().setHora(padre2.getGen1().getHora());
+        }else
+        {
+            hijos[0].getGen1().setHora(padre2.getGen1().getHora());
+            hijos[1].getGen1().setHora(padre1.getGen1().getHora());
+        }
+        if(mascara[2])
+        {
+            hijos[0].getGen1().setMes(padre1.getGen1().getMes());
+            hijos[1].getGen1().setMes(padre2.getGen1().getMes());
+        }else
+        {
+            hijos[0].getGen1().setMes(padre2.getGen1().getMes());
+            hijos[1].getGen1().setMes(padre1.getGen1().getMes());
+        }
+        if(mascara[3])
+        {
+            hijos[0].getGen1().setSala(padre1.getGen1().getSala());
+            hijos[1].getGen1().setSala(padre2.getGen1().getSala());
+        }else
+        {
+            hijos[0].getGen1().setSala(padre2.getGen1().getSala());
+            hijos[1].getGen1().setSala(padre1.getGen1().getSala());
+        }
+        if(mascara[4])
+        {
+            hijos[0].getGen2().setTt(padre1.getGen2().getTt());
+            hijos[1].getGen2().setTt(padre2.getGen2().getTt());
+        }else
+        {
+            hijos[0].getGen2().setTt(padre2.getGen2().getTt());
+            hijos[1].getGen2().setTt(padre1.getGen2().getTt());
+        }
+        
+        return hijos;
+    }
+    
+    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion, List<Restriccion> restricciones)
+    {
+        List<Cromosoma> nuevaPoblacion = new ArrayList<>();
+        List<Cromosoma> feos = new ArrayList<>();
+        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        int tamaño = poblacion.size();
+        aptitudPoblacion = 0;
+        List<Integer> aptitudes = new ArrayList<>();
+        for( int i = 0; i < poblacion.size(); i++)
+        {
+            aptitudes.add(funcion.evaluar(poblacion.get(i), nuevaPoblacion));
+            nuevaPoblacion.add(poblacion.get(i));
+            //System.out.println(aptitudes.get(i));
+            aptitudPoblacion += aptitudes.get(i);
+        }
+        
+        nuevaPoblacion.clear();
+        double aptitudSum = aptitudPoblacion;
+        ceros = 0;
+        nel = false;
+        while(!poblacion.isEmpty())
+        {
+            Random random = new Random();
+            double r = random.nextDouble() + random.nextInt(poblacion.size());
+            int v = -1;
+            double sum = 0;
+            //System.out.println("\n\naqui empezamos: \tPoblacion:" + poblacion.size() +"\taptitud general: " + aptitudPoblacion);
+            while(sum <= r)
+            {   
+                v++;
+                if(aptitudSum == 0)break;
+                double valorEsperado = aptitudes.get(v)*poblacion.size()/aptitudSum;
+                sum += valorEsperado;
+                //System.out.println("ve = " + aptitudes.get(v) + " * " + poblacion.size() + " / " + aptitudPoblacion + " = " + valorEsperado + "\tr = " + r + "\tsum = " + sum);
+            }
+            //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
+            aptitudSum -= aptitudes.get(v);
+            if(aptitudes.get(v) == 200)nuevaPoblacion.add(poblacion.remove(v));
+            else feos.add(poblacion.remove(v));
+//            feos.add(poblacion.remove(v));
+            if(aptitudes.get(v) == 0){nel = true;ceros++;}
+            aptitudes.remove(v);
+        }
+        for(int i = 0; i < feos.size(); i++)
+        {
+            if(i < feos.size() - 1)
+            {
+                Cromosoma[] hijo = cruza(feos.get(i),feos.get(i+1));
+                nuevaPoblacion.add(hijo[0]);
+                nuevaPoblacion.add(hijo[1]);
+            }else
+            {
+                nuevaPoblacion.add(feos.get(i));
+            }
+            
+            i++;
+        }
+        
+        return nuevaPoblacion;
+    }
+    
+    public static int aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
+    {
+        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        int sum = 0;
+        List<Cromosoma> nuevaPoblacion = new ArrayList<>();
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
+            sum += aptitud;
+            System.out.println(aptitud);
+            nuevaPoblacion.add(poblacion.get(i));
+        }
+        return sum;
     }
 }

@@ -23,6 +23,7 @@ public class ProfesorBs {
         ProfesorDao profesorDao = new ProfesorDao();
         Profesor p;
         p = profesorDao.finfById(id);
+        p.setHorarios(new HashSet<>(HorarioBs.findByProf(p)));
         return p;
     }
     

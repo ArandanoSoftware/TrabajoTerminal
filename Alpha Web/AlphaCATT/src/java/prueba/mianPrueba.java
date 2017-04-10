@@ -5,6 +5,9 @@
  */
 package prueba;
 
+import com.myapp.algoritmo.Cromosoma;
+import com.myapp.algoritmo.FuncionAptitud;
+import com.myapp.algoritmo.Restriccion;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
@@ -16,8 +19,10 @@ import com.myapp.model.Profesor;
 import com.myapp.model.Sala;
 import com.myapp.model.Tt;
 import com.myapp.modulo.Genetico;
+import static com.myapp.modulo.Genetico.crearPoblacionTT1;
 import java.util.List;
 import com.myapp.modulo.LeerExcel;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -35,6 +40,8 @@ public class mianPrueba {
     
     public static void main(String[] args) throws Exception 
     {
+        long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
+        tinicio = System.currentTimeMillis(); 
 //        List<Sala> salas;
 //        salas = SalaBs.findAll();
 //        System.out.println(salas.get(0).getNombre());
@@ -157,12 +164,68 @@ public class mianPrueba {
 ////        {
 ////            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
 ////        }
-        Dirige dirige = DirigeBs.findById("2016-A088");
         
-        //System.out.println(dirige.getIdTt() + dirige.getProfesorByD1().getNombre());
         
-        System.out.println("direcotor 1: " + dirige.getProfesorByD1().getNombre() + " " + dirige.getProfesorByD1().getApaterno()+ " " + dirige.getProfesorByD1().getAmaterno()+ "\nDirector2: " + dirige.getProfesorByD2().getNombre() + " " + dirige.getProfesorByD2().getApaterno() + " " + dirige.getProfesorByD2().getAmaterno()+ " ");
+        int mayor;
         
-        System.out.println("Ya terminó !!!!!");
+        Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
+        List<Cromosoma> poblacion;
+        List<Restriccion> restricciones = new ArrayList<>();
+        Date inicio = new Date();
+        inicio.setDate(2);
+        inicio.setMonth(4);
+        Date fin = new Date();
+        fin.setDate(6);
+        fin.setMonth(5);
+        poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
+        //List<Restriccion> restricciones = new ArrayList<>();
+        
+
+        System.out.println("fueron: " + poblacion.size());
+        
+        poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+        
+        mayor = Genetico.aptitudPoblacion;
+        
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
+
+        
+        System.out.println("fueron: " + poblacion.size());
+        Genetico.aptitudPoblacion = 0;
+        
+        
+        poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+        
+        
+        if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
+
+        System.out.println("fueron: " + poblacion.size());
+        Genetico.aptitudPoblacion = 0;
+        //FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        //List<Integer> aptitudes = new ArrayList<>();
+
+//        for(int i = 0; i < 100; i++)
+//        {
+//            poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+//            if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+//            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
+//            Genetico.aptitudPoblacion = 0;
+//        }
+        int i = 0;
+        while(Genetico.nel)
+        {
+            System.out.println("iteracion " + i);
+            poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+            if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
+            Genetico.aptitudPoblacion = 0;
+            i++;
+        }
+        System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudGneral(poblacion, restricciones));
+        
+        tfin = System.currentTimeMillis();
+        tiempo = tfin - tinicio;
+        System.out.println("Ya terminó !!!!! en " + tiempo);
     }    
 }
