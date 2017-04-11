@@ -34,7 +34,8 @@ informar sobre la situación actual para la generación deñ calendario
                 <div class="dropdown">
                   <button class="dropbtn">Profesores</button>
                     <div class="dropdown-content">
-                          <a href="#">Registro de Profesores</a>
+                        <s:a action="home" forceAddSchemeHostAndPort="true">Registro Prfesores</s:a>   
+                       
                           <a href="#">Restricciones de Profesores</a>
                           <a href="#">Consulta de profesores</a>
                     </div>

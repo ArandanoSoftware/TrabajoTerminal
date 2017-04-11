@@ -12,14 +12,14 @@ de trabajo terminal
   <head>
     <meta charset="utf-8">
     <%--DefaultCSS --%>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/breadstyle.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/breadstyle.css">
     <%--PersonalCSS--%>
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/calendarioGeneral.css">
+    <link rel="stylesheet" href="../../css/master.css">
+    <link rel="stylesheet" href="../../css/calendarioGeneral.css">
     <%--Javascript--%>
-    <script type="text/javascript" src="js/master.js"></script>
-    <script type="text/javascript" src="js/calendarioGeneral.js"></script>
+    <script type="text/javascript" src="../../js/master.js"></script>
+    <script type="text/javascript" src="../../js/calendarioGeneral.js"></script>
     <title>Calendario general de Trabajos Terminales</title>
   </head>
   <body>
@@ -27,7 +27,7 @@ de trabajo terminal
   <div class="MainMenu">
     <div class="Title">
      <ul>
-       <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+       <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
        <li class="Title-item">
         <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
       </li>

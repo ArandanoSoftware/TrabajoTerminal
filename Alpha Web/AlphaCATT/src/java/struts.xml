@@ -14,8 +14,33 @@
       <!--Parametros:
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
-      <action name="home" class="StrutsControllers.HomeController" method="execute">
+      <!-- <action name="home" class="StrutsControllers.HomeController">
         <result name="success" type="redirect">/views/general/home.jsp</result>
+      </action> -->
+
+      <!-- Redirect Actions -->
+      <!-- Generales-->
+      <action name="home">
+        <result type="redirect">
+        <param name="location">/views/general/home.jsp</param>
+        <param name="parse">false</param>
+      </result>
+      </action>
+      <action name="calendar">
+        <result type="redirect">/views/general/calendar.jsp</result>
+      </action>
+      <!-- Forms-  Registros -->
+      <action name="regProf">
+        <result type="redirect">/views/forms/regProf.jsp</result>
+      </action>
+      <action name="regTT">
+        <result type="redirect">/views/forms/regTT.jsp</result>
+      </action>
+      <action name="regSalas">
+        <result type="redirect">/views/forms/regSalas.jsp</result>
       </action>
   </package>
+
+
+
 </struts>
