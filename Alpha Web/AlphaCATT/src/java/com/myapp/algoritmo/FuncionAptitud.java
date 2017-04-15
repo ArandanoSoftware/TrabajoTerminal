@@ -58,7 +58,7 @@ public class FuncionAptitud {
         int personal1 = 70, personal2 = 70, hora1 = 0, hora2 = 0;
         for(int i = 0; i < restricciones.size(); i++)
         {
-            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
+            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && disponible(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
                 System.out.println("entras?");
                 if(restricciones.get(i).getProfesor() == dirige.getProfesorByD1().getIdProfesor())personal1 = 0;
@@ -130,7 +130,7 @@ public class FuncionAptitud {
         int personal1 = 70, hora1 = 0;
         for(int i = 0; i < restricciones.size(); i++)
         {
-            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
+            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && disponible(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
                 if(restricciones.get(i).getProfesor() == dirige.getProfesorByD1().getIdProfesor())personal1 = 0;
             }
@@ -187,7 +187,7 @@ public class FuncionAptitud {
         int personal1 = 70, personal2 = 70, personal3 = 70, hora1 = 0, hora2 = 0, hora3 = 0;
         for(int i = 0; i < restricciones.size(); i++)
         {
-            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
+            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && disponible(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
                 if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS1().getIdProfesor())personal1 = 0;
                 if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS2().getIdProfesor())personal2 = 0;
@@ -276,7 +276,7 @@ public class FuncionAptitud {
         int personal1 = 70, personal2 = 70, hora1 = 0, hora2 = 0;
         for(int i = 0; i < restricciones.size(); i++)
         {
-            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && igualBin(restricciones.get(i).getHora(),cc.getGen1().getHora())))
+            if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && disponible(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
                 if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS1().getIdProfesor())personal1 = 0;
                 if(restricciones.get(i).getProfesor() == sinodalia.getProfesorByS2().getIdProfesor())personal2 = 0;

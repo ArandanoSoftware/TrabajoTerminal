@@ -108,7 +108,7 @@ public class Genetico {
         return poblacion;
     }
     
-    protected static boolean[] getBinDay(Date fecha)
+    public static boolean[] getBinDay(Date fecha)
     {
         boolean[] dia = {false,false,false,false,false};
         int day = fecha.getDate();
@@ -124,7 +124,7 @@ public class Genetico {
         return dia;
     }
     
-    protected static boolean[] getBinMonth(Date fecha)
+    public static boolean[] getBinMonth(Date fecha)
     {
         boolean[] mes =  {false, false, false, false};
         int month = fecha.getMonth() + 1;
