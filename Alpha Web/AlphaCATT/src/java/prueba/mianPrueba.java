@@ -8,6 +8,7 @@ package prueba;
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
 import com.myapp.algoritmo.Restriccion;
+import com.myapp.algoritmo.RestriccionGeneral;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
@@ -42,6 +43,21 @@ public class mianPrueba {
     {
         long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
         tinicio = System.currentTimeMillis(); 
+        List<Integer> lista1 = new ArrayList<>();
+        List<Integer> lista2 = new ArrayList<>();
+        List<Integer> lista3 = new ArrayList<>();
+        lista1.add(4);
+        lista1.add(44);
+        lista1.add(444);
+        lista1.add(4444);
+        lista2.add(1111);
+        lista2.add(111);
+        lista2.add(11);
+        lista2.add(1);
+        lista3.addAll(lista1);
+        lista3.addAll(lista2);
+        for(int i = 0; i < lista3.size(); i++)
+            System.out.println(lista3.get(i));
 //        List<Sala> salas;
 //        salas = SalaBs.findAll();
 //        System.out.println(salas.get(0).getNombre());
@@ -179,8 +195,134 @@ public class mianPrueba {
         fin.setMonth(5);
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
         //List<Restriccion> restricciones = new ArrayList<>();
+        //primera restriccion
+        RestriccionGeneral restriccionGen1 = new RestriccionGeneral(137);
+        Date rango1 = new Date();
+        Date rango2 = new Date();
+        rango1.setMonth(4);
+        rango1.setDate(23);
+        rango2.setMonth(4);
+        rango2.setDate(26);
+        restriccionGen1.setRango(rango1, rango2);
+        //segunda restriccion
+        RestriccionGeneral restriccionGen2 = new RestriccionGeneral(46);
+        restriccionGen2.setRango(rango1, rango2);
+        //tercera restriccion
+        RestriccionGeneral restriccionGen3 = new RestriccionGeneral(25);
+        rango1.setDate(24);
+        restriccionGen3.setRango(rango1, rango2);
+        //cuarta restriccion
+        RestriccionGeneral restriccionGen4 = new RestriccionGeneral(123);
+        restriccionGen4.setHora(3, inicio, fin);
+        //quinta restriccion
+        RestriccionGeneral restriccionGen5 = new RestriccionGeneral(183);
+        restriccionGen5.setHora(3, inicio, fin);
+        //sexta restriccion
+        RestriccionGeneral restriccionGen6 = new RestriccionGeneral(216);
+        restriccionGen6.setDiaSem(2, inicio, fin);
+        restriccionGen6.setDiaSem(3, inicio, fin);
+        //septima restricicon
+        RestriccionGeneral restriccionGen7 = new RestriccionGeneral(197);
+        rango1.setDate(31);
+        rango2.setMonth(5);
+        rango2.setDate(2);
+        restriccionGen7.setRango(rango1, rango2);
+        //octava restriccion
+        RestriccionGeneral restriccionGen8 = new RestriccionGeneral(236);
+        restriccionGen8.setDiaSem(2, inicio, fin);
+        restriccionGen8.setDiaSem(3, inicio, fin);
+        restriccionGen8.setDiaSem(5, inicio, fin);
+        //novena restriccion
+        RestriccionGeneral restriccionGen9 = new RestriccionGeneral(9);
+        rango1.setMonth(4);
+        rango1.setDate(8);
+        restriccionGen9.setDia(rango1);
+        rango1.setDate(22);
+        restriccionGen9.setDia(rango1);
+        rango1.setDate(29);
+        restriccionGen9.setDia(rango1);
+        rango1.setMonth(5);
+        rango1.setDate(5);
+        restriccionGen9.setDia(rango1);
+        //decima restriccion 
+        RestriccionGeneral restriccionGen10 = new RestriccionGeneral(200);
+        rango1.setMonth(4);
+        rango1.setDate(9);
+        restriccionGen10.setDia(rango1);
+        rango1.setDate(12);
+        restriccionGen10.setDia(rango1);
+        //Decima Primera Restriccion
+        RestriccionGeneral restriccionGen11 = new RestriccionGeneral(115);
+        rango1.setMonth(4);
+        rango1.setDate(8);
+        restriccionGen11.setDia(rango1);
+        rango1.setDate(22);
+        restriccionGen11.setDia(rango1);
+        rango1.setDate(29);
+        restriccionGen11.setDia(rango1);
+        rango1.setMonth(5);
+        rango1.setDate(5);
+        restriccionGen11.setDia(rango1);
+        //decima segunda restricicon
+        RestriccionGeneral restriccionGen12 = new RestriccionGeneral(224);
+        restriccionGen12.setDiaSem(2, inicio, fin);
+        //decima tercera restricicon
+        RestriccionGeneral restriccionGen13 = new RestriccionGeneral(234);
+        restriccionGen13.setDiaSem(2, inicio, fin);
+        //decima cuarta restricicon
+        RestriccionGeneral restriccionGen14 = new RestriccionGeneral(220);
+        restriccionGen14.setDiaSem(2, inicio, fin);
+        //decima quimta restriccion
+        RestriccionGeneral restriccionGen15 = new RestriccionGeneral(72);
+        rango1.setMonth(5);
+        rango1.setDate(7);
+        rango2.setMonth(5);
+        rango2.setDate(9);
+        restriccionGen15.setRango(rango1, rango2);
+        //decima sexta restriccion
+        RestriccionGeneral restriccionGen16 = new RestriccionGeneral(161);
+        rango1.setDate(7);
+        rango2.setMonth(5);
+        rango2.setDate(9);
+        restriccionGen16.setRango(rango1, rango2);
+        //decima septima restriccion
+        RestriccionGeneral restriccionGen17 = new RestriccionGeneral(64);
+        rango1.setMonth(4);
+        rango1.setDate(18);
+        rango2.setMonth(4);
+        rango2.setDate(26);
+        restriccionGen17.setRango(rango1, rango2);
+        //decima octava restriccion
+        RestriccionGeneral restriccionGen18 = new RestriccionGeneral(21);
+        restriccionGen18.setHora(3, inicio, fin);
+        //Decima Novena Restricicon
+        RestriccionGeneral restriccionGen19 = new RestriccionGeneral(24);
+        rango1.setMonth(4);
+        rango1.setDate(29);
+        rango2.setMonth(5);
+        rango2.setDate(9);
+        restriccionGen19.setRango(rango1, rango2);
+        //asignacion de las restricciones
+        restricciones.addAll(restriccionGen1.getRestricciones());
+        restricciones.addAll(restriccionGen2.getRestricciones());
+        restricciones.addAll(restriccionGen3.getRestricciones());
+        restricciones.addAll(restriccionGen4.getRestricciones());
+        restricciones.addAll(restriccionGen5.getRestricciones());
+        restricciones.addAll(restriccionGen6.getRestricciones());
+        restricciones.addAll(restriccionGen7.getRestricciones());
+        restricciones.addAll(restriccionGen8.getRestricciones());
+        restricciones.addAll(restriccionGen9.getRestricciones());
+        restricciones.addAll(restriccionGen10.getRestricciones());
+        restricciones.addAll(restriccionGen11.getRestricciones());
+        restricciones.addAll(restriccionGen12.getRestricciones());
+        restricciones.addAll(restriccionGen13.getRestricciones());
+        restricciones.addAll(restriccionGen14.getRestricciones());
+        restricciones.addAll(restriccionGen15.getRestricciones());
+        restricciones.addAll(restriccionGen16.getRestricciones());
+        restricciones.addAll(restriccionGen17.getRestricciones());
+        restricciones.addAll(restriccionGen18.getRestricciones());
+        restricciones.addAll(restriccionGen19.getRestricciones());
         
-
         System.out.println("fueron: " + poblacion.size());
         
         poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
@@ -215,11 +357,12 @@ public class mianPrueba {
         int i = 0;
         while(Genetico.nel)
         {
-            System.out.println("iteracion " + i);
+            System.out.print("\niteracion " + i + "\t");
             poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
             System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
             i++;
+            //System.out.println("");
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
         

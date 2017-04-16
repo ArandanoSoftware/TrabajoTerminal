@@ -30,6 +30,7 @@ public class Genetico {
     public static int aptitudPoblacion;
     public static boolean nel;
     public static int ceros;
+    public static int dos;
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
@@ -572,12 +573,13 @@ public class Genetico {
             }
             //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
             aptitudSum -= aptitudes.get(v);
-            if(aptitudes.get(v) == 200)nuevaPoblacion.add(poblacion.remove(v));
-            else feos.add(poblacion.remove(v));
-//            feos.add(poblacion.remove(v));
+            //if(aptitudes.get(v) == 200)nuevaPoblacion.add(poblacion.remove(v));
+            //else feos.add(poblacion.remove(v));
+            feos.add(poblacion.remove(v));
             if(aptitudes.get(v) == 0){ceros++;}
             aptitudes.remove(v);
         }
+        //System.out.print("van 200:  " + nuevaPoblacion.size() + "\t");
         for(int i = 0; i < feos.size(); i++)
         {
             if(i < feos.size() - 1)
@@ -599,17 +601,21 @@ public class Genetico {
     public static boolean aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
     {
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        ceros = 0;
+        dos = 0;
         int sum = 0;
         boolean cero = false;
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         for(int i = 0; i < poblacion.size(); i++)
         {
             int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
-            if(aptitud == 0) cero = true;
+            if(aptitud == 0){ cero = true;ceros++;}
+            if(aptitud == 200){ cero = true;dos++;}
             sum += aptitud;
             //System.out.println(aptitud);
             nuevaPoblacion.add(poblacion.get(i));
         }
+        System.out.print("y hay ceros: " + ceros + " y 200: " + dos + " \t");
         aptitudPoblacion = sum;
         return cero;
     }

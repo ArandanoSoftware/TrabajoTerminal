@@ -60,7 +60,6 @@ public class FuncionAptitud {
         {
             if(!(igualBin(cc.getGen1().getMes(),restricciones.get(i).getMes()) && igualBin(cc.getGen1().getDia(),restricciones.get(i).getDia()) && disponible(restricciones.get(i).getHora(),cc.getGen1().getHora())))
             {
-                System.out.println("entras?");
                 if(restricciones.get(i).getProfesor() == dirige.getProfesorByD1().getIdProfesor())personal1 = 0;
                 if(restricciones.get(i).getProfesor() == dirige.getProfesorByD2().getIdProfesor())personal2 = 0;
             }
@@ -110,13 +109,17 @@ public class FuncionAptitud {
             int d1 = directores.get(i).getProfesorByD1().getIdProfesor();
             int d2;
             try{d2= directores.get(i).getProfesorByD2().getIdProfesor();}catch(Exception e){d2 = d1;}
+            int s1 = sinodales.get(i).getProfesorByS1().getIdProfesor();
+            int s2 = sinodales.get(i).getProfesorByS2().getIdProfesor();
+            int s3;
+            try{s3 = sinodales.get(i).getProfesorByS3().getIdProfesor();}catch(Exception e){s3 = s1;}
             for(int j = 0; j < poblacion.size(); j++)
             {
                 if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
-                    if(dir1 == d1 || dir1 == d2)
+                    if(dir1 == d1 || dir1 == d2 || dir1 == s1 || dir1 == s2 || dir1 == s3)
                         personal1 = 0;
-                    if(dir2 == d1 || dir2 == d2)
+                    if(dir2 == d1 || dir2 == d2 || dir2 == s1 || dir2 == s2 || dir2 == s3)
                         personal2 = 0;
                 }
             }
@@ -167,11 +170,15 @@ public class FuncionAptitud {
             int d1 = directores.get(i).getProfesorByD1().getIdProfesor();
             int d2;
             try{d2= directores.get(i).getProfesorByD2().getIdProfesor();}catch(Exception e){d2 = d1;}
+            int s1 = sinodales.get(i).getProfesorByS1().getIdProfesor();
+            int s2 = sinodales.get(i).getProfesorByS2().getIdProfesor();
+            int s3;
+            try{s3 = sinodales.get(i).getProfesorByS3().getIdProfesor();}catch(Exception e){s3 = s1;}
             for(int j = 0; j < poblacion.size(); j++)
             {
                 if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
-                    if(dir1 == d1 || dir1 == d2)
+                    if(dir1 == d1 || dir1 == d2 || dir1 == s1 || dir1 == s2 || dir1 == s3)
                         personal1 = 0;
                 }
             }
@@ -250,6 +257,9 @@ public class FuncionAptitud {
         int sin3 = sinodalia.getProfesorByS3().getIdProfesor();
         for(int i = 0; i < sinodales.size(); i++)
         {
+            int d1 = directores.get(i).getProfesorByD1().getIdProfesor();
+            int d2;
+            try{d2= directores.get(i).getProfesorByD2().getIdProfesor();}catch(Exception e){d2 = d1;}
             int s1 = sinodales.get(i).getProfesorByS1().getIdProfesor();
             int s2 = sinodales.get(i).getProfesorByS2().getIdProfesor();
             int s3;
@@ -258,11 +268,11 @@ public class FuncionAptitud {
             {
                 if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
-                    if(sin1 == s1 || sin1 == s2 || sin1 == s3)
+                    if(sin1 == d1 || sin1 == d2 || sin1 == s1 || sin1 == s2 || sin1 == s3)
                         personal1 = 0;
-                    if(sin2 == s1 || sin2 == s2 || sin2 == s3)
+                    if(sin2 == d1 || sin2 == d2 || sin2 == s1 || sin2 == s2 || sin2 == s3)
                         personal2 = 0;
-                    if(sin3 == s1 || sin3 == s2 || sin3 == s3)
+                    if(sin3 == d1 || sin3 == d2 || sin3 == s1 || sin3 == s2 || sin3 == s3)
                         personal3 = 0;
                 }
             }
@@ -325,6 +335,9 @@ public class FuncionAptitud {
         int sin2 = sinodalia.getProfesorByS2().getIdProfesor();
         for(int i = 0; i < sinodales.size(); i++)
         {
+            int d1 = directores.get(i).getProfesorByD1().getIdProfesor();
+            int d2;
+            try{d2= directores.get(i).getProfesorByD2().getIdProfesor();}catch(Exception e){d2 = d1;}
             int s1 = sinodales.get(i).getProfesorByS1().getIdProfesor();
             int s2 = sinodales.get(i).getProfesorByS2().getIdProfesor();
             int s3 = 0;
@@ -333,9 +346,9 @@ public class FuncionAptitud {
             {
                 if(poblacion.get(j).getGen2().getTt().equals(directores.get(i).getIdTt()) && igualBin(cc.getGen1().getSala(),poblacion.get(j).getGen1().getSala()) && igualBin(cc.getGen1().getMes(),poblacion.get(j).getGen1().getMes()) && igualBin(cc.getGen1().getDia(),poblacion.get(j).getGen1().getDia()) && igualBin(cc.getGen1().getHora(),poblacion.get(j).getGen1().getHora()))
                 {
-                    if(sin1 == s1 || sin1 == s2 || sin1 == s3)
+                    if(sin1 == d1 || sin1 == d2 || sin1 == s1 || sin1 == s2 || sin1 == s3)
                         personal1 = 0;
-                    if(sin2 == s1 || sin2 == s2 || sin2 == s3)
+                    if(sin2 == d1 || sin2 == d2 || sin2 == s1 || sin2 == s2 || sin2 == s3)
                         personal2 = 0;
                 }
             }
