@@ -14,9 +14,9 @@
       <!--Parametros:
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
-      <!-- <action name="home" class="StrutsControllers.HomeController">
+      <action name="home" class="StrutsControllers.HomeController">
         <result name="success" type="redirect">/views/general/home.jsp</result>
-      </action> -->
+      </action>
 
       <!-- Redirect Actions -->
       <!-- Generales-->
