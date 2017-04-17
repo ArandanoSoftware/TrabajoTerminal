@@ -541,7 +541,6 @@ public class Genetico {
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         List<Cromosoma> feos = new ArrayList<>();
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
-        int tamaño = poblacion.size();
         aptitudPoblacion = 0;
         List<Integer> aptitudes = new ArrayList<>();
         for( int i = 0; i < poblacion.size(); i++)
@@ -573,9 +572,9 @@ public class Genetico {
             }
             //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
             aptitudSum -= aptitudes.get(v);
-            //if(aptitudes.get(v) == 200)nuevaPoblacion.add(poblacion.remove(v));
-            //else feos.add(poblacion.remove(v));
-            feos.add(poblacion.remove(v));
+            if(aptitudes.get(v) > 200){if(random.nextBoolean())nuevaPoblacion.add(poblacion.remove(v));else feos.add(poblacion.remove(v));}
+            else feos.add(poblacion.remove(v));
+            //feos.add(poblacion.remove(v));
             if(aptitudes.get(v) == 0){ceros++;}
             aptitudes.remove(v);
         }
@@ -615,7 +614,7 @@ public class Genetico {
             //System.out.println(aptitud);
             nuevaPoblacion.add(poblacion.get(i));
         }
-        System.out.print("y hay ceros: " + ceros + " y 200: " + dos + " \t");
+        System.out.print("y hay 200: " + dos + " y ceros: " + ceros + " \t");
         aptitudPoblacion = sum;
         return cero;
     }
