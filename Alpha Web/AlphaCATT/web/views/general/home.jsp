@@ -12,84 +12,63 @@ informar sobre la situación actual para la generación deñ calendario
       <meta charset="utf-8">
       <%--DefaultCSS --%>
       <link rel="stylesheet" href="../../css/normalize.css">
-      <link rel="stylesheet" href="../../css/breadstyle.css">
+
       <%--PersonalCSS--%>
       <link rel="stylesheet" href="../../css/master.css">
-      <link rel="stylesheet" href="../../css/registroTT.css.css">
       <%--Javascript--%>
       <script type="text/javascript" src="../../js/master.js"></script>
 
       <title> Sistema CATT </title>
     </head>
     <body>
-      <div class="MainMenu">
-          <div class="Title">
-           <ul>
-             <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
-             <li class="Title-item">
-              <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
-            </li>
-            <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
+    <div class="TitleBar">
+        <div class="Title">
+          <ul>
+            <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
+            <li class="Title-item"><b><aconym title="Comision Academica de Trabajos Terminales"/>Sistema de Calendarización de presentaciones de Trabajos Terminales - "JUANITA 2.0" </b></li>
             <li class="Title-item-name">
-                <div class="dropdown">
-                  <button class="dropbtn">Profesores</button>
-                    <div class="dropdown-content">
-                        <s:a action="home" forceAddSchemeHostAndPort="true">Registro Prfesores</s:a>   
-                       
-                          <a href="#">Restricciones de Profesores</a>
-                          <a href="#">Consulta de profesores</a>
-                    </div>
-               </div>
-            </li>
-            <li class="Title-item">
-                <div class="dropdown">
-                  <button class="dropbtn">Alumnos</button>
-                    <div class="dropdown-content">
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
-                    </div>
-               </div>
-            </li>
-            <li class="Title-item">
-                <div class="dropdown">
-                  <button class="dropbtn">Trabajos Terminales</button>
-                    <div class="dropdown-content">
-                          <a href="#">Link 1</a>
-                          <a href="#">Link 2</a>
-                          <a href="#">Link 3</a>
-                    </div>
-               </div>
-            </li>
-
-           </ul>
+         </ul>
+        </div>
+    </div>
+    <div class="MainMenu">
+      <div class="dropdown">
+        <button class="dropbtn">Profesores</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Prfesores</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
           </div>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn">Trabajos Terminales</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Trabajos Terminales</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Trabajos Terminales</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Trabajos Terminales</s:a>
+          </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Salas</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Salas</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Salas</s:a>
+          </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Calendario</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "A"</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "B"</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
+          </div>
+      </div>
+    </div>
 
 
 
 
    <div class="General">
-     <p><script type="text/javascript">
-     </script></p>
-
-   <div class="PanelGeneral PanelHome">
-     <div class="Panel-Title">
-       <b>Estado de la Calendarización:</b>
-     </div>
-     <div class="PanelContent">
-       <table>
-         <tr>
-           <th>Registro de los Profesores:</th>
-           <th> Completo! <progress value="0" max="100">100%</progress></th>
-         </tr>
-         <tr>
-           <th>Registro de los Trabajos terminales:</th>
-           <th> Completo! <progress value="0" max="100">100%</progress></th>
-         </tr>
-       </table>
-     </div>
-   </div>
    </div>
    </body>
 </html>

@@ -16,21 +16,17 @@
     <title> CATT- LOGIN</title>
   </head>
   <body>
-    <div class="MainMenu">
+    <div class="TitleBar">
         <div class="Title">
-         <ul>
-           <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
-           <li class="Title-item">
-            <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
-          </li>
-          <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
+          <ul>
+            <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+            <li class="Title-item"><b><aconym title="Comision Academica de Trabajos Terminales"/>Sistema de Calendarización de presentaciones de Trabajos Terminales - "JUANITA 2.0" </b></li>
+            <li class="Title-item-name">
          </ul>
         </div>
     </div>
-
     <div class="LoginForm, General" align="center" >
       <h1> CATT Login : </h1>
-
       <s:actionerror/>
       <s:form action="home" method="post">
           <s:textfield  name="userName" label="Username" size="20"/>
