@@ -14,18 +14,20 @@
       <!--Parametros:
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
-      <action name="home" class="StrutsControllers.HomeController">
-        <result name="success" type="redirect">/views/general/home.jsp</result>
+  
+      <action name="home" class="StrutsControllers.ProfesorController">
+        <result name="success">/views/general/home.jsp</result>
       </action>
+
 
       <!-- Redirect Actions -->
       <!-- Generales-->
-      <action name="home">
+      <!-- <action name="home">
         <result type="redirect">
         <param name="location">/views/general/home.jsp</param>
         <param name="parse">false</param>
       </result>
-      </action>
+      </action> -->
       <action name="calendar">
         <result type="redirect">/views/general/calendar.jsp</result>
       </action>

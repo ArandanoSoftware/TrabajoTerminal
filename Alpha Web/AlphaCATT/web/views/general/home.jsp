@@ -64,11 +64,23 @@ informar sobre la situación actual para la generación deñ calendario
           </div>
       </div>
     </div>
-
-
-
-
    <div class="General">
+
+     <h1> Lista de Profesores </h1>
+     <table>
+       <thead>
+         <th>Nombre </th>
+      
+       </thead>
+       <tbody>
+       <s:iterator value="datos" status="estado">
+           <td><s:property value="nombre" /></td>
+       </s:iterator>
+
+       </tbody>
+     </table>
+
+
    </div>
    </body>
 </html>
