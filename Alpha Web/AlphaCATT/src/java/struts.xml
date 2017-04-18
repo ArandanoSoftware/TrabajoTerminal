@@ -4,6 +4,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+  <constant name="struts.action.extension" value=","/> 
   <package name="default" extends="struts-default">
   </package>
   <!--Requiere de 3 paramentros el paquere
@@ -14,24 +15,28 @@
       <!--Parametros:
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
-  
-      <action name="home" class="StrutsControllers.ProfesorController">
-        <result name="success">/views/general/home.jsp</result>
-      </action>
 
+      <!--Lista de Profesores -->
+    
 
-      <!-- Redirect Actions -->
-      <!-- Generales-->
-      <!-- <action name="home">
-        <result type="redirect">
-        <param name="location">/views/general/home.jsp</param>
-        <param name="parse">false</param>
-      </result>
+      <!-- <action name="home" class="com.struts.controllers.ProfesorController" method="execute">
+        <result>/views/general/home.jsp</result>
       </action> -->
+
+
+      <!--Redirect Actions-->
+
+      <action name="home">
+          <result type="redirect">
+            <param name="location">/views/general/home.jsp</param>
+            <param name="parse">false</param>
+          </result>
+      </action> 
+
+
       <action name="calendar">
         <result type="redirect">/views/general/calendar.jsp</result>
       </action>
-      <!-- Forms-  Registros -->
       <action name="regProf">
         <result type="redirect">/views/forms/regProf.jsp</result>
       </action>
@@ -42,7 +47,4 @@
         <result type="redirect">/views/forms/regSalas.jsp</result>
       </action>
   </package>
-
-
-
 </struts>

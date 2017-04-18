@@ -8,10 +8,11 @@ import com.myapp.model.Profesor;
 import com.myapp.bs.ProfesorBs;
 
 public class ProfesorController  extends ActionSupport {
-    
+
     private List<Profesor> datos;
+    private String name;
     private ProfesorBs op;
-    private Profesor prof; 
+    private Profesor prof;
 
     public List<Profesor> getDatos() {
         return datos;
@@ -36,15 +37,15 @@ public class ProfesorController  extends ActionSupport {
     public void setProf(Profesor prof) {
         this.prof = prof;
     }
-    
-  
+
+
   @Override
   public String execute() throws Exception
   {
-      this.op = new  ProfesorBs();
-      this.datos = this.op.findAll();
+      // this.op = new  ProfesorBs();
+      // this.prof= this.op.findById(3);
       //call Service class to store personBean's state in database
       return SUCCESS;
   }
-    
+
 }

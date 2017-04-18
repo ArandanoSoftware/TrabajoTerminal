@@ -17,7 +17,7 @@ import java.util.List;
  * @author root
  */
 public class ProfesorBs {
-    
+
     public static Profesor findById(int id)
     {
         ProfesorDao profesorDao = new ProfesorDao();
@@ -26,7 +26,7 @@ public class ProfesorBs {
         p.setHorarios(new HashSet<>(HorarioBs.findByProf(p)));
         return p;
     }
-    
+
     public static List<Profesor> findAll()
     {
         ProfesorDao profesorDao = new ProfesorDao();
@@ -37,7 +37,7 @@ public class ProfesorBs {
         }
         return p;
     }
-    
+
     public static void save(Profesor p)
     {
         ProfesorDao profesorDao = new ProfesorDao();
@@ -48,13 +48,13 @@ public class ProfesorBs {
             HorarioBs.save(h.get(i));
         }
     }
-    
+
     public static void update(Profesor p)
     {
         ProfesorDao profesorDao = new ProfesorDao();
         profesorDao.modify(p);
     }
-    
+
     public static void delete(Profesor p)
     {
         ProfesorDao profesorDao = new ProfesorDao();

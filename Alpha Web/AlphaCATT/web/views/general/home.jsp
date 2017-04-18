@@ -25,7 +25,7 @@ informar sobre la situación actual para la generación deñ calendario
         <div class="Title">
           <ul>
             <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
-            <li class="Title-item"><b><aconym title="Comision Academica de Trabajos Terminales"/>Sistema de Calendarización de presentaciones de Trabajos Terminales - "JUANITA 2.0" </b></li>
+            <li class="Title-item"><b><aconym title="Comision Academica de Trabajos Terminales"/>Sistema de Calendarización de presentaciones de Trabajos Terminales </b></li>
             <li class="Title-item-name">
          </ul>
         </div>
@@ -58,19 +58,18 @@ informar sobre la situación actual para la generación deñ calendario
       <div class="dropdown">
         <button class="dropbtn">Calendario</button>
           <div class="dropdown-content">
-            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "A"</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "B"</s:a>
+            <s:a action="calendar" forceAddSchemeHostAndPort="true">Ver calendario Generado</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Editor de Calendario</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
           </div>
       </div>
     </div>
    <div class="General">
 
-     <h1> Lista de Profesores </h1>
+     <h1> Lista de Profesores:  </h1>
      <table>
        <thead>
          <th>Nombre </th>
-      
        </thead>
        <tbody>
        <s:iterator value="datos" status="estado">
