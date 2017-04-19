@@ -26,19 +26,6 @@
 
       <!--Redirect Actions-->
 
-      <action name="home">
-          <result type="redirect">
-            <param name="location">/views/general/home.jsp</param>
-            <param name="parse">false</param>
-          </result>
-      </action>
-
-      <action name="calendar" class="com.struts.controllers.HomeController" method="execute">
-          <result class=" ">
-            <param name="location">/views/general/calendar.jsp</param>
-            <param name="parse">false</param>
-          </result>
-      </action>
 
       <action name="regProf">
         <result type="redirect">/views/forms/regProf.jsp</result>

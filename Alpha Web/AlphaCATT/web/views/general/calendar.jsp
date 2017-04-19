@@ -19,22 +19,56 @@ de trabajo terminal
     <link rel="stylesheet" href="../../css/calendarioGeneral.css">
     <%--Javascript--%>
     <script type="text/javascript" src="../../js/master.js"></script>
+    <script type="text/javascript" src="../../js/jspdf.min.js"></script>
     <script type="text/javascript" src="../../js/calendarioGeneral.js"></script>
     <title>Calendario general de Trabajos Terminales</title>
   </head>
   <body>
 
-  <div class="MainMenu">
-    <div class="Title">
-     <ul>
-       <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
-       <li class="Title-item">
-        <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
-      </li>
-      <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
-     </ul>
+    <div class="TitleBar">
+        <div class="Title">
+          <ul>
+            <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
+            <li class="Title-item"><b>Sistema de Calendarización de presentaciones de Trabajos Terminales </b></li>
+            <li class="Title-item-name">
+         </ul>
+        </div>
     </div>
-  </div>
+    <div class="MainMenu">
+      <div class="dropdown">
+        <button class="dropbtn">Profesores</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Prfesores</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
+          </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Trabajos Terminales</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Trabajos Terminales</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Trabajos Terminales</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Trabajos Terminales</s:a>
+          </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Salas</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Salas</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Salas</s:a>
+          </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">Calendario</button>
+          <div class="dropdown-content">
+            <s:a action="calendar" forceAddSchemeHostAndPort="true">Ver calendario Generado</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Editor de Calendario</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
+          </div>
+      </div>
+    </div>
+
   <div class="General">
     <h1>Calendario de Presentación de Trabajos Terminales</h1>
     <hr />
@@ -43,8 +77,56 @@ de trabajo terminal
       Este calendario muestra todas  las presentaciones de trabajo terminal
       calendarizadas.
     </p>
-
   </div>
+  <button onclick="demoFromHTML()">Click me</button>
+  <a href="javascript:demoFromHTML()" class="button"> Run Code </a>
+  <div id="content">
+      <h1>
+          Prueba de PDF
+      </h1>
+  </div>
+  <script>
+    function demoFromHTML() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#content')[0];
+
+        // we support special element handlers. Register them with jQuery-style
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+            source, // HTML string or DOM elem ref.
+            margins.left, // x coord
+            margins.top, { // y coord
+                'width': margins.width, // max width of content on PDF
+                'elementHandlers': specialElementHandlers
+            },
+
+            function (dispose) {
+                // dispose: object with X, Y of the last line add to the PDF
+                //          this allow the insertion of new lines after html
+                pdf.save('Test.pdf');
+            }, margins
+        );
+    }
+</script>
 
 <%--Calendar Div --%>
   <div id="calendar-zone">
@@ -128,6 +210,8 @@ de trabajo terminal
       		</div>
     </div>
   <!-- /. wrap -->
+
+
 
 </body>
 </html>
