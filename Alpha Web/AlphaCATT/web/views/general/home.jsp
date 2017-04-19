@@ -25,7 +25,7 @@ informar sobre la situación actual para la generación deñ calendario
         <div class="Title">
           <ul>
             <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
-            <li class="Title-item"><b><aconym title="Comision Academica de Trabajos Terminales"/>Sistema de Calendarización de presentaciones de Trabajos Terminales </b></li>
+            <li class="Title-item"><b>Sistema de Calendarización de presentaciones de Trabajos Terminales </b></li>
             <li class="Title-item-name">
          </ul>
         </div>
