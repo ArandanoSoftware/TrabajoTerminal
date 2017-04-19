@@ -31,40 +31,58 @@ public class Genetico {
     public static boolean nel;
     public static int ceros;
     public static int dos;
+    public static int salasCal;
+    public static Date inicioCal;
+    public static Date interCal;
+    public static Date finCal;
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
-        Random random = new Random();
-        Set<Integer> dias = new HashSet();
-        Date fecha = new Date();
-        fecha.setDate(inicio.getDate());
-        fecha.setMonth(inicio.getMonth());
         int rango = difFecha(fin, inicio)/2;
-        int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
-        System.out.println("ttxdia = " + ttxdia);
-        while(dias.size() != (tt.size()/ttxdia))
-        {
-            int diaR = random.nextInt(rango + 1) + inicio.getDate();
-            fecha.setMonth(inicio.getMonth());
-            fecha.setDate(diaR);
-            if(fecha.getDay() != 0 && fecha.getDay() != 6)
-                dias.add(diaR);
-        }
-        
-        List<Integer> diaR = new ArrayList(dias);
+        salasCal = salas;
+        inicioCal = inicio;
+        finCal = fin;
+        Date fecha = new Date();
+        fecha.setMonth(inicio.getMonth());
+        fecha.setDate(inicio.getDate() + rango);
+        interCal = fecha;
         List<Tt> tts = new ArrayList(tt);
-        for(int i = 0; i < tt.size(); i++)
+//        for(int i = 0; i < tt.size(); i++)
+//        {
+//            Cromosoma cromosoma = new Cromosoma();
+//            fecha.setMonth(inicio.getMonth());
+//            fecha.setDate(diaR.get(i%diaR.size()));
+//            cromosoma.getGen1().setDia(getBinDay(fecha));
+//            cromosoma.getGen1().setMes(getBinMonth(fecha));
+//            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
+//            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
+//            cromosoma.getGen2().setTt(tts.get(i).getIdTt());
+//            poblacion.add(cromosoma);
+//        }
+        
+        //////////////////////////////segunda prueba/////////////////////////////////////////////////////////7
+        int l = 0;
+        for(int i = 1; i <= salas; i++)
         {
-            Cromosoma cromosoma = new Cromosoma();
-            fecha.setMonth(inicio.getMonth());
-            fecha.setDate(diaR.get(i%diaR.size()));
-            cromosoma.getGen1().setDia(getBinDay(fecha));
-            cromosoma.getGen1().setMes(getBinMonth(fecha));
-            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
-            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
-            cromosoma.getGen2().setTt(tts.get(i).getIdTt());
-            poblacion.add(cromosoma);
+            for(int j = 0; j < rango; j++)
+            {
+                for(int k = 1; k < 4; k++)
+                {
+                    if(l == tts.size())break;
+                    Cromosoma cromosoma = new Cromosoma();
+                    fecha.setMonth(inicio.getMonth());
+                    fecha.setDate(inicio.getDate() + j);
+                    if(fecha.getDay() == 0 || fecha.getDay() == 6)break;
+                    cromosoma.getGen1().setDia(getBinDay(fecha));
+                    cromosoma.getGen1().setMes(getBinMonth(fecha));
+                    cromosoma.getGen1().setHora(getBinHorario(k));
+                    cromosoma.getGen1().setSala(getBinSala(i));
+                    cromosoma.getGen2().setTt(tts.get(l).getIdTt());
+                    l++;
+                    poblacion.add(cromosoma);
+                }
+            }
         }
         
         return poblacion;
@@ -91,9 +109,9 @@ public class Genetico {
                 dias.add(diaR);
         }
         
-        List<Integer> diaR = new ArrayList(dias);
+        //List<Integer> diaR = new ArrayList(dias);
         List<Tt> tts = new ArrayList(tt);
-        for(int i = 0; i < tt.size(); i++)
+        /*for(int i = 0; i < tt.size(); i++)
         {
             Cromosoma cromosoma = new Cromosoma();
             fecha.setMonth(inicio.getMonth());
@@ -104,6 +122,29 @@ public class Genetico {
             cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
             cromosoma.getGen2().setTt(tts.get(i).getIdTt());
             poblacion.add(cromosoma);
+        }*/
+        //////////////////////////////segunda prueba/////////////////////////////////////////////////////////7
+        int l = 0;
+        for(int i = 1; i <= salas; i++)
+        {
+            for(int j = 0; j < rango; j++)
+            {
+                for(int k = 1; k < 4; k++)
+                {
+                    if(l == tts.size())break;
+                    Cromosoma cromosoma = new Cromosoma();
+                    fecha.setMonth(inicio.getMonth());
+                    fecha.setDate(inicio.getDate() + j);
+                    if(fecha.getDay() == 0 || fecha.getDay() == 6)break;
+                    cromosoma.getGen1().setDia(getBinDay(fecha));
+                    cromosoma.getGen1().setMes(getBinMonth(fecha));
+                    cromosoma.getGen1().setHora(getBinHorario(k));
+                    cromosoma.getGen1().setSala(getBinSala(i));
+                    cromosoma.getGen2().setTt(tts.get(l).getIdTt());
+                    l++;
+                    poblacion.add(cromosoma);
+                }
+            }
         }
         
         return poblacion;
@@ -531,29 +572,28 @@ public class Genetico {
         {
             hijos[0].getGen2().setTt(padre2.getGen2().getTt());
             hijos[1].getGen2().setTt(padre1.getGen2().getTt());
-        }
-        
+        }        
         return hijos;
     }
     
-    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion, List<Restriccion> restricciones)
+    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion, List<Restriccion> restricciones,int tt)
     {
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         List<Cromosoma> feos = new ArrayList<>();
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
-        aptitudPoblacion = 0;
+        //aptitudPoblacion = 0;
+        double aptitudSum = 0;
         List<Integer> aptitudes = new ArrayList<>();
         for( int i = 0; i < poblacion.size(); i++)
         {
             aptitudes.add(funcion.evaluar(poblacion.get(i), nuevaPoblacion));
             nuevaPoblacion.add(poblacion.get(i));
             //System.out.println(aptitudes.get(i));
-            aptitudPoblacion += aptitudes.get(i);
+            aptitudSum+= aptitudes.get(i);
         }
         
         nuevaPoblacion.clear();
-        double aptitudSum = aptitudPoblacion;
-        ceros = 0;
+        //ceros = 0;
         nel = false;
         while(!poblacion.isEmpty())
         {
@@ -572,10 +612,10 @@ public class Genetico {
             }
             //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
             aptitudSum -= aptitudes.get(v);
-            if(aptitudes.get(v) > 200){if(random.nextBoolean())nuevaPoblacion.add(poblacion.remove(v));else feos.add(poblacion.remove(v));}
+            if(aptitudes.get(v) == 200){/*if(random.nextBoolean())*/nuevaPoblacion.add(poblacion.remove(v));/*else feos.add(poblacion.remove(v));*/}
             else feos.add(poblacion.remove(v));
-            //feos.add(poblacion.remove(v));
-            if(aptitudes.get(v) == 0){ceros++;}
+//            feos.add(poblacion.remove(v));
+            //if(aptitudes.get(v) == 0){ceros++;}
             aptitudes.remove(v);
         }
         //System.out.print("van 200:  " + nuevaPoblacion.size() + "\t");
@@ -584,11 +624,11 @@ public class Genetico {
             if(i < feos.size() - 1)
             {
                 Cromosoma[] hijo = cruza(feos.get(i),feos.get(i+1));
-                nuevaPoblacion.add(hijo[0]);
-                nuevaPoblacion.add(hijo[1]);
+                nuevaPoblacion.add(mutacion(hijo[0],tt));
+                nuevaPoblacion.add(mutacion(hijo[1],tt));
             }else
             {
-                nuevaPoblacion.add(feos.get(i));
+                nuevaPoblacion.add(mutacion(feos.get(i),tt));
             }
             
             i++;
@@ -600,22 +640,52 @@ public class Genetico {
     public static boolean aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
     {
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        aptitudPoblacion = 0;
         ceros = 0;
         dos = 0;
-        int sum = 0;
         boolean cero = false;
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         for(int i = 0; i < poblacion.size(); i++)
         {
             int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
             if(aptitud == 0){ cero = true;ceros++;}
-            if(aptitud == 200){ cero = true;dos++;}
-            sum += aptitud;
-            //System.out.println(aptitud);
+            if(aptitud == 200){ dos++;}
+            aptitudPoblacion += aptitud;
             nuevaPoblacion.add(poblacion.get(i));
         }
         System.out.print("y hay 200: " + dos + " y ceros: " + ceros + " \t");
-        aptitudPoblacion = sum;
         return cero;
     }
+    
+    protected static Cromosoma mutacion(Cromosoma individuo,int tt)
+    {
+        Random random = new Random();
+        Date fecha = getDateC(individuo);
+        fecha.setDate(fecha.getDate() + 1);
+        if(tt == 1)
+        {
+            if(random.nextInt(100) < 10)
+            {
+                System.out.print("s");
+                individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
+            }
+                if(difFecha(interCal, fecha) >= 0)
+            {
+                if(random.nextInt(100) < 8)
+                {
+                    System.out.print("x");
+                    individuo.getGen1().setDia(getBinDay(fecha));
+                }
+            }
+        }else if(tt == 2)if(difFecha(finCal, fecha) >= 0)
+            {
+                if(random.nextInt(100) < -1)
+                {
+                    System.out.print("x");
+                    individuo.getGen1().setDia(getBinDay(fecha));
+                }
+            }
+        return individuo;
+    }
+    
 }

@@ -182,7 +182,7 @@ public class mianPrueba {
 ////        }
         
         
-        int mayor;
+        int mayor = 0;
         
         Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
         List<Cromosoma> poblacion;
@@ -194,8 +194,21 @@ public class mianPrueba {
         fin.setDate(6);
         fin.setMonth(5);
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
+        
+        List<Calendario> cal = Genetico.crearCalendario(poblacion);
+        
+        for(int i = 0; i < cal.size(); i++)
+        {
+            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
+        }
+        
+        //LeerExcel.inportaExcel(cal, 1);
+        
+        
         //List<Restriccion> restricciones = new ArrayList<>();
         //primera restriccion
+        
+        
         RestriccionGeneral restriccionGen1 = new RestriccionGeneral(137);
         Date rango1 = new Date();
         Date rango2 = new Date();
@@ -322,28 +335,11 @@ public class mianPrueba {
         restricciones.addAll(restriccionGen17.getRestricciones());
         restricciones.addAll(restriccionGen18.getRestricciones());
         restricciones.addAll(restriccionGen19.getRestricciones());
+        System.out.println(tt1s.size());
         
-        System.out.println("fueron: " + poblacion.size());
+        Genetico.nel = Genetico.aptitudGneral(poblacion, restricciones);
+        System.out.println("Poblacion Inicial con aptitud de " + Genetico.aptitudPoblacion + " y no se puede? D= " + Genetico.nel + " y son: " + poblacion.size());
         
-        poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
-        
-        mayor = Genetico.aptitudPoblacion;
-        
-        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
-
-        
-        System.out.println("fueron: " + poblacion.size());
-        Genetico.aptitudPoblacion = 0;
-        
-        
-        poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
-        
-        
-        if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
-        System.out.println("esta es la aptitud: " + Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " pues hay " + Genetico.ceros);
-
-        System.out.println("fueron: " + poblacion.size());
-        Genetico.aptitudPoblacion = 0;
         //FuncionAptitud funcion = new FuncionAptitud(restricciones);
         //List<Integer> aptitudes = new ArrayList<>();
 
@@ -354,17 +350,25 @@ public class mianPrueba {
 //            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
 //            Genetico.aptitudPoblacion = 0;
 //        }
-        int i = 0;
+        int j = 0;
         while(Genetico.nel)
         {
-            System.out.print("\niteracion " + i + "\t");
-            poblacion = Genetico.generaNuevaGen(poblacion,restricciones);
+            System.out.print("\niteracion " + j + "\t");
+            //el uno es de que son tt1
+            poblacion = Genetico.generaNuevaGen(poblacion,restricciones,1);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
-            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel);
-            i++;
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblacion.size());
+            j++;
             //System.out.println("");
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
+        
+        cal = Genetico.crearCalendario(poblacion);
+        
+        for(int i = 0; i < cal.size(); i++)
+        {
+            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
+        }
         
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
