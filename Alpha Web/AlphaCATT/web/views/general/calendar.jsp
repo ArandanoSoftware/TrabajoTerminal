@@ -13,7 +13,6 @@ de trabajo terminal
     <meta charset="utf-8">
     <%--DefaultCSS --%>
     <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/breadstyle.css">
     <%--PersonalCSS--%>
     <link rel="stylesheet" href="../../css/master.css">
     <link rel="stylesheet" href="../../css/calendarioGeneral.css">

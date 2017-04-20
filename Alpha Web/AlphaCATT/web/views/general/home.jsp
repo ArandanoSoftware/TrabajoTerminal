@@ -64,7 +64,7 @@ informar sobre la situación actual para la generación deñ calendario
           </div>
       </div>
     </div>
-   <div class="General">
+    <div class="General">
 
      <h1> Lista de Profesores:  </h1>
      <table>

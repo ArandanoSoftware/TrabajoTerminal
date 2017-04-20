@@ -19,9 +19,9 @@
       <!--Lista de Profesores -->
 
 
-      <!-- <action name="home" class="com.struts.controllers.ProfesorController" method="execute">
+      <action name="home" class="com.struts.controllers.ProfesorController" method="execute">
         <result>/views/general/home.jsp</result>
-      </action> -->
+      </action>
 
 
       <!--Redirect Actions-->

@@ -42,8 +42,10 @@ public class ProfesorController  extends ActionSupport {
   @Override
   public String execute() throws Exception
   {
-      // this.op = new  ProfesorBs();
-      // this.prof= this.op.findById(3);
+      this.op = new  ProfesorBs();
+      this.prof= this.op.findById(123);
+      this.name=prof.getNombre();
+      
       //call Service class to store personBean's state in database
       return SUCCESS;
   }
