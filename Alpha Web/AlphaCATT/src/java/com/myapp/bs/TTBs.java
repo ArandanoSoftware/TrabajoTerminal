@@ -43,6 +43,13 @@ public class TTBs {
         return tt;
     }
     
+    public static List<Tt> findAllTTR()
+    {
+        TTDao ttDao = new TTDao();
+        List<Tt> tt = ttDao.findAllTTR();
+        return tt;
+    }
+    
     public static void save(Tt tt)
     {
         TTDao ttDao = new TTDao();

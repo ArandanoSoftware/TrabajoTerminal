@@ -80,6 +80,14 @@ public class TTDao {
         return tt;
     }
     
+    public List<Tt> findAllTTR()
+    {   
+        Transaction tx = session.beginTransaction();
+        List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).add(Restrictions.eq("nivel", 3)).list();
+        tx.commit();
+        return tt;
+    }
+    
     
     public void close()
     {

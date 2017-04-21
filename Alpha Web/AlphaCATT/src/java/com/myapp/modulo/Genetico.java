@@ -16,7 +16,6 @@ import com.myapp.model.Tt;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Random;
@@ -32,21 +31,25 @@ public class Genetico {
     public static int ceros;
     public static int dos;
     public static int salasCal;
-    public static Date inicioCal;
-    public static Date interCal;
-    public static Date finCal;
+    public static Date inicioCal = new Date();
+    public static Date interCal = new Date();
+    public static Date finCal = new Date();
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
         int rango = difFecha(fin, inicio)/2;
         salasCal = salas;
-        inicioCal = inicio;
-        finCal = fin;
+        inicioCal.setDate(inicio.getDate());
+        inicioCal.setMonth(inicio.getMonth());
+        finCal.setDate(fin.getDate());
+        finCal.setMonth(fin.getMonth());
         Date fecha = new Date();
         fecha.setMonth(inicio.getMonth());
         fecha.setDate(inicio.getDate() + rango);
-        interCal = fecha;
+        
+        interCal.setDate(fecha.getDate());
+        interCal.setMonth(fecha.getMonth());
         List<Tt> tts = new ArrayList(tt);
 //        for(int i = 0; i < tt.size(); i++)
 //        {
@@ -85,32 +88,37 @@ public class Genetico {
             }
         }
         
+        System.out.println("eta esta estaEsta es fecha inicio: "+ inicioCal + " Esta es fecha fin: " + finCal + "Esta es la fecha lim " + interCal);
         return poblacion;
     }
     
     public static List<Cromosoma> crearPoblacionTT2(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
-        Random random = new Random();
-        Set<Integer> dias = new HashSet();
+        System.out.println("Esta es fecha inicio: "+ inicio + " Esta es fecha fin: " + fin);
+        //Random random = new Random();
+        //Set<Integer> dias = new HashSet();
         Date fecha = new Date();
-        int rango = difFecha(fin, inicio)/2;
+        int rango = difFecha(finCal, inicio)/2;
+        System.out.println("este es el rango" + rango);
         inicio.setDate(inicio.getDate() + rango + 1);
-        fecha.setDate(inicio.getDate());
+        System.out.println("esta es la nueva fecha: " + inicio);
         fecha.setMonth(inicio.getMonth());
-        int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
-        System.out.println("ttxdia = " + ttxdia);
-        while(dias.size() != (tt.size()/ttxdia))
-        {
-            int diaR = random.nextInt(rango + 1) + inicio.getDate();
-            fecha.setMonth(inicio.getMonth());
-            fecha.setDate(diaR);
-            if(fecha.getDay() != 0 && fecha.getDay() != 6)
-                dias.add(diaR);
-        }
+        fecha.setDate(inicio.getDate());
+        //int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
+        //System.out.println("ttxdia = " + ttxdia);
+//        while(dias.size() != (tt.size()/ttxdia))
+//        {
+//            int diaR = random.nextInt(rango + 1) + inicio.getDate();
+//            fecha.setMonth(inicio.getMonth());
+//            fecha.setDate(diaR);
+//            if(fecha.getDay() != 0 && fecha.getDay() != 6)
+//                dias.add(diaR);
+//        }
         
         //List<Integer> diaR = new ArrayList(dias);
         List<Tt> tts = new ArrayList(tt);
+        System.out.println("Esta es fecha inicio: "+ inicioCal + " Esta es fecha fin: "+ finCal + "Esta es la fecha lim + " + interCal);
         /*for(int i = 0; i < tt.size(); i++)
         {
             Cromosoma cromosoma = new Cromosoma();

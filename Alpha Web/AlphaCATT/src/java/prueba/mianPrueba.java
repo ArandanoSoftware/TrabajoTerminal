@@ -202,6 +202,7 @@ public class mianPrueba {
             System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
         }
         
+        System.out.println("fecha fin: " + fin);
         //LeerExcel.inportaExcel(cal, 1);
         
         
@@ -335,6 +336,8 @@ public class mianPrueba {
         restricciones.addAll(restriccionGen17.getRestricciones());
         restricciones.addAll(restriccionGen18.getRestricciones());
         restricciones.addAll(restriccionGen19.getRestricciones());
+        
+        System.out.println("fecha fin: " + fin);
         System.out.println(tt1s.size());
         
         Genetico.nel = Genetico.aptitudGneral(poblacion, restricciones);
@@ -369,6 +372,54 @@ public class mianPrueba {
         {
             System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
         }
+        
+        //a partir de aqui empiezan los tt2
+        mayor = 0;
+        System.out.println("\nahora vienen los tt2\n");
+        
+        Set<Tt> tt2s = new HashSet(TTBs.findAllTT2());
+        List<Cromosoma> poblaciontt2;
+        System.out.println("fecha fin: " + fin);
+        poblaciontt2 = Genetico.crearPoblacionTT2(inicio, fin, tt2s, SalaBs.findAll().size());
+        
+        List<Calendario> caltt2 = Genetico.crearCalendario(poblaciontt2);
+        
+        for(int i = 0; i < caltt2.size(); i++)
+        {
+            System.out.println("TT: " + caltt2.get(i).getTt().getIdTt()+ " Fecha: " + caltt2.get(i).getFecha() + " en la sala: " + caltt2.get(i).getSala().getIdSala());
+        }
+        
+        
+        
+        
+        
+        
+        j = 0;
+        Genetico.nel = true;
+        while(Genetico.nel)
+        {
+            System.out.print("\niteracion " + j + "\t");
+            //el uno es de que son tt1
+            poblaciontt2 = Genetico.generaNuevaGen(poblaciontt2,restricciones,1);
+            if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblaciontt2.size());
+            j++;
+            //System.out.println("");
+        }
+        System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
+        
+        caltt2 = Genetico.crearCalendario(poblaciontt2);
+        
+        for(int i = 0; i < caltt2.size(); i++)
+        {
+            System.out.println("TT: " + caltt2.get(i).getTt().getIdTt()+ " Fecha: " + caltt2.get(i).getFecha() + " en la sala: " + caltt2.get(i).getSala().getIdSala());
+        }
+        
+        
+        
+        
+        
+        
         
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
