@@ -19,6 +19,8 @@ de trabajo terminal
     <%--Javascript--%>
     <script type="text/javascript" src="../../js/master.js"></script>
     <script type="text/javascript" src="../../js/jspdf.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="../../js/html2canvas.js"></script>
     <script type="text/javascript" src="../../js/calendarioGeneral.js"></script>
     <title>Calendario general de Trabajos Terminales</title>
   </head>
@@ -76,20 +78,25 @@ de trabajo terminal
       Este calendario muestra todas  las presentaciones de trabajo terminal
       calendarizadas.
     </p>
+    <br>
+      <button onclick="Save()"> Guardar Calendario </button>
+
   </div>
-  <button onclick="demoFromHTML()">Click me</button>
-  <a href="javascript:demoFromHTML()" class="button"> Run Code </a>
-  <div id="content">
-      <h1>
-          Prueba de PDF
-      </h1>
-  </div>
+  <%--Java script Code--%>
   <script>
-    function demoFromHTML() {
+        function Save(){
+          var pdf = new jsPDF('p', 'pt', 'letter');
+          pdf.addHTML($('#calendar-zone')[0], function () {
+          pdf.save('Test.pdf');
+          });
+        }
+
+        function SaveFromHTML() {
         var pdf = new jsPDF('p', 'pt', 'letter');
         // source can be HTML-formatted string, or a reference
         // to an actual DOM element from which the text will be scraped.
-        source = $('#content')[0];
+        //source = myImage;
+        source = $('#calendar-zone')[0];
 
         // we support special element handlers. Register them with jQuery-style
         // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
@@ -121,7 +128,7 @@ de trabajo terminal
             function (dispose) {
                 // dispose: object with X, Y of the last line add to the PDF
                 //          this allow the insertion of new lines after html
-                pdf.save('Test.pdf');
+                pdf.save('Calendario.pdf');
             }, margins
         );
     }
