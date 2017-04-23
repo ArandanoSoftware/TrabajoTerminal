@@ -50,10 +50,17 @@ public class Email {
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
-        props.put("mail.user", usuario);
-        props.put("mail.password", password);
+        //props.setProperty("mail.user", usuario);
+        //props.setProperty("mail.password", password);
+        System.out.println("si entramos aqui? " + this.password);
         
-        session = Session.getDefaultInstance(props);
+        session = Session.getDefaultInstance(props, new javax.mail.Authenticator()
+        {
+            protected PasswordAuthentication getPasswordAuthenticator()
+            {
+                return new PasswordAuthentication(usuario, password);
+            }
+        });
     }    
     public Email(String user, String password)
     {
@@ -66,7 +73,8 @@ public class Email {
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.port", "465");
         props.put("mail.user", usuario);
-        props.put("mail.password", password);
+        props.put("mail.password", this.password);
+        
         
         session = Session.getDefaultInstance(props);
     }
@@ -92,10 +100,13 @@ public class Email {
             
             mensaje.setContent(multiparte);
             
-            Transport.send(mensaje);
+            Transport transport = session.getTransport("smtp");
+            transport.connect("smtp.gmail.com" , 465 , usuario, password);
+            transport.send(mensaje);
             System.out.println("mensaje enviado =)");
         }catch(MessagingException e)
         {
+            e.printStackTrace();
         }
     }
 }

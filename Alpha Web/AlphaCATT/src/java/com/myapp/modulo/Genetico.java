@@ -68,7 +68,7 @@ public class Genetico {
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
-            for(int j = 0; j < rango; j++)
+            for(int j = 0; j < rango-1; j++)
             {
                 for(int k = 1; k < 4; k++)
                 {
@@ -101,7 +101,7 @@ public class Genetico {
         Date fecha = new Date();
         int rango = difFecha(finCal, inicio)/2;
         System.out.println("este es el rango" + rango);
-        inicio.setDate(inicio.getDate() + rango + 1);
+        inicio.setDate(inicio.getDate() + rango);
         System.out.println("esta es la nueva fecha: " + inicio);
         fecha.setMonth(inicio.getMonth());
         fecha.setDate(inicio.getDate());
@@ -135,7 +135,7 @@ public class Genetico {
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
-            for(int j = 0; j < rango; j++)
+            for(int j = 0; j <= rango; j++)
             {
                 for(int k = 1; k < 4; k++)
                 {
