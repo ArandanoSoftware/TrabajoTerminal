@@ -246,6 +246,6 @@ public class LeerExcel {
             FileOutputStream file = new FileOutputStream("../calendar2.xls");
             workbook.write(file);
             file.close();
-        }catch(Exception e){}
+        }catch(IOException e){}
     }
 }

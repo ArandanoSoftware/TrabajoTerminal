@@ -19,6 +19,7 @@ import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
 import com.myapp.model.Sala;
 import com.myapp.model.Tt;
+import com.myapp.modulo.Email;
 import com.myapp.modulo.Genetico;
 import static com.myapp.modulo.Genetico.crearPoblacionTT1;
 import java.util.List;
@@ -421,6 +422,10 @@ public class mianPrueba {
         
         
         
+        poblacion.addAll(poblaciontt2);
+        LeerExcel.inportaExcel(caltt2, 4);
+        Email mail = new Email();
+        mail.enviar("hazzy76@hotmail.com");
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó !!!!! en " + tiempo/1000);
