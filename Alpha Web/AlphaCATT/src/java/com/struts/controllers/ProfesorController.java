@@ -1,35 +1,28 @@
 
 package com.struts.controllers;
-
 import com.opensymphony.xwork2.ActionSupport;
-import java.util.List;
+import java.util.ArrayList;
 
 import com.myapp.model.Profesor;
-import com.myapp.bs.ProfesorBs;
+import com.struts.operaciones.ProfesoresOperaciones;
 
 public class ProfesorController  extends ActionSupport {
+    
+    private static final long serialVersionUID = 1L;
 
-    private List<Profesor> datos;
-    private String name;
-    private ProfesorBs op;
+    private ArrayList<Profesor> datos;
+    
+    private ProfesoresOperaciones ProfOP;
     private Profesor prof;
 
-    public List<Profesor> getDatos() {
-        return datos;
+    public ProfesoresOperaciones getProfOP() {
+        return ProfOP;
     }
 
-    public void setDatos(List<Profesor> datos) {
-        this.datos = datos;
+    public void setProfOP(ProfesoresOperaciones ProfOP) {
+        this.ProfOP = ProfOP;
     }
-
-    public ProfesorBs getOp() {
-        return op;
-    }
-
-    public void setOp(ProfesorBs op) {
-        this.op = op;
-    }
-
+    
     public Profesor getProf() {
         return prof;
     }
@@ -39,15 +32,20 @@ public class ProfesorController  extends ActionSupport {
     }
 
 
+ 
+
+
   @Override
   public String execute() throws Exception
   {
-      this.op = new  ProfesorBs();
-      this.prof= this.op.findById(123);
-      this.name=prof.getNombre();
-      
-      //call Service class to store personBean's state in database
-      return SUCCESS;
+          return SUCCESS;
   }
+
+  public String profs() throws Exception
+    {
+        this.ProfOP = new ProfesoresOperaciones();
+        this.datos = ProfOP.getUsuarios();
+        return SUCCESS;
+    }
 
 }

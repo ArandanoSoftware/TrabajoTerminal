@@ -16,25 +16,28 @@
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
 
-      <!--Lista de Profesores -->
 
 
-      <action name="home" class="com.struts.controllers.ProfesorController" method="execute">
-        <result>/views/general/home.jsp</result>
+
+      <action name="home" class="com.struts.controllers.HomeController" method="execute">
+        <result>/home.jsp</result>
+      </action>
+
+      <!--Profesores-->
+      <action name="rprof" class="com.struts.controllers.ProfesorController" method="profs">
+        <result>views/forms/regProf.jsp</result>
+      </action>
+
+      <action name="gprof" class="com.struts.controllers.ProfesorController" method="profs">
+        <result>views/queries/queryProf.jsp</result>
+      </action>
+
+      <!--Trabajos Terminales-->
+      <action name="rtt" class="com.struts.controllers.HomeController" method="execute">
+        <result>views/forms/regTT.jsp</result>
       </action>
 
 
-      <!--Redirect Actions-->
 
-
-      <action name="regProf">
-        <result type="redirect">/views/forms/regProf.jsp</result>
-      </action>
-      <action name="regTT">
-        <result type="redirect">/views/forms/regTT.jsp</result>
-      </action>
-      <action name="regSalas">
-        <result type="redirect">/views/forms/regSalas.jsp</result>
-      </action>
   </package>
 </struts>
