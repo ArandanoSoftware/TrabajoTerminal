@@ -543,10 +543,14 @@ public class Genetico {
         {
             hijos[0].getGen1().setDia(padre1.getGen1().getDia());
             hijos[1].getGen1().setDia(padre2.getGen1().getDia());
+            hijos[0].getGen1().setMes(padre1.getGen1().getMes());
+            hijos[1].getGen1().setMes(padre2.getGen1().getMes());
         }else
         {
             hijos[0].getGen1().setDia(padre2.getGen1().getDia());
             hijos[1].getGen1().setDia(padre1.getGen1().getDia());
+            hijos[0].getGen1().setMes(padre2.getGen1().getMes());
+            hijos[1].getGen1().setMes(padre1.getGen1().getMes());
         }
         if(mascara[1])
         {
@@ -559,12 +563,8 @@ public class Genetico {
         }
         if(mascara[2])
         {
-            hijos[0].getGen1().setMes(padre1.getGen1().getMes());
-            hijos[1].getGen1().setMes(padre2.getGen1().getMes());
         }else
         {
-            hijos[0].getGen1().setMes(padre2.getGen1().getMes());
-            hijos[1].getGen1().setMes(padre1.getGen1().getMes());
         }
         if(mascara[3])
         {

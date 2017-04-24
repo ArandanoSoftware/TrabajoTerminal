@@ -423,9 +423,9 @@ public class mianPrueba {
         
         
         poblacion.addAll(poblaciontt2);
-        
+////        
         List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion, 1);
-        for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
+////        for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
         LeerExcel.inportaExcel(calDefinitivo, 2);
         
 ////        Email mail = new Email();
