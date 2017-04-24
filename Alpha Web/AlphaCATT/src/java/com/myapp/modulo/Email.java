@@ -77,7 +77,7 @@ public class Email {
         session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(usuario,password);
+                        return new PasswordAuthentication(usuario, password);
                     }
                 });
     }
@@ -135,7 +135,7 @@ public class Email {
             String archivo = "../calendar2.xls";
             DataSource fuente = new FileDataSource(archivo);
             cuerpoMensaje.setDataHandler(new DataHandler(fuente));
-            cuerpoMensaje.setFileName("calensario");
+            cuerpoMensaje.setFileName("calensario1.xls");
             multiparte.addBodyPart(cuerpoMensaje);
             
             mensaje.setContent(multiparte);

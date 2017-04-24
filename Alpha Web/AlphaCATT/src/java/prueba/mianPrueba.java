@@ -423,7 +423,10 @@ public class mianPrueba {
         
         
         poblacion.addAll(poblaciontt2);
-        LeerExcel.inportaExcel(caltt2, 4);
+        
+        List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion);
+        
+        LeerExcel.inportaExcel(calDefinitivo, 2);
         
         Email mail = new Email();
 //        mail.enviar("hazzy76@hotmail.com");
