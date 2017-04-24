@@ -44,6 +44,12 @@
       <action name="qtt" class="com.struts.controllers.TTController" method="tts">
         <result>views/queries/queryTT.jsp</result>
       </action>
+      <!-- Borrar Trabajo Terminal -->
+      <action name="dTt" class="com.struts.controllers.TTController" method="deleteTt">
+        <result type="redirectAction">
+            <param name="actionName">qtt</param>
+        </result>
+      </action>
 
       <!-- Salas -->
       <!-- Registro de Salas  -->
@@ -54,8 +60,12 @@
       <action name="qsalas" class="com.struts.controllers.SalaController" method="salas">
         <result>views/queries/querySala.jsp</result>
       </action>
-
-
+      <!-- Borrar Sala -->
+      <action name="dsala" class="com.struts.controllers.SalaController" method="deleteSala">
+        <result type="redirectAction">
+            <param name="actionName">qsalas</param>
+        </result>
+      </action>
 
   </package>
 </struts>

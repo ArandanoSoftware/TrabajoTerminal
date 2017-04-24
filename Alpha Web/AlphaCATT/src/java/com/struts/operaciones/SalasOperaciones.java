@@ -16,7 +16,7 @@ import com.myapp.model.Sala;
 
 public class SalasOperaciones {
     
-    public ArrayList<Sala> getUsuarios()
+    public ArrayList<Sala> getSalas()
     {
         SessionFactory sesion=HibernateUtil.getSessionFactory();
         Session session = sesion.openSession();
@@ -40,5 +40,19 @@ public class SalasOperaciones {
         return arreglo;
 
     }
+    
+    public void deleteSala(int id)
+     {
+        SessionFactory factory=HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        
+        // Magic here
+        Sala sala=(Sala)session.get(Sala.class, id);
+        session.delete(sala);
+
+        tx.commit();
+        session.close();
+     }
     
 }

@@ -18,6 +18,16 @@ public class SalaController extends ActionSupport{
     private SalasOperaciones SalasOP;
     private Sala Sala;
 
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
      public ArrayList<Sala> getDatos() {
         return datos;
     }
@@ -42,11 +52,24 @@ public class SalaController extends ActionSupport{
         this.Sala = Sala;
     }
 
+    public String execute() throws Exception
+    {
+        //call Service class to store personBean's state in database
+        return SUCCESS;
+    }
+
     public String salas() throws Exception
     {
         this.SalasOP = new SalasOperaciones();
-        this.datos = SalasOP.getUsuarios();
+        this.datos = SalasOP.getSalas();
         return SUCCESS;
+    }
+
+     public String deleteSala()
+    {
+         this.SalasOP = new SalasOperaciones();
+         this.SalasOP.deleteSala(id);
+         return SUCCESS;
     }
 
 

@@ -90,6 +90,12 @@ Trabajo Terminal - Ta
               <tr>
                   <td><s:property value="idSala"/> </td>
                   <td><s:property value="nombre"/> </td>
+                  <td>
+                    <s:a action="dsala">
+                    <s:param name="id" value="idSala" />
+                    <i class="material-icons">delete</i> 
+                    </s:a>
+                  </td>
               </tr>
           </s:iterator>
       </tbody>

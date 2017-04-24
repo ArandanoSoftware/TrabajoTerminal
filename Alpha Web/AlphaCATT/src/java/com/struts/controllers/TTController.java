@@ -11,6 +11,16 @@ public class TTController  extends ActionSupport {
 
     private TTOperaciones ttOP;
     private Tt tt;
+    
+    private String  id;
+
+    public String  getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
      public ArrayList<Tt> getDatos() {
         return datos;
@@ -36,11 +46,19 @@ public class TTController  extends ActionSupport {
         this.tt = tt;
     }
 
-     public String tts() throws Exception
+    public String tts() throws Exception
     {
         this.ttOP = new TTOperaciones();
         this.datos = ttOP.getTts();
         return SUCCESS;
+    }
+
+
+    public String deleteTt()
+    {
+         this.ttOP = new TTOperaciones();
+         this.ttOP.deleteTt(id);
+         return SUCCESS;
     }
 
 

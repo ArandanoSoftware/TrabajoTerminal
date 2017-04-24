@@ -44,4 +44,18 @@ public class TTOperaciones {
         return arreglo;
 
     }
+    
+    public void deleteTt(String id)
+     {
+        SessionFactory factory=HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+        
+        // Magic here
+        Tt tt=(Tt)session.get(Tt.class, id);
+        session.delete(tt);
+
+        tx.commit();
+        session.close();
+     }
 }

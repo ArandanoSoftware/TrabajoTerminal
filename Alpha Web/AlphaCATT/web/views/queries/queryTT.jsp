@@ -75,7 +75,7 @@ Trabajo Terminal - Pagina ver los TT registrados
     <hr />
     <h3>Instrucciones:</h3>
     <p>
-      En este listado se muestran todos los Trabajos Terminales que estan registrados para 
+      En este listado se muestran todos los Trabajos Terminales que estan registrados para
       presentación
     </p>
 
@@ -86,6 +86,7 @@ Trabajo Terminal - Pagina ver los TT registrados
               <th>ID: </th>
               <th>Nombre: </th>
               <th>Nivel del Trabajo Terminal: </th>
+              <th>Acciones:</th>
               </thead>
       <tbody>
           <s:iterator value="datos" var="dato" status="estado">
@@ -93,6 +94,12 @@ Trabajo Terminal - Pagina ver los TT registrados
                   <td><s:property value="idTt"/> </td>
                   <td><s:property value="nombre"/> </td>
                   <td><s:property value="nivel"/> </td>
+                  <td>
+                    <s:a action="dTt">
+                    <s:param name="id" value="idTt" />
+                    <i class="material-icons">delete</i>
+                    </s:a>
+                  </td>
               </tr>
           </s:iterator>
       </tbody>
