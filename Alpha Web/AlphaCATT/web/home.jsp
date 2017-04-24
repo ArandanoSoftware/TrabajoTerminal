@@ -54,7 +54,7 @@ informar sobre la situación actual para la generación deñ calendario
         <button class="dropbtn">Salas</button>
           <div class="dropdown-content">
             <s:a action="rsalas" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Salas</s:a>
+            <s:a action="qsalas" forceAddSchemeHostAndPort="true">Gestión de Salas</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Salas</s:a>
           </div>
       </div>
