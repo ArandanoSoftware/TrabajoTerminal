@@ -35,6 +35,7 @@ public class Genetico {
     public static Date inicioCal = new Date();
     public static Date interCal = new Date();
     public static Date finCal = new Date();
+    public static List<Date> noHabil = new ArrayList<>();
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
@@ -69,7 +70,7 @@ public class Genetico {
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
-            for(int j = 0; j < rango-1; j++)
+            for(int j = 0; j < rango; j++)
             {
                 for(int k = 1; k < 4; k++)
                 {
@@ -77,7 +78,7 @@ public class Genetico {
                     Cromosoma cromosoma = new Cromosoma();
                     fecha.setMonth(inicio.getMonth());
                     fecha.setDate(inicio.getDate() + j);
-                    if(fecha.getDay() == 0 || fecha.getDay() == 6)break;
+                    if(fecha.getDay() == 0 || fecha.getDay() == 6 || !habil(fecha))break;
                     cromosoma.getGen1().setDia(getBinDay(fecha));
                     cromosoma.getGen1().setMes(getBinMonth(fecha));
                     cromosoma.getGen1().setHora(getBinHorario(k));
@@ -136,7 +137,7 @@ public class Genetico {
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
-            for(int j = 0; j <= rango; j++)
+            for(int j = 1; j <= rango; j++)
             {
                 for(int k = 1; k < 4; k++)
                 {
@@ -144,7 +145,7 @@ public class Genetico {
                     Cromosoma cromosoma = new Cromosoma();
                     fecha.setMonth(inicio.getMonth());
                     fecha.setDate(inicio.getDate() + j);
-                    if(fecha.getDay() == 0 || fecha.getDay() == 6)break;
+                    if(fecha.getDay() == 0 || fecha.getDay() == 6 || !habil(fecha))break;
                     cromosoma.getGen1().setDia(getBinDay(fecha));
                     cromosoma.getGen1().setMes(getBinMonth(fecha));
                     cromosoma.getGen1().setHora(getBinHorario(k));
@@ -680,7 +681,7 @@ public class Genetico {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-            if(difFecha(interCal, fecha) >= 0)
+            if(difFecha(interCal, fecha) >= 0 && fecha.getDay() != 0 && fecha.getDay() != 6 && !habil(fecha))
             {
                 if(random.nextInt(100) < 8)
                 {
@@ -695,7 +696,7 @@ public class Genetico {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-            if(difFecha(finCal, fecha) >= 0)
+            if(difFecha(finCal, fecha) >= 0 && fecha.getDay() != 0 && fecha.getDay() != 6 && !habil(fecha))
             {
                 if(random.nextInt(100) < 8)
                 {
@@ -705,6 +706,18 @@ public class Genetico {
             }
         }
         return individuo;
+    }
+    
+    protected static boolean habil(Date dia)
+    {
+        for(int i = 0; i < noHabil.size(); i++)
+        {
+            if(dia.getDate() == noHabil.get(i).getDate() && dia.getMonth() == noHabil.get(i).getMonth())
+            {
+                return false;
+            }
+        }
+        return true;
     }
     
 }

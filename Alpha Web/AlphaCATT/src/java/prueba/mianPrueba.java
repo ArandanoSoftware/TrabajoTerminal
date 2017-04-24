@@ -58,6 +58,23 @@ public class mianPrueba {
         lista2.add(1);
         lista3.addAll(lista1);
         lista3.addAll(lista2);
+                
+        Date fes = new Date();
+        fes.setMonth(4);
+        fes.setDate(1);
+        Genetico.noHabil.add(fes);
+        fes = new Date();
+        fes.setMonth(4);
+        fes.setDate(5);
+        Genetico.noHabil.add(fes);
+        fes = new Date();
+        fes.setMonth(4);
+        fes.setDate(10);
+        Genetico.noHabil.add(fes);
+        fes = new Date();
+        fes.setMonth(4);
+        fes.setDate(15);
+        Genetico.noHabil.add(fes);
         for(int i = 0; i < lista3.size(); i++)
             System.out.println(lista3.get(i));
 //        List<Sala> salas;
