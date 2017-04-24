@@ -401,7 +401,7 @@ public class mianPrueba {
         {
             System.out.print("\niteracion " + j + "\t");
             //el uno es de que son tt1
-            poblaciontt2 = Genetico.generaNuevaGen(poblaciontt2,restricciones,1);
+            poblaciontt2 = Genetico.generaNuevaGen(poblaciontt2,restricciones,2);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
             System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblaciontt2.size());
             j++;

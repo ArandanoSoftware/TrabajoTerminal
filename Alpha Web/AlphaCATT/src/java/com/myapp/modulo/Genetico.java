@@ -677,7 +677,7 @@ public class Genetico {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-                if(difFecha(interCal, fecha) >= 0)
+            if(difFecha(interCal, fecha) >= 0)
             {
                 if(random.nextInt(100) < 8)
                 {
@@ -686,13 +686,21 @@ public class Genetico {
                 }
             }
         }else if(tt == 2)if(difFecha(finCal, fecha) >= 0)
+        {
+            if(random.nextInt(100) < 10)
             {
-                if(random.nextInt(100) < -1)
+                System.out.print("s");
+                individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
+            }
+            if(difFecha(finCal, fecha) >= 0)
+            {
+                if(random.nextInt(100) < 8)
                 {
                     System.out.print("x");
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
             }
+        }
         return individuo;
     }
     
