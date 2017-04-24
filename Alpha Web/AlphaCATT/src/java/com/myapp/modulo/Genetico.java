@@ -8,6 +8,7 @@ package com.myapp.modulo;
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
 import com.myapp.algoritmo.Restriccion;
+import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
 import com.myapp.model.Horario;
 import com.myapp.model.Profesor;
@@ -219,10 +220,11 @@ public class Genetico {
         for(int i = 0; i < poblacion.size(); i++)
         {
             Calendario vale = new Calendario();
+            List<Tt> tts = TTBs.findAll();
             Tt titi = new Tt();
+            for(int j = 0; j < tts.size(); j++) if(tts.get(j).getIdTt().equals(poblacion.get(i).getGen2().getTt()))titi = tts.get(j);
             Sala sala = new Sala();
             Date fecha = getDateC(poblacion.get(i));
-            titi.setIdTt(poblacion.get(i).getGen2().getTt());
             sala.setIdSala(binToInt(poblacion.get(i).getGen1().getSala()));
             vale.setFecha(fecha);
             vale.setTt(titi);

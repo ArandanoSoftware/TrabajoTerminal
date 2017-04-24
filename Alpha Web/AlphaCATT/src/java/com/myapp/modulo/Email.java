@@ -5,10 +5,12 @@
  */
 package com.myapp.modulo;
 
+import java.util.List;
 import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
+import javax.mail.Address;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -45,45 +47,39 @@ public class Email {
         usuario = "hazzy76@gmail.com";
         password = "esperansa";
         props = new Properties();
-        props.put("mail.smtp.host" , "smtp.gmail.com");
-        props.put("mail.stmp.user" , "username");
-
-        //To use TLS
-        props.put("mail.smtp.auth", "true"); 
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.password", password);
-        //To use SSL
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465");
-        //props.setProperty("mail.user", usuario);
-        //props.setProperty("mail.password", password);
-        System.out.println("si entramos aqui? " + this.password);
-        
-        session = Session.getDefaultInstance(props, new javax.mail.Authenticator()
-        {
-            protected PasswordAuthentication getPasswordAuthenticator()
-            {
-                return new PasswordAuthentication(usuario, password);
-            }
-        });
-    }    
-    public Email(String user, String password)
-    {
-        this.usuario = user;
-        this.password = password;
-        props = new Properties();
-        props.put("mail.smtp.host","smtp.gmail.com");
+        //props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "465");
-        props.put("mail.user", usuario);
-        props.put("mail.password", this.password);
-        
-        
-        session = Session.getDefaultInstance(props);
+ 
+        session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(usuario, password);
+                    }
+                });
+
+    }    
+    public Email(String user, String pass)
+    {
+        this.usuario = user;
+        this.password = pass;
+        props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        //props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "465");
+ 
+        session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(usuario,password);
+                    }
+                });
     }
     
     public void enviar(String destinatario)
@@ -91,13 +87,15 @@ public class Email {
         try
         {
             MimeMessage mensaje = new MimeMessage(session);
-            mensaje.setFrom(new InternetAddress(usuario));
-            mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
-            mensaje.setSubject("EL CALENDARIO =D");
+            mensaje.setFrom(new InternetAddress("hazzy76@gmail.com"));
+            mensaje.addRecipient(Message.RecipientType.TO, new InternetAddress("hazzy76@hotmail.com"));
+            mensaje.setSubject("EL CALENDARIO =D si se can");
+            
             BodyPart cuerpoMensaje = new MimeBodyPart();
-            cuerpoMensaje.setText("este es un mensaje que te envia el calendario, puto");
+            cuerpoMensaje.setText("te notifico que hoy tenemos que ver a nayely =S\n\n\n aquí debe haber un calendario\n\n\n y... puto\n\n\n tambien me parece que hay forma de meter html en el cuerpo del correo, algo así: mensaje.setContent(\"<h1>El mensaje de nuestro primer correo HTML</h1>\",\"text/html\" );\n\n\nno lo he intentado pero por si se ocupa mmmm... puto xD");
             Multipart multiparte = new MimeMultipart();
             multiparte.addBodyPart(cuerpoMensaje);
+            
             cuerpoMensaje = new MimeBodyPart();
             String archivo = "../calendar2.xls";
             DataSource fuente = new FileDataSource(archivo);
@@ -107,13 +105,46 @@ public class Email {
             
             mensaje.setContent(multiparte);
             
-            Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com" , 465 , usuario, password);
-            transport.send(mensaje);
+            Transport.send(mensaje);
             System.out.println("mensaje enviado =)");
         }catch(MessagingException e)
         {
-            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void enviar(List<String> dest)
+    {
+        try
+        {
+            MimeMessage mensaje = new MimeMessage(session);
+            mensaje.setFrom(new InternetAddress(usuario));
+            Address []destinos = new Address[dest.size()];//Aqui usamos el arreglo de destinatarios
+            for(int i=0;i<destinos.length;i++){
+                destinos[i]=new InternetAddress(dest.get(i));
+            }
+            mensaje.addRecipients(Message.RecipientType.TO, destinos);
+            mensaje.setSubject("EL CALENDARIO =D si se can");
+            
+            BodyPart cuerpoMensaje = new MimeBodyPart();
+            cuerpoMensaje.setText("te notifico que hoy tenemos que ver a nayely =S\n\n\n aquí debe haber un calendario\n\n\n y... puto\n\n\n tambien me parece que hay forma de meter html en el cuerpo del correo, algo así: mensaje.setContent(\"<h1>El mensaje de nuestro primer correo HTML</h1>\",\"text/html\" );\n\n\nno lo he intentado pero por si se ocupa mmmm... puto xD");
+            Multipart multiparte = new MimeMultipart();
+            multiparte.addBodyPart(cuerpoMensaje);
+            
+            cuerpoMensaje = new MimeBodyPart();
+            String archivo = "../calendar2.xls";
+            DataSource fuente = new FileDataSource(archivo);
+            cuerpoMensaje.setDataHandler(new DataHandler(fuente));
+            cuerpoMensaje.setFileName("calensario");
+            multiparte.addBodyPart(cuerpoMensaje);
+            
+            mensaje.setContent(multiparte);
+            
+            Transport.send(mensaje);
+            System.out.println("mensaje enviado =)");
+        }catch(MessagingException e)
+        {
+            throw new RuntimeException(e);
         }
     }
 }

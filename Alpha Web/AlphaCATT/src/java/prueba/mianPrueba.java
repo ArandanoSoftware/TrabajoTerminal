@@ -424,8 +424,14 @@ public class mianPrueba {
         
         poblacion.addAll(poblaciontt2);
         LeerExcel.inportaExcel(caltt2, 4);
+        
         Email mail = new Email();
-        mail.enviar("hazzy76@hotmail.com");
+//        mail.enviar("hazzy76@hotmail.com");
+        List<String> destinos = new ArrayList<>();
+        destinos.add("hazzy76@hotmail.com");
+        destinos.add("robonline7@gmail.com");
+        mail.enviar(destinos);
+        
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó !!!!! en " + tiempo/1000);
