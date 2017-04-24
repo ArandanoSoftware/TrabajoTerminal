@@ -16,28 +16,28 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import com.myapp.model.Profesor;
+import com.myapp.model.Tt;
 
-public class ProfesoresOperaciones {
+public class TTOperaciones {
 
-    public ArrayList<Profesor> getUsuarios()
+    public ArrayList<Tt> getTts()
     {
         SessionFactory sesion=HibernateUtil.getSessionFactory();
         Session session = sesion.openSession();
         Transaction tx=session.beginTransaction();
             //acá hacemos la magia
-                ArrayList<Profesor> arreglo = new ArrayList<Profesor>();
+                ArrayList<Tt> arreglo = new ArrayList<Tt>();
                 Query q;
-                q = session.createQuery("from Profesor");
-                List<Profesor> lista=q.list();
-                Iterator<Profesor> iter= lista.iterator();
+                q = session.createQuery("from Tt");
+                List<Tt> lista=q.list();
+                Iterator<Tt> iter= lista.iterator();
             //acá termina la magia
         tx.commit();
         session.close();
         //acá ya terminados todo y solo tomamos la lista y la pasamos a una arraylist
         while(iter.hasNext())
         {
-            Profesor noti = (Profesor) iter.next();
+            Tt noti = (Tt) iter.next();
             arreglo.add(noti);
         }
 

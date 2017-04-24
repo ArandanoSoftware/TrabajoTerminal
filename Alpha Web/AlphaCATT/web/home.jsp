@@ -38,7 +38,7 @@ informar sobre la situación actual para la generación deñ calendario
         <button class="dropbtn">Profesores</button>
           <div class="dropdown-content">
             <s:a action="rprof" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
-            <s:a action="gprof" forceAddSchemeHostAndPort="true">Gestión de Profesores</s:a>
+            <s:a action="qprof" forceAddSchemeHostAndPort="true">Gestión de Profesores</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
           </div>
       </div>
@@ -46,14 +46,14 @@ informar sobre la situación actual para la generación deñ calendario
         <button class="dropbtn">Trabajos Terminales</button>
           <div class="dropdown-content">
             <s:a action="rtt" forceAddSchemeHostAndPort="true">Registro de Trabajos Terminales</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Trabajos Terminales</s:a>
+            <s:a action="qtt" forceAddSchemeHostAndPort="true">Gestión de Trabajos Terminales</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Trabajos Terminales</s:a>
           </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn">Salas</button>
           <div class="dropdown-content">
-            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
+            <s:a action="rsalas" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Salas</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Salas</s:a>
           </div>

@@ -11,9 +11,16 @@ public class ProfesorController  extends ActionSupport {
     private static final long serialVersionUID = 1L;
 
     private ArrayList<Profesor> datos;
-    
     private ProfesoresOperaciones ProfOP;
     private Profesor prof;
+    
+     public ArrayList<Profesor> getDatos() {
+        return datos;
+    }
+
+    public void setDatos(ArrayList<Profesor> datos) {
+        this.datos = datos;
+    }
 
     public ProfesoresOperaciones getProfOP() {
         return ProfOP;

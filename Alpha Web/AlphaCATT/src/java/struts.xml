@@ -18,23 +18,37 @@
 
 
 
-
+      <!-- Login -->
       <action name="home" class="com.struts.controllers.HomeController" method="execute">
         <result>/home.jsp</result>
       </action>
 
       <!--Profesores-->
-      <action name="rprof" class="com.struts.controllers.ProfesorController" method="profs">
+
+      <!--Registro de Profesores-->
+      <action name="rprof" class="com.struts.controllers.ProfesorController" method="execute">
         <result>views/forms/regProf.jsp</result>
       </action>
-
-      <action name="gprof" class="com.struts.controllers.ProfesorController" method="profs">
+      <!--Consulta de Profesores-->
+      <action name="qprof" class="com.struts.controllers.ProfesorController" method="profs">
         <result>views/queries/queryProf.jsp</result>
       </action>
 
       <!--Trabajos Terminales-->
+
+      <!-- Registro Trabajos terminales -->
       <action name="rtt" class="com.struts.controllers.HomeController" method="execute">
         <result>views/forms/regTT.jsp</result>
+      </action>
+      <!-- Consulta de Trabajos Terminales-->
+      <action name="qtt" class="com.struts.controllers.TTController" method="tts">
+        <result>views/queries/queryTT.jsp</result>
+      </action>
+
+      <!-- Salas -->
+      <!-- Registro de Salas  -->
+      <action name="rsalas" class="com.struts.controllers.HomeController" method="execute">
+        <result>views/forms/regSalas.jsp</result>
       </action>
 
 
