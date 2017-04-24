@@ -213,7 +213,7 @@ public class Genetico {
         return hora;
     }
     
-    public static List<Calendario> crearCalendario(List<Cromosoma>  poblacion)
+    public static List<Calendario> crearCalendario(List<Cromosoma>  poblacion, int option)
     {
         List<Calendario> calendario = new ArrayList();
         
@@ -229,6 +229,7 @@ public class Genetico {
             vale.setFecha(fecha);
             vale.setTt(titi);
             vale.setSala(sala);
+            vale.setOpcion(option);
             calendario.add(vale);
         }
         

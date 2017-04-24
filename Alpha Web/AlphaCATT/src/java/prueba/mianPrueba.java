@@ -9,6 +9,7 @@ import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
 import com.myapp.algoritmo.Restriccion;
 import com.myapp.algoritmo.RestriccionGeneral;
+import com.myapp.bs.CalendarioBs;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
@@ -196,7 +197,7 @@ public class mianPrueba {
         fin.setMonth(5);
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
         
-        List<Calendario> cal = Genetico.crearCalendario(poblacion);
+        List<Calendario> cal = Genetico.crearCalendario(poblacion,1);
         
         for(int i = 0; i < cal.size(); i++)
         {
@@ -367,7 +368,7 @@ public class mianPrueba {
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
         
-        cal = Genetico.crearCalendario(poblacion);
+        cal = Genetico.crearCalendario(poblacion,1);
         
         for(int i = 0; i < cal.size(); i++)
         {
@@ -383,13 +384,12 @@ public class mianPrueba {
         System.out.println("fecha fin: " + fin);
         poblaciontt2 = Genetico.crearPoblacionTT2(inicio, fin, tt2s, SalaBs.findAll().size());
         
-        List<Calendario> caltt2 = Genetico.crearCalendario(poblaciontt2);
+        List<Calendario> caltt2 = Genetico.crearCalendario(poblaciontt2,1);
         
         for(int i = 0; i < caltt2.size(); i++)
         {
             System.out.println("TT: " + caltt2.get(i).getTt().getIdTt()+ " Fecha: " + caltt2.get(i).getFecha() + " en la sala: " + caltt2.get(i).getSala().getIdSala());
         }
-        
         
         
         
@@ -409,7 +409,7 @@ public class mianPrueba {
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
         
-        caltt2 = Genetico.crearCalendario(poblaciontt2);
+        caltt2 = Genetico.crearCalendario(poblaciontt2,1);
         
         for(int i = 0; i < caltt2.size(); i++)
         {
@@ -424,16 +424,16 @@ public class mianPrueba {
         
         poblacion.addAll(poblaciontt2);
         
-        List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion);
-        
+        List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion, 1);
+        for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
         LeerExcel.inportaExcel(calDefinitivo, 2);
         
-        Email mail = new Email();
-//        mail.enviar("hazzy76@hotmail.com");
-        List<String> destinos = new ArrayList<>();
-        destinos.add("hazzy76@hotmail.com");
-        destinos.add("robonline7@gmail.com");
-        mail.enviar(destinos);
+////        Email mail = new Email();
+//////        mail.enviar("hazzy76@hotmail.com");
+////        List<String> destinos = new ArrayList<>();
+////        destinos.add("hazzy76@hotmail.com");
+////        destinos.add("robonline7@gmail.com");
+////        mail.enviar(destinos);
         
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;

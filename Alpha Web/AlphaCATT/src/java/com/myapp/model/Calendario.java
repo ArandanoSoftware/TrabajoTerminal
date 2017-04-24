@@ -14,14 +14,16 @@ public class Calendario  implements java.io.Serializable {
      private Sala sala;
      private Tt tt;
      private Date fecha;
+     private Integer opcion;
 
     public Calendario() {
     }
 
-    public Calendario(Sala sala, Tt tt, Date fecha) {
+    public Calendario(Sala sala, Tt tt, Date fecha, Integer opcion) {
        this.sala = sala;
        this.tt = tt;
        this.fecha = fecha;
+       this.opcion = opcion;
     }
    
     public String getIdTt() {
@@ -51,5 +53,13 @@ public class Calendario  implements java.io.Serializable {
     
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public Integer getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(Integer opcion) {
+        this.opcion = opcion;
     }
 }

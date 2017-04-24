@@ -16,5 +16,8 @@
     <property name="fecha" type="timestamp">
       <column length="19" name="Fecha" not-null="true"/>
     </property>
+    <property name="opcion" type = "java.lang.Integer">
+        <column name="Opcion" not-null="true"/>
+    </property>
   </class>
 </hibernate-mapping>
