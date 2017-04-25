@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- <%@taglib prefix="s" uri="/struts-tags" %> --%>
-<%@taglib uri="http://struts.apache.org/tags-html" prefix="html"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+
 
 
 
@@ -16,26 +16,24 @@
     <title> CATT- LOGIN</title>
   </head>
   <body>
-    <div class="MainMenu">
+    <div class="TitleBar">
         <div class="Title">
-         <ul>
-           <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
-           <li class="Title-item">
-            <b><aconym title="Comision Academica de Trabajos Terminales"/>CATT</b>
-          </li>
-          <li class="Title-item-name"><a href=""class="Title-item-name"></a></li>
+          <ul>
+            <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
+            <li class="Title-item"><b>Sistema de Calendarización de presentaciones de Trabajos Terminales</b></li>
+            <li class="Title-item-name">
          </ul>
         </div>
     </div>
-
     <div class="LoginForm, General" align="center" >
       <h1> CATT Login : </h1>
       <s:actionerror/>
-      <s:form action="login">
+      <s:form action="home" method="post">
           <s:textfield  name="userName" label="Username" size="20"/>
           <s:password   name="passWord" label="Password" size="20"/>
           <s:submit align="center" value="Login"/>
       </s:form>
+
     </div>
   </body>
 </html>
