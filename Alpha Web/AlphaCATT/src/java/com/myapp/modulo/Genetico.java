@@ -687,7 +687,7 @@ public class Genetico {
             }
             if(/*difFecha(interCal, fecha) <= 0 && */fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 35)
+                if(random.nextInt(100) < 10)
                 {
                     System.out.print("x");
                     individuo.getGen1().setDia(getBinDay(fecha));
