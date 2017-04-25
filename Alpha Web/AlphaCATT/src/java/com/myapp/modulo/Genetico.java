@@ -35,12 +35,14 @@ public class Genetico {
     public static Date inicioCal = new Date();
     public static Date interCal = new Date();
     public static Date finCal = new Date();
+    private static int rangoCal;
     public static List<Date> noHabil = new ArrayList<>();
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
         int rango = difFecha(fin, inicio)/2;
+        rangoCal = rango;
         salasCal = salas;
         inicioCal.setDate(inicio.getDate());
         inicioCal.setMonth(inicio.getMonth());
@@ -137,7 +139,7 @@ public class Genetico {
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
-            for(int j = 1; j <= rango; j++)
+            for(int j = 0; j <= rango; j++)
             {
                 for(int k = 1; k < 4; k++)
                 {
@@ -673,36 +675,49 @@ public class Genetico {
     {
         Random random = new Random();
         Date fecha = getDateC(individuo);
-        fecha.setDate(fecha.getDate() + 1);
+//        fecha.setDate(fecha.getDate() + random.nextInt(5)+1);
+        boolean[] las4 = {false,false,false,false,false,false,true,false,false};
         if(tt == 1)
         {
+            fecha.setDate(inicioCal.getDate()+random.nextInt(rangoCal));
             if(random.nextInt(100) < 10)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-            if(difFecha(interCal, fecha) >= 0 && fecha.getDay() != 0 && fecha.getDay() != 6 && !habil(fecha))
+            if(/*difFecha(interCal, fecha) <= 0 && */fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 8)
+                if(random.nextInt(100) < 35)
                 {
                     System.out.print("x");
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
+            }
+            if(random.nextInt(100) == 44)
+            {
+                individuo.getGen1().setHora(las4);
+                System.out.print("t");
             }
         }else if(tt == 2)if(difFecha(finCal, fecha) >= 0)
         {
+            fecha.setDate(interCal.getDate() + random.nextInt(rangoCal));
             if(random.nextInt(100) < 10)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-            if(difFecha(finCal, fecha) >= 0 && fecha.getDay() != 0 && fecha.getDay() != 6 && !habil(fecha))
+            if(/*difFecha(finCal, fecha) <= 0 &&*/ fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 8)
+                if(random.nextInt(100) < 35)
                 {
                     System.out.print("x");
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
+            }
+            if(random.nextInt(100) == 44)
+            {
+                individuo.getGen1().setHora(las4);
+                System.out.print("t");
             }
         }
         return individuo;
