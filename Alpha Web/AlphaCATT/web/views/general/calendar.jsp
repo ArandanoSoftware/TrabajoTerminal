@@ -35,40 +35,7 @@ de trabajo terminal
          </ul>
         </div>
     </div>
-    <div class="MainMenu">
-      <div class="dropdown">
-        <button class="dropbtn">Profesores</button>
-          <div class="dropdown-content">
-            <s:a action="" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Prfesores</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Trabajos Terminales</button>
-          <div class="dropdown-content">
-            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Trabajos Terminales</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Trabajos Terminales</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Trabajos Terminales</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Salas</button>
-          <div class="dropdown-content">
-            <s:a action="" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Salas</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Salas</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Calendario</button>
-          <div class="dropdown-content">
-            <s:a action="calendar" forceAddSchemeHostAndPort="true">Ver calendario Generado</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Editor de Calendario</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
-          </div>
-      </div>
-    </div>
+    
 
   <div class="General">
     <h1>Calendario de Presentación de Trabajos Terminales</h1>
