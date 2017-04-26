@@ -393,6 +393,7 @@ public class mianPrueba {
         }
         
         //a partir de aqui empiezan los tt2
+        Genetico.busqueda = false;
         mayor = 0;
         System.out.println("\nahora vienen los tt2\n");
         
@@ -422,6 +423,7 @@ public class mianPrueba {
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
             System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblaciontt2.size());
             j++;
+            Genetico.dosdemayo(poblaciontt2);
             //System.out.println("");
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);

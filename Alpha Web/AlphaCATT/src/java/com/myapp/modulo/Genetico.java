@@ -37,6 +37,8 @@ public class Genetico {
     public static Date finCal = new Date();
     private static int rangoCal;
     public static List<Date> noHabil = new ArrayList<>();
+    public static boolean busqueda = false;
+    public static Date bucado = new Date(2017, 4, 2);
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
@@ -586,7 +588,7 @@ public class Genetico {
         {
             hijos[0].getGen2().setTt(padre2.getGen2().getTt());
             hijos[1].getGen2().setTt(padre1.getGen2().getTt());
-        }        
+        }
         return hijos;
     }
     
@@ -685,11 +687,12 @@ public class Genetico {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-            if(/*difFecha(interCal, fecha) <= 0 && */fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
+            if(isRango(fecha, inicioCal, interCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
                 if(random.nextInt(100) < 10)
                 {
                     System.out.print("x");
+                    individuo.getGen1().setMes(getBinMonth(fecha));
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
             }
@@ -698,19 +701,22 @@ public class Genetico {
                 individuo.getGen1().setHora(las4);
                 System.out.print("t");
             }
-        }else if(tt == 2)if(difFecha(finCal, fecha) >= 0)
+        }else if(tt == 2)/*if(difFecha(finCal, fecha) >= 0)*/
         {
+            //System.out.println("inicio" + inicioCal + " interCal: " + interCal + "finCal" + finCal);
             fecha.setDate(interCal.getDate() + random.nextInt(rangoCal));
             if(random.nextInt(100) < 10)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
-            if(/*difFecha(finCal, fecha) <= 0 &&*/ fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
+            if(isRango(fecha, interCal, finCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 35)
+                if(random.nextInt(100) < 10)
                 {
+                    System.out.println("fecha: " + fecha + " " + fecha.getTime() + " interCal: " + interCal.getTime() + " fin: " + finCal.getTime());
                     System.out.print("x");
+                    individuo.getGen1().setMes(getBinMonth(fecha));
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
             }
@@ -720,6 +726,7 @@ public class Genetico {
                 System.out.print("t");
             }
         }
+        if(getDateC(individuo).getMonth() == 4 && 2 == getDateC(individuo).getDate())System.out.println("es este bato no se por que =S " + individuo.getGen2().getTt());
         return individuo;
     }
     
@@ -735,4 +742,19 @@ public class Genetico {
         return true;
     }
     
+    protected static boolean isRango(Date fecha, Date rango1, Date rango2)
+    {
+        long limInf = rango1.getTime();
+        long limSup = rango2.getTime();
+        long val = fecha.getTime();
+        if(val >= limInf && val <= limSup)return true;
+        return false;
+    }
+    public static void dosdemayo(List<Cromosoma> poblacion)
+    {
+        for(int i = 0; i < poblacion.size(); i++)
+        {
+            if(getDateC(poblacion.get(i)).getMonth() == 4 && 2 == getDateC(poblacion.get(i)).getDate())System.out.println("es este bato no se por que =S " + poblacion.get(i).getGen2().getTt());
+        }
+    }
 }
