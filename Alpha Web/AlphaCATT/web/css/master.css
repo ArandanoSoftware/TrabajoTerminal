@@ -1,13 +1,15 @@
 /*CSS  General para el sitema*/
+
+
 /*Opciones generales*/
 html{
   color: #2F343A;
   font-family: sans-serif;
-  font-size: xx-small;
+  font-size: small;
 
 }
 
- .General{
+.General{
   width: 60%;
   margin-top: 150px;
   margin-right: 20%;
@@ -30,14 +32,25 @@ html{
   display: inline-block;
 }
 
-.MainMenu{
+.TitleBar{
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  height: 70px;
+  height: 60px;
   text-align: left;
   background: #6D6D6D;
+  margin-bottom: 100px;
+}
+.MainMenu{
+  padding-left: 5%;
+  position: fixed;
+  top: 62px;
+  right: 0;
+  left: 0;
+  height: 20px;
+  text-align: left;
+  background: #792241;
   margin-bottom: 100px;
 }
 .Title{
@@ -48,13 +61,57 @@ html{
 }
 .Title-item{
     display: inline-block;
-    font-size: 30px;
+    font-size: 16px;
 }
 .Title-item-name{
     display: inline-block;
-    margin-right: 35px;
-    font-size: 25px;
+    margin-right: 0px;
+    font-size: 16px;
 }
+
+/*HoverMenu*/
+.dropbtn {
+    background-color: #46569c;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 200px;
+}
+
+.dropdown {
+
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    font-size: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #6383c2;
+}
+
 
 /*Panels*/
 .PanelBlue{
@@ -72,9 +129,8 @@ html{
 
 .PanelGeneral{
   border-style: solid;
-  border-width: 100px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   /*border-radius: 25px;*/
@@ -100,6 +156,3 @@ html{
   margin-top: 15px;
 
 }
-
-
-/*Cuestionarios*/
