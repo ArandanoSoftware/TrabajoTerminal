@@ -2,7 +2,8 @@ package com.struts.controllers;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class HomeController extends ActionSupport {
-
+   
+  
   @Override
   public String execute() throws Exception
   {
@@ -13,5 +14,7 @@ public class HomeController extends ActionSupport {
   {
       return "success";
   }
+
+
 
 }
