@@ -16,9 +16,15 @@
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
 
+      <!-- login -->
+      <action name="login" class="com.struts.controllers.HomeController" method="execute">
+        <result type="redirectAction">
+            <param name="actionName">home</param>
+        </result>
+        <result name="error">index.jsp</result>
+      </action>
 
-
-      <!-- Login -->
+      <!-- home -->
       <action name="home" class="com.struts.controllers.HomeController" method="execute">
         <result>/home.jsp</result>
       </action>
@@ -69,7 +75,7 @@
 
       <!--Calendar  -->
       <action name="calendar" class="com.struts.controllers.HomeController" method="execute">
-        <result>views/queries/queryCalendar.jsp</result>
+        <result>views/general/calendar.jsp</result>
       </action>
 
   </package>

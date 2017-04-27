@@ -57,20 +57,6 @@ public class Genetico {
         interCal.setDate(fecha.getDate());
         interCal.setMonth(fecha.getMonth());
         List<Tt> tts = new ArrayList(tt);
-//        for(int i = 0; i < tt.size(); i++)
-//        {
-//            Cromosoma cromosoma = new Cromosoma();
-//            fecha.setMonth(inicio.getMonth());
-//            fecha.setDate(diaR.get(i%diaR.size()));
-//            cromosoma.getGen1().setDia(getBinDay(fecha));
-//            cromosoma.getGen1().setMes(getBinMonth(fecha));
-//            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
-//            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
-//            cromosoma.getGen2().setTt(tts.get(i).getIdTt());
-//            poblacion.add(cromosoma);
-//        }
-        
-        //////////////////////////////segunda prueba/////////////////////////////////////////////////////////7
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
@@ -102,8 +88,6 @@ public class Genetico {
     {
         List<Cromosoma> poblacion = new ArrayList();
         System.out.println("Esta es fecha inicio: "+ inicio + " Esta es fecha fin: " + fin);
-        //Random random = new Random();
-        //Set<Integer> dias = new HashSet();
         Date fecha = new Date();
         int rango = difFecha(finCal, inicio)/2;
         System.out.println("este es el rango" + rango);
@@ -111,33 +95,7 @@ public class Genetico {
         System.out.println("esta es la nueva fecha: " + inicio);
         fecha.setMonth(inicio.getMonth());
         fecha.setDate(inicio.getDate());
-        //int ttxdia = tt.size()/diaHabil(fecha, rango, 0);
-        //System.out.println("ttxdia = " + ttxdia);
-//        while(dias.size() != (tt.size()/ttxdia))
-//        {
-//            int diaR = random.nextInt(rango + 1) + inicio.getDate();
-//            fecha.setMonth(inicio.getMonth());
-//            fecha.setDate(diaR);
-//            if(fecha.getDay() != 0 && fecha.getDay() != 6)
-//                dias.add(diaR);
-//        }
-        
-        //List<Integer> diaR = new ArrayList(dias);
         List<Tt> tts = new ArrayList(tt);
-        System.out.println("Esta es fecha inicio: "+ inicioCal + " Esta es fecha fin: "+ finCal + "Esta es la fecha lim + " + interCal);
-        /*for(int i = 0; i < tt.size(); i++)
-        {
-            Cromosoma cromosoma = new Cromosoma();
-            fecha.setMonth(inicio.getMonth());
-            fecha.setDate(diaR.get(i%diaR.size()));
-            cromosoma.getGen1().setDia(getBinDay(fecha));
-            cromosoma.getGen1().setMes(getBinMonth(fecha));
-            cromosoma.getGen1().setHora(getBinHorario(random.nextInt(3)+1));
-            cromosoma.getGen1().setSala(getBinSala(random.nextInt(salas)+1));
-            cromosoma.getGen2().setTt(tts.get(i).getIdTt());
-            poblacion.add(cromosoma);
-        }*/
-        //////////////////////////////segunda prueba/////////////////////////////////////////////////////////7
         int l = 0;
         for(int i = 1; i <= salas; i++)
         {
@@ -268,7 +226,6 @@ public class Genetico {
     protected static int difFecha(Date fecha1, Date fecha2)
     {
         int resultado = (int)((fecha1.getTime()-fecha2.getTime())/86400000);
-        
         return resultado;
     }
     
@@ -298,30 +255,14 @@ public class Genetico {
         List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
         for (int i = 0; i < h.size(); i++) {
             if (h.get(i).getMar().contains("7:00-")) bin[11] = true;
-            if (h.get(i).getMar().contains("8:30-")) {
-                bin[12] = true;
-            }
-            if (h.get(i).getMar().contains("10:30-")) {
-                bin[13] = true;
-            }
-            if (h.get(i).getMar().contains("12:00-")) {
-                bin[14] = true;
-            }
-            if (h.get(i).getMar().contains("13:30-")) {
-                bin[15] = true;
-            }
-            if (h.get(i).getMar().contains("15:00-")) {
-                bin[16] = true;
-            }
-            if (h.get(i).getMar().contains("16:30-")) {
-                bin[17] = true;
-            }
-            if (h.get(i).getMar().contains("18:30-")) {
-                bin[18] = true;
-            }
-            if (h.get(i).getMar().contains("20:00-")) {
-                bin[19] = true;
-            }
+            if (h.get(i).getMar().contains("8:30-")) {bin[12] = true;}
+            if (h.get(i).getMar().contains("10:30-")) {bin[13] = true;}
+            if (h.get(i).getMar().contains("12:00-")) {bin[14] = true;}
+            if (h.get(i).getMar().contains("13:30-")) {bin[15] = true;}
+            if (h.get(i).getMar().contains("15:00-")) {bin[16] = true;}
+            if (h.get(i).getMar().contains("16:30-")) {bin[17] = true;}
+            if (h.get(i).getMar().contains("18:30-")) {bin[18] = true;}
+            if (h.get(i).getMar().contains("20:00-")) {bin[19] = true;}
         }
         return bin;
     }
@@ -386,33 +327,15 @@ public class Genetico {
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
         List<Horario> h = new ArrayList<>(p.getHorarios());
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getVie().contains("7:00-")) {
-                bin[11] = true;
-            }
-            if (h.get(i).getVie().contains("8:30-1")) {
-                bin[12] = true;
-            }
-            if (h.get(i).getVie().contains("10:30-")) {
-                bin[13] = true;
-            }
-            if (h.get(i).getVie().contains("12:00-")) {
-                bin[14] = true;
-            }
-            if (h.get(i).getVie().contains("13:30-")) {
-                bin[15] = true;
-            }
-            if (h.get(i).getVie().contains("15:00-")) {
-                bin[16] = true;
-            }
-            if (h.get(i).getVie().contains("16:30-")) {
-                bin[17] = true;
-            }
-            if (h.get(i).getVie().contains("18:30-")) {
-                bin[18] = true;
-            }
-            if (h.get(i).getVie().contains("20:00-")) {
-                bin[19] = true;
-            }
+            if (h.get(i).getVie().contains("7:00-")) {bin[11] = true;}
+            if (h.get(i).getVie().contains("8:30-1")) {bin[12] = true;}
+            if (h.get(i).getVie().contains("10:30-")) {bin[13] = true;}
+            if (h.get(i).getVie().contains("12:00-")) {bin[14] = true;}
+            if (h.get(i).getVie().contains("13:30-")) {bin[15] = true;}
+            if (h.get(i).getVie().contains("15:00-")) {bin[16] = true;}
+            if (h.get(i).getVie().contains("16:30-")) {bin[17] = true;}
+            if (h.get(i).getVie().contains("18:30-")) {bin[18] = true;}
+            if (h.get(i).getVie().contains("20:00-")) {bin[19] = true;}
         }
         return bin;
     }
@@ -424,33 +347,15 @@ public class Genetico {
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
         List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getJue().contains("7:00-")) {
-                bin[11] = true;
-            }
-            if (h.get(i).getJue().contains("8:30-")) {
-                bin[12] = true;
-            }
-            if (h.get(i).getJue().contains("10:30-")) {
-                bin[13] = true;
-            }
-            if (h.get(i).getJue().contains("12:00-")) {
-                bin[14] = true;
-            }
-            if (h.get(i).getJue().contains("13:30-")) {
-                bin[15] = true;
-            }
-            if (h.get(i).getJue().contains("15:00-")) {
-                bin[16] = true;
-            }
-            if (h.get(i).getJue().contains("16:30-")) {
-                bin[17] = true;
-            }
-            if (h.get(i).getJue().contains("18:30-")) {
-                bin[18] = true;
-            }
-            if (h.get(i).getJue().contains("20:00-")) {
-                bin[19] = true;
-            }
+            if (h.get(i).getJue().contains("7:00-")) {bin[11] = true;}
+            if (h.get(i).getJue().contains("8:30-")) {bin[12] = true;}
+            if (h.get(i).getJue().contains("10:30-")) {bin[13] = true;}
+            if (h.get(i).getJue().contains("12:00-")) {bin[14] = true;}
+            if (h.get(i).getJue().contains("13:30-")) {bin[15] = true;}
+            if (h.get(i).getJue().contains("15:00-")) {bin[16] = true;}
+            if (h.get(i).getJue().contains("16:30-")) {bin[17] = true;}
+            if (h.get(i).getJue().contains("18:30-")) {bin[18] = true;}
+            if (h.get(i).getJue().contains("20:00-")) {bin[19] = true;}
         }
         return bin;
     }
@@ -462,33 +367,15 @@ public class Genetico {
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
         List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getLun().contains("7:00-")) {
-                bin[11] = true;
-            }
-            if (h.get(i).getLun().contains("8:30-")) {
-                bin[12] = true;
-            }
-            if (h.get(i).getLun().contains("10:30-")) {
-                bin[13] = true;
-            }
-            if (h.get(i).getLun().contains("12:00-")) {
-                bin[14] = true;
-            }
-            if (h.get(i).getLun().contains("13:30-")) {
-                bin[15] = true;
-            }
-            if (h.get(i).getLun().contains("15:00-")) {
-                bin[16] = true;
-            }
-            if (h.get(i).getLun().contains("16:30-")) {
-                bin[17] = true;
-            }
-            if (h.get(i).getLun().contains("18:30-")) {
-                bin[18] = true;
-            }
-            if (h.get(i).getLun().contains("20:00-")) {
-                bin[19] = true;
-            }
+            if (h.get(i).getLun().contains("7:00-")) {bin[11] = true;}
+            if (h.get(i).getLun().contains("8:30-")) {bin[12] = true;}
+            if (h.get(i).getLun().contains("10:30-")) {bin[13] = true;}
+            if (h.get(i).getLun().contains("12:00-")) {bin[14] = true;}
+            if (h.get(i).getLun().contains("13:30-")) {bin[15] = true;}
+            if (h.get(i).getLun().contains("15:00-")) {bin[16] = true;}
+            if (h.get(i).getLun().contains("16:30-")) {bin[17] = true;}
+            if (h.get(i).getLun().contains("18:30-")) {bin[18] = true;}
+            if (h.get(i).getLun().contains("20:00-")) {bin[19] = true;}
         }
         return bin;
     }
@@ -500,33 +387,15 @@ public class Genetico {
         bin[11] = bin[12] = bin[13] = bin[14] = bin[15] = bin[16] = bin[17] = bin[18] = bin[19] = false;
         List<Horario> h = Arrays.asList(p.getHorarios().toArray(new Horario[0]));
         for (int i = 0; i < h.size(); i++) {
-            if (h.get(i).getMie().contains("7:00-")) {
-                bin[11] = true;
-            }
-            if (h.get(i).getMie().contains("8:30-")) {
-                bin[12] = true;
-            }
-            if (h.get(i).getMie().contains("10:30-")) {
-                bin[13] = true;
-            }
-            if (h.get(i).getMie().contains("12:00-")) {
-                bin[14] = true;
-            }
-            if (h.get(i).getMie().contains("13:30-")) {
-                bin[15] = true;
-            }
-            if (h.get(i).getMie().contains("15:00-")) {
-                bin[16] = true;
-            }
-            if (h.get(i).getMie().contains("16:30-")) {
-                bin[17] = true;
-            }
-            if (h.get(i).getMie().contains("18:30-")) {
-                bin[18] = true;
-            }
-            if (h.get(i).getMie().contains("20:00-")) {
-                bin[19] = true;
-            }
+            if (h.get(i).getMie().contains("7:00-")) {bin[11] = true;}
+            if (h.get(i).getMie().contains("8:30-")) {bin[12] = true;}
+            if (h.get(i).getMie().contains("10:30-")) {bin[13] = true;}
+            if (h.get(i).getMie().contains("12:00-")) {bin[14] = true;}
+            if (h.get(i).getMie().contains("13:30-")) {bin[15] = true;}
+            if (h.get(i).getMie().contains("15:00-")) {bin[16] = true;}
+            if (h.get(i).getMie().contains("16:30-")) {bin[17] = true;}
+            if (h.get(i).getMie().contains("18:30-")) {bin[18] = true;}
+            if (h.get(i).getMie().contains("20:00-")) {bin[19] = true;}
         }
         return bin;
     }
@@ -597,44 +466,35 @@ public class Genetico {
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         List<Cromosoma> feos = new ArrayList<>();
         FuncionAptitud funcion = new FuncionAptitud(restricciones);
-        //aptitudPoblacion = 0;
         double aptitudSum = 0;
         List<Integer> aptitudes = new ArrayList<>();
         for( int i = 0; i < poblacion.size(); i++)
         {
             aptitudes.add(funcion.evaluar(poblacion.get(i), nuevaPoblacion));
             nuevaPoblacion.add(poblacion.get(i));
-            //System.out.println(aptitudes.get(i));
             aptitudSum+= aptitudes.get(i);
         }
         
         nuevaPoblacion.clear();
-        //ceros = 0;
         nel = false;
         while(!poblacion.isEmpty())
         {
             Random random = new Random();
             double r = random.nextDouble() + random.nextInt(poblacion.size());
             int v = -1;
-            double sum = 0;
-            //System.out.println("\n\naqui empezamos: \tPoblacion:" + poblacion.size() +"\taptitud general: " + aptitudPoblacion);
+            double sum = 0;//System.out.println("\n\naqui empezamos: \tPoblacion:" + poblacion.size() +"\taptitud general: " + aptitudPoblacion);
             while(sum <= r)
             {   
                 v++;
                 if(aptitudSum == 0)break;
                 double valorEsperado = aptitudes.get(v)*poblacion.size()/aptitudSum;
                 sum += valorEsperado;
-                //System.out.println("ve = " + aptitudes.get(v) + " * " + poblacion.size() + " / " + aptitudPoblacion + " = " + valorEsperado + "\tr = " + r + "\tsum = " + sum);
             }
-            //System.out.println("esta aptiud se resta: " + aptitudes.get(v));
             aptitudSum -= aptitudes.get(v);
-            if(aptitudes.get(v) == 200){/*if(random.nextBoolean())*/nuevaPoblacion.add(poblacion.remove(v));/*else feos.add(poblacion.remove(v));*/}
+            if(aptitudes.get(v) == 200){nuevaPoblacion.add(poblacion.remove(v));}
             else feos.add(poblacion.remove(v));
-//            feos.add(poblacion.remove(v));
-            //if(aptitudes.get(v) == 0){ceros++;}
             aptitudes.remove(v);
         }
-        //System.out.print("van 200:  " + nuevaPoblacion.size() + "\t");
         for(int i = 0; i < feos.size(); i++)
         {
             if(i < feos.size() - 1)
@@ -677,7 +537,6 @@ public class Genetico {
     {
         Random random = new Random();
         Date fecha = getDateC(individuo);
-//        fecha.setDate(fecha.getDate() + random.nextInt(5)+1);
         boolean[] las4 = {false,false,false,false,false,false,true,false,false};
         if(tt == 1)
         {
@@ -701,9 +560,8 @@ public class Genetico {
                 individuo.getGen1().setHora(las4);
                 System.out.print("t");
             }
-        }else if(tt == 2)/*if(difFecha(finCal, fecha) >= 0)*/
+        }else if(tt == 2)
         {
-            //System.out.println("inicio" + inicioCal + " interCal: " + interCal + "finCal" + finCal);
             fecha.setDate(interCal.getDate() + random.nextInt(rangoCal));
             if(random.nextInt(100) < 10)
             {
@@ -714,7 +572,6 @@ public class Genetico {
             {
                 if(random.nextInt(100) < 10)
                 {
-                    System.out.println("fecha: " + fecha + " " + fecha.getTime() + " interCal: " + interCal.getTime() + " fin: " + finCal.getTime());
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));
                     individuo.getGen1().setDia(getBinDay(fecha));
@@ -726,7 +583,6 @@ public class Genetico {
                 System.out.print("t");
             }
         }
-        if(getDateC(individuo).getMonth() == 4 && 2 == getDateC(individuo).getDate())System.out.println("es este bato no se por que =S " + individuo.getGen2().getTt());
         return individuo;
     }
     
@@ -749,12 +605,5 @@ public class Genetico {
         long val = fecha.getTime();
         if(val >= limInf && val <= limSup)return true;
         return false;
-    }
-    public static void dosdemayo(List<Cromosoma> poblacion)
-    {
-        for(int i = 0; i < poblacion.size(); i++)
-        {
-            if(getDateC(poblacion.get(i)).getMonth() == 4 && 2 == getDateC(poblacion.get(i)).getDate())System.out.println("es este bato no se por que =S " + poblacion.get(i).getGen2().getTt());
-        }
     }
 }
