@@ -75,7 +75,7 @@
 
       <!--Calendar  -->
       <action name="calendar" class="com.struts.controllers.HomeController" method="execute">
-        <result>views/queries/querySala.jsp</result>
+        <result>views/general/calendar.jsp</result>
       </action>
 
   </package>
