@@ -13,6 +13,7 @@ import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.Section;
@@ -20,6 +21,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
+import com.myapp.bs.CalendarioBs;
+import com.myapp.model.Calendario;
 import java.io.*; 
  
 /**
@@ -47,7 +50,7 @@ public class PDF {
         // We create the document and set the file name.        
         // Creamos el documento e indicamos el nombre del fichero.
         try {
-            Document document = new Document();
+            Document document = new Document(PageSize.LETTER.rotate());
             try {
  
                 PdfWriter.getInstance(document, new FileOutputStream(pdfNewFile));
@@ -66,21 +69,21 @@ public class PDF {
             // Primera página 
             Chunk chunk = new Chunk("CALENDARIO DE PRESENTACION TTI,TTII y TTR", chapterFont);
             chunk.setBackground(BaseColor.BLUE);
-            // Let's create de first Chapter (Creemos el primer capítulo)
+            // Creemos el primer capítulo
             Chapter chapter = new Chapter(new Paragraph(chunk), 1);
             chapter.setNumberDepth(0);
             chapter.add(new Paragraph("This is the paragraph", paragraphFont));
-            // We add an image (Añadimos una imagen)
-            Image image;
-            try {
-                image = Image.getInstance(iTextExampleImage);  
-                image.setAbsolutePosition(2, 150);
-                chapter.add(image);
-            } catch (BadElementException ex) {
-                System.out.println("Image BadElementException" +  ex);
-            } catch (IOException ex) {
-                System.out.println("Image IOException " +  ex);
-            }
+            // Añadimos una imagen
+////            Image image;
+////            try {
+////                image = Image.getInstance(iTextExampleImage);  
+////                image.setAbsolutePosition(2, 150);
+////                chapter.add(image);
+////            } catch (BadElementException ex) {
+////                System.out.println("Image BadElementException" +  ex);
+////            } catch (IOException ex) {
+////                System.out.println("Image IOException " +  ex);
+////            }
             document.add(chapter);
              
             // Second page - some elements
@@ -126,33 +129,68 @@ public class PDF {
             // How to use PdfPTable
             // Utilización de PdfPTable
              
-            // We use various elements to add title and subtitle
             // Usamos varios elementos para añadir título y subtítulo
-            Anchor anchor = new Anchor("Table export to PDF (Exportamos la tabla a PDF)", categoryFont);
-            anchor.setName("Table export to PDF (Exportamos la tabla a PDF)");            
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            java.util.List<Calendario> cal = CalendarioBs.findAll();
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            Anchor anchor = new Anchor("Tabla de presentaciones", categoryFont);
+            anchor.setName("taba de tal fecha");            
             Chapter chapTitle = new Chapter(new Paragraph(anchor), 1);
-            Paragraph paragraph = new Paragraph("Do it by Xules (Realizado por Xules)", subcategoryFont);
+            Paragraph paragraph = new Paragraph("creo que puedo borrar esto", subcategoryFont);
             Section paragraphMore = chapTitle.addSection(paragraph);
-            paragraphMore.add(new Paragraph("This is a simple example (Este es un ejemplo sencillo)"));
-            Integer numColumns = 6;
-            Integer numRows = 120;
-            // We create the table (Creamos la tabla).
+            paragraphMore.add(new Paragraph("Creo que tambien puedo borrar este otro xD"));
+            Integer numColumns = 9;
+            Integer numRows = cal.size();
+            // Creamos la tabla.
             PdfPTable table = new PdfPTable(numColumns); 
-            // Now we fill the PDF table 
             // Ahora llenamos la tabla del PDF
             PdfPCell columnHeader;
-            // Fill table rows (rellenamos las filas de la tabla).                
-            for (int column = 0; column < numColumns; column++) {
-                columnHeader = new PdfPCell(new Phrase("COL " + column));
-                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                table.addCell(columnHeader);
-            }
+            // rellenamos las filas de la tabla.  
+            
+            columnHeader = new PdfPCell(new Phrase("HORA"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("LUGAR"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("TT"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("TÍTULO"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("DIRECTOR1"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("DIRECTOR2"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("SINODALIA1"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("SINODALIA2"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);  
+            
+            columnHeader = new PdfPCell(new Phrase("SINODALIA3"));
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(columnHeader);
+            
+            
             table.setHeaderRows(1);
-            // Fill table rows (rellenamos las filas de la tabla).                
-            for (int row = 0; row < numRows; row++) {
-                for (int column = 0; column < numColumns; column++) {
-                    table.addCell("Row " + row + " - Col" + column);
-                }
+            //rellenamos las filas de la tabla.                
+            for (int i = 0; i < numRows; i++)
+            {
+                table.addCell(cal.get(i).getFecha().getHours() + ":" + cal.get(i).getFecha().getMinutes());
+                table.addCell(cal.get(i).getSala().getNombre());
             }
             // We add the table (Añadimos la tabla)
             paragraphMore.add(table);
