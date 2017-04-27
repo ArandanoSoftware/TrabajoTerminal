@@ -12,16 +12,16 @@ de trabajo terminal
   <head>
     <meta charset="utf-8">
     <%--DefaultCSS --%>
-    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <%--PersonalCSS--%>
-    <link rel="stylesheet" href="../../css/master.css">
-    <link rel="stylesheet" href="../../css/calendarioGeneral.css">
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/calendarioGeneral.css">
     <%--Javascript--%>
-    <script type="text/javascript" src="../../js/master.js"></script>
-    <script type="text/javascript" src="../../js/jspdf.min.js"></script>
-    <script type="text/javascript" src="../../js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../../js/html2canvas.js"></script>
-    <script type="text/javascript" src="../../js/calendarioGeneral.js"></script>
+    <script type="text/javascript" src="js/master.js"></script>
+    <script type="text/javascript" src="js/jspdf.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+    <script type="text/javascript" src="js/calendarioGeneral.js"></script>
     <title>Calendario general de Trabajos Terminales</title>
   </head>
   <body>
@@ -29,13 +29,13 @@ de trabajo terminal
     <div class="TitleBar">
         <div class="Title">
           <ul>
-            <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
+            <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
             <li class="Title-item"><b>Sistema de Calendarización de presentaciones de Trabajos Terminales </b></li>
             <li class="Title-item-name">
          </ul>
         </div>
     </div>
-    
+
 
   <div class="General">
     <h1>Calendario de Presentación de Trabajos Terminales</h1>
