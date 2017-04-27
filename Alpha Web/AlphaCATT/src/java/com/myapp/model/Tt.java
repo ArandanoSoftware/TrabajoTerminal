@@ -1,5 +1,5 @@
 package com.myapp.model;
-// Generated 4/02/2017 08:19:46 PM by Hibernate Tools 4.3.1
+// Generated 27/04/2017 10:27:18 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -15,7 +15,7 @@ public class Tt  implements java.io.Serializable {
      private String nombre;
      private int nivel;
      private Calendario calendario;
-     private Set<Alumno> alumnos = new HashSet<>(0);
+     private Set<Alumno> alumnos = new HashSet<Alumno>(0);
 
     public Tt() {
     }

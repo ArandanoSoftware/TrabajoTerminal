@@ -49,4 +49,5 @@ Contributor(s):
   <table-filter match-name="PROFESOR"/>
   <table-filter match-name="TT"/>
   <table-filter match-name="CALENDARIO"/>
+  <table-filter match-name="usuario"/>
 </hibernate-reverse-engineering>

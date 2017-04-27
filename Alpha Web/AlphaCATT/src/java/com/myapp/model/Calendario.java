@@ -1,5 +1,5 @@
 package com.myapp.model;
-// Generated 4/02/2017 08:19:46 PM by Hibernate Tools 4.3.1
+// Generated 27/04/2017 10:27:18 AM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -54,12 +54,17 @@ public class Calendario  implements java.io.Serializable {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
     public Integer getOpcion() {
-        return opcion;
+        return this.opcion;
     }
-
+    
     public void setOpcion(Integer opcion) {
         this.opcion = opcion;
     }
+
+
+
+
 }
+
+

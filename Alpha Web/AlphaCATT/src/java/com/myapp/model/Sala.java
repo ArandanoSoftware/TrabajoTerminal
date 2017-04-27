@@ -1,5 +1,5 @@
 package com.myapp.model;
-// Generated 4/02/2017 08:19:46 PM by Hibernate Tools 4.3.1
+// Generated 27/04/2017 10:27:18 AM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,7 +13,7 @@ public class Sala  implements java.io.Serializable {
 
      private Integer idSala;
      private String nombre;
-     private Set<Calendario> calendarios = new HashSet(0);
+     private Set<Calendario> calendarios = new HashSet<Calendario>(0);
 
     public Sala() {
     }
