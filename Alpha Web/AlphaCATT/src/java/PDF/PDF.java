@@ -29,6 +29,7 @@ import com.myapp.model.Profesor;
 import com.myapp.model.Sinodalia;
 import java.io.*; 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
  
 /**
@@ -56,7 +57,7 @@ public class PDF {
         // We create the document and set the file name.        
         // Creamos el documento e indicamos el nombre del fichero.
         try {
-            Document document = new Document(PageSize.LETTER.rotate());
+            Document document = new Document(PageSize.A4.rotate());
             try {
  
                 PdfWriter.getInstance(document, new FileOutputStream(pdfNewFile));
@@ -141,78 +142,111 @@ public class PDF {
             List<Calendario> cal = CalendarioBs.findAll();
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Anchor anchor = new Anchor("Tabla de presentaciones", categoryFont);
-            anchor.setName("taba de tal fecha");            
+            anchor.setName("Catll");            
             Chapter chapTitle = new Chapter(new Paragraph(anchor), 1);
-            Paragraph paragraph = new Paragraph("creo que puedo borrar esto", subcategoryFont);
+            Paragraph paragraph = new Paragraph("Catt", subcategoryFont);
             Section paragraphMore = chapTitle.addSection(paragraph);
-            paragraphMore.add(new Paragraph("Creo que tambien puedo borrar este otro xD"));
-            Integer numColumns = 9;
-            Integer numRows = cal.size();
-            // Creamos la tabla.
-            PdfPTable table = new PdfPTable(numColumns); 
-            // Ahora llenamos la tabla del PDF
-            PdfPCell columnHeader;
-            // rellenamos las filas de la tabla.  
             
-            columnHeader = new PdfPCell(new Phrase("HORA"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("LUGAR"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("TT"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("TÍTULO"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("DIRECTOR1"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("DIRECTOR2"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("SINODALIA1"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("SINODALIA2"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);  
-            
-            columnHeader = new PdfPCell(new Phrase("SINODALIA3"));
-            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-            table.addCell(columnHeader);
-            
-            
-            table.setHeaderRows(0);
-            //rellenamos las filas de la tabla.
-            List<Sinodalia> sinodales = SinodaliaBs.findAll();
-            List<Dirige> directores = DirigeBs.findAll();
-            for (int i = 0; i < numRows; i++)
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            Date inicio = new Date();
+            inicio.setDate(2);
+            inicio.setMonth(4);
+            Date fin = new Date();
+            fin.setDate(6);
+            fin.setMonth(6);
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            int v = 0;
+            while(inicio.getTime() <= fin.getTime())
             {
-                table.addCell(cal.get(i).getFecha().getHours() + ":00");
-                table.addCell(cal.get(i).getSala().getNombre());
-                table.addCell(cal.get(i).getTt().getNombre());
-                List<Profesor> profTT = getDirectores(cal.get(i).getIdTt(), directores);
-                table.addCell(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre());
-                try{table.addCell(profTT.get(1).getApaterno()+ " " + profTT.get(1).getAmaterno()+ " " + profTT.get(1).getNombre());}catch(Exception e){table.addCell(" ");}
-                profTT = getSinodales(cal.get(i).getIdTt(), sinodales);
-                table.addCell(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre());
-                table.addCell(profTT.get(1).getApaterno()+ " " + profTT.get(1).getAmaterno()+ " " + profTT.get(1).getNombre());
-                try{table.addCell(profTT.get(2).getApaterno()+ " " + profTT.get(2).getAmaterno()+ " " + profTT.get(2).getNombre());}catch(Exception e){table.addCell(" ");}
+                if(inicio.getDay() == 0 || inicio.getDay()== 6){inicio.setDate(inicio.getDate() + 1);continue;}
+                
+                boolean esta = false;
+                
+                Integer numColumns = 9;
+                Integer numRows = cal.size();
+                // Creamos la tabla.
+                PdfPTable table = new PdfPTable(numColumns); 
+                // Ahora llenamos la tabla del PDF
+                PdfPCell columnHeader;
+                // rellenamos las filas de la tabla.  
+
+                columnHeader = new PdfPCell(new Phrase("HORA"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);  
+
+                columnHeader = new PdfPCell(new Phrase("LUGAR"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);  
+
+                columnHeader = new PdfPCell(new Phrase("TT"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);  
+
+                columnHeader = new PdfPCell(new Phrase("TÍTULO"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);  
+
+                columnHeader = new PdfPCell(new Phrase("DIRECTOR1"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);  
+
+                columnHeader = new PdfPCell(new Phrase("DIRECTOR2"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);  
+
+                columnHeader = new PdfPCell(new Phrase("SINODALÍA"));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                columnHeader.setColspan(3);
+                table.addCell(columnHeader);  
+    ////            columnHeader = new PdfPCell(new Phrase("SINODALIA2"));
+    ////            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+    ////            table.addCell(columnHeader);  
+    ////            
+    ////            columnHeader = new PdfPCell(new Phrase("SINODALIA3"));
+    ////            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+    ////            table.addCell(columnHeader);
+
+
+                //table.setHeaderRows(2);
+                //rellenamos las filas de la tabla.
+                List<Sinodalia> sinodales = SinodaliaBs.findAll();
+                List<Dirige> directores = DirigeBs.findAll();
+                
+                
+                
+                for (int i = 0; i < numRows; i++)
+                {
+                    if(cal.get(i).getFecha().getDate() == inicio.getDate() && cal.get(i).getFecha().getMonth() == inicio.getMonth())
+                    {
+                        table.addCell(cal.get(i).getFecha().getHours() + ":00");
+                        table.addCell(cal.get(i).getSala().getNombre());
+                        table.addCell(cal.get(i).getIdTt());
+                        table.addCell(cal.get(i).getTt().getNombre());
+                        List<Profesor> profTT = getDirectores(cal.get(i).getIdTt(), directores);
+                        table.addCell(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre());
+                        try{table.addCell(profTT.get(1).getApaterno()+ " " + profTT.get(1).getAmaterno()+ " " + profTT.get(1).getNombre());}catch(Exception e){table.addCell(" - ");}
+                        profTT = getSinodales(cal.get(i).getIdTt(), sinodales);
+                        table.addCell(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre());
+                        table.addCell(profTT.get(1).getApaterno()+ " " + profTT.get(1).getAmaterno()+ " " + profTT.get(1).getNombre());
+                        try{table.addCell(profTT.get(2).getApaterno()+ " " + profTT.get(2).getAmaterno()+ " " + profTT.get(2).getNombre());}catch(Exception e){table.addCell(" - ");}
+                        esta = true;
+                    }
+
+                }
+                if(!esta){
+                    inicio.setDate(inicio.getDate() + 1);
+                    continue;
+                }
+                paragraphMore.add(new Paragraph("Presentaciones de " + getDiaSem(inicio) + " " + inicio.getDate() + " de " + getMes(inicio) + " " + inicio.getYear()));
+                paragraphMore.add(table);
+                inicio.setDate(inicio.getDate() + 1);
+                v++;
+                // We add the table (Añadimos la tabla)
                 
             }
-            // We add the table (Añadimos la tabla)
-            paragraphMore.add(table);
-            // We add the paragraph with the table (Añadimos el elemento con la tabla).
             document.add(chapTitle);
+            // We add the paragraph with the table (Añadimos el elemento con la tabla).
+            
             document.close();
             System.out.println("Your PDF file has been generated!(¡Se ha generado tu hoja PDF!");
         } catch (DocumentException documentException) {
@@ -256,5 +290,32 @@ public class PDF {
             }
         }
         return diriges;
+    }
+    
+    protected String getDiaSem(Date fecha)
+    {
+        if(fecha.getDay() == 1) return "Lunes";
+        if(fecha.getDay() == 2) return "Martes";
+        if(fecha.getDay() == 3) return "Miercoles";
+        if(fecha.getDay() == 4) return "Jueves";
+        if(fecha.getDay() == 5) return "Viernes";
+        return "fin de semana que no debería de estar aquí";
+    }
+    
+    protected String getMes(Date fecha)
+    {
+        if(fecha.getMonth()== 0) return "Enero";
+        if(fecha.getMonth()== 1) return "Febrero";
+        if(fecha.getMonth()== 2) return "Marzo";
+        if(fecha.getMonth()== 3) return "Abril";
+        if(fecha.getMonth()== 4) return "Mayo";
+        if(fecha.getMonth()== 5) return "Junio";
+        if(fecha.getMonth()== 6) return "Julio";
+        if(fecha.getMonth()== 7) return "Agosto";
+        if(fecha.getMonth()== 8) return "Septiembre";
+        if(fecha.getMonth()== 9) return "Octubre";
+        if(fecha.getMonth()== 10) return "Noviembre";
+        if(fecha.getMonth()== 11) return "Diciembre";
+        return "fin de semana que no debería de estar aquí";
     }
 }
