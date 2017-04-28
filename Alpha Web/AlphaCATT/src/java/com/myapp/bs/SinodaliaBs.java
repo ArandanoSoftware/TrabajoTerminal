@@ -28,6 +28,12 @@ public class SinodaliaBs {
     {
         SinodaliaDao sinodaliaDao = new SinodaliaDao();
         List<Sinodalia> sinodalia = sinodaliaDao.findAll();
+        for(int i = 0; i < sinodalia.size(); i++)
+        {
+            sinodalia.get(i).setProfesorByS1(ProfesorBs.findById(sinodalia.get(i).getProfesorByS1().getIdProfesor()));
+            sinodalia.get(i).setProfesorByS2(ProfesorBs.findById(sinodalia.get(i).getProfesorByS2().getIdProfesor()));
+            try{sinodalia.get(i).setProfesorByS3(ProfesorBs.findById(sinodalia.get(i).getProfesorByS3().getIdProfesor()));}catch(Exception e){}
+        }
         return sinodalia;
     }
     

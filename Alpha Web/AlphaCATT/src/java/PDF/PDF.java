@@ -11,7 +11,6 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
@@ -22,8 +21,15 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.myapp.bs.CalendarioBs;
+import com.myapp.bs.DirigeBs;
+import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Calendario;
+import com.myapp.model.Dirige;
+import com.myapp.model.Profesor;
+import com.myapp.model.Sinodalia;
 import java.io.*; 
+import java.util.ArrayList;
+import java.util.List;
  
 /**
 
@@ -88,43 +94,43 @@ public class PDF {
              
             // Second page - some elements
             // Segunda página - Algunos elementos
-            Chapter chapSecond = new Chapter(new Paragraph(new Anchor("Some elements (Añadimos varios elementos)")), 1);
-            Paragraph paragraphS = new Paragraph("Do it by Xules (Realizado por Xules)", subcategoryFont);
-             
-            // Underline a paragraph by iText (subrayando un párrafo por iText)
-            Paragraph paragraphE = new Paragraph("This line will be underlined with a dotted line (Está línea será subrayada con una línea de puntos).");
-            DottedLineSeparator dottedline = new DottedLineSeparator();
-            dottedline.setOffset(-2);
-            dottedline.setGap(2f);
-            paragraphE.add(dottedline);
-            chapSecond.addSection(paragraphE);
-             
-            Section paragraphMoreS = chapSecond.addSection(paragraphS);
-            // List by iText (listas por iText)
-            String text = "test 1 2 3 ";
-            for (int i = 0; i < 5; i++) {
-                text = text + text;
-            }
-            List list = new List(List.UNORDERED);
-            ListItem item = new ListItem(text);
-            item.setAlignment(Element.ALIGN_JUSTIFIED);
-            list.add(item);
-            text = "a b c align ";
-            for (int i = 0; i < 5; i++) {
-                text = text + text;
-            }
-            item = new ListItem(text);
-            item.setAlignment(Element.ALIGN_JUSTIFIED);
-            list.add(item);
-            text = "supercalifragilisticexpialidocious ";
-            for (int i = 0; i < 3; i++) {
-                text = text + text;
-            }
-            item = new ListItem(text);
-            item.setAlignment(Element.ALIGN_JUSTIFIED);
-            list.add(item);
-            paragraphMoreS.add(list);
-            document.add(chapSecond);
+////////            Chapter chapSecond = new Chapter(new Paragraph(new Anchor("Some elements (Añadimos varios elementos)")), 1);
+////////            Paragraph paragraphS = new Paragraph("Do it by Xules (Realizado por Xules)", subcategoryFont);
+////////             
+////////            // Underline a paragraph by iText (subrayando un párrafo por iText)
+////////            Paragraph paragraphE = new Paragraph("This line will be underlined with a dotted line (Está línea será subrayada con una línea de puntos).");
+////////            DottedLineSeparator dottedline = new DottedLineSeparator();
+////////            dottedline.setOffset(-2);
+////////            dottedline.setGap(2f);
+////////            paragraphE.add(dottedline);
+////////            chapSecond.addSection(paragraphE);
+////////             
+////////            Section paragraphMoreS = chapSecond.addSection(paragraphS);
+////////            // List by iText (listas por iText)
+////////            String text = "test 1 2 3 ";
+////////            for (int i = 0; i < 5; i++) {
+////////                text = text + text;
+////////            }
+////////            List list = new List(List.UNORDERED);
+////////            ListItem item = new ListItem(text);
+////////            item.setAlignment(Element.ALIGN_JUSTIFIED);
+////////            list.add(item);
+////////            text = "a b c align ";
+////////            for (int i = 0; i < 5; i++) {
+////////                text = text + text;
+////////            }
+////////            item = new ListItem(text);
+////////            item.setAlignment(Element.ALIGN_JUSTIFIED);
+////////            list.add(item);
+////////            text = "supercalifragilisticexpialidocious ";
+////////            for (int i = 0; i < 3; i++) {
+////////                text = text + text;
+////////            }
+////////            item = new ListItem(text);
+////////            item.setAlignment(Element.ALIGN_JUSTIFIED);
+////////            list.add(item);
+////////            paragraphMoreS.add(list);
+////////            document.add(chapSecond);
              
             // How to use PdfPTable
             // Utilización de PdfPTable
@@ -132,7 +138,7 @@ public class PDF {
             // Usamos varios elementos para añadir título y subtítulo
             
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            java.util.List<Calendario> cal = CalendarioBs.findAll();
+            List<Calendario> cal = CalendarioBs.findAll();
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Anchor anchor = new Anchor("Tabla de presentaciones", categoryFont);
             anchor.setName("taba de tal fecha");            
@@ -185,12 +191,23 @@ public class PDF {
             table.addCell(columnHeader);
             
             
-            table.setHeaderRows(1);
-            //rellenamos las filas de la tabla.                
+            table.setHeaderRows(0);
+            //rellenamos las filas de la tabla.
+            List<Sinodalia> sinodales = SinodaliaBs.findAll();
+            List<Dirige> directores = DirigeBs.findAll();
             for (int i = 0; i < numRows; i++)
             {
-                table.addCell(cal.get(i).getFecha().getHours() + ":" + cal.get(i).getFecha().getMinutes());
+                table.addCell(cal.get(i).getFecha().getHours() + ":00");
                 table.addCell(cal.get(i).getSala().getNombre());
+                table.addCell(cal.get(i).getTt().getNombre());
+                List<Profesor> profTT = getDirectores(cal.get(i).getIdTt(), directores);
+                table.addCell(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre());
+                try{table.addCell(profTT.get(1).getApaterno()+ " " + profTT.get(1).getAmaterno()+ " " + profTT.get(1).getNombre());}catch(Exception e){table.addCell(" ");}
+                profTT = getSinodales(cal.get(i).getIdTt(), sinodales);
+                table.addCell(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre());
+                table.addCell(profTT.get(1).getApaterno()+ " " + profTT.get(1).getAmaterno()+ " " + profTT.get(1).getNombre());
+                try{table.addCell(profTT.get(2).getApaterno()+ " " + profTT.get(2).getAmaterno()+ " " + profTT.get(2).getNombre());}catch(Exception e){table.addCell(" ");}
+                
             }
             // We add the table (Añadimos la tabla)
             paragraphMore.add(table);
@@ -208,5 +225,36 @@ public class PDF {
     public static void main(String args[]) {
         PDF generatePDFFileIText = new PDF();
         generatePDFFileIText.createPDF(new File("../elpdfdeprueba.pdf"));
+    }
+    
+    protected List<Profesor> getSinodales(String tt, List<Sinodalia> sinodales)
+    {
+        List<Profesor> sinodals = new ArrayList<>();
+        for(int i = 0; i < sinodales.size(); i++)
+        {
+            if(sinodales.get(i).getIdTt().equals(tt))
+            {
+                sinodals.add(sinodales.get(i).getProfesorByS1());
+                sinodals.add(sinodales.get(i).getProfesorByS2());
+                sinodals.add(sinodales.get(i).getProfesorByS3());
+                break;
+            }
+        }
+        return sinodals;
+    }    
+    
+    protected List<Profesor> getDirectores(String tt, List<Dirige> directores)
+    {
+        List<Profesor> diriges = new ArrayList<>();
+        for(int i = 0; i < directores.size(); i++)
+        {
+            if(directores.get(i).getIdTt().equals(tt))
+            {
+                diriges.add(directores.get(i).getProfesorByD1());
+                diriges.add(directores.get(i).getProfesorByD2());
+                break;
+            }
+        }
+        return diriges;
     }
 }
