@@ -19,24 +19,28 @@ public class UsuariosOperaciones {
 
         SessionFactory sesion= HibernateUtil.getSessionFactory();
         Session session = sesion.openSession();
-        Transaction tx=session.beginTransaction();
-        
+        Transaction tx = session.beginTransaction();
 
-//Petición
-        String hql= "FROM Usuario U WHERE U.username = :u_username and U.password= :u_password";
+
+        //Petición
+        String hql= "FROM Users U WHERE U.username = :u_username and U.password = :u_password";
         Query  query = session.createQuery(hql);
         query.setParameter("u_username", user);
         query.setParameter("u_password", pass);
+
         //Fin de la petición
         java.util.List<Usuario> lista = query.list();
-        
+
         tx.commit();
         session.close();
+
         if(lista.isEmpty())
         {
             return false;
         }
-        return false;
+        return true;
     }
+
+
 
 }
