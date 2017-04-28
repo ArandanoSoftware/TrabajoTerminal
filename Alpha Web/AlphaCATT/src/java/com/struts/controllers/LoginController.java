@@ -28,27 +28,27 @@ public class LoginController extends ActionSupport {
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-    
+
     private UsuariosOperaciones UserOp;
     private String userName;
     private String passWord;
 
-  
-    @Override
+
+  @Override
   public String execute() throws Exception
   {
       //call Service class to store personBean's state in database
       return SUCCESS;
   }
-  
+
   public String login()
   {
       this.UserOp = new UsuariosOperaciones();
       if(UserOp.Authenticate(userName, passWord)){
-          return "success";
+          return "sucess";
       }else{
           return "error";
       }
-      
+
   }
 }

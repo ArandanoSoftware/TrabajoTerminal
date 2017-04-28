@@ -81,19 +81,26 @@ de trabajo terminal
         <button onclick="Save()"> Guardar Calendario </button>
     </div>
 
-    <div class="calendarTable">
-      <table>
-        <tr>
-          <th>Hora</th>
-          <th>Lugar</th>
-          <th>Título</th>
-          <th>Director1</th>
-          <th>Director2</th>
-          <th>Sinodalía</th>
-        </tr>
-      </table>
-
-    </div>
+    <table class="TableCode">
+        <h2>Celandario General :</h2>
+             <thead>
+             <th># Trabajo Terminal: </th>
+             <th>Nombre: </th>
+             <th>Apellido Materno: </th>
+             <th>Apellido Paterno: </th>
+             </thead>
+     <tbody>
+         <s:iterator value="CalList" var="dato" status="estado">
+             <tr>
+                 <td><s:property value="idTt"/> </td>
+                 <!-- <td><s:property value="sala"/> </td> -->
+                 <!-- <td><s:property value="tt"/> </td> -->
+                 <td><s:property value="fecha"/> </td>
+                <td><s:property value="opcion"/> </td>
+             </tr>
+         </s:iterator>
+     </tbody>
+     </table>
 
 
 </body>

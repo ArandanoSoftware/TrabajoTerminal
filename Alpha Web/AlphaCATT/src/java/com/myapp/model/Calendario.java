@@ -25,39 +25,39 @@ public class Calendario  implements java.io.Serializable {
        this.fecha = fecha;
        this.opcion = opcion;
     }
-   
+
     public String getIdTt() {
         return this.idTt;
     }
-    
+
     public void setIdTt(String idTt) {
         this.idTt = idTt;
     }
     public Sala getSala() {
         return this.sala;
     }
-    
+
     public void setSala(Sala sala) {
         this.sala = sala;
     }
     public Tt getTt() {
         return this.tt;
     }
-    
+
     public void setTt(Tt tt) {
         this.tt = tt;
     }
     public Date getFecha() {
         return this.fecha;
     }
-    
+
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
     public Integer getOpcion() {
         return this.opcion;
     }
-    
+
     public void setOpcion(Integer opcion) {
         this.opcion = opcion;
     }
@@ -66,5 +66,3 @@ public class Calendario  implements java.io.Serializable {
 
 
 }
-
-
