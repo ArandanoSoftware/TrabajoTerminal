@@ -39,6 +39,12 @@
       <action name="qprof" class="com.struts.controllers.ProfesorController" method="profs">
         <result>views/queries/queryProf.jsp</result>
       </action>
+      <!-- Borrar Profesor -->
+      <action name="dprof" class="com.struts.controllers.ProfesorController" method="deleteProf">
+        <result type="redirectAction">
+            <param name="actionName">qprof</param>
+        </result>
+      </action>
 
       <!--Trabajos Terminales-->
 

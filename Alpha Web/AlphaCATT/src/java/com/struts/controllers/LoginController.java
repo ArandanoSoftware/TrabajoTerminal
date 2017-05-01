@@ -45,7 +45,7 @@ public class LoginController extends ActionSupport {
   {
       this.UserOp = new UsuariosOperaciones();
       if(UserOp.Authenticate(userName, passWord)){
-          return "sucess";
+          return "success";
       }else{
           return "error";
       }

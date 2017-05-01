@@ -23,7 +23,7 @@ public class UsuariosOperaciones {
 
 
         //Petición
-        String hql= "FROM Users U WHERE U.username = :u_username and U.password = :u_password";
+        String hql= "FROM Usuario U WHERE U.username = :u_username and U.password = :u_password";
         Query  query = session.createQuery(hql);
         query.setParameter("u_username", user);
         query.setParameter("u_password", pass);

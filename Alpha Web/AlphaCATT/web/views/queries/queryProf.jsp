@@ -98,7 +98,13 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
                   <td><s:property value="nombre"/> </td>
                   <td><s:property value="apaterno"/> </td>
                   <td><s:property value="amaterno"/> </td>
-                  <td><s:property value="email"/> </td>                  
+                  <td><s:property value="email"/> </td>
+                  <td>
+                    <s:a action="dprof">
+                    <s:param name="id" value="idProfesor" />
+                    <i class="material-icons">delete</i>
+                    </s:a>
+                  </td>
               </tr>
           </s:iterator>
       </tbody>

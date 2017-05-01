@@ -44,25 +44,28 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
       Si tu director o asesor es una persona externa a la institución registra sus datos
       así como su información de contacto.
     </p>
+    <s:form action="regProf">
     <table>
       <tr>
         <th> Nombre:</th>
-        <th> <input type="text" name="" value=""></th>
+        <th> <input type="text" name="nombre" value="Inserta su nombre"></th>
       </tr>
       <tr>
         <th> Apellido paterno:</th>
-        <th> <input type="text" name="" value=""></th>
+        <th> <input type="text" name="apaterno" value="Inserta su Apellido Paterno"></th>
       </tr>
       <tr>
         <th> Apellido materno:</th>
-        <th> <input type="text" name="" value=""></th>
+        <th> <input type="text" name="amaterno" value="Inserta su Apellido Materno"></th>
       </tr>
       <tr>
         <th> E-mail:</th>
-        <th> <input type="email" name="" value=""></th>
+        <th> <input type="email" name="email" value="Inserta su Email"></th>
       </tr>
 
     </table>
+        <s:submit value ="Eviar"></s:submit>
+    </s:form>
 
   </div>
   </body>

@@ -9,13 +9,16 @@ import com.myapp.model.Profesor;
 import com.struts.operaciones.ProfesoresOperaciones;
 
 public class ProfesorController  extends ActionSupport {
-    
+
     private static final long serialVersionUID = 1L;
 
     private ArrayList<Profesor> datos;
     private ProfesoresOperaciones ProfOP;
     private Profesor prof;
-    
+
+   
+    private int id;
+
      public ArrayList<Profesor> getDatos() {
         return datos;
     }
@@ -31,7 +34,7 @@ public class ProfesorController  extends ActionSupport {
     public void setProfOP(ProfesoresOperaciones ProfOP) {
         this.ProfOP = ProfOP;
     }
-    
+
     public Profesor getProf() {
         return prof;
     }
@@ -40,8 +43,14 @@ public class ProfesorController  extends ActionSupport {
         this.prof = prof;
     }
 
+ public int getId() {
+        return id;
+    }
 
- 
+    public void setId(int id) {
+        this.id = id;
+    }
+
 
 
   @Override
@@ -51,10 +60,19 @@ public class ProfesorController  extends ActionSupport {
   }
 
   public String profs() throws Exception
-    {
-        this.ProfOP = new ProfesoresOperaciones();
-        this.datos = ProfOP.getUsuarios();
-        return SUCCESS;
-    }
+  {
+      this.ProfOP = new ProfesoresOperaciones();
+      this.datos = ProfOP.getUsuarios();
+      return SUCCESS;
+  }
+  public String
+
+  public String deleteProf()
+  {
+      this.ProfOP = new ProfesoresOperaciones();
+      this.ProfOP.deleteProf(id);
+      return SUCCESS;
+  }
+
 
 }

@@ -44,4 +44,17 @@ public class ProfesoresOperaciones {
         return arreglo;
 
     }
+    public void deleteProf(int id)
+     {
+        SessionFactory factory=HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
+
+        // Magic here
+        Profesor prof=(Profesor)session.get(Profesor.class, id);
+        session.delete(prof);
+
+        tx.commit();
+        session.close();
+     }
 }
