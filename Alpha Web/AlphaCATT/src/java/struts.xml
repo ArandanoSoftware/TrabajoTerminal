@@ -71,6 +71,9 @@
       <action name="rsalas" class="com.struts.controllers.SalaController" method="execute">
         <result>views/forms/regSalas.jsp</result>
       </action>
+      <action name="regSala" class="com.struts.controllers.SalaController" method="regSala">
+        <result>views/forms/regSalas.jsp</result>
+      </action>
       <!-- Consulta de Salas -->
       <action name="qsalas" class="com.struts.controllers.SalaController" method="salas">
         <result>views/queries/querySala.jsp</result>

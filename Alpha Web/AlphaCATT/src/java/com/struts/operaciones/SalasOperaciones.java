@@ -40,6 +40,20 @@ public class SalasOperaciones {
         return arreglo;
 
     }
+    public void regSala(String nombre)
+    {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        Transaction tx =session.beginTransaction();
+        //Entity Query
+        Sala sala = new Sala();
+        sala.setNombre(nombre);
+        //save sala
+        session.save(sala);
+        tx.commit();
+        session.close();
+        
+    }
     
     public void deleteSala(int id)
      {

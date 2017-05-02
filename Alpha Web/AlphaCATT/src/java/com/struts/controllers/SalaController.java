@@ -19,6 +19,7 @@ public class SalaController extends ActionSupport{
     private Sala Sala;
 
     private int id;
+    private String nombre;
 
     public int getId() {
         return id;
@@ -26,6 +27,14 @@ public class SalaController extends ActionSupport{
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
      public ArrayList<Sala> getDatos() {
@@ -62,6 +71,12 @@ public class SalaController extends ActionSupport{
     {
         this.SalasOP = new SalasOperaciones();
         this.datos = SalasOP.getSalas();
+        return SUCCESS;
+    }
+    public String regSala()
+    {
+        this.SalasOP = new SalasOperaciones();
+        SalasOP.regSala(nombre);
         return SUCCESS;
     }
 
