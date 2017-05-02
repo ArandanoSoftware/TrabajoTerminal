@@ -44,6 +44,25 @@ public class ProfesoresOperaciones {
         return arreglo;
 
     }
+
+    public void regProf(String nombre, String apaterno, String amaterno, String email)
+    {
+      SessionFactory factory = HibernateUtil.getSessionFactory();
+      Session session=factory.openSession();
+      Transaction tx =session.beginTransaction();
+      //Query con Entity
+      Profesor prof = new Profesor();
+       prof.setNombre(nombre);
+       prof.setApaterno(apaterno);
+       prof.setAmaterno(amaterno);
+       prof.setEmail(email);
+      
+      //
+      session.save(prof);
+      tx.commit();
+      session.close();
+    }
+
     public void deleteProf(int id)
      {
         SessionFactory factory=HibernateUtil.getSessionFactory();

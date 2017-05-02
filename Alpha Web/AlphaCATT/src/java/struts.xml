@@ -35,6 +35,9 @@
       <action name="rprof" class="com.struts.controllers.ProfesorController" method="execute">
         <result>views/forms/regProf.jsp</result>
       </action>
+      <action name="regProf" class="com.struts.controllers.ProfesorController" method="regProf">
+        <result>views/forms/regProf.jsp</result>
+      </action>
       <!--Consulta de Profesores-->
       <action name="qprof" class="com.struts.controllers.ProfesorController" method="profs">
         <result>views/queries/queryProf.jsp</result>
