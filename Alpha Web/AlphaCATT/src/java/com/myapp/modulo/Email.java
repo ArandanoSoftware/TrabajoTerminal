@@ -124,18 +124,18 @@ public class Email {
                 destinos[i]=new InternetAddress(dest.get(i));
             }
             mensaje.addRecipients(Message.RecipientType.TO, destinos);
-            mensaje.setSubject("EL CALENDARIO =D si se can");
+            mensaje.setSubject("Este es el bueno xD");
             
             BodyPart cuerpoMensaje = new MimeBodyPart();
-            cuerpoMensaje.setText("te notifico que hoy tenemos que ver a nayely =S\n\n\n aquí debe haber un calendario\n\n\n y... puto\n\n\n tambien me parece que hay forma de meter html en el cuerpo del correo, algo así: mensaje.setContent(\"<h1>El mensaje de nuestro primer correo HTML</h1>\",\"text/html\" );\n\n\nno lo he intentado pero por si se ocupa mmmm... puto xD");
+            cuerpoMensaje.setText("putito putito putito\n\n\n aquí debe haber un calendario\n\n\n y... puto\n\n\n tambien me parece que hay forma de meter html en el cuerpo del correo, algo así: mensaje.setContent(\"<h1>El mensaje de nuestro primer correo HTML</h1>\",\"text/html\" );\n\n\nno lo he intentado pero por si se ocupa mmmm... puto xD");
             Multipart multiparte = new MimeMultipart();
             multiparte.addBodyPart(cuerpoMensaje);
             
             cuerpoMensaje = new MimeBodyPart();
-            String archivo = "../calendar2.xls";
+            String archivo = "../Calendario.pdf";
             DataSource fuente = new FileDataSource(archivo);
             cuerpoMensaje.setDataHandler(new DataHandler(fuente));
-            cuerpoMensaje.setFileName("calensario1.xls");
+            cuerpoMensaje.setFileName("Calendario.pdf");
             multiparte.addBodyPart(cuerpoMensaje);
             
             mensaje.setContent(multiparte);

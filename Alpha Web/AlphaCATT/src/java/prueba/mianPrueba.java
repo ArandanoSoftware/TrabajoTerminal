@@ -5,6 +5,7 @@
  */
 package prueba;
 
+import PDF.PDF;
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
 import com.myapp.algoritmo.Restriccion;
@@ -445,13 +446,16 @@ public class mianPrueba {
         List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion, 1);
         for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
         LeerExcel.inportaExcel(calDefinitivo, 2);
+
+        PDF pdfCalendario = new PDF();
+        pdfCalendario.createPDF(new File("../Calendario.pdf"),Genetico.noHabil);
         
-////        Email mail = new Email();
-//////        mail.enviar("hazzy76@hotmail.com");
-////        List<String> destinos = new ArrayList<>();
-////        destinos.add("hazzy76@hotmail.com");
-////        destinos.add("robonline7@gmail.com");
-////        mail.enviar(destinos);
+        Email mail = new Email();
+        //mail.enviar("hazzy76@hotmail.com");
+        List<String> destinos = new ArrayList<>();
+        destinos.add("hazzy76@hotmail.com");
+        destinos.add("robonline7@gmail.com");
+        mail.enviar(destinos);
         
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
