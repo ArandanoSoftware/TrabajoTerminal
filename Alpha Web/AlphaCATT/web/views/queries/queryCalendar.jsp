@@ -15,7 +15,6 @@ de trabajo terminal
     <link rel="stylesheet" href="css/normalize.css">
     <%--PersonalCSS--%>
     <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="../../css/calendarioGeneral.css">
     <%--Javascript--%>
     <script type="text/javascript" src="js/master.js"></script>
     <script type="text/javascript" src="js/jspdf.min.js"></script>
@@ -84,19 +83,19 @@ de trabajo terminal
     <table class="TableCode">
         <h2>Celandario General :</h2>
              <thead>
-             <th># Trabajo Terminal: </th>
-             <th>Nombre: </th>
-             <th>Apellido Materno: </th>
-             <th>Apellido Paterno: </th>
+             <%-- <th># Trabajo Terminal: </th> --%>
+             <%-- <th>Nombre: </th> --%>
+             <%-- <th>Apellido Materno: </th> --%>
+             <%-- <th>Apellido Paterno: </th> --%>
              </thead>
      <tbody>
-         <s:iterator value="CalList" var="dato" status="estado">
+         <s:iterator value="CalDaoList" var="dato" status="estado">
              <tr>
+                 <td><s:property value="fecha"/> </td>
                  <td><s:property value="idTt"/> </td>
                  <!-- <td><s:property value="sala"/> </td> -->
                  <!-- <td><s:property value="tt"/> </td> -->
-                 <td><s:property value="fecha"/> </td>
-                <td><s:property value="opcion"/> </td>
+                <%-- <td><s:property value="opcion"/> </td> --%>
              </tr>
          </s:iterator>
      </tbody>

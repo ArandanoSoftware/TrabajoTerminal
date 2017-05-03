@@ -78,9 +78,9 @@ Trabajo Terminal - Pagina ver los TT registrados
       En este listado se muestran todos los Trabajos Terminales que estan registrados para
       presentación
     </p>
-
+    <h5>Buscador:</h5><input type="text" id="buscador" onkeyup="Filter()" placeholder="Buscar nombres..">
         <!-- struts Form -->
-     <table class="TableCode">
+     <table class="TableCode" id="tabla">
          <h2>Trabajos Terminales Registrados:</h2>
               <thead>
               <th>ID: </th>

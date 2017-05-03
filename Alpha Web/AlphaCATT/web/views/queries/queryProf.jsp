@@ -81,9 +81,10 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
       En este listado se muestran todos los profesores que estan registrados
       en la base de datos.
     </p>
+    <h5>Buscador:</h5><input type="text" id="buscador" onkeyup="Filter()" placeholder="Buscar nombres..">
 
         <!-- struts Form -->
-     <table class="TableCode">
+     <table class="Table" id="tabla">
          <h2>Profesores:</h2>
               <thead>
               <th>ID: </th>
