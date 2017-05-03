@@ -44,7 +44,9 @@ public class PDF {
     private static final Font chapterFont = FontFactory.getFont(FontFactory.HELVETICA, 26, Font.BOLDITALIC);
     private static final Font paragraphFont = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL);
          
-    private static final Font categoryFont = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
+    private static final Font NORMALFONT = new Font(Font.FontFamily.HELVETICA, 18, Font.NORMAL, new BaseColor(15,36,62));
+    private static final Font NORMALBOLDFONT = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, new BaseColor(15,36,62));
+    private static final Font NORMALUNDERLINEDBOLDFONT = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, new BaseColor(15,36,62));
     private static final Font FECHATITLE = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
     private static final Font REDFONT = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD,  new BaseColor(192, 0, 0));
     private static final Font LITTLE = new Font(Font.FontFamily.HELVETICA, 6, Font.NORMAL);
@@ -59,14 +61,20 @@ public class PDF {
     private static final String iTextExampleImage = "/home/hazzy76/Imágenes/ipn.png";
     private static final String IPNIMAGE = "../ipn.png";
     private static final String ESCOMIMAGE = "../escom.png";
+    
+    public PDF()
+    {
+        NORMALUNDERLINEDBOLDFONT.setStyle(Font.UNDERLINE);
+    }
+    
     /**
 
      * Creamos un documento PDF
      * @param pdfNewFile
+     * @param festivos
      */
     public void createPDF(File pdfNewFile, List<Date> festivos) {
         // We create the document and set the file name.        
-        // Creamos el documento e indicamos el nombre del fichero.
         try {
             Document document = new Document(PageSize.A4.rotate());
             try {
@@ -83,7 +91,18 @@ public class PDF {
             document.addKeywords("Trabajo Terminal, Fecha, Presentación");
             document.addAuthor("CATT");
             document.addCreator("CATT");
-             
+            
+            PdfPTable tablaInstrucciones = new PdfPTable(1);
+            tablaInstrucciones.setWidthPercentage(100);
+            
+            PdfPCell zelda = new PdfPCell();
+            zelda.setBackgroundColor(new BaseColor(220,230,241));
+            
+            Paragraph instrucciones = new Paragraph();
+            instrucciones.add(new Phrase("PARA PRESENTAR EVALUACIÓN DE TRABAJO TERMINAL DEBES:", NORMALBOLDFONT));
+            instrucciones.add(new Phrase("1. REVISAR Y CUMPLIR LOS REQUISITOS PARA PRESENTAR EVALUACIÓN DE TT-I, TT-II O TT-R, según corresponda (www.escom.ipn.mx/titulacion/catt.php)", NORMALFONT));
+            
+            
             // Primera página 
             // Añadimos una imagen
 ////            Image image;
@@ -157,7 +176,7 @@ public class PDF {
             fin.setDate(6);
             fin.setMonth(6);
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            Date acuse = new Date();
+            Date acuse;
             while(inicio.getTime() <= fin.getTime())
             {
                 
@@ -395,7 +414,9 @@ public class PDF {
         }
     }
     /**
-     * @param args the command line arguments
+     * @param tt
+     * @param sinodales
+     * @return 
      */
 //    public static void main(String args[]) {
 //        PDF generatePDFFileIText = new PDF();
