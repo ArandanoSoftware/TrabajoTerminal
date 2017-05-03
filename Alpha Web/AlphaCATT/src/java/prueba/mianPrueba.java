@@ -447,7 +447,7 @@ public class mianPrueba {
         for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
         calDefinitivo = Genetico.crearCalendario(poblacion, 1);
         for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
-        LeerExcel.inportaExcel(calDefinitivo, 2);u7u7uioki0,
+        LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
         
         
         
