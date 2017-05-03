@@ -50,4 +50,10 @@ public class CalendarioBs {
         CalendarioDao calendarioDao = new CalendarioDao();
         calendarioDao.erase(calendario);
     }
+    
+    public static void close()
+    {
+        CalendarioDao calendarioDao = new CalendarioDao();
+        calendarioDao.close();
+    }
 }

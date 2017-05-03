@@ -443,20 +443,160 @@ public class mianPrueba {
         
         poblacion.addAll(poblaciontt2);
 ////        
-        List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion, 1);
+        List<Calendario> calDefinitivo = CalendarioBs.findAll();
+        for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
+        calDefinitivo = Genetico.crearCalendario(poblacion, 1);
         for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
-        LeerExcel.inportaExcel(calDefinitivo, 2);
+        LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
         PDF pdfCalendario = new PDF();
         pdfCalendario.createPDF(new File("../Calendario.pdf"),Genetico.noHabil);
         
-        Email mail = new Email();
-        //mail.enviar("hazzy76@hotmail.com");
-        List<String> destinos = new ArrayList<>();
-        destinos.add("hazzy76@hotmail.com");
-        destinos.add("robonline7@gmail.com");
-        mail.enviar(destinos);
-        
+//        Email mail = new Email();
+//        //mail.enviar("hazzy76@hotmail.com");
+//        List<String> destinos = new ArrayList<>();
+//        destinos.add("hazzy76@hotmail.com");
+//        destinos.add("robonline7@gmail.com");
+//        mail.enviar(destinos);
+        CalendarioBs.close();
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó !!!!! en " + tiempo/1000);
