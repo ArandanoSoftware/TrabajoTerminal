@@ -15,6 +15,7 @@ de trabajo terminal
     <link rel="stylesheet" href="css/normalize.css">
     <%--PersonalCSS--%>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/calendarTable.css">
     <%--Javascript--%>
     <script type="text/javascript" src="js/master.js"></script>
     <script type="text/javascript" src="js/jspdf.min.js"></script>
@@ -28,7 +29,7 @@ de trabajo terminal
     <div class="TitleBar">
         <div class="Title">
           <ul>
-            <li class="Title-item"><img src="../../img/logoEscom.png" id="logoEscom"></li>
+            <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
             <li class="Title-item"><b>Sistema de Calendarización de presentaciones de Trabajos Terminales </b></li>
             <li class="Title-item-name">
          </ul>
@@ -74,33 +75,44 @@ de trabajo terminal
       <h3>Instrucciones:</h3>
       <p>
         Este calendario muestra todas  las presentaciones de trabajo terminal
-        calendarizadas.
+        calendarizadas hasta el momento.
       </p>
-      <br>
-        <button onclick="Save()"> Guardar Calendario </button>
+    <h2>Calendario General :</h2>
     </div>
-
-    <table class="TableCode">
-        <h2>Celandario General :</h2>
+    <div class="calendarZone">
+    <table class="calendarTable">
              <thead>
-             <%-- <th># Trabajo Terminal: </th> --%>
-             <%-- <th>Nombre: </th> --%>
-             <%-- <th>Apellido Materno: </th> --%>
-             <%-- <th>Apellido Paterno: </th> --%>
+              <th class="TableHead">HORA</th>
+              <th class="TableHead">LUGAR</th>
+              <th class="TableHead">TT</th>
+              <th class="TableHead">TÍTULO</th>
+              <th class="TableHead">DIRECTOR 1</th>
+              <th class="TableHead">DIRECTOR 2</th>
+              <th class="TableHead" colspan="3">SINODALÍA</th>
              </thead>
      <tbody>
-         <s:iterator value="CalDaoList" var="dato" status="estado">
-             <tr>
-                 <td><s:property value="fecha"/> </td>
-                 <td><s:property value="idTt"/> </td>
-                 <!-- <td><s:property value="sala"/> </td> -->
-                 <!-- <td><s:property value="tt"/> </td> -->
-                <%-- <td><s:property value="opcion"/> </td> --%>
-             </tr>
+       <tr>
+         <td>18:00 </td>
+         <td>Eduardo Torrijos</td>
+         <td>2016-A088</td>
+         <td>Sistema de claendarización</td>
+         <td>Pepe con Apellido</td>
+         <td>Toño con Apellido</td>
+         <td>El nombre debe de ser largo</td>
+         <td>el nombre tiene que ser largo</td>
+         <td>e                             </td>
+       </tr>
+      <s:iterator value="CalArrayList" var="dato" status="estado">
+       <tr>
+         <td><s:property value="fecha"/></td>
+         <td><s:property value="nombre"/></td>
+         <td><s:property value="idTt"/></td>
+         <td><s:property value="tt"/></td>
+         <td><s:property value="opcion"/></td>
+       </tr>
          </s:iterator>
      </tbody>
-     </table>
-
-
+    </table>
+  </div>
 </body>
 </html>

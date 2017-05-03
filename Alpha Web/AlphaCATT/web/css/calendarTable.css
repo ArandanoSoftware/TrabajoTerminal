@@ -1,0 +1,23 @@
+.calendarZone{
+  padding-left: 4%;
+}
+
+.calendarTable{
+    border-collapse: collapse;
+}
+.TableHead{
+  color: white;
+  background-color: #002060;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td, th{
+  padding: 5px;
+}
