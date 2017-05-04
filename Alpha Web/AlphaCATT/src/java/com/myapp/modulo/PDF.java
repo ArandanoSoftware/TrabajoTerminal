@@ -1,4 +1,4 @@
-package PDF;
+package com.myapp.modulo;
  
 import com.itextpdf.text.Anchor;
 import com.itextpdf.text.BadElementException;
@@ -41,22 +41,19 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
  */
 public class PDF {
     // Fonts definitions (Definición de fuentes).
-    private static final Font chapterFont = FontFactory.getFont(FontFactory.HELVETICA, 26, Font.BOLDITALIC);
-    private static final Font paragraphFont = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL);
-         
-    private static final Font NORMALFONT = new Font(Font.FontFamily.HELVETICA, 18, Font.NORMAL, new BaseColor(15,36,62));
-    private static final Font NORMALBOLDFONT = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, new BaseColor(15,36,62));
-    private static final Font NORMALUNDERLINEDBOLDFONT = new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD, new BaseColor(15,36,62));
-    private static final Font FECHATITLE = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, BaseColor.WHITE);
-    private static final Font REDFONT = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD,  new BaseColor(192, 0, 0));
-    private static final Font LITTLE = new Font(Font.FontFamily.HELVETICA, 6, Font.NORMAL);
-    private static final Font TABLETITLES = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL, BaseColor.WHITE);
-    private static final Font TITLE1 = new Font(Font.FontFamily.HELVETICA, 15, Font.BOLD, new BaseColor(0, 32, 96));
-    private static final Font TITLE2 = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD, new BaseColor(0, 32, 96));
-    private static final Font TITLE3 = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, new BaseColor(0, 32, 96));
-    private static final Font TITLE4 = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD, new BaseColor(0, 32, 96));
-    private static final Font TITLE5 = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD, BaseColor.WHITE);
-    private static final Font TITLE6 = new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD, new BaseColor(0, 32, 96));
+    private static final Font NORMALFONT = new Font(Font.FontFamily.HELVETICA, 8, Font.NORMAL, new BaseColor(15,36,62));
+    private static final Font NORMALBOLDFONT = new Font(Font.FontFamily.HELVETICA, 8, Font.BOLD, new BaseColor(15,36,62));
+    private static final Font NORMALUNDERLINEDBOLDFONT = new Font(Font.FontFamily.HELVETICA, 8, Font.UNDERLINE|Font.BOLD, new BaseColor(15,36,62));
+    private static final Font FECHATITLE = new Font(Font.FontFamily.HELVETICA, 8, Font.BOLD, BaseColor.WHITE);
+    private static final Font REDFONT = new Font(Font.FontFamily.HELVETICA, 9, Font.BOLD,  new BaseColor(192, 0, 0));
+    private static final Font LITTLE = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL);
+    private static final Font TABLETITLES = new Font(Font.FontFamily.HELVETICA, 7, Font.NORMAL, BaseColor.WHITE);
+    private static final Font TITLE1 = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD, new BaseColor(0, 32, 96));
+    private static final Font TITLE2 = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, new BaseColor(0, 32, 96));
+    private static final Font TITLE3 = new Font(Font.FontFamily.HELVETICA, 11, Font.BOLD, new BaseColor(0, 32, 96));
+    private static final Font TITLE4 = new Font(Font.FontFamily.HELVETICA, 8, Font.BOLD, new BaseColor(0, 32, 96));
+    private static final Font TITLE5 = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD, BaseColor.WHITE);
+    private static final Font TITLE6 = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD, new BaseColor(0, 32, 96));
      
     private static final String iTextExampleImage = "/home/hazzy76/Imágenes/ipn.png";
     private static final String IPNIMAGE = "../ipn.png";
@@ -64,7 +61,6 @@ public class PDF {
     
     public PDF()
     {
-        NORMALUNDERLINEDBOLDFONT.setStyle(Font.UNDERLINE);
     }
     
     /**
@@ -92,75 +88,6 @@ public class PDF {
             document.addAuthor("CATT");
             document.addCreator("CATT");
             
-            PdfPTable tablaInstrucciones = new PdfPTable(1);
-            tablaInstrucciones.setWidthPercentage(100);
-            
-            PdfPCell zelda = new PdfPCell();
-            zelda.setBackgroundColor(new BaseColor(220,230,241));
-            
-            Paragraph instrucciones = new Paragraph();
-            instrucciones.add(new Phrase("PARA PRESENTAR EVALUACIÓN DE TRABAJO TERMINAL DEBES:", NORMALBOLDFONT));
-            instrucciones.add(new Phrase("1. REVISAR Y CUMPLIR LOS REQUISITOS PARA PRESENTAR EVALUACIÓN DE TT-I, TT-II O TT-R, según corresponda (www.escom.ipn.mx/titulacion/catt.php)", NORMALFONT));
-            document.add(instrucciones);
-            
-            // Primera página 
-            // Añadimos una imagen
-////            Image image;
-////            try {
-////                image = Image.getInstance(iTextExampleImage);  
-////                image.setAbsolutePosition(2, 150);
-////                chapter.add(image);
-////            } catch (BadElementException ex) {
-////                System.out.println("Image BadElementException" +  ex);
-////            } catch (IOException ex) {
-////                System.out.println("Image IOException " +  ex);
-////            }
-             
-            // Second page - some elements
-            // Segunda página - Algunos elementos
-////////            Chapter chapSecond = new Chapter(new Paragraph(new Anchor("Some elements (Añadimos varios elementos)")), 1);
-////////            Paragraph paragraphS = new Paragraph("Do it by Xules (Realizado por Xules)", subcategoryFont);
-////////             
-////////            // Underline a paragraph by iText (subrayando un párrafo por iText)
-////////            Paragraph paragraphE = new Paragraph("This line will be underlined with a dotted line (Está línea será subrayada con una línea de puntos).");
-////////            DottedLineSeparator dottedline = new DottedLineSeparator();
-////////            dottedline.setOffset(-2);
-////////            dottedline.setGap(2f);
-////////            paragraphE.add(dottedline);
-////////            chapSecond.addSection(paragraphE);
-////////             
-////////            Section paragraphMoreS = chapSecond.addSection(paragraphS);
-////////            // List by iText (listas por iText)
-////////            String text = "test 1 2 3 ";
-////////            for (int i = 0; i < 5; i++) {
-////////                text = text + text;
-////////            }
-////////            List list = new List(List.UNORDERED);
-////////            ListItem item = new ListItem(text);
-////////            item.setAlignment(Element.ALIGN_JUSTIFIED);
-////////            list.add(item);
-////////            text = "a b c align ";
-////////            for (int i = 0; i < 5; i++) {
-////////                text = text + text;
-////////            }
-////////            item = new ListItem(text);
-////////            item.setAlignment(Element.ALIGN_JUSTIFIED);
-////////            list.add(item);
-////////            text = "supercalifragilisticexpialidocious ";
-////////            for (int i = 0; i < 3; i++) {
-////////                text = text + text;
-////////            }
-////////            item = new ListItem(text);
-////////            item.setAlignment(Element.ALIGN_JUSTIFIED);
-////////            list.add(item);
-////////            paragraphMoreS.add(list);
-////////            document.add(chapSecond);
-             
-            // How to use PdfPTable
-            // Utilización de PdfPTable
-             
-            // Usamos varios elementos para añadir título y subtítulo
-            
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             List<Calendario> cal = CalendarioBs.findAll();
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -177,6 +104,110 @@ public class PDF {
             fin.setMonth(6);
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             Date acuse;
+            boolean banderaInstrucciones = true;
+            
+
+            // Ahora llenamos la tabla del PDF
+            PdfPCell columnHeader;
+            PdfPTable titulos = new PdfPTable(3);
+            titulos.setWidthPercentage(100);
+            float[] medidas2 = {2,10,2};
+            titulos.setWidths(medidas2);
+
+                        // Añadimos una imagen
+            Image image;
+            try {
+                image = Image.getInstance(IPNIMAGE);
+                image.scaleAbsolute(36, 49);
+                columnHeader = new PdfPCell(image);
+                columnHeader.setBorder(0);
+                columnHeader.setRowspan(2);
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                columnHeader.setVerticalAlignment(Element.ALIGN_CENTER);
+                titulos.addCell(columnHeader);
+
+                columnHeader = new PdfPCell(new Paragraph("INSTITUTO POLITÉCNICO NACIONAL", TITLE1));
+                columnHeader.setBorder(0);
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                titulos.addCell(columnHeader);
+
+
+                image = Image.getInstance(ESCOMIMAGE);
+                image.scaleAbsolute(64, 49);
+                columnHeader = new PdfPCell(image);
+                columnHeader.setBorder(0);
+                columnHeader.setRowspan(2);
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                columnHeader.setVerticalAlignment(Element.ALIGN_CENTER);
+                titulos.addCell(columnHeader);
+            }catch (BadElementException ex) {System.out.println("Image BadElementException" +  ex);}
+            catch (IOException ex) {System.out.println("Image IOException " +  ex);}
+
+            columnHeader = new PdfPCell(new Paragraph("ESCUELA SUPERIOR DE CÓMPUTO", TITLE2));
+            columnHeader.setBorder(0);
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            titulos.addCell(columnHeader);
+
+            columnHeader = new PdfPCell(new Paragraph("SUBDIRECCIÓN ACADÉMICA", TITLE3));
+            columnHeader.setBorder(0);
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            columnHeader.setColspan(3);
+            columnHeader.setBackgroundColor(new BaseColor(193, 193, 255));
+            titulos.addCell(columnHeader);
+
+            columnHeader = new PdfPCell(new Paragraph("DEPARTAMENTO DE FORMACIÓN INTEGRAL E INSTITUCIONAL", TITLE4));
+            columnHeader.setBorder(0);
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            columnHeader.setColspan(3);
+            titulos.addCell(columnHeader);
+
+            columnHeader = new PdfPCell(new Paragraph("COMISIÓN ACADÉMICA DE TRABAJOS TERMINALES", TITLE5));
+            columnHeader.setBorder(0);
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            columnHeader.setColspan(3);
+            columnHeader.setBackgroundColor(new BaseColor(0, 0, 99));
+            titulos.addCell(columnHeader);
+
+            columnHeader = new PdfPCell(new Paragraph("CALENDARIO DE PRESENTACION TTI,TTII y TTR CICLO 2016-2017/2", TITLE6));
+            columnHeader.setBorder(0);
+            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+            columnHeader.setColspan(3);
+            titulos.addCell(columnHeader);
+
+
+            PdfPTable tablaInstrucciones = new PdfPTable(1);
+            tablaInstrucciones.setWidthPercentage(100);
+
+            PdfPCell zelda = new PdfPCell(new Phrase(" "));
+            zelda.setBackgroundColor(new BaseColor(220,230,241));
+            zelda.setBorder(0);
+            tablaInstrucciones.addCell(zelda);
+
+            Paragraph instrucciones = new Paragraph();
+            instrucciones.add(new Phrase("PARA PRESENTAR EVALUACIÓN DE TRABAJO TERMINAL DEBES:\n\n", NORMALBOLDFONT));
+            instrucciones.add(new Phrase("1. ", NORMALFONT));
+            instrucciones.add(new Phrase("REVISAR Y CUMPLIR LOS REQUISITOS PARA PRESENTAR EVALUACIÓN DE TT-I, TT-II O TT-R", NORMALUNDERLINEDBOLDFONT));
+            instrucciones.add(new Phrase(", según corresponda (www.escom.ipn.mx/titulacion/catt.php)\n", NORMALFONT));
+            instrucciones.add(new Phrase("2. ", NORMALFONT));
+            instrucciones.add(new Phrase("UN DÍA ANTES DE LA PRESENTACIÓN, CONFIRMAR CON SU JURADO EVALUADOR ", NORMALBOLDFONT));
+            instrucciones.add(new Phrase("(Directores y Sinodales), ", NORMALFONT));
+            instrucciones.add(new Phrase("LA HORA Y EL LUGAR DE EVALUACIÓN.\n", NORMALBOLDFONT));
+            instrucciones.add(new Phrase("      Si se requiere alguna modificación en el horario, se tendrá que contar con la autorización de TODO EL JURADO EVALUADOR Y DEBERÁN NOTIFICAR POR ESCRITO A LA CATT, como MÁXIMO tres días antes de la presentación.\n", NORMALFONT));
+            instrucciones.add(new Phrase("      EL DÍA DE LA PRESENTACIÓN.\n", NORMALBOLDFONT));
+            instrucciones.add(new Phrase("      Acudir a la CATT 30 min. antes de su evaluación para:\n            1. Revisar el acta de evaluación y verificar los datos del TT (Nombres de integrantes, Título, etc.)\n            2. Solicitar Mantel, Proyector electrónico, multicontacto, extensión y controles remotos (según se requiera) con identificación OFICIAL VIGENTE.\n\n", NORMALFONT));
+            instrucciones.add(new Phrase("      Acudir a la CATT 30 min. antes de su evaluación para:\n", NORMALFONT));
+            instrucciones.add(new Phrase("      AL CONCLUIR LA PRESENTACIÓN.\n", NORMALBOLDFONT));
+            instrucciones.add(new Phrase("            1. Entregar el Material en las mismas condiciones en las que les fue prestado; el mantel debe estar limpio y doblado (evitar colocar alimentos y/o ingerirlos sobre él)", NORMALFONT));
+            zelda = new PdfPCell(instrucciones);
+            zelda.setBorder(0);
+            tablaInstrucciones.addCell(zelda);
+
+            zelda = new PdfPCell(new Phrase(" "));
+            zelda.setBorder(0);
+            zelda.setBackgroundColor(new BaseColor(220,230,241));
+            tablaInstrucciones.addCell(zelda);
+            
+            
             while(inicio.getTime() <= fin.getTime())
             {
                 
@@ -191,19 +222,11 @@ public class PDF {
                 table.setWidthPercentage(100);
                 float[] medidas = {1.25f ,2f ,1.5f ,8 ,2.25f ,2.25f ,2.25f ,2.25f ,2.25f};
                 table.setWidths(medidas);
-
-                // Ahora llenamos la tabla del PDF
-                PdfPCell columnHeader;
                 // rellenamos las filas de la tabla. 
                 acuse = diaAcuse(inicio, festivos);
                 Paragraph parrafito = new Paragraph();
                 parrafito.add(new Phrase(getDiaSem(inicio) + " " + inicio.getDate() + " de " + getMes(inicio) + " " + (inicio.getYear() + 1900), FECHATITLE));
                 parrafito.add(new Phrase("\nRECEPCIÓN DEN LA C.A.T.T. " + getDiaSem(acuse) + " " + acuse.getDate() + " de " + getMes(acuse) + " " + (acuse.getYear() + 1900), REDFONT));
-                
-                //columnHeader = new PdfPCell(new Paragraph("Presentaciones de " + getDiaSem(inicio) + " " + inicio.getDate() + " de " + getMes(inicio) + " " + inicio.getYear(), FECHATITLE));
-//               
-//                parrafito.add(table) Paragraph parrafito = new Paragraph("Presentaciones de " + getDiaSem(inicio) + " " + inicio.getDate() + " de " + getMes(inicio) + " " + inicio.getYear(), FECHATITLE);
-                //columnHeader.addElement(new Paragraph("\nRECEPCIÓN DEN LA C.A.T.T. EN LTA FECHCA...", REDFONT));
                 columnHeader = new PdfPCell(parrafito);
                 columnHeader.setColspan(9);
                 columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -245,21 +268,7 @@ public class PDF {
                 columnHeader.setBackgroundColor(new BaseColor(0, 32, 96));
                 columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
                 columnHeader.setColspan(3);
-                table.addCell(columnHeader);  
-    ////            columnHeader = new PdfPCell(new Phrase("SINODALIA2"));
-    ////            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-    ////            table.addCell(columnHeader);  
-    ////            
-    ////            columnHeader = new PdfPCell(new Phrase("SINODALIA3"));
-    ////            columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-    ////            table.addCell(columnHeader);
-
-
-                //table.setHeaderRows(2);
-                //rellenamos las filas de la tabla.
-                
-                
-                
+                table.addCell(columnHeader);
                 for (int i = 0; i < numRows; i++)
                 {
                     if(cal.get(i).getFecha().getDate() == inicio.getDate() && cal.get(i).getFecha().getMonth() == inicio.getMonth())
@@ -330,78 +339,14 @@ public class PDF {
                     continue;
                 }
                 
-                PdfPTable titulos = new PdfPTable(3);
-                titulos.setWidthPercentage(100);
-                float[] medidas2 = {2,10,2};
-                titulos.setWidths(medidas2);
-                
-                            // Añadimos una imagen
-                Image image;
-                try {
-                    image = Image.getInstance(IPNIMAGE);
-                    image.scaleAbsolute(36, 49);
-                    columnHeader = new PdfPCell(image);
-                    columnHeader.setBorder(0);
-                    columnHeader.setRowspan(2);
-                    columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    columnHeader.setVerticalAlignment(Element.ALIGN_CENTER);
-                    titulos.addCell(columnHeader);
-                    
-                    columnHeader = new PdfPCell(new Paragraph("INSTITUTO POLITÉCNICO NACIONAL", TITLE1));
-                    columnHeader.setBorder(0);
-                    columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    titulos.addCell(columnHeader);
-                    
-                    
-                    image = Image.getInstance(ESCOMIMAGE);
-                    image.scaleAbsolute(64, 49);
-                    columnHeader = new PdfPCell(image);
-                    columnHeader.setBorder(0);
-                    columnHeader.setRowspan(2);
-                    columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                    columnHeader.setVerticalAlignment(Element.ALIGN_CENTER);
-                    titulos.addCell(columnHeader);
-                }catch (BadElementException ex) {System.out.println("Image BadElementException" +  ex);}
-                catch (IOException ex) {System.out.println("Image IOException " +  ex);}
-
-                columnHeader = new PdfPCell(new Paragraph("ESCUELA SUPERIOR DE CÓMPUTO", TITLE2));
-                columnHeader.setBorder(0);
-                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                titulos.addCell(columnHeader);
-                
-                columnHeader = new PdfPCell(new Paragraph("SUBDIRECCIÓN ACADÉMICA", TITLE3));
-                columnHeader.setBorder(0);
-                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                columnHeader.setColspan(3);
-                columnHeader.setBackgroundColor(new BaseColor(193, 193, 255));
-                titulos.addCell(columnHeader);
-                
-                columnHeader = new PdfPCell(new Paragraph("DEPARTAMENTO DE FORMACIÓN INTEGRAL E INSTITUCIONAL", TITLE4));
-                columnHeader.setBorder(0);
-                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                columnHeader.setColspan(3);
-                titulos.addCell(columnHeader);
-                
-                columnHeader = new PdfPCell(new Paragraph("COMISIÓN ACADÉMICA DE TRABAJOS TERMINALES", TITLE5));
-                columnHeader.setBorder(0);
-                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                columnHeader.setColspan(3);
-                columnHeader.setBackgroundColor(new BaseColor(0, 0, 99));
-                titulos.addCell(columnHeader);
-                
-                columnHeader = new PdfPCell(new Paragraph("CALENDARIO DE PRESENTACION TTI,TTII y TTR CICLO 2016-2017/2", TITLE6));
-                columnHeader.setBorder(0);
-                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
-                columnHeader.setColspan(3);
-                titulos.addCell(columnHeader);
-                
-                
+            
                 
                 inicio.setDate(inicio.getDate() + 1);
                 // We add the table (Añadimos la tabla)
                 
                 document.add(titulos);
-                document.add(new Paragraph("\n"));
+                if(banderaInstrucciones){ document.add(tablaInstrucciones); banderaInstrucciones = false;}
+                else document.add(new Paragraph("\n"));
                 document.add(table);
                 document.newPage();
             }

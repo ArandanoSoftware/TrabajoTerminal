@@ -541,14 +541,14 @@ public class Genetico {
         if(tt == 1)
         {
             fecha.setDate(inicioCal.getDate()+random.nextInt(rangoCal));
-            if(random.nextInt(100) < 10)
+            if(random.nextInt(100) < 5)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
             if(isRango(fecha, inicioCal, interCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 10)
+                if(random.nextInt(100) < 30)
                 {
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));
@@ -563,14 +563,14 @@ public class Genetico {
         }else if(tt == 2)
         {
             fecha.setDate(interCal.getDate() + random.nextInt(rangoCal));
-            if(random.nextInt(100) < 10)
+            if(random.nextInt(100) < 5)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
             if(isRango(fecha, interCal, finCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 10)
+                if(random.nextInt(100) < 30)
                 {
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));

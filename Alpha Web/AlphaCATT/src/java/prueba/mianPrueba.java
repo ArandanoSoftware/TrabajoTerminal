@@ -5,7 +5,7 @@
  */
 package prueba;
 
-import PDF.PDF;
+import com.myapp.modulo.PDF;
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
 import com.myapp.algoritmo.Restriccion;
