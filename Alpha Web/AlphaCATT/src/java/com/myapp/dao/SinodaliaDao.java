@@ -30,6 +30,7 @@ public class SinodaliaDao {
         Transaction tx = session.beginTransaction();
         session.save(sinodalia);
         tx.commit();
+        close();
     }
     
     public void modify(Sinodalia sinodalia)
@@ -37,6 +38,7 @@ public class SinodaliaDao {
         Transaction tx = session.beginTransaction();
         session.update(sinodalia);
         tx.commit();
+        close();
     }
     
     public void erase(Sinodalia sinodalia)
@@ -44,6 +46,7 @@ public class SinodaliaDao {
         Transaction tx = session.beginTransaction();
         session.delete(sinodalia);
         tx.commit();
+        close();
     }
     
     public Sinodalia findById(String id)
@@ -51,6 +54,7 @@ public class SinodaliaDao {
         Transaction tx = session.beginTransaction();
         Sinodalia sinodalia = (Sinodalia)session.get(Sinodalia.class, id);
         tx.commit();
+        close();
         return sinodalia;
     }
     
@@ -59,6 +63,7 @@ public class SinodaliaDao {
         Transaction tx = session.beginTransaction();
         List<Sinodalia> sinodalia = (List<Sinodalia>)session.createCriteria(Sinodalia.class).list();
         tx.commit();
+        close();
         return sinodalia;
     }
     

@@ -32,6 +32,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         session.save(tt);
         tx.commit();
+        close();
     }
     
     public void modify(Tt tt)
@@ -39,6 +40,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         session.update(tt);
         tx.commit();
+        close();
     }
     
     public void erase(Tt tt)
@@ -46,6 +48,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         session.delete(tt);
         tx.commit();
+        close();
     }
     
     public Tt findById(String id)
@@ -53,6 +56,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         Tt tt = (Tt)session.get(Tt.class, id);
         tx.commit();
+        close();
         return tt;
     }
     
@@ -61,6 +65,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).list();
         tx.commit();
+        close();
         return tt;
     }
     
@@ -69,6 +74,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).add(Restrictions.eq("nivel", 1)).list();
         tx.commit();
+        close();
         return tt;
     }
     
@@ -77,6 +83,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).add(Restrictions.eq("nivel", 2)).list();
         tx.commit();
+        close();
         return tt;
     }
     
@@ -85,6 +92,7 @@ public class TTDao {
         Transaction tx = session.beginTransaction();
         List<Tt> tt = (List<Tt>)session.createCriteria(Tt.class).add(Restrictions.eq("nivel", 3)).list();
         tx.commit();
+        close();
         return tt;
     }
     

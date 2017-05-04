@@ -26,15 +26,15 @@ public class TTBs {
     
     public static List<Tt> findAll()
     {
-        TTDao2 ttDao = new TTDao2();
-        List<Tt> tt = ttDao.getTts();
+        TTDao ttDao = new TTDao();
+        List<Tt> tt = ttDao.findAll();
         return tt;
     }
     
     public static List<Tt> findAllTT1()
     {
-        TTOperaciones ttDao = new TTOperaciones();
-        List<Tt> tt = ttDao.getTts();
+        TTDao ttDao = new TTDao();
+        List<Tt> tt = ttDao.findAllTT1();
         return tt;
     }
     
