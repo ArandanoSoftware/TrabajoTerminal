@@ -178,7 +178,7 @@ public class PDF {
             PdfPTable tablaInstrucciones = new PdfPTable(1);
             tablaInstrucciones.setWidthPercentage(100);
 
-            PdfPCell zelda = new PdfPCell(new Phrase(" "));
+            PdfPCell zelda = new PdfPCell(new Phrase(" ",LITTLE));
             zelda.setBackgroundColor(new BaseColor(220,230,241));
             zelda.setBorder(0);
             tablaInstrucciones.addCell(zelda);
@@ -202,7 +202,7 @@ public class PDF {
             zelda.setBorder(0);
             tablaInstrucciones.addCell(zelda);
 
-            zelda = new PdfPCell(new Phrase(" "));
+            zelda = new PdfPCell(new Phrase(" ",LITTLE));
             zelda.setBorder(0);
             zelda.setBackgroundColor(new BaseColor(220,230,241));
             tablaInstrucciones.addCell(zelda);
