@@ -101,7 +101,7 @@ public class PDF {
             Paragraph instrucciones = new Paragraph();
             instrucciones.add(new Phrase("PARA PRESENTAR EVALUACIÓN DE TRABAJO TERMINAL DEBES:", NORMALBOLDFONT));
             instrucciones.add(new Phrase("1. REVISAR Y CUMPLIR LOS REQUISITOS PARA PRESENTAR EVALUACIÓN DE TT-I, TT-II O TT-R, según corresponda (www.escom.ipn.mx/titulacion/catt.php)", NORMALFONT));
-            
+            document.add(instrucciones);
             
             // Primera página 
             // Añadimos una imagen

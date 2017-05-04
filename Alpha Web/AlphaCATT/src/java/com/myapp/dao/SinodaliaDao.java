@@ -21,7 +21,7 @@ public class SinodaliaDao {
     
     public SinodaliaDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         

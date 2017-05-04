@@ -6,7 +6,9 @@
 package com.myapp.bs;
 
 import com.myapp.dao.TTDao;
+import com.myapp.dao.TTDao2;
 import com.myapp.model.Tt;
+import com.struts.operaciones.TTOperaciones;
 import java.util.List;
 
 /**
@@ -24,15 +26,15 @@ public class TTBs {
     
     public static List<Tt> findAll()
     {
-        TTDao ttDao = new TTDao();
-        List<Tt> tt = ttDao.findAll();
+        TTDao2 ttDao = new TTDao2();
+        List<Tt> tt = ttDao.getTts();
         return tt;
     }
     
     public static List<Tt> findAllTT1()
     {
-        TTDao ttDao = new TTDao();
-        List<Tt> tt = ttDao.findAllTT1();
+        TTOperaciones ttDao = new TTOperaciones();
+        List<Tt> tt = ttDao.getTts();
         return tt;
     }
     

@@ -21,7 +21,7 @@ public class DirigeDao {
     
     public DirigeDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         

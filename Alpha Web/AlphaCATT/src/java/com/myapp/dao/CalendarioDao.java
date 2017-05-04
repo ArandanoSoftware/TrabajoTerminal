@@ -21,7 +21,7 @@ public class CalendarioDao {
     
     public CalendarioDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         

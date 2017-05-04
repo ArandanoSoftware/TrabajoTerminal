@@ -21,7 +21,7 @@ public class ProfesorDao {
     
     public ProfesorDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
     public void create(Profesor p)

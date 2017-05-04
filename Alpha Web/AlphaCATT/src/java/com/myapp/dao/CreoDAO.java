@@ -22,7 +22,7 @@ public class CreoDAO {
     
     public CreoDAO()
     {
-        this.session = HibernateUtil.getSessionFactory().getCurrentSession();
+        this.session = HibernateUtil.getSessionFactory().openSession();
     }
     
     public List<Sala> getSalas()

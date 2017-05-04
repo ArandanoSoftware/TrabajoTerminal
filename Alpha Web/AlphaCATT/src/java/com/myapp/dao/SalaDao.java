@@ -21,7 +21,7 @@ public class SalaDao {
     
     public SalaDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
     public void create(Sala s)

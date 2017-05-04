@@ -5,11 +5,11 @@
  */
 package com.myapp.dao;
 
-import com.myapp.algoritmo.Restriccion;
 import com.myapp.hibernate.HibernateUtil;
 import com.myapp.model.Tt;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
@@ -23,7 +23,7 @@ public class TTDao {
     
     public TTDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         
