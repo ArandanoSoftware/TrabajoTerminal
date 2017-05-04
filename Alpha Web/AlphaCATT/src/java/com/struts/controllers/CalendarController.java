@@ -6,21 +6,37 @@ import com.struts.operaciones.CalendarOperaciones;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import com.myapp.model.Calendario;
 import com.myapp.dao.CalendarioDao;
 import com.myapp.bs.CalendarioBs;
 
+import com.myapp.bs.DirigeBs;
+import com.myapp.model.Dirige;
+
+import com.myapp.model.Sinodalia;
+
 
 public class CalendarController extends ActionSupport{
 
-    // Classes 
+    // Classes
     private CalendarioDao CalDao;
     private CalendarOperaciones CalOp;
     private CalendarioBs CalBs;
-    //Outputs
-    private ArrayList<Calendario> CalList;
-    private List<Calendario> CalArrayList;
     
+    private  DirigeBs DirBs;
+
+   
+
+    //Datos entrada
+    private int id;
+    
+    
+    //Listas de Salida
+    private List<Calendario> CalList;
+    private List<Dirige> DirList;
+    private List<Sinodalia> SinList;
+
     public CalendarioDao getCalDao() {
         return CalDao;
     }
@@ -44,23 +60,29 @@ public class CalendarController extends ActionSupport{
     public void setCalBs(CalendarioBs CalBs) {
         this.CalBs = CalBs;
     }
-
-    public ArrayList<Calendario> getCalList() {
+    public List<Calendario> getCalList() {
         return CalList;
     }
 
-    public void setCalList(ArrayList<Calendario> CalList) {
+    //Outputs
+    public void setCalList(List<Calendario> CalList) {
         this.CalList = CalList;
     }
-
-    public List<Calendario> getCalArrayList() {
-        return CalArrayList;
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setCalArrayList(List<Calendario> CalArrayList) {
-        this.CalArrayList = CalArrayList;
+    @Override
+    public String toString() {
+        return id;
     }
-   
+    
+
     @Override
     public String execute() throws Exception{
 
@@ -68,15 +90,16 @@ public class CalendarController extends ActionSupport{
     }
     public String calendar()
     {
-      this.CalBs = new CalendarioBs();
-      CalArrayList= this.CalBs.findAll();
+      this.CalOp = new CalendarOperaciones();
+      CalList= this.CalOp.getCalendar();
       return SUCCESS;
     }
-    public String calendar2()
+    public String Directors()
     {
-
-
+      this.DirBs = new DirigeBs();
+      DirList= this.DirBs.findById(id);
       return SUCCESS;
     }
+
 
 }

@@ -70,6 +70,10 @@ public class Tt  implements java.io.Serializable {
         this.alumnos = alumnos;
     }
 
+    public String toString() {
+        return nombre;
+    }
+
 
 
 

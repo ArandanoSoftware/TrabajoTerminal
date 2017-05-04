@@ -51,6 +51,7 @@ de trabajo terminal
             <s:a action="" forceAddSchemeHostAndPort="true">Gestión de Trabajos Terminales</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Trabajos Terminales</s:a>
           </div>
+
       </div>
       <div class="dropdown">
         <button class="dropbtn">Salas</button>
@@ -78,6 +79,7 @@ de trabajo terminal
         calendarizadas hasta el momento.
       </p>
     <h2>Calendario General :</h2>
+
     </div>
     <div class="calendarZone">
     <table class="calendarTable">
@@ -102,15 +104,20 @@ de trabajo terminal
          <td>el nombre tiene que ser largo</td>
          <td>e                             </td>
        </tr>
-      <s:iterator value="CalArrayList" var="dato" status="estado">
+      <s:iterator value="CalList" status="estado">
        <tr>
          <td><s:property value="fecha"/></td>
-         <td><s:property value="nombre"/></td>
+         <td><s:property value="sala"/></td>
          <td><s:property value="idTt"/></td>
          <td><s:property value="tt"/></td>
-         <td><s:property value="opcion"/></td>
+      </s:iterator>
+      <s:iterator value="CalDir">
+      <s:param name="id" value="idTt" />
+         <td><s:property value=""/></td>
+         <td><s:property value=""/></td> 
+      </s:iterator>
+      
        </tr>
-         </s:iterator>
      </tbody>
     </table>
   </div>
