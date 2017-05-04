@@ -20,8 +20,7 @@ public class CalendarOperaciones {
         SessionFactory sesion= HibernateUtil.getSessionFactory();
         Session session = sesion.openSession();
         Transaction tx=session.beginTransaction();
-
-            //acá hacemos la magia
+        //acá hacemos la magia
                 ArrayList<Calendario> arreglo = new ArrayList<Calendario>();
                 Query q=session.createQuery("from Calendario");
                 List<Calendario> lista = q.list();
@@ -39,6 +38,5 @@ public class CalendarOperaciones {
 
         return arreglo;
     }
-    
 
 }

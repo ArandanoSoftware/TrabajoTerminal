@@ -66,11 +66,37 @@ informar sobre la situación actual para la generación deñ calendario
             <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
           </div>
       </div>
+      <div class="dropdown">
+        <button class="dropbtn red">Configuración</button>
+          <div class="dropdown-content">
+            <s:a action="" forceAddSchemeHostAndPort="true">Usuarios</s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
+          </div>
+      </div>
     </div>
     <div class="General">
-
-
-
+      <h1>Sistema de calendarización  de presentaciones de trabajos terminales </h1>
+      <p>
+        El siguiente sistema tiene como propósito agendar las fechas de para
+        las presentaciones de trabajos terminales, para realizar esta tarea el
+        sistema hace uso de la siguiente información:
+      </p>
+      <ul>
+        <li>Horario de clases de los profesores</li>
+        <li>Salas Disponibles para presentación de trabajos terminales</li>
+        <li>El registro de los trabajos terminales que presentaran</li>
+        <li>Las restricciones personales para los profesores, es decir que días no están disponibles para presentar</li>
+        <li>Las restricciones para el uso de las salas</li>
+      </ul>
+      <p>
+        Este sistema esta dividido en secciones para facilitar el uso del mismo.
+        <br>
+        <br>
+        Este sistema solo ofrece opciones de presentación de trabajos terminales,
+        la decisión final dependerá del personal de la CATT así como de las
+        autoridades pertinentes.
+      </p>
 
    </div>
    </body>

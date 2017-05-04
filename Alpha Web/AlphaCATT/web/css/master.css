@@ -74,11 +74,15 @@ html{
     background-color: #46569c;
     color: white;
     padding: 12px;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
     cursor: pointer;
-    width: 200px;
+    width: 170px;
 }
+.dropbtn.red{
+  background-color: #b2240e;
+}
+
 
 .dropdown {
 
@@ -103,7 +107,6 @@ html{
 }
 
 .dropdown-content a:hover {background-color: #f1f1f1}
-
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -111,7 +114,9 @@ html{
 .dropdown:hover .dropbtn {
     background-color: #6383c2;
 }
-
+.dropdown:hover .dropbtn.red {
+    background-color: #af493a;
+}
 
 /*Panels*/
 .PanelBlue{
