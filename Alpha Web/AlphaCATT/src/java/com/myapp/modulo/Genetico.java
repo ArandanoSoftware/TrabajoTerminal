@@ -37,8 +37,6 @@ public class Genetico {
     public static Date finCal = new Date();
     private static int rangoCal;
     public static List<Date> noHabil = new ArrayList<>();
-    public static boolean busqueda = false;
-    public static Date bucado = new Date(2017, 4, 2);
     
     public static List<Cromosoma> crearPoblacionTT1(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
@@ -85,6 +83,44 @@ public class Genetico {
     }
     
     public static List<Cromosoma> crearPoblacionTT2(Date inicio, Date fin, Set<Tt> tt, int salas)
+    {
+        List<Cromosoma> poblacion = new ArrayList();
+        System.out.println("Esta es fecha inicio: "+ inicio + " Esta es fecha fin: " + fin);
+        Date fecha = new Date();
+        int rango = difFecha(finCal, inicio)/2;
+        System.out.println("este es el rango" + rango);
+        inicio.setDate(inicio.getDate() + rango);
+        System.out.println("esta es la nueva fecha: " + inicio);
+        fecha.setMonth(inicio.getMonth());
+        fecha.setDate(inicio.getDate());
+        List<Tt> tts = new ArrayList(tt);
+        int l = 0;
+        for(int i = 1; i <= salas; i++)
+        {
+            for(int j = 0; j <= rango; j++)
+            {
+                for(int k = 1; k < 4; k++)
+                {
+                    if(l == tts.size())break;
+                    Cromosoma cromosoma = new Cromosoma();
+                    fecha.setMonth(inicio.getMonth());
+                    fecha.setDate(inicio.getDate() + j);
+                    if(fecha.getDay() == 0 || fecha.getDay() == 6 || !habil(fecha))break;
+                    cromosoma.getGen1().setDia(getBinDay(fecha));
+                    cromosoma.getGen1().setMes(getBinMonth(fecha));
+                    cromosoma.getGen1().setHora(getBinHorario(k));
+                    cromosoma.getGen1().setSala(getBinSala(i));
+                    cromosoma.getGen2().setTt(tts.get(l).getIdTt());
+                    l++;
+                    poblacion.add(cromosoma);
+                }
+            }
+        }
+        
+        return poblacion;
+    }
+    
+    public static List<Cromosoma> crearPoblacionTTR(Date inicio, Date fin, Set<Tt> tt, int salas)
     {
         List<Cromosoma> poblacion = new ArrayList();
         System.out.println("Esta es fecha inicio: "+ inicio + " Esta es fecha fin: " + fin);
@@ -541,14 +577,14 @@ public class Genetico {
         if(tt == 1)
         {
             fecha.setDate(inicioCal.getDate()+random.nextInt(rangoCal));
-            if(random.nextInt(100) < 10)
+            if(random.nextInt(100) < 5)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
             if(isRango(fecha, inicioCal, interCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 10)
+                if(random.nextInt(100) < 30)
                 {
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));
@@ -563,14 +599,14 @@ public class Genetico {
         }else if(tt == 2)
         {
             fecha.setDate(interCal.getDate() + random.nextInt(rangoCal));
-            if(random.nextInt(100) < 10)
+            if(random.nextInt(100) < 5)
             {
                 System.out.print("s");
                 individuo.getGen1().setSala(getBinSala(random.nextInt(salasCal)+1));
             }
             if(isRango(fecha, interCal, finCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 10)
+                if(random.nextInt(100) < 30)
                 {
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));

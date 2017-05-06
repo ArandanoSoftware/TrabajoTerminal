@@ -21,7 +21,7 @@ public class CalendarioDao {
     
     public CalendarioDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         
@@ -30,6 +30,7 @@ public class CalendarioDao {
         Transaction tx = session.beginTransaction();
         session.save(calendario);
         tx.commit();
+        close();
     }
     
     public void modify(Calendario calendario)
@@ -37,6 +38,7 @@ public class CalendarioDao {
         Transaction tx = session.beginTransaction();
         session.update(calendario);
         tx.commit();
+        close();
     }
     
     public void erase(Calendario calendario)
@@ -44,6 +46,7 @@ public class CalendarioDao {
         Transaction tx = session.beginTransaction();
         session.delete(calendario);
         tx.commit();
+        close();
     }
     
     public Calendario findById(String id)
@@ -51,6 +54,7 @@ public class CalendarioDao {
         Transaction tx = session.beginTransaction();
         Calendario calendario = (Calendario)session.get(Calendario.class, id);
         tx.commit();
+        close();
         return calendario;
     }
     
@@ -59,6 +63,7 @@ public class CalendarioDao {
         Transaction tx = session.beginTransaction();
         List<Calendario> calendario = (List<Calendario>)session.createCriteria(Calendario.class).list();
         tx.commit();
+        close();
         return calendario;
     }
     

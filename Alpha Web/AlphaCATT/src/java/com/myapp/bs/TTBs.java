@@ -6,7 +6,9 @@
 package com.myapp.bs;
 
 import com.myapp.dao.TTDao;
+import com.myapp.dao.TTDao2;
 import com.myapp.model.Tt;
+import com.struts.operaciones.TTOperaciones;
 import java.util.List;
 
 /**

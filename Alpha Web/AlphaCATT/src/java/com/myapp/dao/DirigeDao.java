@@ -21,7 +21,7 @@ public class DirigeDao {
     
     public DirigeDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         
@@ -30,6 +30,7 @@ public class DirigeDao {
         Transaction tx = session.beginTransaction();
         session.save(dirige);
         tx.commit();
+        close();
     }
     
     public void modify(Dirige dirige)
@@ -37,6 +38,7 @@ public class DirigeDao {
         Transaction tx = session.beginTransaction();
         session.update(dirige);
         tx.commit();
+        close();
     }
     
     public void erase(Dirige dirige)
@@ -44,6 +46,7 @@ public class DirigeDao {
         Transaction tx = session.beginTransaction();
         session.delete(dirige);
         tx.commit();
+        close();
     }
     
     public Dirige findById(String id)
@@ -51,6 +54,7 @@ public class DirigeDao {
         Transaction tx = session.beginTransaction();
         Dirige dirige = (Dirige)session.get(Dirige.class, id);
         tx.commit();
+        close();
         return dirige;
     }
     
@@ -59,6 +63,7 @@ public class DirigeDao {
         Transaction tx = session.beginTransaction();
         List<Dirige> dirige = (List<Dirige>)session.createCriteria(Dirige.class).list();
         tx.commit();
+        close();
         return dirige;
     }
     

@@ -21,7 +21,7 @@ public class AlumnoDao {
     
     public AlumnoDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
         

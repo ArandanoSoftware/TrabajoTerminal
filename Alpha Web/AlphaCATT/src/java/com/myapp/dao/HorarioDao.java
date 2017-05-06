@@ -23,7 +23,7 @@ public class HorarioDao {
     
     public HorarioDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
     public void create(Horario s)
@@ -32,6 +32,7 @@ public class HorarioDao {
         Transaction tx = session.beginTransaction();
         session.save(s);
         tx.commit();
+        close();
     }
     
     public void modify(Horario s)
@@ -41,6 +42,7 @@ public class HorarioDao {
         //s = (Horario)session.load(Horario.class, s.getIdHorario());
         session.update(s);
         tx.commit();
+        close();
     }
     
     public void erase(Horario p)
@@ -49,6 +51,7 @@ public class HorarioDao {
         Transaction tx = session.beginTransaction();
         session.delete(p);
         tx.commit();
+        close();
     }
     
     public Horario finfById(int id)
@@ -57,6 +60,7 @@ public class HorarioDao {
         Transaction tx = session.beginTransaction();
         Horario p = (Horario)session.get(Horario.class, id);
         tx.commit();
+        close();
         return p;
     }
     
@@ -66,6 +70,7 @@ public class HorarioDao {
         Transaction tx = session.beginTransaction();
         List<Horario> horarios = (List<Horario>)session.createCriteria(Horario.class).list();
         tx.commit();
+        close();
         return horarios;
     }
     
@@ -74,6 +79,7 @@ public class HorarioDao {
         Transaction tx = session.beginTransaction();
         List<Horario> horarios = (List<Horario>) session.createCriteria(Horario.class).add(Restrictions.eq("profesor", p)).list();
         tx.commit();
+        close();
         return horarios;
     }
     

@@ -21,7 +21,7 @@ public class ProfesorDao {
     
     public ProfesorDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
     public void create(Profesor p)
@@ -29,6 +29,7 @@ public class ProfesorDao {
         Transaction tx = session.beginTransaction();
         session.save(p);
         tx.commit();
+        close();
     }
     
     public void modify(Profesor p)
@@ -36,6 +37,7 @@ public class ProfesorDao {
         Transaction tx = session.beginTransaction();
         session.update(p);
         tx.commit();
+        close();
     }
     
     public void erase(Profesor p)
@@ -43,6 +45,7 @@ public class ProfesorDao {
         Transaction tx = session.beginTransaction();
         session.delete(p);
         tx.commit();
+        close();
     }
     
     public Profesor finfById(int id)
@@ -50,6 +53,7 @@ public class ProfesorDao {
         Transaction tx = session.beginTransaction();
         Profesor p = (Profesor)session.get(Profesor.class, id);
         tx.commit();
+        close();
         return p;
     }
     
@@ -58,7 +62,12 @@ public class ProfesorDao {
         Transaction tx = session.beginTransaction();
         List<Profesor> p = (List<Profesor>)session.createCriteria(Profesor.class).list();
         tx.commit();
+        close();
         return p;
     }
     
+    public void close()
+    {
+        session.close();
+    }
 }

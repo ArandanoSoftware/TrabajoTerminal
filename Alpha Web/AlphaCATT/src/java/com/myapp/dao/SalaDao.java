@@ -21,7 +21,7 @@ public class SalaDao {
     
     public SalaDao()
     {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session = HibernateUtil.getSessionFactory().openSession();
     }
     
     public void create(Sala s)
@@ -30,6 +30,7 @@ public class SalaDao {
         Transaction tx = session.beginTransaction();
         session.save(s);
         tx.commit();
+        close();
     }
     
     public void modify(Sala s)
@@ -39,6 +40,7 @@ public class SalaDao {
         //s = (Sala)session.load(Sala.class, s.getIdSala());
         session.update(s);
         tx.commit();
+        close();
     }
     
     public void erase(Sala p)
@@ -47,6 +49,7 @@ public class SalaDao {
         Transaction tx = session.beginTransaction();
         session.delete(p);
         tx.commit();
+        close();
     }
     
     public Sala finfById(int id)
@@ -55,6 +58,7 @@ public class SalaDao {
         Transaction tx = session.beginTransaction();
         Sala p = (Sala)session.get(Sala.class, id);
         tx.commit();
+        close();
         return p;
     }
     
@@ -64,6 +68,7 @@ public class SalaDao {
         Transaction tx = session.beginTransaction();
         List<Sala> salas = (List<Sala>)session.createCriteria(Sala.class).list();
         tx.commit();
+        close();
         return salas;
     }
     

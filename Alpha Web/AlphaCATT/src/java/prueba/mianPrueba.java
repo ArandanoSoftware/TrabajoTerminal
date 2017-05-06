@@ -5,7 +5,7 @@
  */
 package prueba;
 
-import PDF.PDF;
+import com.myapp.modulo.PDF;
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
 import com.myapp.algoritmo.Restriccion;
@@ -393,8 +393,10 @@ public class mianPrueba {
             System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
         }
         
+        
+        
+        
         //a partir de aqui empiezan los tt2
-        Genetico.busqueda = false;
         mayor = 0;
         System.out.println("\nahora vienen los tt2\n");
         
@@ -402,7 +404,7 @@ public class mianPrueba {
         List<Cromosoma> poblaciontt2;
         System.out.println("fecha fin: " + fin);
         poblaciontt2 = Genetico.crearPoblacionTT2(inicio, fin, tt2s, SalaBs.findAll().size());
-        
+        //EL UNO DEL METODO QQUE SIGUE ES PARA LA OPCION EL CLENDARIO UUFF
         List<Calendario> caltt2 = Genetico.crearCalendario(poblaciontt2,1);
         
         for(int i = 0; i < caltt2.size(); i++)
@@ -442,6 +444,57 @@ public class mianPrueba {
         
         
         poblacion.addAll(poblaciontt2);
+        
+        
+        
+        
+        //a partir de aqui empiezan los ttR
+        mayor = 0;
+        System.out.println("\nahora vienen los ttr\n");
+        
+        Set<Tt> ttrs = new HashSet(TTBs.findAllTTR());
+        List<Cromosoma> poblacionttr;
+        poblaciontt2 = Genetico.crearPoblacionTTR(inicio, fin, tt2s, SalaBs.findAll().size());
+        
+        List<Calendario> calttr = Genetico.crearCalendario(poblacionttr,1);
+        
+        for(int i = 0; i < calttr.size(); i++)
+        {
+            System.out.println("TT: " + calttr.get(i).getTt().getIdTt()+ " Fecha: " + calttr.get(i).getFecha() + " en la sala: " + calttr.get(i).getSala().getIdSala());
+        }
+        
+        
+        
+        
+        
+        j = 0;
+        Genetico.nel = true;
+        while(Genetico.nel)
+        {
+            System.out.print("\niteracion " + j + "\t");
+            //el uno es de que son tt1
+            poblacionttr = Genetico.generaNuevaGen(poblacionttr,restricciones,3);
+            if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
+            System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblacionttr.size());
+            j++;
+            //System.out.println("");
+        }
+        System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
+        
+        calttr = Genetico.crearCalendario(poblacionttr,1);
+        
+        for(int i = 0; i < calttr.size(); i++)
+        {
+            System.out.println("TT: " + calttr.get(i).getTt().getIdTt()+ " Fecha: " + calttr.get(i).getFecha() + " en la sala: " + calttr.get(i).getSala().getIdSala());
+        }
+        
+        
+        
+        
+        
+        
+        
+        poblacion.addAll(poblacionttr);
 ////        
         List<Calendario> calDefinitivo = CalendarioBs.findAll();
         for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
