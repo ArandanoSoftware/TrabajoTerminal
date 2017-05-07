@@ -4,7 +4,7 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
+
 
 
 
@@ -79,11 +79,7 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
         En este cuestionario ingresa los datos del trabajo terminal que quieres
         registrar, revisa cuidadosamente que los datos sean correctos.
       </p>
-    <s:form action="displayProfr">
-      <sx:autocompleter name="profesor" list="ProfArrayList" showDownArrow="true" label="Profesor"/>
-    <s:submit />
-    </s:form> 
-      
+
     <s:form action="regTt">
     <table>
       <tr>

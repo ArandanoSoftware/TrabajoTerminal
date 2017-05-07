@@ -114,6 +114,13 @@ public class ProfesorController  extends ActionSupport {
     this. ProfOP.regProf(Nombre, APaterno, AMaterno,Email);
     return SUCCESS;
   }
+  
+  public String populateSelect() {
+        this.ProfOP = new ProfesoresOperaciones();
+        this.datos = new ArrayList<>();
+        this.datos = ProfOP.getUsuarios();
+        return "none";
+    }
 
 
 }

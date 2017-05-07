@@ -19,7 +19,7 @@
       <!-- login -->
       <action name="login" class="com.struts.controllers.LoginController" method="login">
         <result type="redirectAction">
-            <param name="actionName"> home </param>
+        <param name="actionName"> home </param>
         </result>
         <result name="error">index.jsp</result>
       </action>
@@ -49,9 +49,7 @@
         </result>
       </action>
       <!--Autocomplete Profesor-->
-      <action name="displayProf" class="com.struts.autocomplete.AutoCompleteProfesor" method="displayProfesor">
-        <result name="success">views/queries/queryTT.jsp</result>
-      </action>
+
 
 
       <!--Trabajos Terminales-->
@@ -93,6 +91,18 @@
       <!--Calendar  -->
       <action name="calendar" class="com.struts.controllers.CalendarController" method="calendar">
         <result>views/queries/queryCalendar.jsp</result>
+      </action>
+
+      <!-- Usuarios  -->
+      <!-- Gestión de Usuarios-->
+      <action name="qusers" class="com.struts.controllers.UsuariosController" method="execute">
+          <result>views/forms/confUsers.jsp</result>
+      </action>
+      <!-- Borrar Usuario-->
+      <action name="duser" class="com.struts.controllers.UsuariosController" method="deleteUser">
+        <result type="redirectAction">
+            <param name="actionName">qusers</param>
+        </result>
       </action>
 
   </package>

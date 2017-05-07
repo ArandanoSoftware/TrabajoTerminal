@@ -1,19 +1,19 @@
 <%--
-Trabajo Terminal- Sistema de cal
-Función home:
-Mostrar las opciones.
-informar sobre la situación actual para la generación deñ calendario
+Trabajo Terminal - Sistema de generacion de fechas para presentaciones de trabajos terminales
+Función: usuarios
+Tareas:
+  -Gestionar Usuarios CRUD
+  -
 --%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta charset="utf-8">
-      <%--DefaultCSS --%>
-      <link rel="stylesheet" href="css/normalize.css">
-
-      <%--PersonalCSS--%>
+  <head>
+    <meta charset="utf-8">
+    <%--DefaultCSS --%>
+    <link rel="stylesheet" href="css/normalize.css">
+    <%--PersonalCSS--%>
       <link rel="stylesheet" href="css/master.css">
       <%--Javascript--%>
       <script type="text/javascript" src="js/master.js"></script>
@@ -61,7 +61,7 @@ informar sobre la situación actual para la generación deñ calendario
       <div class="dropdown">
         <button class="dropbtn">Calendario</button>
           <div class="dropdown-content">
-            <s:a action="calendar" forceAddSchemeHostAndPort="true">Ver calendario Generado</s:a>
+            <s:a action="calendar" forceAddSchemeHostAndPort="true">Calendario Generado</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Editor de Calendario</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
           </div>
@@ -70,34 +70,40 @@ informar sobre la situación actual para la generación deñ calendario
         <button class="dropbtn red">Configuración</button>
           <div class="dropdown-content">
             <s:a action="qusers" forceAddSchemeHostAndPort="true">Usuarios</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
+            <s:a action="" forceAddSchemeHostAndPort="true">Notificaciones</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
           </div>
       </div>
     </div>
     <div class="General">
-      <h1>Sistema de calendarización  de presentaciones de trabajos terminales </h1>
+      <h1> Gestión de Usuarios </h1>
       <p>
-        El siguiente sistema tiene como propósito agendar las fechas de para
-        las presentaciones de trabajos terminales, para realizar esta tarea el
-        sistema hace uso de la siguiente información:
-      </p>
-      <ul>
-        <li>Horario de clases de los profesores</li>
-        <li>Salas Disponibles para presentación de trabajos terminales</li>
-        <li>El registro de los trabajos terminales que presentaran</li>
-        <li>Las restricciones personales para los profesores, es decir que días no están disponibles para presentar</li>
-        <li>Las restricciones para el uso de las salas</li>
-      </ul>
-      <p>
-        Este sistema esta dividido en secciones para facilitar el uso del mismo.
-        <br>
-        <br>
-        Este sistema solo ofrece opciones de presentación de trabajos terminales,
-        la decisión final dependerá del personal de la CATT así como de las
-        autoridades pertinentes.
-      </p>
 
+      </p>
+      <h3>Registrar Nuevo Usuario</h3>
+      <h3>Usuarios Registrados Actualmente</h3>
+      <table class="Table" id="tabla">
+          <h2>Profesores:</h2>
+               <thead>
+               <th>ID: </th>
+               <th>Username</th>
+               <th>Password</th>
+               </thead>
+       <tbody>
+           <s:iterator value="datos" var="dato" status="estado">
+               <tr>
+                   <td><s:property value="idProfesor"/> </td>
+                   <td><s:property value="nombre"/> </td>
+                   <td>
+                     <s:a action="dUser">
+                     <s:param name="id" value="idProfesor" />
+                     <i class="material-icons">delete</i>
+                     </s:a>
+                   </td>
+               </tr>
+           </s:iterator>
+       </tbody>
+       </table>
    </div>
    </body>
 </html>
