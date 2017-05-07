@@ -449,7 +449,7 @@ public class mianPrueba {
         
         
         //a partir de aqui empiezan los ttR
-        mayor = 0;
+        /*mayor = 0;
         System.out.println("\nahora vienen los ttr\n");
         
         Set<Tt> ttrs = new HashSet(TTBs.findAllTTR());
@@ -496,6 +496,7 @@ public class mianPrueba {
         
         poblacion.addAll(poblacionttr);
 ////        
+        */
         List<Calendario> calDefinitivo = CalendarioBs.findAll();
         for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
         calDefinitivo = Genetico.crearCalendario(poblacion, 1);
