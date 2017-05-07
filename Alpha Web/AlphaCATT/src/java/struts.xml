@@ -48,6 +48,11 @@
             <param name="actionName">qprof</param>
         </result>
       </action>
+      <!--Autocomplete Profesor-->
+      <action name="displayProf" class="com.struts.autocomplete.AutoCompleteProfesor" method="displayProfesor">
+        <result name="success">views/queries/queryTT.jsp</result>
+      </action>
+
 
       <!--Trabajos Terminales-->
 
