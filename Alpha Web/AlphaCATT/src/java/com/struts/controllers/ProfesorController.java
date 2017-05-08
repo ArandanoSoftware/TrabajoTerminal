@@ -12,7 +12,7 @@ public class ProfesorController  extends ActionSupport {
 
     private static final long serialVersionUID = 1L;
 
-    // Datos de
+    // Datos de Entrada
     private ArrayList<Profesor> datos;
     private ProfesoresOperaciones ProfOP;
     private Profesor prof;
@@ -96,16 +96,9 @@ public class ProfesorController  extends ActionSupport {
   }
 
   public String profs() throws Exception
-  { 
-      this.ProfOP = new ProfesoresOperaciones();
-      this.datos = ProfOP.getUsuarios();
-      return SUCCESS;
-  }
-
-  public String deleteProf()
   {
       this.ProfOP = new ProfesoresOperaciones();
-      this.ProfOP.deleteProf(id);
+      this.datos = ProfOP.getUsuarios();
       return SUCCESS;
   }
   public String regProf()
@@ -114,13 +107,11 @@ public class ProfesorController  extends ActionSupport {
     this. ProfOP.regProf(Nombre, APaterno, AMaterno,Email);
     return SUCCESS;
   }
-  
-  public String populateSelect() {
-        this.ProfOP = new ProfesoresOperaciones();
-        this.datos = new ArrayList<>();
-        this.datos = ProfOP.getUsuarios();
-        return "none";
-    }
 
-
+  public String deleteProf()
+  {
+      this.ProfOP = new ProfesoresOperaciones();
+      this.ProfOP.deleteProf(id);
+      return SUCCESS;
+  }
 }

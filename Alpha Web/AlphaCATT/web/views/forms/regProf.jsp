@@ -74,11 +74,18 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
   <div class="General">
     <h1>Registro de Profesores directores/asesores Externos:</h2>
     <hr />
-    <h3>Instrucciones:</h3>
+    <h2>Instrucciones:</h2>
     <p>
-      Si tu director o asesor es una persona externa a la institución registra sus datos
-      así como su información de contacto.
+      Para facilitar el registro de usuarios puedes cargar el horario en formato excel que se encuentra en el
+      sistema c20, para los profesores que sean externos a la institución o que no se encuentren dando clases
+      puedes registrarlos de manera manual en el siguiente formulario.
     </p>
+    <h3>Cargador de Excel:</h3>
+    <s:form action="doUpload" method="post" enctype="multipart/form-data">
+        <s:file name="upload" label="File"/>
+      <s:submit value="Subir"/>
+    </s:form>
+    <h3>Formulario de registro:</h3>
     <s:form action="regProf">
     <table>
       <tr>

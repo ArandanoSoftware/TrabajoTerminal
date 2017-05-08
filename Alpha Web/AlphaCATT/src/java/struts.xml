@@ -5,6 +5,7 @@
 
 <struts>
   <constant name="struts.action.extension" value=","/>
+  <constant name="struts.multipart.saveDir" value="/" /> 
   <package name="default" extends="struts-default">
   </package>
   <!--Requiere de 3 paramentros el paquere
@@ -30,7 +31,10 @@
       </action>
 
       <!--Profesores-->
-
+      <!--Registro de Profesores-->
+      <action name="listProf" class="com.struts.controllers.ProfesorController" method="execute">
+        <result>views/forms/ExcelProf.jsp</result>
+      </action>
       <!--Registro de Profesores-->
       <action name="rprof" class="com.struts.controllers.ProfesorController" method="execute">
         <result>views/forms/regProf.jsp</result>
@@ -53,7 +57,6 @@
 
 
       <!--Trabajos Terminales-->
-
       <!-- Registro Trabajos terminales -->
       <action name="rtt" class="com.struts.controllers.TTController" method="execute">
         <result>views/forms/regTT.jsp</result>
@@ -103,6 +106,10 @@
         <result type="redirectAction">
             <param name="actionName">qusers</param>
         </result>
+      </action>
+      <!--General Actions -->
+      <action name="doUpload" class="com.struts.actions.UploadAction">
+        <result name="input">views/forms/regProf.jsp</result>
       </action>
 
   </package>

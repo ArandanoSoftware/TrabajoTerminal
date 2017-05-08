@@ -85,9 +85,9 @@ Tareas:
       <table class="Table" id="tabla">
           <h2>Profesores:</h2>
                <thead>
-               <th>ID: </th>
-               <th>Username</th>
-               <th>Password</th>
+               <th>ID</th>
+               <th>Nombre</th>
+               <th>Contraseña</th>
                </thead>
        <tbody>
            <s:iterator value="datos" var="dato" status="estado">

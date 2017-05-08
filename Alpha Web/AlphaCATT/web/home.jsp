@@ -37,6 +37,7 @@ informar sobre la situación actual para la generación deñ calendario
       <div class="dropdown">
         <button class="dropbtn">Profesores</button>
           <div class="dropdown-content">
+            <s:a action="listProf" forceAddSchemeHostAndPort="true">Cargar Xml de Profesores</s:a>
             <s:a action="rprof" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
             <s:a action="qprof" forceAddSchemeHostAndPort="true">Gestión de Profesores</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>

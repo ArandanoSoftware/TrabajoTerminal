@@ -1,14 +1,10 @@
 <%--
-Trabajo Terminal - Pagina para registrar los Profesores Externos
+Trabajo Terminal - Carga de Excel con horario de profesores
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<%-- <%@page import="java.io.*,java.util.*,java.sql.*"%>
-<%@page import="javax.servlet.http.*,javax.servlet.*" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%> --%>
 
 <!DOCTYPE html>
 <html>
@@ -74,42 +70,16 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
 
 
   <div class="General">
-    <h1>Directorio de Profesores Registrados en la BD:</h2>
+    <h1>Carga de horario de profesores Internos:</h2>
     <hr />
     <h3>Instrucciones:</h3>
     <p>
-      En este listado se muestran todos los profesores que estan registrados
-      en la base de datos.
     </p>
-    <h5>Buscador:</h5><input type="text" id="buscador" onkeyup="Filter()" placeholder="Buscar nombres..">
+    <s:form action="doUpload" method="post" enctype="multipart/form-data">
+      <s:file name="upload" label="File"/>
+    <s:submit/>
+    </s:form>
 
-    <!-- struts Form -->
-     <table class="Table" id="tabla">
-         <h2>Profesores:</h2>
-              <thead>
-              <th>ID: </th>
-              <th>Nombre: </th>
-              <th>Apellido Materno: </th>
-              <th>Apellido Paterno: </th>
-              </thead>
-      <tbody>
-          <s:iterator value="datos" var="dato" status="estado">
-              <tr>
-                  <td><s:property value="idProfesor"/> </td>
-                  <td><s:property value="nombre"/> </td>
-                  <td><s:property value="apaterno"/> </td>
-                  <td><s:property value="amaterno"/> </td>
-                  <td><s:property value="email"/> </td>
-                  <td>
-                    <s:a action="dprof">
-                    <s:param name="id" value="idProfesor" />
-                    <i class="material-icons">delete</i>
-                    </s:a>
-                  </td>
-              </tr>
-          </s:iterator>
-      </tbody>
-      </table>
   </div>
   </body>
 </html>
