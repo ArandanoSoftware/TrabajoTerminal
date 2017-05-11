@@ -46,38 +46,6 @@ public class mianPrueba {
     {
         long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
         tinicio = System.currentTimeMillis(); 
-        List<Integer> lista1 = new ArrayList<>();
-        List<Integer> lista2 = new ArrayList<>();
-        List<Integer> lista3 = new ArrayList<>();
-        lista1.add(4);
-        lista1.add(44);
-        lista1.add(444);
-        lista1.add(4444);
-        lista2.add(1111);
-        lista2.add(111);
-        lista2.add(11);
-        lista2.add(1);
-        lista3.addAll(lista1);
-        lista3.addAll(lista2);
-                
-        Date fes = new Date();
-        fes.setMonth(4);
-        fes.setDate(1);
-        Genetico.noHabil.add(fes);
-        fes = new Date();
-        fes.setMonth(4);
-        fes.setDate(5);
-        Genetico.noHabil.add(fes);
-        fes = new Date();
-        fes.setMonth(4);
-        fes.setDate(10);
-        Genetico.noHabil.add(fes);
-        fes = new Date();
-        fes.setMonth(4);
-        fes.setDate(15);
-        Genetico.noHabil.add(fes);
-        for(int i = 0; i < lista3.size(); i++)
-            System.out.println(lista3.get(i));
 //        List<Sala> salas;
 //        salas = SalaBs.findAll();
 //        System.out.println(salas.get(0).getNombre());
@@ -200,12 +168,13 @@ public class mianPrueba {
 ////        {
 ////            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
 ////        }
+
+
         
         
-        int mayor = 0;
+        //List<Restriccion> restricciones = new ArrayList<>();
+        //primera restriccion
         
-        Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
-        List<Cromosoma> poblacion;
         List<Restriccion> restricciones = new ArrayList<>();
         Date inicio = new Date();
         inicio.setDate(2);
@@ -213,22 +182,6 @@ public class mianPrueba {
         Date fin = new Date();
         fin.setDate(6);
         fin.setMonth(5);
-        poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
-        
-        List<Calendario> cal = Genetico.crearCalendario(poblacion,1);
-        
-        for(int i = 0; i < cal.size(); i++)
-        {
-            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
-        }
-        
-        System.out.println("fecha fin: " + fin);
-        //LeerExcel.inportaExcel(cal, 1);
-        
-        
-        //List<Restriccion> restricciones = new ArrayList<>();
-        //primera restriccion
-        
         
         RestriccionGeneral restriccionGen1 = new RestriccionGeneral(137);
         Date rango1 = new Date();
@@ -357,6 +310,37 @@ public class mianPrueba {
         restricciones.addAll(restriccionGen18.getRestricciones());
         restricciones.addAll(restriccionGen19.getRestricciones());
         
+        Date fecha = new Date(2017, 4, 1);
+        Genetico.noHabil.add(fecha);
+        fecha = new Date(2017, 4, 5);
+        Genetico.noHabil.add(fecha);
+        fecha = new Date(2017, 4, 10);
+        Genetico.noHabil.add(fecha);
+        fecha = new Date(2017, 4, 15);
+        Genetico.noHabil.add(fecha);
+
+    for(int opcionCal = 1; opcionCal <= 5; opcionCal++)    
+    {
+        inicio.setDate(2);
+        inicio.setMonth(4);
+        fin.setDate(6);
+        fin.setMonth(5);
+        int mayor = 0;
+        
+        Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
+        List<Cromosoma> poblacion;
+        poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
+        
+        List<Calendario> cal = Genetico.crearCalendario(poblacion,1);
+        
+        for(int i = 0; i < cal.size(); i++)
+        {
+            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
+        }
+        
+        System.out.println("fecha fin: " + fin);
+        //LeerExcel.inportaExcel(cal, 1);
+        
         System.out.println("fecha fin: " + fin);
         System.out.println(tt1s.size());
         
@@ -386,11 +370,11 @@ public class mianPrueba {
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
         
-        cal = Genetico.crearCalendario(poblacion,1);
+        cal = Genetico.crearCalendario(poblacion,opcionCal);
         
         for(int i = 0; i < cal.size(); i++)
         {
-            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala());
+            System.out.println("TT: " + cal.get(i).getTt().getIdTt()+ " Fecha: " + cal.get(i).getFecha() + " en la sala: " + cal.get(i).getSala().getIdSala() + "\tOpcion: " + cal.get(i).getOpcion());
         }
         
         
@@ -430,11 +414,11 @@ public class mianPrueba {
         }
         System.out.println("esta resulto siendo la ultima aptitud " + Genetico.aptitudPoblacion);
         
-        caltt2 = Genetico.crearCalendario(poblaciontt2,1);
+        caltt2 = Genetico.crearCalendario(poblaciontt2,opcionCal);
         
         for(int i = 0; i < caltt2.size(); i++)
         {
-            System.out.println("TT: " + caltt2.get(i).getTt().getIdTt()+ " Fecha: " + caltt2.get(i).getFecha() + " en la sala: " + caltt2.get(i).getSala().getIdSala());
+            System.out.println("TT: " + caltt2.get(i).getTt().getIdTt()+ " Fecha: " + caltt2.get(i).getFecha() + " en la sala: " + caltt2.get(i).getSala().getIdSala() +"\tOpcion: " + caltt2.get(i).getOpcion());
         }
         
         
@@ -499,9 +483,14 @@ public class mianPrueba {
         */
         List<Calendario> calDefinitivo = CalendarioBs.findAll();
         for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
-        calDefinitivo = Genetico.crearCalendario(poblacion, 1);
+        calDefinitivo = Genetico.crearCalendario(poblacion, opcionCal);
         for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
-        LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
+        
+        tfin = System.currentTimeMillis();
+        tiempo = tfin - tinicio;
+        System.out.println("Ya terminó !!!!! en " + tiempo/1000);
+    }
+        //LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
         
         
         
@@ -650,7 +639,6 @@ public class mianPrueba {
 //        destinos.add("hazzy76@hotmail.com");
 //        destinos.add("robonline7@gmail.com");
 //        mail.enviar(destinos);
-        CalendarioBs.close();
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó !!!!! en " + tiempo/1000);

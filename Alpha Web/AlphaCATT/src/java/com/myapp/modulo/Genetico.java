@@ -572,10 +572,11 @@ public class Genetico {
     protected static Cromosoma mutacion(Cromosoma individuo,int tt)
     {
         Random random = new Random();
-        Date fecha = getDateC(individuo);
+        Date fecha = new Date();
         boolean[] las4 = {false,false,false,false,false,false,true,false,false};
         if(tt == 1)
         {
+            fecha.setMonth(inicioCal.getMonth());
             fecha.setDate(inicioCal.getDate()+random.nextInt(rangoCal));
             if(random.nextInt(100) < 5)
             {
@@ -584,7 +585,7 @@ public class Genetico {
             }
             if(isRango(fecha, inicioCal, interCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 30)
+                if(random.nextInt(15) < 7)
                 {
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));
@@ -598,6 +599,7 @@ public class Genetico {
             }
         }else if(tt == 2)
         {
+            fecha.setMonth(interCal.getMonth());
             fecha.setDate(interCal.getDate() + random.nextInt(rangoCal));
             if(random.nextInt(100) < 5)
             {
@@ -606,7 +608,7 @@ public class Genetico {
             }
             if(isRango(fecha, interCal, finCal) && fecha.getDay() != 0 && fecha.getDay() != 6 && habil(fecha))
             {
-                if(random.nextInt(100) < 30)
+                if(random.nextInt(15) < 7)
                 {
                     System.out.print("x");
                     individuo.getGen1().setMes(getBinMonth(fecha));
