@@ -9,7 +9,6 @@ import com.myapp.hibernate.HibernateUtil;
 import com.myapp.model.Tt;
 import java.util.List;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
