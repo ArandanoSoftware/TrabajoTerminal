@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.54, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.55, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: db_catt1
 -- ------------------------------------------------------
--- Server version	5.5.54-0+deb8u1
+-- Server version	5.5.55-0+deb8u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,14 +54,16 @@ DROP TABLE IF EXISTS `calendario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `calendario` (
+  `IdCalendario` int(11) NOT NULL AUTO_INCREMENT,
   `IdTT` varchar(9) NOT NULL,
   `Fecha` datetime NOT NULL,
   `IdSala` int(11) NOT NULL,
   `Opcion` int(11) NOT NULL,
-  PRIMARY KEY (`IdTT`),
+  PRIMARY KEY (`IdCalendario`),
+  KEY `IdTT` (`IdTT`),
   KEY `IdSala` (`IdSala`),
-  CONSTRAINT `CALENDARIO_ibfk_1` FOREIGN KEY (`IdTT`) REFERENCES `tt` (`IdTT`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `CALENDARIO_ibfk_2` FOREIGN KEY (`IdSala`) REFERENCES `sala` (`IdSala`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `calendario_ibfk_1` FOREIGN KEY (`IdTT`) REFERENCES `tt` (`IdTT`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `calendario_ibfk_2` FOREIGN KEY (`IdSala`) REFERENCES `sala` (`IdSala`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,7 +73,6 @@ CREATE TABLE `calendario` (
 
 LOCK TABLES `calendario` WRITE;
 /*!40000 ALTER TABLE `calendario` DISABLE KEYS */;
-INSERT INTO `calendario` VALUES ('2015-B117','2017-05-08 14:00:33',1,1),('2016-A001','2017-05-25 14:00:33',1,1),('2016-A002','2017-06-02 10:00:33',2,1),('2016-A003','2017-05-24 14:00:33',7,1),('2016-A004','2017-05-22 10:00:33',2,1),('2016-A005','2017-05-20 12:00:33',6,1),('2016-A006','2017-05-24 10:00:33',7,1),('2016-A007','2017-05-26 10:00:33',1,1),('2016-A009','2017-05-22 14:00:33',2,1),('2016-A010','2017-05-23 14:00:33',1,1),('2016-A012','2017-05-26 10:00:33',2,1),('2016-A013','2017-05-05 14:00:33',2,1),('2016-A015','2017-05-19 12:00:33',2,1),('2016-A016','2017-06-02 12:00:33',1,1),('2016-A017','2017-05-26 12:00:33',2,1),('2016-A018','2017-05-29 10:00:33',2,1),('2016-A019','2017-05-24 10:00:33',2,1),('2016-A020','2017-06-01 10:00:33',2,1),('2016-A021','2017-06-02 14:00:33',2,1),('2016-A022','2017-05-25 12:00:33',7,1),('2016-A023','2017-05-25 10:00:33',1,1),('2016-A024','2017-05-31 14:00:33',7,1),('2016-A025','2017-05-30 14:00:33',1,1),('2016-A026','2017-05-19 10:00:33',2,1),('2016-A027','2017-05-31 10:00:33',1,1),('2016-A028','2017-05-22 12:00:33',1,1),('2016-A031','2017-05-23 12:00:33',2,1),('2016-A033','2017-05-31 12:00:33',1,1),('2016-A034','2017-05-20 12:00:33',3,1),('2016-A036','2017-05-25 12:00:33',1,1),('2016-A037','2017-06-01 12:00:33',2,1),('2016-A038','2017-05-24 10:00:33',1,1),('2016-A039','2017-05-31 14:00:33',2,1),('2016-A041','2017-06-02 14:00:33',1,1),('2016-A042','2017-06-05 12:00:33',1,1),('2016-A043','2017-05-19 14:00:33',4,1),('2016-A044','2017-05-31 14:00:33',1,1),('2016-A045','2017-05-25 14:00:33',2,1),('2016-A046','2017-05-22 10:00:33',1,1),('2016-A047','2017-05-23 12:00:33',1,1),('2016-A048','2017-05-30 10:00:33',2,1),('2016-A049','2017-06-02 12:00:33',2,1),('2016-A050','2017-05-30 14:00:33',2,1),('2016-A051','2017-05-31 10:00:33',2,1),('2016-A052','2017-05-31 12:00:33',2,1),('2016-A054','2017-05-29 14:00:33',2,1),('2016-A055','2017-05-25 10:00:33',2,1),('2016-A056','2017-05-29 10:00:33',6,1),('2016-A058','2017-06-01 14:00:33',1,1),('2016-A059','2017-05-27 10:00:33',1,1),('2016-A060','2017-06-02 10:00:33',1,1),('2016-A063','2017-06-25 14:00:33',2,1),('2016-A065','2017-06-05 14:00:33',1,1),('2016-A066','2017-05-24 14:00:33',2,1),('2016-A067','2017-06-05 12:00:33',2,1),('2016-A068','2017-06-01 10:00:33',1,1),('2016-A070','2017-05-22 14:00:33',1,1),('2016-A071','2017-05-23 10:00:33',1,1),('2016-A072','2017-06-01 12:00:33',1,1),('2016-A074','2017-06-01 14:00:33',2,1),('2016-A075','2017-05-29 12:00:33',1,1),('2016-A076','2017-05-29 12:00:33',2,1),('2016-A078','2017-05-24 12:00:33',1,1),('2016-A079','2017-05-28 12:00:33',1,1),('2016-A080','2017-05-25 12:00:33',2,1),('2016-A081','2017-05-19 14:00:33',2,1),('2016-A083','2017-05-30 10:00:33',1,1),('2016-A084','2017-05-29 10:00:33',1,1),('2016-A086','2017-06-05 10:00:33',1,1),('2016-A087','2017-05-30 12:00:33',2,1),('2016-A088','2017-05-27 12:00:33',3,1),('2016-A090','2017-05-26 14:00:33',1,1),('2016-B001','2017-05-12 10:00:33',1,1),('2016-B002','2017-05-09 12:00:33',2,1),('2016-B003','2017-05-05 10:00:33',2,1),('2016-B004','2017-05-11 12:00:33',2,1),('2016-B005','2017-05-05 12:00:33',1,1),('2016-B006','2017-05-05 14:00:33',1,1),('2016-B007','2017-05-12 14:00:33',1,1),('2016-B009','2017-05-02 10:00:33',2,1),('2016-B010','2017-05-02 12:00:33',1,1),('2016-B011','2017-05-05 10:00:33',3,1),('2016-B013','2017-05-12 14:00:33',2,1),('2016-B014','2017-05-15 10:00:33',3,1),('2016-B015','2017-05-02 10:00:33',1,1),('2016-B016','2017-05-08 10:00:33',3,1),('2016-B017','2017-05-11 10:00:33',3,1),('2016-B018','2017-05-13 14:00:33',2,1),('2016-B019','2017-05-10 12:00:33',2,1),('2016-B020','2017-05-05 10:00:33',1,1),('2016-B021','2017-05-15 14:00:33',3,1),('2016-B022','2017-05-04 10:00:33',2,1),('2016-B023','2017-05-10 14:00:33',1,1),('2016-B024','2017-05-02 12:00:33',2,1),('2016-B025','2017-05-04 14:00:33',3,1),('2016-B027','2017-05-03 12:00:33',1,1),('2016-B028','2017-05-08 12:00:33',3,1),('2016-B029','2017-05-10 12:00:33',5,1),('2016-B030','2017-05-09 10:00:33',7,1),('2016-B031','2017-05-06 12:00:33',7,1),('2016-B032','2017-05-11 10:00:33',2,1),('2016-B033','2017-05-09 14:00:33',2,1),('2016-B034','2017-05-03 14:00:33',8,1),('2016-B035','2017-05-04 10:00:33',3,1),('2016-B036','2017-05-04 12:00:33',2,1),('2016-B037','2017-05-05 12:00:33',3,1),('2016-B038','2017-05-10 10:00:33',5,1),('2016-B039','2017-05-08 12:00:33',2,1),('2016-B040','2017-05-10 10:00:33',2,1),('2016-B042','2017-05-03 12:00:33',3,1),('2016-B043','2017-05-16 10:00:33',1,1),('2016-B044','2017-05-09 12:00:33',3,1),('2016-B045','2017-05-17 12:00:33',1,1),('2016-B046','2017-05-13 10:00:33',3,1),('2016-B047','2017-05-09 14:00:33',1,1),('2016-B048','2017-05-15 14:00:33',1,1),('2016-B050','2017-05-03 12:00:33',7,1),('2016-B051','2017-05-12 14:00:33',3,1),('2016-B052','2017-05-10 10:00:33',1,1),('2016-B055','2017-05-15 12:00:33',2,1),('2016-B056','2017-05-17 12:00:33',2,1),('2016-B057','2017-05-10 12:00:33',1,1),('2016-B059','2017-05-03 10:00:33',3,1),('2016-B060','2017-05-15 14:00:33',2,1),('2016-B061','2017-05-08 10:00:33',2,1),('2016-B062','2017-05-16 14:00:33',1,1),('2016-B064','2017-05-11 14:00:33',1,1),('2016-B065','2017-05-03 14:00:33',1,1),('2016-B066','2017-05-04 12:00:33',3,1),('2016-B067','2017-05-05 14:00:33',2,1),('2016-B068','2017-05-05 14:00:33',3,1),('2016-B071','2017-05-16 10:00:33',2,1),('2016-B072','2017-05-11 12:00:33',3,1),('2016-B074','2017-05-08 14:00:33',2,1),('2016-B075','2017-05-03 14:00:33',3,1),('2016-B076','2017-05-17 14:00:33',1,1),('2016-B077','2017-05-06 10:00:33',7,1),('2016-B078','2017-05-02 12:00:33',3,1),('2016-B079','2017-05-11 14:00:33',2,1),('2016-B081','2017-05-16 12:00:33',2,1),('2016-B082','2017-05-09 10:00:33',8,1),('2016-B083','2017-05-13 12:00:33',1,1),('2016-B086','2017-05-03 10:00:33',1,1),('2016-B088','2017-05-03 12:00:33',2,1),('2016-B089','2017-05-17 10:00:33',1,1),('2016-B091','2017-05-12 12:00:33',2,1),('2016-B092','2017-05-04 14:00:33',1,1),('2016-B093','2017-05-12 10:00:33',3,1),('2016-B095','2017-05-17 14:00:33',2,1),('2016-B096','2017-05-15 12:00:33',3,1),('2016-B099','2017-05-03 14:00:33',2,1),('2016-B101','2017-05-12 10:00:33',2,1),('2016-B102','2017-05-09 12:00:33',6,1),('2016-B103','2017-05-11 10:00:33',1,1),('2016-B104','2017-05-09 10:00:33',2,1),('2016-B105','2017-05-08 14:00:33',3,1),('2016-B106','2017-05-10 12:00:33',3,1),('2016-B107','2017-05-04 14:00:33',2,1),('2016-B111','2017-05-15 10:00:33',1,1),('2016-B112','2017-05-04 10:00:33',1,1),('2016-B113','2017-05-02 14:00:33',3,1),('2016-B114','2017-05-04 12:00:33',1,1),('2016-B115','2017-05-15 10:00:33',2,1),('2016-B119','2017-05-10 10:00:33',3,1),('2016-B120','2017-05-02 14:00:33',1,1),('2016-B121','2017-05-17 10:00:33',2,1),('2016-B122','2017-05-12 12:00:33',1,1),('2016-B123','2017-05-11 12:00:33',1,1),('2016-B124','2017-05-09 14:00:33',3,1),('2016-B126','2017-05-10 14:00:33',3,1),('2016-B127','2017-05-16 14:00:33',2,1),('2016-B128','2017-05-16 12:00:33',1,1);
 /*!40000 ALTER TABLE `calendario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,6 +137,29 @@ INSERT INTO `horario` VALUES (1,'12:00-13:30 L','','12:00-13:30','12:00-13:30','
 UNLOCK TABLES;
 
 --
+-- Table structure for table `noHabil`
+--
+
+DROP TABLE IF EXISTS `noHabil`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `noHabil` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `noHabil`
+--
+
+LOCK TABLES `noHabil` WRITE;
+/*!40000 ALTER TABLE `noHabil` DISABLE KEYS */;
+/*!40000 ALTER TABLE `noHabil` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `profesor`
 --
 
@@ -160,6 +184,34 @@ LOCK TABLES `profesor` WRITE;
 /*!40000 ALTER TABLE `profesor` DISABLE KEYS */;
 INSERT INTO `profesor` VALUES (3,'Rafael','Aguilar','García',NULL),(4,'Fernando','Aguilar','Sánchez',NULL),(5,'Verónica','Agustín','Domínguez',NULL),(6,'Alberto Jesús','Alcántara','Méndez',NULL),(7,'Juan Jesús','Alcaraz','Torres',NULL),(8,'Rocío','Almazán','Farfán',NULL),(9,'Maribel','Aragón','García',NULL),(10,'David','Araujo','Díaz',NULL),(11,'Jacqueline','Arzate','Gordillo',NULL),(12,'Marco Antonio','Barranco','Jiménez',NULL),(13,'Ricardo','Barrón','Fernández',NULL),(14,'Josue Emanuel','Barrón','Vera',NULL),(15,'Sandra Ivette','Bautista','Rosales',NULL),(16,'Alejandro','Botello','Castillo',NULL),(17,'Israel','Buitrón','Damaso',NULL),(18,'Eduardo','Bustos','Farias',NULL),(19,'Gloria Lourdes','Cabrera','Chávez',NULL),(20,'Sergio','Cancino','Calderón',NULL),(21,'Odette Berenice','Cancino','Mosqueda',NULL),(22,'Leticia','Cañedo','Suárez',NULL),(23,'Juan Manuel','Carballo','Jiménez',NULL),(24,'Oscar','Carranza','Castillo',NULL),(25,'Chadwick','Carreto','Arellano',NULL),(26,'Blanca Esther','Carvajal','Gámez',NULL),(27,'Gelacio','Castillo','Cabrera',NULL),(28,'Edgar Armando','Catalán','Salgado',NULL),(29,'Ricardo','Ceballos','Sebastián',NULL),(30,'Adriana Berenice','Celis','Domínguez',NULL),(31,'Ismael','Cervantes','De Anda',NULL),(32,'Luis Moctezuma','Cervantes','Espinosa',NULL),(33,'Lorena','Chavarría','Báez',NULL),(34,'Eduardo','Chávez','Lima',NULL),(35,'Alejandro Sigfrido','Cifuentes','Álvarez',NULL),(36,'Martha Rosa','Cordero','López',NULL),(37,'Ukranio','Coronilla','Contreras',NULL),(38,'Jorge','Cortés','Galicia',NULL),(39,'Nidia Asunción','Cortez','Duarte',NULL),(40,'Daniel','Cruz','García',NULL),(41,'Apolinar Francisco','Cruz','Lázaro',NULL),(42,'María Elena','Cruz','Meza',NULL),(43,'Benjamín','Cruz','Torres',NULL),(44,'José Carlos','Dávalos','López',NULL),(45,'Saúl','De la O','Torres',NULL),(46,'Roberto','De Luna','Caballero',NULL),(47,'Saúl','Del Ángel','Ávalos',NULL),(48,'Claudia Celia','Díaz','Huerta',NULL),(49,'Ricardo Felipe','Díaz','Santiago',NULL),(50,'Sandra','Díaz','Santiago',NULL),(51,'Iván','Díaz','Toalá',NULL),(52,'Marco Antonio','Dorantes','González',NULL),(53,'Claudia Jisela','Dorantes','Villa',NULL),(54,'Edmundo René','Durán','Camarillo',NULL),(55,'José Asunción','Enríquez','Zárate',NULL),(56,'Patricia','Escamilla','Miranda',NULL),(57,'José Armando','Esquivel','Centeno',NULL),(58,'Serafín','Estrada','Elizalde',NULL),(59,'Alfonso','Fernández','Vázquez',NULL),(60,'Felipe de Jesús','Figueroa','Del Prado',NULL),(61,'Rolando','Flores','Carapia',NULL),(62,'Raquel','Flores','Delgado',NULL),(63,'Yaxkin','Flores','Mendoza',NULL),(64,'Edgardo Adrián','Franco','Martínez',NULL),(65,'Rubén','Galicia','Mejía',NULL),(66,'María Gabriela','Galiñanes','Rodríguez',NULL),(67,'Consuelo Varinia','García','Mendoza',NULL),(68,'Victor Hugo','García','Ortega',NULL),(69,'Juan Vicente','García','Sales',NULL),(70,'Fabián','Gaspar','Medina',NULL),(71,'Margarita Elizabeth','Gómez','Mayorga',NULL),(72,'Gisela','González','Albarrán',NULL),(73,'Alejandro','González','Cisneros',NULL),(74,'Marko Alfonso','González','Ramírez',NULL),(75,'Miguel Ángel','González','Trujillo',NULL),(76,'Eduardo','Gutiérrez','Aldana',NULL),(77,'Darwin','Gutiérrez','Mejía',NULL),(78,'Florencio','Guzmán','Aguilar',NULL),(79,'Jessie Paulina','Guzmán','Flores',NULL),(80,'Leticia','Henestrosa','Carrasco',NULL),(81,'José Luis','Hernández','Aguilar',NULL),(82,'Euler','Hernández','Contreras',NULL),(83,'Macario','Hernández','Cruz',NULL),(84,'Rosa Alba','Hernández','García',NULL),(85,'Josefína','Hernández','Jaime',NULL),(86,'Luis Enrique','Hernández','Olvera',NULL),(87,'Erika','Hernández','Rubio',NULL),(88,'José Celestino Elías','Hernández','Secundino',NULL),(89,'Crispin','Herrera','Yañez',NULL),(90,'José Alfredo','Jiménez','Benítez',NULL),(91,'Edith Adriana','Jiménez','Contreras',NULL),(92,' Yasmín Ivette','Jiménez','Galán',NULL),(93,'René Baltazar','Jiménez','Ruíz',NULL),(94,'Martha Patricia','Jiménez','Villanueva',NULL),(95,'Carlos','Juárez','León',NULL),(96,'Genaro','Juárez','Martínez',NULL),(97,'Jazmín Adriana','Juárez','Ramírez',NULL),(98,'Roberto','Jurado','Jiménez',NULL),(99,'   Olga','Kolesnikova','',NULL),(100,'Laura','Lazcano','Xoxotla',NULL),(101,'Miguel Abel','León','Hernández',NULL),(102,'Ariel','López',' Rojas',NULL),(103,'Benjamín','López','Carrera',NULL),(104,'Luis Octavio','López','Leyva',NULL),(105,'José Jaime','López','Rabadan',NULL),(106,'Claudia Alejandra','López','Rodríguez',NULL),(107,'Gabriela de Jesús','López','Ruíz',NULL),(108,'Benjamín','Luna','Benoso',NULL),(109,'Jesús','Macías','Sustaita',NULL),(110,'Idalia','Maldonado','Castillo',NULL),(111,'Miguel Ángel','Maldonado','Muñoz',NULL),(112,'Roberto','Mandujano','José',NULL),(113,'Héctor Manuel','Manzanilla','Granados',NULL),(114,'Guillermo','Márquez','Arreguín',NULL),(115,'Lilian','Martínez','Acosta',NULL),(116,'Juan Carlos','Martínez','Díaz',NULL),(117,'César Román','Martínez','García',NULL),(118,'José Alfredo','Martínez','Guerrero',NULL),(119,'Jesús Alfredo','Martínez','Nuño',NULL),(120,'José Cruz','Martínez','Perales',NULL),(121,'Ricardo','Martínez','Rosales',NULL),(122,'Virginia','Medina','Mejía',NULL),(123,'Reyna Elia','Melara','Abarca',NULL),(124,'Laura','Méndez','Segundo',NULL),(125,'Elba','Mendoza','Macías',NULL),(126,'Hermes Francisco','Montes','Casiano',NULL),(127,'Ángel Salvador','Montiel','Sánchez',NULL),(128,'Juan Carlos','Morales','Cruz',NULL),(129,'Ángel','Morales','González',NULL),(130,'Sandra Luz','Morales','Güitrón',NULL),(131,'Marco Antonio','Moreno','Armendáriz',NULL),(132,'Axel Ernesto','Moreno','Cervantes',NULL),(133,'Yosafat','Moscoso','Malagón',NULL),(134,'Iván Giovanny','Mosso','García',NULL),(135,'César','Mújica','Ascencio',NULL),(136,'Laura','Muñoz','Salazar',NULL),(137,'Fabiola','Ocampo','Botello',NULL),(138,'Nancy','Ocotitla','Rojas',NULL),(139,'Didier','Ojeda','Guillén',NULL),(140,'Miguel','Olvera','Aldana',NULL),(141,'Rubén','Ortega','González',NULL),(142,'José David','Ortega','Pacheco',NULL),(143,'Andrés','Ortigoza','Campos',NULL),(144,'José Antonio','Ortíz','Ramírez',NULL),(145,'Jesús','Ortuño','Araujo',NULL),(146,'Rocío','Palacios','Solano',NULL),(147,'Rosaura','Palma','Orozco',NULL),(148,'Myriam Noemí','Paredes','Cadena',NULL),(149,'Carlos Jesús','Pastrana','Fernández',NULL),(150,'Rubén','Peredo','Valderrama',NULL),(151,'Mondragón Tanibet','Pérez','de los Santos',NULL),(152,'José Juan','Pérez','Pérez',NULL),(153,'Jaime Hugo','Puebla','Lomas',NULL),(154,'Tonáhtiu Arturo','Ramírez','Romero',NULL),(155,'Josué','Rangel','González',NULL),(156,'Alfredo','Rangel','Guzmán',NULL),(157,'Rocío','Reséndiz','Muñoz',NULL),(158,'Tlatoani de Jesús','Reyes','Bermejo',NULL),(159,'Ignacio','Ríos','de la Torre',NULL),(160,'Mónica','Rivera','De la Rosa',NULL),(161,'María del Rosario','Rocha','Bernabé',NULL),(162,'Eduardo','Rodríguez','Flores',NULL),(163,'Héctor','Rojas','Luna',NULL),(164,'Jorge Luís','Rosas','Trigueros',NULL),(165,'José Marco Antonio','Rueda','Meléndez',NULL),(166,'Elena Fabiola','Ruíz','Ledesma',NULL),(167,'Manuel','Salazar','Ramírez',NULL),(168,'Encarnación','Salinas','Hernández',NULL),(169,'Sergio','Salinas','Lugo',NULL),(170,'Gilberto','Sánchez',' Quintanilla',NULL),(171,'José Emilio','Sánchez','Arroyo',NULL),(172,'Virginia','Sánchez','Cruz',NULL),(173,'Luz María','Sánchez','García',NULL),(174,'José','Sánchez','Juárez',NULL),(175,'Adriana de la Paz','Sánchez','Moreno',NULL),(176,'María Susana','Sánchez','Palacios',NULL),(177,'Raúl','Santillán','Luna',NULL),(178,'Rafael Norman','Saucedo','Delgado',NULL),(179,'José Felix','Serrano','Talamantes',NULL),(180,'Victor Manuel','Silva','García',NULL),(181,'Jorge Javier','Silva','Martínez',NULL),(182,'Misael','Solorza','Guzmán',NULL),(183,'Manuel Alejandro','Soto','Ramos',NULL),(184,'Miguel Santiago','Suárez','Castañón',NULL),(185,'Roberto','Tecla','Parra',NULL),(186,'Juan Carlos','Téllez','Barrera',NULL),(187,'Ma. del Socorro','Téllez','Reyes',NULL),(188,'Marco Antonio','Tenorio','Marrón',NULL),(189,'Alexis','Testa','Nava',NULL),(190,'Enrique','Torres','González',NULL),(191,'Juan José','Torres','Manriquez',NULL),(192,'David Ernesto','Troncoso','Romero',NULL),(193,'Roberto','Vázquez','Arreguín',NULL),(194,'Mijaíl','Vázquez','Ortiz',NULL),(195,'Nayeli','Vega','García',NULL),(196,'Ulises','Vélez','Saldaña',NULL),(197,'Gumersindo','Vera','Hernández',NULL),(198,'Sonia','Villegas','Navarrete',NULL),(199,'Karina','Viveros','Vela',NULL),(200,'Ana María','Winfield','Reyes',NULL),(201,'Bernardo','Yllanes','Mejía',NULL),(202,'Ahmed','Zekkour','Zekkour',NULL),(203,'Joel Omar','Juárez','Gambino',NULL),(204,'Mario Augusto','García','Morales',NULL),(205,'Carlos','Silva','Sánchez',NULL),(206,'Roberto Eswart','Zagal','Flores',NULL),(207,'Miguel Felix','Mata','Rivera',NULL),(208,'Rodolfo','Romero','Herrera',NULL),(209,'Amilcar','Meneses','Viveros',NULL),(210,'Abraham','Rodríguez','Mota',NULL),(211,'Héctor Manuel','Paz','Rodríguez',NULL),(212,'Carlos Alberto','Lozada','Pérez',NULL),(213,'Luz Noé','Oliva','Moreno',NULL),(214,'Jorge Armin','García','López',NULL),(215,'Rubén','Hernández','Tovar',NULL),(216,'Judith Margarita','Tirado','Lule',NULL),(217,'Ángel Sergio','Cifuentes','Castro',NULL),(218,'Jesús Manuel','Olivares','Ceja',NULL),(219,'Jesús Yaljá','Montiel','Pérez',NULL),(220,'Jorge','Ferrer','Tenorio',NULL),(221,'Leonor','Vázquez','González',NULL),(222,'Amadeo José','Argüelles','Cruz',NULL),(223,'Mario','Aldape','Pérez',NULL),(224,'Monserrat Gabriela','Pérez','Vera',NULL),(225,'Miguel','Garduño','Hesiquio',NULL),(226,'Ricardo','Menchaca','Méndez',NULL),(227,'Lucero Anabel','Trejo','Muñoz',NULL),(228,'Germán','Téllez','Castillo',NULL),(229,'Antonio Gustavo','Juárez','Gracia',NULL),(230,'Iván','Peredo','Valderrama',NULL),(231,'María Eugenia','González','Vázquez',NULL),(232,'Natalia','Arias','Trejo',NULL),(233,'Salvador','Godoy','Calderón',NULL),(234,'Sandra Mercedes','Pérez','Vera',NULL),(235,'José Luis','Calde?on','Osornio',NULL),(236,'Alicia Guillermina','Juárez','Carrión',NULL);
 /*!40000 ALTER TABLE `profesor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `restriccion`
+--
+
+DROP TABLE IF EXISTS `restriccion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `restriccion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mes` bit(4) NOT NULL,
+  `dia` bit(5) NOT NULL,
+  `hora` bit(9) NOT NULL,
+  `idProfesor` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idProfesor` (`idProfesor`),
+  CONSTRAINT `restriccion_ibfk_1` FOREIGN KEY (`idProfesor`) REFERENCES `profesor` (`IdProfesor`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `restriccion`
+--
+
+LOCK TABLES `restriccion` WRITE;
+/*!40000 ALTER TABLE `restriccion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `restriccion` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -254,6 +306,7 @@ CREATE TABLE `usuario` (
   `IdUser` int(11) NOT NULL AUTO_INCREMENT,
   `Username` varchar(88) NOT NULL,
   `password` varchar(20) NOT NULL,
+  `tipo` int(11) NOT NULL,
   PRIMARY KEY (`IdUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -276,4 +329,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-24 13:24:13
+-- Dump completed on 2017-05-14 12:55:55
