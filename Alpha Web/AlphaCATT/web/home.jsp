@@ -37,7 +37,6 @@ informar sobre la situación actual para la generación deñ calendario
       <div class="dropdown">
         <button class="dropbtn">Profesores</button>
           <div class="dropdown-content">
-            <s:a action="listProf" forceAddSchemeHostAndPort="true">Cargar Xml de Profesores</s:a>
             <s:a action="rprof" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
             <s:a action="qprof" forceAddSchemeHostAndPort="true">Gestión de Profesores</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
@@ -78,6 +77,7 @@ informar sobre la situación actual para la generación deñ calendario
     </div>
     <div class="General">
       <h1>Sistema de calendarización  de presentaciones de trabajos terminales </h1>
+      <hr />
       <p>
         El siguiente sistema tiene como propósito agendar las fechas de para
         las presentaciones de trabajos terminales, para realizar esta tarea el
@@ -98,6 +98,47 @@ informar sobre la situación actual para la generación deñ calendario
         la decisión final dependerá del personal de la CATT así como de las
         autoridades pertinentes.
       </p>
+
+        <h2 align="center"> Estado de la Calendarización: </h2>
+          <table class="StatusTable">
+            <tr>
+              <th colspan="2"> Profesores: </th>
+            </tr>
+            <tr>
+              <td> Registro de Profesores: </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <td> Restricciones de Profesores: </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <th colspan="2" > Trabajos Terminales: </th>
+            </tr>
+            <tr>
+              <td> Registro de Trabajos Terminales: </td>
+              <td>  </td>
+            </tr>
+            <tr>
+              <th colspan="2" > Salas: </th>
+            </tr>
+            <tr>
+              <td> Registro de Salas: </td>
+              <td> </td>
+            </tr>
+            <tr>
+              <th colspan="2" > Calendario: </th>
+            </tr>
+            <tr>
+              <td> Iniciar proceso de calendarización: </td>
+              <td> <input type="button" class="botonCalendar" value="Iniciar Calendarización"> </td>
+            </tr>
+            <tr>
+              <td> Editar Fecha de Trabajo Terminal:  </td>
+              <td>  </td>
+            </tr>
+          </table>
+
 
    </div>
    </body>
