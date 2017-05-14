@@ -14,8 +14,8 @@ public class Tt  implements java.io.Serializable {
      private String idTt;
      private String nombre;
      private int nivel;
-     private Calendario calendario;
-     private Set<Alumno> alumnos = new HashSet<Alumno>(0);
+     private Set<Calendario> calendarios = new HashSet<>(0);
+     private Set<Alumno> alumnos = new HashSet(0);
 
     public Tt() {
     }
@@ -26,11 +26,11 @@ public class Tt  implements java.io.Serializable {
         this.nombre = nombre;
         this.nivel = nivel;
     }
-    public Tt(String idTt, String nombre, int nivel, Calendario calendario, Set<Alumno> alumnos) {
+    public Tt(String idTt, String nombre, int nivel, Calendario calendario, Set<Alumno> alumnos, Set<Calendario> calendarios) {
        this.idTt = idTt;
        this.nombre = nombre;
        this.nivel = nivel;
-       this.calendario = calendario;
+       this.calendarios = calendarios;
        this.alumnos = alumnos;
     }
    
@@ -55,12 +55,12 @@ public class Tt  implements java.io.Serializable {
     public void setNivel(int nivel) {
         this.nivel = nivel;
     }
-    public Calendario getCalendario() {
-        return this.calendario;
+    public Set<Calendario> getCalendarios() {
+        return this.calendarios;
     }
     
-    public void setCalendario(Calendario calendario) {
-        this.calendario = calendario;
+    public void setCalendarios(Set<Calendario> calendarios) {
+        this.calendarios = calendarios;
     }
     public Set<Alumno> getAlumnos() {
         return this.alumnos;

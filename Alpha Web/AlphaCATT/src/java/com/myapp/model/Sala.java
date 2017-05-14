@@ -13,7 +13,7 @@ public class Sala  implements java.io.Serializable {
 
      private Integer idSala;
      private String nombre;
-     private Set<Calendario> calendarios = new HashSet<Calendario>(0);
+     private Set<Calendario> calendarios = new HashSet<>(0);
 
     public Sala() {
     }

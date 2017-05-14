@@ -7,7 +7,9 @@
       <column name="IdCalendario"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="com.myapp.model.Tt" fetch="select" constrained="true" name="tt"/>
+    <many-to-one class="com.myapp.model.Tt" fetch="select" name="tt">
+      <column name="IdTT" not-null="true"/>
+    </many-to-one>
     <property name="fecha" type="timestamp">
       <column length="19" name="Fecha" not-null="true"/>
     </property>

@@ -13,7 +13,12 @@
     <property name="nivel" type="int">
       <column name="Nivel" not-null="true"/>
     </property>
-    <one-to-one class="com.myapp.model.Calendario" name="calendario"/>
+    <set fetch="select" inverse="true" lazy="true" name="calendarios" table="CALENDARIO">
+      <key>
+        <column name="IdTT" not-null="true"/>
+      </key>
+      <one-to-many class="com.myapp.model.Calendario"/>
+    </set>
     <set fetch="select" inverse="true" lazy="true" name="alumnos" table="ALUMNO">
       <key>
         <column length="9" name="IdTT" not-null="true"/>
