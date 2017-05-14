@@ -281,7 +281,7 @@ public class PDF {
                         columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
                         table.addCell(columnHeader);
                         
-                        columnHeader = new PdfPCell(new Paragraph(cal.get(i).getIdTt(), LITTLE));
+                        columnHeader = new PdfPCell(new Paragraph(cal.get(i).getTt().getIdTt(), LITTLE));
                         columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
                         table.addCell(columnHeader);
                         
@@ -289,7 +289,7 @@ public class PDF {
                         columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
                         table.addCell(columnHeader);
                         
-                        List<Profesor> profTT = getDirectores(cal.get(i).getIdTt(), directores);
+                        List<Profesor> profTT = getDirectores(cal.get(i).getTt().getIdTt(), directores);
                         columnHeader = new PdfPCell(new Paragraph(profTT.get(0).getApaterno()+ " " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre(), LITTLE));
                         columnHeader.setBackgroundColor(new BaseColor(197, 217, 241));
                         columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -309,7 +309,7 @@ public class PDF {
                             table.addCell(columnHeader);
                         }
                         
-                        profTT = getSinodales(cal.get(i).getIdTt(), sinodales);
+                        profTT = getSinodales(cal.get(i).getTt().getIdTt(), sinodales);
                         columnHeader = new PdfPCell(new Paragraph(profTT.get(0).getApaterno()+ "  " + profTT.get(0).getAmaterno()+ " " + profTT.get(0).getNombre(), LITTLE));
                         columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
                         table.addCell(columnHeader);

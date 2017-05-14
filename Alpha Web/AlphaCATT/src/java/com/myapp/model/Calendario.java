@@ -9,10 +9,9 @@ import java.util.Date;
  */
 public class Calendario  implements java.io.Serializable {
 
-
-     private String idTt;
-     private Sala sala;
+    private Integer idCalendario;
      private Tt tt;
+     private Sala sala;
      private Date fecha;
      private Integer opcion;
 
@@ -26,13 +25,14 @@ public class Calendario  implements java.io.Serializable {
        this.opcion = opcion;
     }
 
-    public String getIdTt() {
-        return this.idTt;
+    public Integer getIdCalendario() {
+        return idCalendario;
     }
 
-    public void setIdTt(String idTt) {
-        this.idTt = idTt;
+    public void setIdCalendario(Integer idCalendario) {
+        this.idCalendario = idCalendario;
     }
+    
     public Sala getSala() {
         return this.sala;
     }

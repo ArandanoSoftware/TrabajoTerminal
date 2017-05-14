@@ -481,9 +481,9 @@ public class mianPrueba {
         poblacion.addAll(poblacionttr);
 ////        
         */
-        List<Calendario> calDefinitivo = CalendarioBs.findAll();
-        for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
-        calDefinitivo = Genetico.crearCalendario(poblacion, opcionCal);
+        //List<Calendario> calDefinitivo = CalendarioBs.findAll();
+        //for(int i = 0; i < calDefinitivo.size(); i++) CalendarioBs.delete(calDefinitivo.get(i));
+        List<Calendario> calDefinitivo = Genetico.crearCalendario(poblacion, opcionCal);
         for(int i = 0; i < calDefinitivo.size(); i++)CalendarioBs.save(calDefinitivo.get(i));
         
         tfin = System.currentTimeMillis();

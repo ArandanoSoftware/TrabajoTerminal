@@ -39,7 +39,7 @@ public class CalendarOperaciones
           for(int i = 0; i < calendario.size(); i++)
           {
               calendario.get(i).setSala(SalaBs.findById(calendario.get(i).getSala().getIdSala()));
-              calendario.get(i).setTt(TTBs.findById(calendario.get(i).getIdTt()));    
+              calendario.get(i).setTt(TTBs.findById(calendario.get(i).getTt().getIdTt()));    
           }
 
           return calendario;

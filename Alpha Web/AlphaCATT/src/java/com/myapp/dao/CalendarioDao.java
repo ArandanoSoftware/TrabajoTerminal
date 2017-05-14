@@ -28,6 +28,7 @@ public class CalendarioDao {
     public void create(Calendario calendario)
     {
         Transaction tx = session.beginTransaction();
+        System.out.println("\n\n\n\n\n\n\n" + calendario.getTt().getIdTt());
         session.save(calendario);
         tx.commit();
         close();
