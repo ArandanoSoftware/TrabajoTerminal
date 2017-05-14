@@ -111,9 +111,9 @@ de trabajo terminal
          <td><s:property value="idTt"/></td>
          <td><s:property value="tt"/></td>
       </s:iterator>
-      <s:iterator value="CalDir">
+      <s:iterator value="Dirige">
       <s:param name="id" value="idTt" />
-         <td><s:property value=""/></td>
+         <td><s:property value="profesorByD1"/></td>
          <td><s:property value=""/></td> 
       </s:iterator>
       
