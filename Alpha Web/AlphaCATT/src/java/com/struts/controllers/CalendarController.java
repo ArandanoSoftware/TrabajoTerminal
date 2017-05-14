@@ -34,8 +34,18 @@ public class CalendarController extends ActionSupport{
     
     //Listas de Salida
     private List<Calendario> CalList;
-    private Dirige DirList;
-    private Sinodalia SinList;
+    private List<Dirige> DirList;
+    private List<Sinodalia> SinList;
+    
+    private Dirige Dirige;
+
+    public Dirige getDirige() {
+        return Dirige;
+    }
+
+    public void setDirige(Dirige Dirige) {
+        this.Dirige = Dirige;
+    }
 
     public CalendarioDao getCalDao() {
         return CalDao;
@@ -76,6 +86,8 @@ public class CalendarController extends ActionSupport{
     public void setId(String id) {
         this.id = id;
     }
+
+  
     
 
     @Override
@@ -87,12 +99,14 @@ public class CalendarController extends ActionSupport{
     {
       this.CalOp = new CalendarOperaciones();
       CalList= this.CalOp.getCalendar();
+      //this.DirBs = new DirigeBs();
+      //Dirige= this.DirBs.findById(Integer.toString(1));
       return SUCCESS;
     }
     public String Directors()
     {
-      //this.DirBs = new DirigeBs();
-      DirList = DirigeBs.findById(id);//= this.DirBs.findById(id);
+      this.DirBs = new DirigeBs();
+      Dirige= this.DirBs.findById(Integer.toString(id));
       return SUCCESS;
     }
 
