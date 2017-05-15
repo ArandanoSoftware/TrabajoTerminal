@@ -2,37 +2,38 @@
 
 
 /*Opciones generales*/
-html{
+
+html {
   color: #2F343A;
   font-family: sans-serif;
   font-size: small;
-
 }
 
-.General{
+.General {
   width: 60%;
   margin-top: 150px;
   margin-right: 20%;
   margin-left: 20%;
   margin-bottom: 50px;
- }
+}
 
- h2,h3{
-   color:rgb(135, 45, 42);
- }
+h2, h3 {
+  color: rgb(135, 45, 42);
+}
 
 
 /*Barra de Menu*/
-#logoEscom{
- height: 40px;
- width: 60px;
+
+#logoEscom {
+  height: 40px;
+  width: 60px;
 }
 
-.LogoTitle{
+.LogoTitle {
   display: inline-block;
 }
 
-.TitleBar{
+.TitleBar {
   position: fixed;
   top: 0;
   right: 0;
@@ -42,8 +43,9 @@ html{
   background: #6D6D6D;
   margin-bottom: 100px;
 }
-.MainMenu{
-  padding-left: 5%;
+
+.MainMenu {
+  padding-left:20%;
   position: fixed;
   top: 62px;
   right: 0;
@@ -53,111 +55,106 @@ html{
   background: #792241;
   margin-bottom: 100px;
 }
-.Title{
-    display: inline-block;
-    margin-left: 10px;
-    text-align: center;
-    color: white;
-}
-.Title-item{
-    display: inline-block;
-    font-size: 16px;
-}
-.Title-item-name{
-    display: inline-block;
-    margin-right: 0px;
-    font-size: 16px;
+
+.Title {
+  display: inline-block;
+  margin-left: 10px;
+  text-align: center;
+  color: white;
 }
 
-/*HoverMenu*/
-.dropbtn {
-    background-color: #46569c;
-    color: white;
-    padding: 12px;
-    font-size: 15px;
-    border: none;
-    cursor: pointer;
-    width: 170px;
+.Title-item {
+  display: inline-block;
+  font-size: 16px;
 }
-.dropbtn.red{
+
+.Title-item-name {
+  display: inline-block;
+  margin-right: 0px;
+  font-size: 16px;
+}
+
+
+/*HoverMenu*/
+
+.dropbtn {
+  background-color: #46569c;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  width: 170px;
+}
+
+.dropbtn.red {
   background-color: #b2240e;
 }
 
-
 .dropdown {
-
-    display: inline-block;
+  display: inline-block;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 .dropdown-content a {
-    color: black;
-    font-size: 12px;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  font-size: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #6383c2;
+  background-color: #6383c2;
 }
+
 .dropdown:hover .dropbtn.red {
-    background-color: #af493a;
+  background-color: #af493a;
 }
 
-/*Panels*/
-.PanelBlue{
-  background-color: #003366;
-  border-color: #003366;
-}
-.PanelRed{
-  background-color: #993333;
-  border-color: #993333;
-}
-.PanelHome{
-  background-color: #669999;
-  border-color: #669999;
-}
 
-.PanelGeneral{
-  border-style: solid;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  /*border-radius: 25px;*/
-  margin-bottom: 15px;
-  margin-right: 10%;
-  margin-left: 10%;
+/*Tables */
+/*Satus indicator */
+.StatusTable {
+  border: 1px solid #ddd;
+  width: 100%;
 }
-.Panel-Title{
+.StatusTable th{
+  padding: 6px;
   color: white;
-  font-size: 18px;
-  margin-top: 5px;
-  margin-left: 15px;
-  margin-left: 30%;
+  background-color: #b2240e;
+  border-bottom: 1px solid #ddd;
 }
-.PanelContent{
-  background-color: white;
-  padding-left: 20%;
-  padding-right: 20%;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  margin-top: 15px;
+.StatusTable td{
+  padding: 15px;
+  font-size: 15px;
+}
 
+/*Botones*/
+.botonCalendar{
+    margin-left: 25%;
+    background-color: #46569c;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }

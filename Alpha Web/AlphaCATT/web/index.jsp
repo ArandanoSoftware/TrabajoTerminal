@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/breadstyle.css">
     <%--PersonalCSS--%>
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/login.css">
     <title> CATT- LOGIN</title>
   </head>
   <body>
@@ -26,14 +27,17 @@
         </div>
     </div>
     <div class="LoginForm, General" align="center" >
-      <h1> CATT Login : </h1>
-      <s:actionerror/>
+      <h1>CATT</h1>
+      <h2>Comision Academica de Trabajos Terminales</h2>
+       <hr />
+
+      <div id="login_form">
       <s:form action="login" method="post">
-          <s:textfield  name="userName" label="Username" size="20"/>
-          <s:password   name="passWord" label="Password" size="20"/>
+          Nombre de Usuario:   <s:textfield  name="userName" label="Username"  placeholder="Usuario" size="20"/>
+          Contraseña:   <s:password   name="passWord" label="Password" placeholder="Contraseña" size="20"/>
           <s:submit align="center" value="Login"/>
       </s:form>
-
+    </div>
     </div>
   </body>
 </html>
