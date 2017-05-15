@@ -43,12 +43,12 @@ public class LoginController extends ActionSupport {
 
   public String login()
   {
-      //this.UserOp = new UsuariosOperaciones();
-      //if(UserOp.Authenticate(userName, passWord)){
+      this.UserOp = new UsuariosOperaciones();
+      if(UserOp.Authenticate(userName, passWord)){
           return "success";
-      //}else{
-      //    return "error";
-      //}
+        }else{
+          return "error";
+        }
 
   }
 }
