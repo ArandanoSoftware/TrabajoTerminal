@@ -24,7 +24,7 @@ public class CalendarController extends ActionSupport{
     private CalendarOperaciones CalOp;
     private CalendarioBs CalBs;
     
-    private  DirigeBs DirBs;
+    //private  DirigeBs DirBs;
 
    
 
@@ -105,8 +105,8 @@ public class CalendarController extends ActionSupport{
     }
     public String Directors()
     {
-      this.DirBs = new DirigeBs();
-      Dirige= this.DirBs.findById(Integer.toString(id));
+      //this.DirBs = new DirigeBs();
+      Dirige = DirigeBs.findById(id);
       return SUCCESS;
     }
 

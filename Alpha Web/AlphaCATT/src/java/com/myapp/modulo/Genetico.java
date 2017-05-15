@@ -206,8 +206,7 @@ public class Genetico {
     
     protected static boolean[] getBinHorario(int h)
     {
-        boolean[] hora = new boolean[9];
-        hora[0]=hora[1]=hora[2]=hora[3]=hora[4]=hora[5]=hora[6]=hora[7]=hora[8]=false;
+        boolean[] hora = {false, false, false, false, false, false, false, false, false};
         if(h == 1)hora[2]=true;
         if(h == 2)hora[3]=true;
         if(h == 3)hora[4]=true;
@@ -563,7 +562,7 @@ public class Genetico {
         for(int i = 0; i < poblacion.size(); i++)
         {
             int aptitud = funcion.evaluar(poblacion.get(i), nuevaPoblacion);
-            if(aptitud == 0){ cero = true;ceros++;}
+            if(aptitud < 140){ cero = true;ceros++;} //System.out.println("ete: " + poblacion.get(i).getGen2().getTt() + getDateC(poblacion.get(i)));}
             if(aptitud == 200){ dos++;}
             aptitudPoblacion += aptitud;
             nuevaPoblacion.add(poblacion.get(i));
@@ -577,6 +576,9 @@ public class Genetico {
         Random random = new Random();
         Date fecha = new Date();
         boolean[] las4 = {false,false,false,false,false,false,true,false,false};
+        boolean[] las2 = {false,false,false,false,true,false,false,false,false};
+        boolean[] las12 = {false,false,false,true,false,false,false,false,false};
+        boolean[] las10 = {false,false,true,false,false,false,false,false,false};
         if(tt == 1)
         {
             fecha.setMonth(inicioCal.getMonth());
@@ -595,10 +597,14 @@ public class Genetico {
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
             }
-            if(random.nextInt(100) == 44)
+            if(random.nextInt(100) < 4)
             {
-                individuo.getGen1().setHora(las4);
-                System.out.print("t");
+                int hor = random.nextInt(4);
+                if(hor == 0) individuo.getGen1().setHora(las10);
+                if(hor == 1)individuo.getGen1().setHora(las12);
+                if(hor == 2)individuo.getGen1().setHora(las2);
+                if(hor == 3)individuo.getGen1().setHora(las4);
+                System.out.print("t"+hor);
             }
         }else if(tt == 2)
         {
@@ -618,10 +624,14 @@ public class Genetico {
                     individuo.getGen1().setDia(getBinDay(fecha));
                 }
             }
-            if(random.nextInt(100) == 44)
+            if(random.nextInt(100) < 4)
             {
-                individuo.getGen1().setHora(las4);
-                System.out.print("t");
+                int hor = random.nextInt(4);
+                if(hor == 0) individuo.getGen1().setHora(las10);
+                if(hor == 1)individuo.getGen1().setHora(las12);
+                if(hor == 2)individuo.getGen1().setHora(las2);
+                if(hor == 3)individuo.getGen1().setHora(las4);
+                System.out.print("t"+hor);
             }
         }
         return individuo;

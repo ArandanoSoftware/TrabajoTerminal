@@ -14,6 +14,7 @@ import com.myapp.bs.CalendarioBs;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.NohabilBs;
 import com.myapp.bs.ProfesorBs;
+import com.myapp.bs.RestriccionBs;
 import com.myapp.bs.SalaBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
@@ -48,6 +49,8 @@ public class mianPrueba {
     {
         long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
         tinicio = System.currentTimeMillis(); 
+        
+        
 //        List<Sala> salas;
 //        salas = SalaBs.findAll();
 //        System.out.println(salas.get(0).getNombre());
@@ -176,8 +179,13 @@ public class mianPrueba {
         
         //List<Restriccion> restricciones = new ArrayList<>();
         //primera restriccion
+        System.out.println("Empieza y con el borrado de restriccioners");
+        List<Restriccion> res = RestriccionBs.findAll();
+        for(int i = 0; i < res.size(); i++)
+            RestriccionBs.delete(res.get(i));
+        System.out.println("ya las borro que da crear las restricciones y gusrdarlas ");
         
-        List<Restriccion> restricciones = new ArrayList<>();
+        List<Restriccion> restricciones;// = new ArrayList<>();
         Date inicio = new Date();
         inicio.setDate(2);
         inicio.setMonth(4);
@@ -195,32 +203,56 @@ public class mianPrueba {
         restriccionGen1.setRango(rango1, rango2);
         //segunda restriccion
         RestriccionGeneral restriccionGen2 = new RestriccionGeneral(46);
+        rango1.setMonth(4);
+        rango1.setDate(23);
+        rango2.setMonth(4);
+        rango2.setDate(26);
         restriccionGen2.setRango(rango1, rango2);
         //tercera restriccion
         RestriccionGeneral restriccionGen3 = new RestriccionGeneral(25);
-        rango1.setDate(24);
+        rango1.setMonth(4);
+        rango1.setDate(23);
+        rango2.setMonth(4);
+        rango2.setDate(26);
         restriccionGen3.setRango(rango1, rango2);
         //cuarta restriccion
         RestriccionGeneral restriccionGen4 = new RestriccionGeneral(123);
-        restriccionGen4.setHora(3, inicio, fin);
+        rango1.setMonth(4);
+        rango1.setDate(2);
+        rango2.setMonth(5);
+        rango2.setDate(6);
+        restriccionGen4.setHora(3, rango1, rango2);
         //quinta restriccion
         RestriccionGeneral restriccionGen5 = new RestriccionGeneral(183);
-        restriccionGen5.setHora(3, inicio, fin);
+        rango1.setMonth(inicio.getMonth());
+        rango1.setDate(inicio.getDate());
+        rango2.setMonth(fin.getMonth());
+        rango2.setDate(fin.getDate());
+        restriccionGen5.setHora(3, rango1, rango2);
         //sexta restriccion
         RestriccionGeneral restriccionGen6 = new RestriccionGeneral(216);
-        restriccionGen6.setDiaSem(2, inicio, fin);
-        restriccionGen6.setDiaSem(3, inicio, fin);
+        rango1.setMonth(inicio.getMonth());
+        rango1.setDate(inicio.getDate());
+        rango2.setMonth(fin.getMonth());
+        rango2.setDate(fin.getDate());
+        restriccionGen6.setDiaSem(2, rango1, rango2);
+        restriccionGen6.setDiaSem(3, rango1, rango2);
         //septima restricicon
         RestriccionGeneral restriccionGen7 = new RestriccionGeneral(197);
+        rango1.setMonth(4);
         rango1.setDate(31);
         rango2.setMonth(5);
         rango2.setDate(2);
         restriccionGen7.setRango(rango1, rango2);
         //octava restriccion
         RestriccionGeneral restriccionGen8 = new RestriccionGeneral(236);
-        restriccionGen8.setDiaSem(2, inicio, fin);
-        restriccionGen8.setDiaSem(3, inicio, fin);
-        restriccionGen8.setDiaSem(5, inicio, fin);
+        rango1.setMonth(inicio.getMonth());
+        rango1.setDate(inicio.getDate());
+        rango2.setMonth(fin.getMonth());
+        rango2.setDate(fin.getDate());
+        restriccionGen8.setDiaSem(2, rango1, rango2);
+        restriccionGen8.setDiaSem(3, rango1, rango2);
+        restriccionGen8.setDiaSem(5, rango1, rango2);
         //novena restriccion
         RestriccionGeneral restriccionGen9 = new RestriccionGeneral(9);
         rango1.setMonth(4);
@@ -292,7 +324,7 @@ public class mianPrueba {
         rango2.setDate(9);
         restriccionGen19.setRango(rango1, rango2);
         //asignacion de las restricciones
-        restricciones.addAll(restriccionGen1.getRestricciones());
+        /*restricciones.addAll(restriccionGen1.getRestricciones());
         restricciones.addAll(restriccionGen2.getRestricciones());
         restricciones.addAll(restriccionGen3.getRestricciones());
         restricciones.addAll(restriccionGen4.getRestricciones());
@@ -310,8 +342,10 @@ public class mianPrueba {
         restricciones.addAll(restriccionGen16.getRestricciones());
         restricciones.addAll(restriccionGen17.getRestricciones());
         restricciones.addAll(restriccionGen18.getRestricciones());
-        restricciones.addAll(restriccionGen19.getRestricciones());
-       
+        restricciones.addAll(restriccionGen19.getRestricciones());*/
+        System.out.println("ya las creo y guaro ahora buscará todas");
+        restricciones = RestriccionBs.findAll();
+        System.out.println("ya las termino de buscar ahora guardará los dias no habiles");
         Nohabil nohabil = new Nohabil();
         Date fecha = new Date(2017, 4, 1);
         nohabil.setFecha(fecha);
@@ -325,11 +359,11 @@ public class mianPrueba {
         fecha = new Date(2017, 4, 15);
         nohabil.setFecha(fecha);
         NohabilBs.save(nohabil);
-
+        System.out.println("ya los guardo ahora borrará lo que hayá de calensdario");
         List<Calendario> borrar = CalendarioBs.findAll();
         for(int i = 0; i < borrar.size(); i++)
             CalendarioBs.delete(borrar.get(i));
-        
+        System.out.println("ya lo borro ahora aqui empieza el bucle xD");
     for(int opcionCal = 1; opcionCal <= 5; opcionCal++)    
     {
         inicio.setDate(2);

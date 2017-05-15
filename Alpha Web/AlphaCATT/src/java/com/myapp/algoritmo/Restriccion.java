@@ -5,15 +5,20 @@
  */
 package com.myapp.algoritmo;
 
+import com.myapp.modulo.Genetico;
+import java.util.Date;
+
 /**
  *
  * @author Hazzy76
  */
 public class Restriccion {
+    private Integer id;
+    private Date fecha;
     private boolean[] mes;
     private boolean[] dia;
     private boolean[] hora;
-    private int profesor;
+    private int idProfesor;
 
     public Restriccion() {
         this.mes = new boolean[4];
@@ -21,7 +26,31 @@ public class Restriccion {
         this.hora = new boolean[9];
     }
 
+    public Restriccion(Date fecha, int idProfesor) {
+       this.fecha = fecha;
+       this.idProfesor = idProfesor;
+    }
+
+   
+    public Integer getId() {
+        return this.id;
+    }
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date Fecha) {
+        this.fecha = Fecha;
+    }
+    
     public boolean[] getDia() {
+        dia = Genetico.getBinDay(fecha);
         return dia;
     }
 
@@ -30,6 +59,19 @@ public class Restriccion {
     }
 
     public boolean[] getHora() {
+        boolean[] allday = {false,false,false,false,false,false,false,false,false};
+        hora = allday;
+        int horas = fecha.getHours();
+        //1 = 10:00     2 = 12:00   3 = 14:00   4 = 16:00
+        if(horas == 10) hora[2] = true;
+        if(horas == 12) hora[3] = true;
+        if(horas == 14) hora[4] = true;
+        if(horas == 16) hora[6] = true;
+        if(horas == 0)
+        {
+            allday[0] = true; allday[1] = true; allday[2] = true; allday[3] = true; allday[4] = true; allday[5] = true; allday[6] = true; allday[7] = true; allday[8] = true;
+            hora = allday;
+        }
         return hora;
     }
 
@@ -38,6 +80,7 @@ public class Restriccion {
     }
 
     public boolean[] getMes() {
+        mes = Genetico.getBinMonth(fecha);
         return mes;
     }
 
@@ -45,12 +88,12 @@ public class Restriccion {
         this.mes = mes;
     }
 
-    public int getProfesor() {
-        return profesor;
+    public int getIdProfesor() {
+        return idProfesor;
     }
 
-    public void setProfesor(int profesor) {
-        this.profesor = profesor;
+    public void setIdProfesor(int idProfesor) {
+        this.idProfesor = idProfesor;
     }
     
 }

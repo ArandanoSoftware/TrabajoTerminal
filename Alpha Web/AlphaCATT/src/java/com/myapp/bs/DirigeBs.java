@@ -18,7 +18,7 @@ public class DirigeBs {
     {
         DirigeDao dirigeDao = new DirigeDao();
         Dirige dirige = dirigeDao.findById(id);
-        dirige.setProfesor ByD1(ProfesorBs.findById(dirige.getProfesorByD1().getIdProfesor()));
+        dirige.setProfesorByD1(ProfesorBs.findById(dirige.getProfesorByD1().getIdProfesor()));
         try{dirige.setProfesorByD2(ProfesorBs.findById(dirige.getProfesorByD2().getIdProfesor()));}catch(Exception e){}
         return dirige;
     }
