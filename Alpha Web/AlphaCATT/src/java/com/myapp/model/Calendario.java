@@ -1,5 +1,5 @@
 package com.myapp.model;
-// Generated 27/04/2017 10:27:18 AM by Hibernate Tools 4.3.1
+// Generated 14/05/2017 03:16:46 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -9,55 +9,55 @@ import java.util.Date;
  */
 public class Calendario  implements java.io.Serializable {
 
-    private Integer idCalendario;
+
+     private Integer idCalendario;
      private Tt tt;
-     private Sala sala;
      private Date fecha;
+     private Sala sala;
      private Integer opcion;
 
     public Calendario() {
     }
 
-    public Calendario(Sala sala, Tt tt, Date fecha, Integer opcion) {
-       this.sala = sala;
+    public Calendario(Tt tt, Date fecha, Sala sala, Integer opcion) {
        this.tt = tt;
        this.fecha = fecha;
+       this.sala = sala;
        this.opcion = opcion;
     }
-
+   
     public Integer getIdCalendario() {
-        return idCalendario;
-    }
-
-    public void setIdCalendario(Integer idCalendario) {
-        this.idCalendario = idCalendario;
+        return this.idCalendario;
     }
     
-    public Sala getSala() {
-        return this.sala;
-    }
-
-    public void setSala(Sala sala) {
-        this.sala = sala;
+    public void setIdCalendario(Integer idCalendario) {
+        this.idCalendario = idCalendario;
     }
     public Tt getTt() {
         return this.tt;
     }
-
+    
     public void setTt(Tt tt) {
         this.tt = tt;
     }
     public Date getFecha() {
         return this.fecha;
     }
-
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+    public Sala getSala() {
+        return this.sala;
+    }
+    
+    public void setSala(Sala sala) {
+        this.sala = sala;
     }
     public Integer getOpcion() {
         return this.opcion;
     }
-
+    
     public void setOpcion(Integer opcion) {
         this.opcion = opcion;
     }
@@ -66,3 +66,5 @@ public class Calendario  implements java.io.Serializable {
 
 
 }
+
+

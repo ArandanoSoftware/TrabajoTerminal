@@ -10,6 +10,7 @@ import com.myapp.model.Calendario;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -28,7 +29,6 @@ public class CalendarioDao {
     public void create(Calendario calendario)
     {
         Transaction tx = session.beginTransaction();
-        System.out.println("\n\n\n\n\n\n\n" + calendario.getTt().getIdTt());
         session.save(calendario);
         tx.commit();
         close();
@@ -63,6 +63,15 @@ public class CalendarioDao {
     {   
         Transaction tx = session.beginTransaction();
         List<Calendario> calendario = (List<Calendario>)session.createCriteria(Calendario.class).list();
+        tx.commit();
+        close();
+        return calendario;
+    }
+    
+    public List<Calendario> findByOption(int opcion)
+    {   
+        Transaction tx = session.beginTransaction();
+        List<Calendario> calendario = (List<Calendario>)session.createCriteria(Calendario.class).add(Restrictions.eq("opcion", opcion)).list();
         tx.commit();
         close();
         return calendario;

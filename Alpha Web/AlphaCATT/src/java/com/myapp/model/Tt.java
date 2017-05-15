@@ -1,5 +1,5 @@
 package com.myapp.model;
-// Generated 27/04/2017 10:27:18 AM by Hibernate Tools 4.3.1
+// Generated 14/05/2017 03:16:46 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,8 +14,8 @@ public class Tt  implements java.io.Serializable {
      private String idTt;
      private String nombre;
      private int nivel;
-     private Set<Calendario> calendarios = new HashSet<>(0);
-     private Set<Alumno> alumnos = new HashSet(0);
+     private Set<Calendario> calendarios = new HashSet<Calendario>(0);
+     private Set<Alumno> alumnos = new HashSet<Alumno>(0);
 
     public Tt() {
     }
@@ -26,7 +26,7 @@ public class Tt  implements java.io.Serializable {
         this.nombre = nombre;
         this.nivel = nivel;
     }
-    public Tt(String idTt, String nombre, int nivel, Calendario calendario, Set<Alumno> alumnos, Set<Calendario> calendarios) {
+    public Tt(String idTt, String nombre, int nivel, Set<Calendario> calendarios, Set<Alumno> alumnos) {
        this.idTt = idTt;
        this.nombre = nombre;
        this.nivel = nivel;
@@ -68,10 +68,6 @@ public class Tt  implements java.io.Serializable {
     
     public void setAlumnos(Set<Alumno> alumnos) {
         this.alumnos = alumnos;
-    }
-
-    public String toString() {
-        return nombre;
     }
 
 

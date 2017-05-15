@@ -12,12 +12,14 @@ import com.myapp.algoritmo.Restriccion;
 import com.myapp.algoritmo.RestriccionGeneral;
 import com.myapp.bs.CalendarioBs;
 import com.myapp.bs.DirigeBs;
+import com.myapp.bs.NohabilBs;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SalaBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
 import com.myapp.model.Dirige;
 import com.myapp.model.Horario;
+import com.myapp.model.Nohabil;
 import com.myapp.model.Profesor;
 import com.myapp.model.Sala;
 import com.myapp.model.Tt;
@@ -309,16 +311,25 @@ public class mianPrueba {
         restricciones.addAll(restriccionGen17.getRestricciones());
         restricciones.addAll(restriccionGen18.getRestricciones());
         restricciones.addAll(restriccionGen19.getRestricciones());
-        
+       
+        Nohabil nohabil = new Nohabil();
         Date fecha = new Date(2017, 4, 1);
-        Genetico.noHabil.add(fecha);
+        nohabil.setFecha(fecha);
+        NohabilBs.save(nohabil);
         fecha = new Date(2017, 4, 5);
-        Genetico.noHabil.add(fecha);
+        nohabil.setFecha(fecha);
+        NohabilBs.save(nohabil);
         fecha = new Date(2017, 4, 10);
-        Genetico.noHabil.add(fecha);
+        nohabil.setFecha(fecha);
+        NohabilBs.save(nohabil);
         fecha = new Date(2017, 4, 15);
-        Genetico.noHabil.add(fecha);
+        nohabil.setFecha(fecha);
+        NohabilBs.save(nohabil);
 
+        List<Calendario> borrar = CalendarioBs.findAll();
+        for(int i = 0; i < borrar.size(); i++)
+            CalendarioBs.delete(borrar.get(i));
+        
     for(int opcionCal = 1; opcionCal <= 5; opcionCal++)    
     {
         inicio.setDate(2);
@@ -488,7 +499,10 @@ public class mianPrueba {
         
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
-        System.out.println("Ya terminó !!!!! en " + tiempo/1000);
+        System.out.println("Ya terminó el calendario " + opcionCal  +" !!!!! en " + tiempo/1000);
+        
+        PDF pdfCalendario = new PDF();
+        pdfCalendario.createPDF(new File("../Calendario"+opcionCal+".pdf"),opcionCal);
     }
         //LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
         
@@ -630,8 +644,6 @@ public class mianPrueba {
         
         
 
-        PDF pdfCalendario = new PDF();
-        pdfCalendario.createPDF(new File("../Calendario.pdf"),Genetico.noHabil);
         
 //        Email mail = new Email();
 //        //mail.enviar("hazzy76@hotmail.com");

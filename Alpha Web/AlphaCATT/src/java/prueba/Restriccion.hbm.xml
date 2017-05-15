@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/05/2017 03:16:49 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="prueba.Restriccion" table="restriccion" catalog="db_catt1" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="mes" type="boolean">
+            <column name="mes" not-null="true" />
+        </property>
+        <property name="dia" type="boolean">
+            <column name="dia" not-null="true" />
+        </property>
+        <property name="hora" type="boolean">
+            <column name="hora" not-null="true" />
+        </property>
+        <property name="idProfesor" type="int">
+            <column name="idProfesor" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

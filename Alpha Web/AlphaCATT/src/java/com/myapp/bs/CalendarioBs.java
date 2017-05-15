@@ -33,6 +33,18 @@ public class CalendarioBs {
         return calendario;
     }
     
+    public static List<Calendario> findByOption(int opcion)
+    {
+        CalendarioDao calendarioDao = new CalendarioDao();
+        List<Calendario> calendario = calendarioDao.findByOption(opcion);
+        for(int i = 0; i < calendario.size(); i++)
+        {
+            calendario.get(i).setSala(SalaBs.findById(calendario.get(i).getSala().getIdSala()));
+            calendario.get(i).setTt(TTBs.findById(calendario.get(i).getTt().getIdTt()));
+        }
+        return calendario;
+    }
+    
     public static void save(Calendario calendario)
     {
         CalendarioDao calendarioDao = new CalendarioDao();

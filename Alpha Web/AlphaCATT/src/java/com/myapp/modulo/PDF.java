@@ -22,9 +22,11 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.myapp.bs.CalendarioBs;
 import com.myapp.bs.DirigeBs;
+import com.myapp.bs.NohabilBs;
 import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Calendario;
 import com.myapp.model.Dirige;
+import com.myapp.model.Nohabil;
 import com.myapp.model.Profesor;
 import com.myapp.model.Sinodalia;
 import java.awt.Color;
@@ -67,9 +69,10 @@ public class PDF {
 
      * Creamos un documento PDF
      * @param pdfNewFile
-     * @param festivos
+     * @param opcion
      */
-    public void createPDF(File pdfNewFile, List<Date> festivos) {
+    public void createPDF(File pdfNewFile, int opcion) {
+         List<Nohabil> festivos = NohabilBs.findAll();
         // We create the document and set the file name.        
         try {
             Document document = new Document(PageSize.A4.rotate());
@@ -89,7 +92,7 @@ public class PDF {
             document.addCreator("CATT");
             
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            List<Calendario> cal = CalendarioBs.findAll();
+            List<Calendario> cal = CalendarioBs.findByOption(opcion);
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             cal = orderCal(cal);
             
@@ -446,7 +449,7 @@ public class PDF {
         return diez;
     }
     
-    protected Date diaAcuse(Date fecha, List<Date> res)
+    protected Date diaAcuse(Date fecha, List<Nohabil> res)
     {
         Date acuse = new Date();
         acuse.setDate(fecha.getDate());
@@ -460,11 +463,11 @@ public class PDF {
         return acuse;
     }
     
-    protected boolean contieneFecha(Date fecha1, List<Date> fecha2)
+    protected boolean contieneFecha(Date fecha1, List<Nohabil> fecha2)
     {
         for(int i = 0; i < fecha2.size(); i++)
         {
-            if(fecha1.getDate() == fecha2.get(i).getDate() && fecha1.getMonth() == fecha2.get(i).getMonth())
+            if(fecha1.getDate() == fecha2.get(i).getFecha().getDate() && fecha1.getMonth() == fecha2.get(i).getFecha().getMonth())
                 return true;
         }
         return false;

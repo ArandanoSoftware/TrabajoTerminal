@@ -30,6 +30,7 @@ public class AlumnoDao {
         Transaction tx = session.beginTransaction();
         session.save(alumno);
         tx.commit();
+        close();
     }
     
     public void modify(Alumno alumno)
@@ -37,6 +38,7 @@ public class AlumnoDao {
         Transaction tx = session.beginTransaction();
         session.update(alumno);
         tx.commit();
+        close();
     }
     
     public void erase(Alumno alumno)
@@ -44,6 +46,7 @@ public class AlumnoDao {
         Transaction tx = session.beginTransaction();
         session.delete(alumno);
         tx.commit();
+        close();
     }
     
     public Alumno findById(String id)
@@ -51,6 +54,7 @@ public class AlumnoDao {
         Transaction tx = session.beginTransaction();
         Alumno alumno = (Alumno)session.get(Alumno.class, id);
         tx.commit();
+        close();
         return alumno;
     }
     
@@ -59,6 +63,7 @@ public class AlumnoDao {
         Transaction tx = session.beginTransaction();
         List<Alumno> alumno = (List<Alumno>)session.createCriteria(Alumno.class).list();
         tx.commit();
+        close();
         return alumno;
     }
     
