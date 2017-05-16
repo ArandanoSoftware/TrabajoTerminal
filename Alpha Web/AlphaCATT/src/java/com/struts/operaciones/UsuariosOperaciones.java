@@ -40,7 +40,35 @@ public class UsuariosOperaciones {
         }
         return true;
     }
+    
+      public void regUser(String username, String password, String tipo)
+    {
+      SessionFactory factory = HibernateUtil.getSessionFactory();
+      Session session=factory.openSession();
+      Transaction tx =session.beginTransaction();
+      //Query con Entity
+       Usuario user = new Usuario();
+       user.setUsername(username);
+       user.setPassword(password);
+       user.setTipo(Integer.parseInt(tipo));
+      //
+      session.save(user);
+      tx.commit();
+      session.close();
+    }
+      
+       public void delUser(int id)
+     {
+        SessionFactory factory=HibernateUtil.getSessionFactory();
+        Session session=factory.openSession();
+        Transaction tx=session.beginTransaction();
 
+        // Magic here
+        Usuario user=(Usuario)session.get(Usuario.class, id);
+        session.delete(user);
 
+        tx.commit();
+        session.close();
+     }
 
 }

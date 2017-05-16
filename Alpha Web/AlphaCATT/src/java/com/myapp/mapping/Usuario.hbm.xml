@@ -13,5 +13,8 @@
     <property name="password" type="string">
       <column length="20" name="password" not-null="true"/>
     </property>
+    <property name="tipo" type="java.lang.Integer">
+      <column name="tipo" not-null="true"/>
+    </property>
   </class>
 </hibernate-mapping>

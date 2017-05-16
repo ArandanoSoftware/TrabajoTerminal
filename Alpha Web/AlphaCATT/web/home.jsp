@@ -69,7 +69,7 @@ informar sobre la situación actual para la generación deñ calendario
       <div class="dropdown">
         <button class="dropbtn red">Configuración</button>
           <div class="dropdown-content">
-            <s:a action="qusers" forceAddSchemeHostAndPort="true">Usuarios</s:a>
+            <s:a action="qusers" forceAddSchemeHostAndPort="true">Gestión de Usuarios</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
             <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
           </div>
@@ -99,7 +99,7 @@ informar sobre la situación actual para la generación deñ calendario
         autoridades pertinentes.
       </p>
 
-        <h2 align="center"> Estado de la Calendarización: </h2>
+        < h2 align="center"> Estado de la Calendarización: </h2>
           <table class="StatusTable">
             <tr>
               <th colspan="2"> Profesores: </th>
