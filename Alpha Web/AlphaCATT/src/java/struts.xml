@@ -5,7 +5,7 @@
 
 <struts>
   <constant name="struts.action.extension" value=","/>
-  <constant name="struts.multipart.saveDir" value="/" /> 
+  <constant name="struts.multipart.saveDir" value="/" />
   <package name="default" extends="struts-default">
   </package>
   <!--Requiere de 3 paramentros el paquere
@@ -99,14 +99,23 @@
       <!-- Usuarios  -->
       <!-- Gestión de Usuarios-->
       <action name="qusers" class="com.struts.controllers.UsuariosController" method="execute">
-          <result>views/forms/confUsers.jsp</result>
+          <result>views/users/confUsers.jsp</result>
       </action>
-      <!-- Borrar Usuario-->
-      <action name="duser" class="com.struts.controllers.UsuariosController" method="deleteUser">
+      <!-- Crear Usuario  -->
+      <action name="regUser" class="com.struts.controllers.UsuariosController" method="regUser">
         <result type="redirectAction">
             <param name="actionName">qusers</param>
         </result>
       </action>
+      <!-- Borrar Usuario-->
+      <action name="dUser" class="com.struts.controllers.UsuariosController" method="delUser">
+        <result type="redirectAction">
+            <param name="actionName">qusers</param>
+        </result>
+      </action>
+
+
+
       <!--General Actions -->
       <action name="doUpload" class="com.struts.actions.UploadAction">
         <result name="input">views/forms/regProf.jsp</result>

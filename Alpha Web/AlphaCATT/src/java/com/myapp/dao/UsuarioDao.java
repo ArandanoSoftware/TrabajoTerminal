@@ -47,7 +47,7 @@ public class UsuarioDao {
         close();
     }
     
-    public Usuario findById(String id)
+    public Usuario findById(int id)
     {
         Transaction tx = session.beginTransaction();
         Usuario alumno = (Usuario)session.get(Usuario.class, id);

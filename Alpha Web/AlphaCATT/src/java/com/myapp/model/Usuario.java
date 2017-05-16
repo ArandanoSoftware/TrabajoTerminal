@@ -12,13 +12,15 @@ public class Usuario  implements java.io.Serializable {
      private Integer idUser;
      private String username;
      private String password;
+     private Integer tipo;
 
     public Usuario() {
     }
 
-    public Usuario(String username, String password) {
+    public Usuario(String username, String password, Integer tipo) {
        this.username = username;
        this.password = password;
+       this.tipo = tipo;
     }
    
     public Integer getIdUser() {
@@ -41,8 +43,15 @@ public class Usuario  implements java.io.Serializable {
     
     public void setPassword(String password) {
         this.password = password;
+    }   
+ 
+    public Integer getTipo() {
+        return tipo;
     }
 
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
 
 
 
