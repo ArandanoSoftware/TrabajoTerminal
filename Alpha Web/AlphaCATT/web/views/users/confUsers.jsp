@@ -15,6 +15,7 @@ Tareas:
     <link rel="stylesheet" href="css/normalize.css">
     <%--PersonalCSS--%>
       <link rel="stylesheet" href="css/master.css">
+      <link rel="stylesheet" href="css/icomoon/style.css">
       <%--Javascript--%>
       <script type="text/javascript" src="js/master.js"></script>
 
@@ -100,7 +101,7 @@ Tareas:
           <th> <input type="text" name="tipo"  required></th>
         </tr>
       </table>
-          <s:submit onsubmit="" value ="Eviar" ></s:submit>
+          <s:submit onsubmit="" value ="Enviar" ></s:submit>
       </s:form>
 
       <h3>Usuarios Registrados Actualmente</h3>
@@ -122,7 +123,7 @@ Tareas:
                    <td>
                      <s:a action="dUser">
                      <s:param name="id" value="idUser" />
-                     <i class="material-icons">delete</i>
+                     <span class="icon-bin"></span>
                      </s:a>
                    </td>
                </tr>
