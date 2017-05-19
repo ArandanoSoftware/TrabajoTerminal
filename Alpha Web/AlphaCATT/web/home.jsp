@@ -99,32 +99,32 @@ informar sobre la situación actual para la generación deñ calendario
         autoridades pertinentes.
       </p>
 
-        < h2 align="center"> Estado de la Calendarización: </h2>
+        <h2 align="center"> Estado de la Calendarización: </h2>
           <table class="StatusTable">
             <tr>
               <th colspan="2"> Profesores: </th>
             </tr>
             <tr>
               <td> Registro de Profesores: </td>
-              <td> </td>
+              <td><b>Actualmente: </b> <s:property value="total_profesores"/> <b> Registrados</b></td>
             </tr>
             <tr>
               <td> Restricciones de Profesores: </td>
-              <td> </td>
+              <td> <b>Actualmente: </b> <s:property value="total_restricciones"/> <b> <b> Registrados</b></td>
             </tr>
             <tr>
               <th colspan="2" > Trabajos Terminales: </th>
             </tr>
             <tr>
               <td> Registro de Trabajos Terminales: </td>
-              <td>  </td>
+              <td><b>Actualmente: </b> <s:property value="total_tt"/> <b> <b> Registrados</b></td>
             </tr>
             <tr>
               <th colspan="2" > Salas: </th>
             </tr>
             <tr>
               <td> Registro de Salas: </td>
-              <td> </td>
+              <td><b>Actualmente: </b> <s:property value="total_salas"/> <b> <b> Registrados</b></td>
             </tr>
             <tr>
               <th colspan="2" > Calendario: </th>
@@ -135,7 +135,7 @@ informar sobre la situación actual para la generación deñ calendario
             </tr>
             <tr>
               <td> Editar Fecha de Trabajo Terminal:  </td>
-              <td>  </td>
+              <td><input type="button" class="botonCalendar" value="Editor de Calendario"> </td></td>
             </tr>
           </table>
 
