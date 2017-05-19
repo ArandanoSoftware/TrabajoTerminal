@@ -5,6 +5,7 @@
  */
 package com.myapp.algoritmo;
 
+import com.myapp.model.Restriccion;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;

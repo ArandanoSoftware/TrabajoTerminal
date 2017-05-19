@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.myapp.algoritmo;
+package com.myapp.model;
 
 import com.myapp.modulo.Genetico;
 import java.util.Date;

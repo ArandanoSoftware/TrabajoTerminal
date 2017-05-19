@@ -8,7 +8,7 @@ package prueba;
 import com.myapp.modulo.PDF;
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
-import com.myapp.algoritmo.Restriccion;
+import com.myapp.model.Restriccion;
 import com.myapp.algoritmo.RestriccionGeneral;
 import com.myapp.bs.CalendarioBs;
 import com.myapp.bs.DirigeBs;

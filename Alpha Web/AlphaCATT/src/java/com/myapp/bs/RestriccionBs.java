@@ -5,7 +5,7 @@
  */
 package com.myapp.bs;
 
-import com.myapp.algoritmo.Restriccion;
+import com.myapp.model.Restriccion;
 import com.myapp.dao.RestriccionDao;
 import java.util.List;
 
