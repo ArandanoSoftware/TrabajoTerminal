@@ -6,9 +6,7 @@
 package com.myapp.bs;
 
 import com.myapp.dao.NohabilDao;
-import com.myapp.dao.SalaDao;
 import com.myapp.model.Nohabil;
-import com.myapp.model.Sala;
 import java.util.List;
 
 /**
@@ -49,4 +47,5 @@ public class NohabilBs {
         NohabilDao nohabilDao = new NohabilDao();
         nohabilDao.erase(nohabil);
     }
+    
 }
