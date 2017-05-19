@@ -5,7 +5,7 @@
  */
 package com.myapp.dao;
 
-import com.myapp.algoritmo.Restriccion;
+import com.myapp.model.Restriccion;
 import com.myapp.hibernate.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;

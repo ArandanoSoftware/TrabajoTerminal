@@ -5,6 +5,7 @@
  */
 package com.myapp.algoritmo;
 
+import com.myapp.model.Restriccion;
 import com.myapp.bs.RestriccionBs;
 import com.myapp.modulo.Genetico;
 import java.util.ArrayList;

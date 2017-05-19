@@ -7,7 +7,7 @@ package com.myapp.modulo;
 
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
-import com.myapp.algoritmo.Restriccion;
+import com.myapp.model.Restriccion;
 import com.myapp.bs.NohabilBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
