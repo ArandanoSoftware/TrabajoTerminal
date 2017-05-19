@@ -16,6 +16,7 @@ import org.hibernate.Transaction;
  * @author Hazzy76
  */
 public class NohabilDao {
+    
         Session session;
 
     
@@ -76,4 +77,5 @@ public class NohabilDao {
     {
         session.close();
     }
+    
 }

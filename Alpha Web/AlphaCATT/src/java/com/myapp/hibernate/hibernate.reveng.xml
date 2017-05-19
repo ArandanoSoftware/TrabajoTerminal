@@ -52,4 +52,5 @@ Contributor(s):
   <table-filter match-name="usuario"/>
   <table-filter match-name="nohabil"/>
   <table-filter match-name="restriccion"/>
+  <table-filter match-name="rango"/>
 </hibernate-reverse-engineering>
