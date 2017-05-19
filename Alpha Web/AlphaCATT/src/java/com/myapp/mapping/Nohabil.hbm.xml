@@ -3,15 +3,12 @@
 <!-- Generated 14/05/2017 03:16:49 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="db_catt1" name="com.myapp.model.Nohabil" optimistic-lock="version" table="nohabil">
-    <id name="idRango" type="java.lang.Integer">
+    <id name="id" type="java.lang.Integer">
       <column name="id"/>
       <generator class="identity"/>
     </id>
-    <property name="fecha1" type="timestamp">
-      <column length="19" name="fecha1" not-null="true"/>
-    </property>
-    <property name="fecha2" type="timestamp">
-      <column length="19" name="fecha2" not-null="true"/>
+    <property name="fecha" type="timestamp">
+      <column length="19" name="fecha" not-null="true"/>
     </property>
   </class>
 </hibernate-mapping>
