@@ -16,19 +16,29 @@
       <!--Parametros:
           Name: La forma en que es invocada desde la url
           Class: La clase a la que pertenece-->
+      <!-- Interceptores  -->
+       <interceptors>
+            <interceptor class="com.struts.interceptors.LoginInterceptor" name="loginInterceptor"></interceptor>
+                <interceptor-stack name="loginStack">
+                        <interceptor-ref name="loginInterceptor" />
+                        <interceptor-ref name="defaultStack" />
+                </interceptor-stack>
+        </interceptors>
 
-      <!-- login -->
-      <action name="login" class="com.struts.controllers.LoginController" method="login">
-        <result type="redirectAction">
-        <param name="actionName"> home </param>
-        </result>
-        <result name="error">index.jsp</result>
+      <!-- Login Action  -->
+      <action name="loginAction" class="com.struts.actions.LoginAction" method="login">   
+         <result name="success" type="redirect">home</result>
+         <result name="login">index.jsp</result>
       </action>
 
-      <!-- home -->
-      <action name="home" class="com.struts.controllers.HomeController" method="execute">
-        <result>/home.jsp</result>
+      <!-- home link action -->
+      <action name="home" class="com.struts.actions.LoginAction" method="home">
+        <interceptor-ref name="loginStack" />
+        <result name= "success">home.jsp</result>
+        <result name="login">index.jsp</result>
       </action>
+
+
 
       <!--Profesores-->
       <!--Registro de Profesores-->

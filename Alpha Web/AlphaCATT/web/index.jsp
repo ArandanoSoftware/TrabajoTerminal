@@ -1,9 +1,7 @@
+<!-- Sistema de Calendarización de Trabajos Terminales-->
+<!-- Login Page  -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,8 +13,10 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/login.css">
     <title> CATT- LOGIN</title>
+    <s:head/>
   </head>
   <body>
+    <!--Barra General -->
     <div class="TitleBar">
         <div class="Title">
           <ul>
@@ -32,9 +32,9 @@
        <hr />
 
       <div id="login_form">
-      <s:form action="login" method="post">
-          Nombre de Usuario:   <s:textfield  name="userName" label="Username"  placeholder="Usuario" size="20"/>
-          Contraseña:   <s:password   name="passWord" label="Password" placeholder="Contraseña" size="20"/>
+      <s:form action="loginAction" method="post">
+          Nombre de Usuario:   <s:textfield  name="userName" label="Username"  size="20"/>
+          Contraseña:   <s:password   name="passWord" label="Password"  size="20"/>
           <s:submit align="center" value="Login"/>
       </s:form>
     </div>

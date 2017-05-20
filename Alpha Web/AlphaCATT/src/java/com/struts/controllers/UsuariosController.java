@@ -10,8 +10,9 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UsuariosController extends ActionSupport {
 
   
-
-  
+  /**
+   * 
+   */
     private int id;
     private String username;
     private String password;
