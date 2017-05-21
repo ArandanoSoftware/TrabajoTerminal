@@ -45,7 +45,7 @@ import java.util.Set;
  */
 public class mianPrueba {
     
-    public static void main() throws Exception 
+    public static void main(String[] args) throws Exception 
     {
         long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
         tinicio = System.currentTimeMillis(); 

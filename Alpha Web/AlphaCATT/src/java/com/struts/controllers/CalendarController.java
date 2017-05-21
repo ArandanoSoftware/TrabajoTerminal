@@ -118,7 +118,8 @@ public class CalendarController extends ActionSupport{
       //CalList.add(cc);
         //mianPrueba prueba = new mianPrueba();
         //prueba.regresa();
-        mianPrueba.main();
+        String [] prub = new String[0];
+        mianPrueba.main(prub);
       return SUCCESS;
     }
     public String Directors()
