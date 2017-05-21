@@ -76,7 +76,7 @@ informar sobre la situación actual para la generación deñ calendario
       </div>
     </div>
     <div class="General">
-        <h2>Hola: <s:property value="#session['user'].userName"></s:property></h2>
+        <h2>Bienvenido: <s:property value="#session.loginId"></s:property></h2>
       <h1>Sistema de calendarización  de presentaciones de trabajos terminales </h1>
       <hr />
       <p>

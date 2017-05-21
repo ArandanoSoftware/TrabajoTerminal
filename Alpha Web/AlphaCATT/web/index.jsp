@@ -32,9 +32,10 @@
        <hr />
 
       <div id="login_form">
+      <s:actionerror />
       <s:form action="loginAction" method="post">
-          Nombre de Usuario:   <s:textfield  name="userName" label="Username"  size="20"/>
-          Contraseña:   <s:password   name="passWord" label="Password"  size="20"/>
+          Nombre de Usuario:   <s:textfield  name="userName" label="Username"  size="20" required="required"/>
+          Contraseña:   <s:password   name="passWord" label="Password"   size="20" required="required"/>
           <s:submit align="center" value="Login"/>
       </s:form>
     </div>
