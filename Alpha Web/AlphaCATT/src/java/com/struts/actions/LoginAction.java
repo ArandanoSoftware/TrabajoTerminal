@@ -33,17 +33,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
                 return SUCCESS;
         }
 
-        // Login user
-//        public String login() {
-//                if (userName.isEmpty() && passWord.isEmpty()) {                    
-//                        return LOGIN;
-//                } else {
-//                        session.put("loginId", userName);
-//                        return SUCCESS;
-//                }
-//        }
         
           public String login() {
+              
                 listUsuario=UsuarioBs.findAll();
                 for(int i=0; i<listUsuario.size();i++){
                     if(userName.equalsIgnoreCase(listUsuario.get(i).getUsername()) && passWord.equalsIgnoreCase(listUsuario.get(i).getPassword())){
@@ -54,7 +46,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
                         addActionError("Nombre de Usuario y/o Contraseña Incorrecta");
                         return LOGIN;
                         
-                   
           }
 
     public String getUserName() {
