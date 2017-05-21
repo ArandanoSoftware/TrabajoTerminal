@@ -62,13 +62,18 @@ informar sobre la situación actual para la generación deñ calendario
             </tr>
             <tr>
               <td> Iniciar proceso de calendarización: </td>
-              <td> <input type="button" class="botonCalendar" value="Iniciar Calendarización"> </td>
+              <td><s:a action="calendarizacion" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Iniciar Calendarización" ></s:a> </td>
             </tr>
             <tr>
               <td> Editar Fecha de Trabajo Terminal:  </td>
               <td><input type="button" class="botonCalendar" value="Editor de Calendario"> </td>
             </tr>
           </table>
+        <script>
+          function iniciado(){
+              alert("La calendarizacion ha comenzado");
+          }
+        </script>
 
 
    </div>

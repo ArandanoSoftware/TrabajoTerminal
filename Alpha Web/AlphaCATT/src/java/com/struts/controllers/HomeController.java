@@ -6,6 +6,7 @@ import com.myapp.bs.SalaBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Profesor;
 import java.util.List;
+import prueba.mianPrueba;
 
 public class HomeController extends ActionSupport {
    
@@ -82,5 +83,10 @@ public class HomeController extends ActionSupport {
         this.totalSalas = totalSalas;
     }
    
+    public void calendarizacion() throws Exception
+    {
+        String[] borrarEsteArreglo = new String[0];
+        mianPrueba.main(borrarEsteArreglo);
+    }
   
 }

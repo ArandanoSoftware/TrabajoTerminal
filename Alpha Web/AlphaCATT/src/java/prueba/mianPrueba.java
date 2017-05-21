@@ -534,8 +534,8 @@ System.out.println("buscando profesores");
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó el calendario " + opcionCal  +" !!!!! en " + tiempo/1000);
         
-        PDF pdfCalendario = new PDF();
-        pdfCalendario.createPDF(new File("../Calendario"+opcionCal+".pdf"),opcionCal);
+//        PDF pdfCalendario = new PDF();
+//        pdfCalendario.createPDF(new File("../Calendario"+opcionCal+".pdf"),opcionCal);
     }
         //LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
         

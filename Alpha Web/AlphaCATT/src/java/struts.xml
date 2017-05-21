@@ -105,6 +105,9 @@
       <action name="calendar" class="com.struts.controllers.CalendarController" method="calendar">
         <result>views/queries/queryCalendar.jsp</result>
       </action>
+      <action name="calendarizacion" class="com.struts.controllers.HomeController" method="calendarizacion">
+          <result>views/home.jsp</result>
+      </action>
 
       <!-- Usuarios  -->
       <!-- Gestión de Usuarios-->

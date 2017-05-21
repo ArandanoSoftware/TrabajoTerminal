@@ -119,7 +119,7 @@ public class CalendarController extends ActionSupport{
         //mianPrueba prueba = new mianPrueba();
         //prueba.regresa();
         String [] prub = new String[0];
-        mianPrueba.main(prub);
+        //mianPrueba.main(prub);
       return SUCCESS;
     }
     public String Directors()
