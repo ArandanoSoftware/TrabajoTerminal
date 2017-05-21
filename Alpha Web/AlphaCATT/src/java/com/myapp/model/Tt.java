@@ -14,8 +14,8 @@ public class Tt  implements java.io.Serializable {
      private String idTt;
      private String nombre;
      private int nivel;
-     private Set<Calendario> calendarios = new HashSet<Calendario>(0);
-     private Set<Alumno> alumnos = new HashSet<Alumno>(0);
+     private Set<Calendario> calendarios = new HashSet<>(0);
+     private Set<Alumno> alumnos = new HashSet<>(0);
 
     public Tt() {
     }

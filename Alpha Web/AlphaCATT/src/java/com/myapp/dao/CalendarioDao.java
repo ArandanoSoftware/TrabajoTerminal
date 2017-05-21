@@ -50,7 +50,7 @@ public class CalendarioDao {
         close();
     }
     
-    public Calendario findById(String id)
+    public Calendario findById(int id)
     {
         Transaction tx = session.beginTransaction();
         Calendario calendario = (Calendario)session.get(Calendario.class, id);

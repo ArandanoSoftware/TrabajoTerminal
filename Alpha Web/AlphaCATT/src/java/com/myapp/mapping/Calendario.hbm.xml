@@ -7,13 +7,13 @@
       <column name="IdCalendario"/>
       <generator class="identity"/>
     </id>
-    <many-to-one class="com.myapp.model.Tt" fetch="select" name="tt">
+    <many-to-one class="com.myapp.model.Tt" fetch="join" name="tt">
       <column name="IdTT" not-null="true"/>
     </many-to-one>
     <property name="fecha" type="timestamp">
       <column length="19" name="Fecha" not-null="true"/>
     </property>
-    <many-to-one class="com.myapp.model.Sala" fetch="select" name="sala">
+    <many-to-one class="com.myapp.model.Sala" fetch="join" name="sala">
       <column name="IdSala" not-null="true"/>
     </many-to-one>
     <property name="opcion" type = "java.lang.Integer">

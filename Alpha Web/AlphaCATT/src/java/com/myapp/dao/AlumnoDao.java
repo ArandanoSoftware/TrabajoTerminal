@@ -49,7 +49,7 @@ public class AlumnoDao {
         close();
     }
     
-    public Alumno findById(String id)
+    public Alumno findById(int id)
     {
         Transaction tx = session.beginTransaction();
         Alumno alumno = (Alumno)session.get(Alumno.class, id);

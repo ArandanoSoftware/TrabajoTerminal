@@ -14,7 +14,7 @@ import java.util.List;
  * @author root
  */
 public class AlumnoBs {
-        public static Alumno findById(String id)
+        public static Alumno findById(int id)
     {
         AlumnoDao alumnoDao = new AlumnoDao();
         Alumno alumno = alumnoDao.findById(id);

@@ -14,10 +14,12 @@ import java.util.List;
  * @author root
  */
 public class CalendarioBs {
-    public static Calendario findById(String id)
+    public static Calendario findById(int id)
     {
         CalendarioDao calendarioDao = new CalendarioDao();
         Calendario calendario = calendarioDao.findById(id);
+        calendario.setTt(TTBs.findById(calendario.getTt().getIdTt()));
+        calendario.setSala(SalaBs.findById(calendario.getSala().getIdSala()));
         return calendario;
     }
     
@@ -37,11 +39,11 @@ public class CalendarioBs {
     {
         CalendarioDao calendarioDao = new CalendarioDao();
         List<Calendario> calendario = calendarioDao.findByOption(opcion);
-        for(int i = 0; i < calendario.size(); i++)
-        {
-            calendario.get(i).setSala(SalaBs.findById(calendario.get(i).getSala().getIdSala()));
-            calendario.get(i).setTt(TTBs.findById(calendario.get(i).getTt().getIdTt()));
-        }
+//        for(int i = 0; i < calendario.size(); i++)
+//        {
+//            calendario.get(i).setSala(SalaBs.findById(calendario.get(i).getSala().getIdSala()));
+//            calendario.get(i).setTt(TTBs.findById(calendario.get(i).getTt().getIdTt()));
+//        }
         return calendario;
     }
     

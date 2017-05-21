@@ -45,7 +45,7 @@ import java.util.Set;
  */
 public class mianPrueba {
     
-    public static void main(String[] args) throws Exception 
+    public static void main() throws Exception 
     {
         long tinicio, tfin, tiempo; //Variables para determinar el tiempo de ejecución
         tinicio = System.currentTimeMillis(); 
@@ -82,25 +82,26 @@ public class mianPrueba {
 ////        
 //////        FileInputStream file = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
 //////        List<Profesor> profesores = LeerExcel.extraerExcelSamara(file);
+System.out.println("buscando profesores");
 ////        List<Profesor> profesores = ProfesorBs.findAll();
+////        
+////        for(int i = 0; i < profesores.size(); i++)
+////        {
+////            ProfesorBs.save(profesores.get(i));
+////        }
         
-//////        for(int i = 0; i < profesores.size(); i++)
-//////        {
-//////            ProfesorBs.save(profesores.get(i));
-//////        }
-//////        
-//////        profesores = ProfesorBs.findAll();
-//////        
-//////        for(int j = 0;j<profesores.size();j++)
-//////        {
-//////            System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getApaterno() + ", "+ profesores.get(j).getAmaterno() + ", " + profesores.get(j).getNombre());
-//////            List<Horario> horarios = new ArrayList(profesores.get(j).getHorarios());
-//////            for(int i = 0; i < horarios.size(); i++)
-//////            {
-//////                Horario hor = horarios.get(i);
-//////                System.out.println("\tHorario: L:" + hor.getLun() + " M:" + hor.getMar() + " M:" + hor.getMie() + " J:" + hor.getJue() + " V:" + hor.getVie() );
-//////            }
-//////        }
+        List<Profesor> profesores = ProfesorBs.findAll();
+        System.out.println("ya los buscó xD");
+        for(int j = 0;j<profesores.size();j++)
+        {
+            System.out.println("id: " + profesores.get(j).getIdProfesor() + ": " + profesores.get(j).getApaterno() + ", "+ profesores.get(j).getAmaterno() + ", " + profesores.get(j).getNombre());
+            List<Horario> horarios = new ArrayList(profesores.get(j).getHorarios());
+            for(int i = 0; i < horarios.size(); i++)
+            {
+                Horario hor = horarios.get(i);
+                System.out.println("\tHorario: L:" + hor.getLun() + " M:" + hor.getMar() + " M:" + hor.getMie() + " J:" + hor.getJue() + " V:" + hor.getVie() );
+            }
+        }
 //////        FileInputStream file2 = new FileInputStream(new File("..\\ASIGNACIÓN2.xls"));
 //////        List<Sala> salas = LeerExcel.extraeExcelSala(file2);
 //////        
@@ -174,8 +175,6 @@ public class mianPrueba {
 ////            System.out.println("id: " + tts.get(i).getIdTt() + " " + tts.get(i).getNombre());
 ////        }
 
-
-        
         
         //List<Restriccion> restricciones = new ArrayList<>();
         //primera restriccion
@@ -535,8 +534,8 @@ public class mianPrueba {
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó el calendario " + opcionCal  +" !!!!! en " + tiempo/1000);
         
-        PDF pdfCalendario = new PDF();
-        pdfCalendario.createPDF(new File("../Calendario"+opcionCal+".pdf"),opcionCal);
+        //PDF pdfCalendario = new PDF();
+        //pdfCalendario.createPDF(new File("../Calendario"+opcionCal+".pdf"),opcionCal);
     }
         //LeerExcel.inportaExcel(calDefinitivo, 2);//u7u7uioki0,
         
@@ -688,5 +687,11 @@ public class mianPrueba {
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
         System.out.println("Ya terminó !!!!! en " + tiempo/1000);
-    }    
+    }
+    
+    public List<Calendario> regresa()
+    {
+        List<Calendario> cal = CalendarioBs.findByOption(1);
+        return cal;
+    }
 }

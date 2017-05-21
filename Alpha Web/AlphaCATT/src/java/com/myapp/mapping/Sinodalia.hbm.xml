@@ -7,13 +7,13 @@
       <column length="9" name="IdTT"/>
       <generator class="assigned"/>
     </id>
-    <many-to-one class="com.myapp.model.Profesor" fetch="select" name="profesorByS1">
+    <many-to-one class="com.myapp.model.Profesor" fetch="join" name="profesorByS1">
       <column name="S1" not-null="true"/>
     </many-to-one>
-    <many-to-one class="com.myapp.model.Profesor" fetch="select" name="profesorByS3">
+    <many-to-one class="com.myapp.model.Profesor" fetch="join" name="profesorByS3">
       <column name="S3"/>
     </many-to-one>
-    <many-to-one class="com.myapp.model.Profesor" fetch="select" name="profesorByS2">
+    <many-to-one class="com.myapp.model.Profesor" fetch="join" name="profesorByS2">
       <column name="S2" not-null="true"/>
     </many-to-one>
   </class>

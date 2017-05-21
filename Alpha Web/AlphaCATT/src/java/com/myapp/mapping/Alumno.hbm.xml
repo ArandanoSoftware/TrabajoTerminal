@@ -7,7 +7,7 @@
       <column name="IdAlumno"/>
       <generator class="assigned"/>
     </id>
-    <many-to-one class="com.myapp.model.Tt" fetch="select" name="tt">
+    <many-to-one class="com.myapp.model.Tt" fetch="join" name="tt">
       <column length="9" name="IdTT" not-null="true"/>
     </many-to-one>
     <property name="nombre" type="string">
