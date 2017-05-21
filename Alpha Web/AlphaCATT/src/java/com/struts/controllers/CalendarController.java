@@ -111,14 +111,14 @@ public class CalendarController extends ActionSupport{
       //Calendario cc = CalendarioBs.findById(7144);
       //System.out.println("\n\n\n\n\n " + tt.getTt().getIdTt() + "\n\n\n\n");
       //this.CalOp = new CalendarOperaciones();
-      CalList= CalendarioBs.findByOption(1);// this.CalOp.getCalendar();
+      CalList= orderCal(CalendarioBs.findByOption(1));// this.CalOp.getCalendar();
       //this.DirBs = new DirigeBs();
-      //Dirige= this.DirBs.findById(Integer.toString(1));
+      //Dirige= this.DirBs.findById(Integer.toString(1))
       //Calendario cc = new Calendario(TTBs.findById("2016-B088"), new Date(1993,7,6), new Sala("la sala xD"), 1);
       //CalList.add(cc);
         //mianPrueba prueba = new mianPrueba();
         //prueba.regresa();
-        String [] prub = new String[0];
+        //String [] prub = new String[0];
         //mianPrueba.main(prub);
       return SUCCESS;
     }
@@ -128,6 +128,46 @@ public class CalendarController extends ActionSupport{
       Dirige = DirigeBs.findById(id);
       return SUCCESS;
     }
-
-
+    
+        protected List<Calendario> orderCal(List<Calendario> cal)
+    {
+        List<Calendario> diez = new ArrayList<>();
+        List<Calendario> doce = new ArrayList<>();
+        List<Calendario> dos = new ArrayList<>();
+        List<Calendario> cuatro = new ArrayList<>();
+        
+        for(int i = 0; i < cal.size(); i++)
+        {
+            if(cal.get(i).getFecha().getHours() == 10) diez.add(cal.get(i));
+            if(cal.get(i).getFecha().getHours() == 12) doce.add(cal.get(i));
+            if(cal.get(i).getFecha().getHours() == 14) dos.add(cal.get(i));
+            if(cal.get(i).getFecha().getHours() == 16) cuatro.add(cal.get(i));
+        }
+        diez.addAll(doce);
+        diez.addAll(dos);
+        diez.addAll(cuatro);
+        List<Calendario> calen = new ArrayList<>();
+        Calendario temp;
+        for (int i=0; i < diez.size(); i++)
+        {
+            temp = menor(diez);
+            calen.add(temp);
+            diez.remove(temp);
+        }
+        return calen;
+    }
+    
+    protected Calendario menor(List<Calendario> calendario)
+    {
+        Calendario returnear = calendario.get(0);
+        for(int i = 1; i < calendario.size(); i++)
+        {
+            if(returnear.getFecha().getMonth() > calendario.get(i).getFecha().getMonth()) returnear = calendario.get(i);
+            else if(returnear.getFecha().getMonth() == calendario.get(i).getFecha().getMonth())
+            {
+                if(returnear.getFecha().getDate() > calendario.get(i).getFecha().getDate())returnear = calendario.get(i);
+            }
+        }
+        return returnear;
+    }
 }

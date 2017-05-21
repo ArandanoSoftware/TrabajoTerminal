@@ -83,10 +83,11 @@ public class HomeController extends ActionSupport {
         this.totalSalas = totalSalas;
     }
    
-    public void calendarizacion() throws Exception
+    public String calendarizacion() throws Exception
     {
         String[] borrarEsteArreglo = new String[0];
         mianPrueba.main(borrarEsteArreglo);
+        return "success";
     }
   
 }

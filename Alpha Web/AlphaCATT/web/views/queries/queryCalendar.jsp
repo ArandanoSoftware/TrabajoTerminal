@@ -108,7 +108,7 @@ de trabajo terminal
        <tr>
          <td><s:property value="fecha"/></td>
          <td><s:property value="sala"/></td>
-         <td><s:property value="idTt"/></td>
+         <td><s:property value="tt.idTt"/></td>
          <td><s:property value="tt"/></td>
       </s:iterator>
       <s:iterator value="Dirige">

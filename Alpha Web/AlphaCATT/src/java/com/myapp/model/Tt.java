@@ -70,8 +70,10 @@ public class Tt  implements java.io.Serializable {
         this.alumnos = alumnos;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Tt{" + "idTt=" + idTt + ", nombre=" + nombre + '}';
+    }
 
 }
 

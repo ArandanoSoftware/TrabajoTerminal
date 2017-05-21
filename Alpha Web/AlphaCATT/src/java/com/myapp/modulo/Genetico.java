@@ -7,7 +7,6 @@ package com.myapp.modulo;
 
 import com.myapp.algoritmo.Cromosoma;
 import com.myapp.algoritmo.FuncionAptitud;
-import com.myapp.model.Restriccion;
 import com.myapp.bs.NohabilBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Calendario;
@@ -499,11 +498,11 @@ public class Genetico {
         return hijos;
     }
     
-    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion, List<Restriccion> restricciones,int tt)
+    public static List<Cromosoma> generaNuevaGen(List<Cromosoma> poblacion,int tt)
     {
         List<Cromosoma> nuevaPoblacion = new ArrayList<>();
         List<Cromosoma> feos = new ArrayList<>();
-        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        FuncionAptitud funcion = new FuncionAptitud();
         double aptitudSum = 0;
         List<Integer> aptitudes = new ArrayList<>();
         for( int i = 0; i < poblacion.size(); i++)
@@ -547,13 +546,13 @@ public class Genetico {
             
             i++;
         }
-        nel = aptitudGneral(nuevaPoblacion, restricciones);
+        nel = aptitudGneral(nuevaPoblacion);
         return nuevaPoblacion;
     }
     
-    public static boolean aptitudGneral(List<Cromosoma> poblacion, List<Restriccion> restricciones)
+    public static boolean aptitudGneral(List<Cromosoma> poblacion)
     {
-        FuncionAptitud funcion = new FuncionAptitud(restricciones);
+        FuncionAptitud funcion = new FuncionAptitud();
         aptitudPoblacion = 0;
         ceros = 0;
         dos = 0;

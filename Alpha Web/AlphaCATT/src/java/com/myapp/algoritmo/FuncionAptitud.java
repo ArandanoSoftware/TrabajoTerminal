@@ -7,6 +7,7 @@ package com.myapp.algoritmo;
 
 import com.myapp.model.Restriccion;
 import com.myapp.bs.DirigeBs;
+import com.myapp.bs.RestriccionBs;
 import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;
 import com.myapp.model.Sinodalia;
@@ -29,11 +30,11 @@ public class FuncionAptitud {
     private Cromosoma cc;
     private final List<Restriccion> restricciones;
     
-    public FuncionAptitud(List<Restriccion> restricciones)
+    public FuncionAptitud()
     {
         FuncionAptitud.directores = DirigeBs.findAll();
         FuncionAptitud.sinodales = SinodaliaBs.findAll();
-        this.restricciones = restricciones;
+        this.restricciones = RestriccionBs.findAll();
     }
     
     public int evaluar(Cromosoma cc, List<Cromosoma> poblacion)

@@ -14,6 +14,7 @@ import com.myapp.bs.CalendarioBs;
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.NohabilBs;
 import com.myapp.bs.ProfesorBs;
+import com.myapp.bs.RangoBs;
 import com.myapp.bs.RestriccionBs;
 import com.myapp.bs.SalaBs;
 import com.myapp.bs.TTBs;
@@ -22,6 +23,7 @@ import com.myapp.model.Dirige;
 import com.myapp.model.Horario;
 import com.myapp.model.Nohabil;
 import com.myapp.model.Profesor;
+import com.myapp.model.Rango;
 import com.myapp.model.Sala;
 import com.myapp.model.Tt;
 import com.myapp.modulo.Email;
@@ -178,7 +180,7 @@ System.out.println("buscando profesores");
         
         //List<Restriccion> restricciones = new ArrayList<>();
         //primera restriccion
-        System.out.println("Empieza y con el borrado de restriccioners");
+        /*System.out.println("Empieza y con el borrado de restriccioners");
         List<Restriccion> res = RestriccionBs.findAll();
         for(int i = 0; i < res.size(); i++)
             RestriccionBs.delete(res.get(i));
@@ -322,27 +324,14 @@ System.out.println("buscando profesores");
         rango2.setMonth(5);
         rango2.setDate(9);
         restriccionGen19.setRango(rango1, rango2);
-        //asignacion de las restricciones
-        /*restricciones.addAll(restriccionGen1.getRestricciones());
-        restricciones.addAll(restriccionGen2.getRestricciones());
-        restricciones.addAll(restriccionGen3.getRestricciones());
-        restricciones.addAll(restriccionGen4.getRestricciones());
-        restricciones.addAll(restriccionGen5.getRestricciones());
-        restricciones.addAll(restriccionGen6.getRestricciones());
-        restricciones.addAll(restriccionGen7.getRestricciones());
-        restricciones.addAll(restriccionGen8.getRestricciones());
-        restricciones.addAll(restriccionGen9.getRestricciones());
-        restricciones.addAll(restriccionGen10.getRestricciones());
-        restricciones.addAll(restriccionGen11.getRestricciones());
-        restricciones.addAll(restriccionGen12.getRestricciones());
-        restricciones.addAll(restriccionGen13.getRestricciones());
-        restricciones.addAll(restriccionGen14.getRestricciones());
-        restricciones.addAll(restriccionGen15.getRestricciones());
-        restricciones.addAll(restriccionGen16.getRestricciones());
-        restricciones.addAll(restriccionGen17.getRestricciones());
-        restricciones.addAll(restriccionGen18.getRestricciones());
-        restricciones.addAll(restriccionGen19.getRestricciones());*/
-        System.out.println("ya las creo y guaro ahora buscará todas");
+
+        
+        
+        List<Restriccion> restricciones;
+        
+        
+        
+        /*System.out.println("ya las creo y guaro ahora buscará todas");
         restricciones = RestriccionBs.findAll();
         System.out.println("ya las termino de buscar ahora guardará los dias no habiles");
         Nohabil nohabil = new Nohabil();
@@ -357,20 +346,36 @@ System.out.println("buscando profesores");
         NohabilBs.save(nohabil);
         fecha = new Date(2017, 4, 15);
         nohabil.setFecha(fecha);
-        NohabilBs.save(nohabil);
+        NohabilBs.save(nohabil);*/
+                
+        
+//        List<Restriccion> restricciones;
+        Date inicio;
+//        inicio.setDate(2);
+//        inicio.setMonth(4);
+        Date fin;
+//        fin.setDate(6);
+//        fin.setMonth(5);
+//        
+//        Rango rango = new Rango();
+//        rango.setFecha1(inicio);
+//        rango.setFecha2(fin);
+//        RangoBs.save(rango);
+        
+        
+        
         System.out.println("ya los guardo ahora borrará lo que hayá de calensdario");
         List<Calendario> borrar = CalendarioBs.findAll();
         for(int i = 0; i < borrar.size(); i++)
             CalendarioBs.delete(borrar.get(i));
         System.out.println("ya lo borro ahora aqui empieza el bucle xD");
+        
     for(int opcionCal = 1; opcionCal <= 5; opcionCal++)    
     {
-        inicio.setDate(2);
-        inicio.setMonth(4);
-        fin.setDate(6);
-        fin.setMonth(5);
+        Rango periodo = RangoBs.findById(1);
+        inicio = periodo.getFecha1();
+        fin = periodo.getFecha2();
         int mayor = 0;
-        
         Set<Tt> tt1s = new HashSet(TTBs.findAllTT1());
         List<Cromosoma> poblacion;
         poblacion = Genetico.crearPoblacionTT1(inicio, fin, tt1s, SalaBs.findAll().size());
@@ -388,7 +393,7 @@ System.out.println("buscando profesores");
         System.out.println("fecha fin: " + fin);
         System.out.println(tt1s.size());
         
-        Genetico.nel = Genetico.aptitudGneral(poblacion, restricciones);
+        Genetico.nel = Genetico.aptitudGneral(poblacion);
         System.out.println("Poblacion Inicial con aptitud de " + Genetico.aptitudPoblacion + " y no se puede? D= " + Genetico.nel + " y son: " + poblacion.size());
         
         //FuncionAptitud funcion = new FuncionAptitud(restricciones);
@@ -406,7 +411,7 @@ System.out.println("buscando profesores");
         {
             System.out.print("\niteracion " + j + "\t");
             //el uno es de que son tt1
-            poblacion = Genetico.generaNuevaGen(poblacion,restricciones,1);
+            poblacion = Genetico.generaNuevaGen(poblacion,1);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
             System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblacion.size());
             j++;
@@ -450,7 +455,7 @@ System.out.println("buscando profesores");
         {
             System.out.print("\niteracion " + j + "\t");
             //el uno es de que son tt1
-            poblaciontt2 = Genetico.generaNuevaGen(poblaciontt2,restricciones,2);
+            poblaciontt2 = Genetico.generaNuevaGen(poblaciontt2,2);
             if(Genetico.aptitudPoblacion > mayor)mayor = Genetico.aptitudPoblacion;
             System.out.println(Genetico.aptitudPoblacion + " y esta ha sido la mayor aptitud: " + mayor + " y no se puede? D= " + Genetico.nel + " y son: " + poblaciontt2.size());
             j++;

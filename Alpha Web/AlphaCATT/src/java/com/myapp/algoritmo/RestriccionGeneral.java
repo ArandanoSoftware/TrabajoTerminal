@@ -54,7 +54,7 @@ public class RestriccionGeneral {
             //restriccion.setMes(Genetico.getBinMonth(date1));
             //restriccion.setDia(Genetico.getBinDay(date1));
             //restriccion.setHora(allday);
-            date2.setHours(0);
+            date1.setHours(0);
             restriccion.setFecha(date1);
             restriccion.setIdProfesor(profesor);
             RestriccionBs.save(restriccion);

@@ -49,9 +49,11 @@ public class Sala  implements java.io.Serializable {
         this.calendarios = calendarios;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
 }
 
 
