@@ -691,7 +691,8 @@ System.out.println("buscando profesores");
 //        mail.enviar(destinos);
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
-        System.out.println("Ya terminó !!!!! en " + tiempo/1000);
+        int min = (int) (tiempo / 60000);
+        System.out.println("Ya terminó !!!!! en " + min + " " + tiempo%60 + "seg");
     }
     
     public List<Calendario> regresa()

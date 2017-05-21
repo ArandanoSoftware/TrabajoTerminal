@@ -148,12 +148,15 @@ public class CalendarController extends ActionSupport{
         diez.addAll(cuatro);
         List<Calendario> calen = new ArrayList<>();
         Calendario temp;
-        for (int i=0; i < diez.size(); i++)
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\nestoooooooooooooooooo " + diez.size());
+        int tam = diez.size();
+        for (int i=0; i < tam; i++)
         {
             temp = menor(diez);
             calen.add(temp);
             diez.remove(temp);
         }
+        System.out.println(calen.size());
         return calen;
     }
     
