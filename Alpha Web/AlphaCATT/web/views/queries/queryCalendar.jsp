@@ -38,7 +38,7 @@
          <td><s:property value="fecha"/></td>
          <td><s:property value="sala"/></td>
          <td><s:property value="tt.idTt"/></td>
-         <td><s:property value="tt"/></td>
+         <td><s:property value="tt.nombre"/></td>
       </s:iterator>
       <s:iterator value="Dirige">
       <s:param name="id" value="idTt" />
