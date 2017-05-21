@@ -32,7 +32,7 @@
       </action>
 
       <!-- home link action -->
-      <action name="home" class="com.struts.actions.LoginAction" method="home">
+      <action name="home" class="com.struts.controllers.HomeController" method="home">
         <interceptor-ref name="loginStack" />
         <result name= "success">home.jsp</result>
         <result name="login">index.jsp</result>

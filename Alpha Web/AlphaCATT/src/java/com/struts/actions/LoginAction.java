@@ -24,9 +24,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
         
         private List<Usuario> listUsuario;
 
-        public String home() {
-                return SUCCESS;
-        }
+ 
 
         // Log Out user
         public String logOut() {

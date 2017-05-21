@@ -1,113 +1,43 @@
 <%--
 Trabajo Terminal- Sistema de cal
-Funci√≥n home:
+FunciÛn home:
 Mostrar las opciones.
-informar sobre la situaci√≥n actual para la generaci√≥n de√± calendario
+informar sobre la situaciÛn actual para la generaciÛn deÒ calendario
 --%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-      <meta charset="utf-8">
-      <%--DefaultCSS --%>
-      <link rel="stylesheet" href="css/normalize.css">
-
-      <%--PersonalCSS--%>
-      <link rel="stylesheet" href="css/master.css">
-      <%--Javascript--%>
-      <script type="text/javascript" src="js/master.js"></script>
-
-      <title> Sistema CATT </title>
-    </head>
-    <body>
-    <div class="TitleBar">
-        <div class="Title">
-          <ul>
-            <li class="Title-item"><img src="img/logoEscom.png" id="logoEscom"></li>
-            <li class="Title-item"><b>Sistema de Calendarizaci√≥n de presentaciones de Trabajos Terminales </b></li>
-            <li class="Title-item-name">
-         </ul>
-        </div>
-    </div>
-    <div class="MainMenu">
-      <div class="dropdown">
-        <s:a action="home" forceAddSchemeHostAndPort="true" cssClass="dropbtn">Pagina Principal</s:a>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Profesores</button>
-          <div class="dropdown-content">
-            <s:a action="rprof" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
-            <s:a action="qprof" forceAddSchemeHostAndPort="true">Gesti√≥n de Profesores</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Trabajos Terminales</button>
-          <div class="dropdown-content">
-            <s:a action="rtt" forceAddSchemeHostAndPort="true">Registro de Trabajos Terminales</s:a>
-            <s:a action="qtt" forceAddSchemeHostAndPort="true">Gesti√≥n de Trabajos Terminales</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Trabajos Terminales</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Salas</button>
-          <div class="dropdown-content">
-            <s:a action="rsalas" forceAddSchemeHostAndPort="true">Registro de Salas</s:a>
-            <s:a action="qsalas" forceAddSchemeHostAndPort="true">Gesti√≥n de Salas</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Salas</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Calendario</button>
-          <div class="dropdown-content">
-            <s:a action="calendar" forceAddSchemeHostAndPort="true">Ver calendario Generado</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Editor de Calendario</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
-          </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn red">Configuraci√≥n</button>
-          <div class="dropdown-content">
-            <s:a action="qusers" forceAddSchemeHostAndPort="true">Gesti√≥n de Usuarios</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true"></s:a>
-          </div>
-      </div>
-    </div>
+    <%@ include file = "header.jsp" %>
     <div class="General">
         <h2>Bienvenido: <s:property value="#session.loginId"></s:property></h2>
-      <h1>Sistema de calendarizaci√≥n  de presentaciones de trabajos terminales </h1>
+      <h1>Sistema de calendarizaciÛn  de presentaciones de trabajos terminales </h1>
       <hr />
       <p>
-        El siguiente sistema tiene como prop√≥sito agendar las fechas de para
+        El siguiente sistema tiene como propÛsito agendar las fechas de para
         las presentaciones de trabajos terminales, para realizar esta tarea el
-        sistema hace uso de la siguiente informaci√≥n:
+        sistema hace uso de la siguiente informaciÛn:
       </p>
       <ul>
         <li>Horario de clases de los profesores</li>
-        <li>Salas Disponibles para presentaci√≥n de trabajos terminales</li>
+        <li>Salas Disponibles para presentaciÛn de trabajos terminales</li>
         <li>El registro de los trabajos terminales que presentaran</li>
-        <li>Las restricciones personales para los profesores, es decir que d√≠as no est√°n disponibles para presentar</li>
+        <li>Las restricciones personales para los profesores, es decir que dÌas no est·n disponibles para presentar</li>
         <li>Las restricciones para el uso de las salas</li>
       </ul>
       <p>
         Este sistema esta dividido en secciones para facilitar el uso del mismo.
         <br>
         <br>
-        Este sistema solo ofrece opciones de presentaci√≥n de trabajos terminales,
-        la decisi√≥n final depender√° del personal de la CATT as√≠ como de las
+        Este sistema solo ofrece opciones de presentaciÛn de trabajos terminales,
+        la decisiÛn final depender· del personal de la CATT asÌ como de las
         autoridades pertinentes.
       </p>
 
-        <h2 align="center"> Estado de la Calendarizaci√≥n: </h2>
+        <h2 align="center"> Estado de la CalendarizaciÛn: </h2>
           <table class="StatusTable">
             <tr>
               <th colspan="2"> Profesores: </th>
             </tr>
             <tr>
               <td> Registro de Profesores: </td>
-              <td><b>Actualmente: </b> <s:property value="total_profesores"/> <b> Registrados</b></td>
+              <td> Actualmente: <b><s:property value="totalProfesores"/> </b> Registrados</td>
             </tr>
             <tr>
               <td> Restricciones de Profesores: </td>
@@ -117,26 +47,26 @@ informar sobre la situaci√≥n actual para la generaci√≥n de√± calendario
               <th colspan="2" > Trabajos Terminales: </th>
             </tr>
             <tr>
-              <td> Registro de Trabajos Terminales: </td>
-              <td><b>Actualmente: </b> <s:property value="total_tt"/> <b> <b> Registrados</b></td>
+              <td> Trabajos Terminales registrados para calendarizar</td>
+              <td>  <b> <s:property value="totalTrabajosTerminales"/></b> Registrados</td>
             </tr>
             <tr>
               <th colspan="2" > Salas: </th>
             </tr>
             <tr>
-              <td> Registro de Salas: </td>
-              <td><b>Actualmente: </b> <s:property value="total_salas"/> <b> <b> Registrados</b></td>
+              <td> Salas disponibles para calendarizar:  </td>
+              <td> Actualmente: <b><s:property value="totalSalas"/> </b> Salas registradas </td>
             </tr>
             <tr>
               <th colspan="2" > Calendario: </th>
             </tr>
             <tr>
-              <td> Iniciar proceso de calendarizaci√≥n: </td>
-              <td> <input type="button" class="botonCalendar" value="Iniciar Calendarizaci√≥n"> </td>
+              <td> Iniciar proceso de calendarizaciÛn: </td>
+              <td> <input type="button" class="botonCalendar" value="Iniciar CalendarizaciÛn"> </td>
             </tr>
             <tr>
               <td> Editar Fecha de Trabajo Terminal:  </td>
-              <td><input type="button" class="botonCalendar" value="Editor de Calendario"> </td></td>
+              <td><input type="button" class="botonCalendar" value="Editor de Calendario"> </td>
             </tr>
           </table>
 
