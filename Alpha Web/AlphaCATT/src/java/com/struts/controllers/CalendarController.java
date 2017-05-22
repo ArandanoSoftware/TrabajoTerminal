@@ -14,6 +14,8 @@ import com.myapp.bs.SinodaliaBs;
 import com.myapp.model.Dirige;
 
 import com.myapp.model.Sinodalia;
+import com.myapp.modulo.PDF;
+import java.io.File;
 
 
 public class CalendarController extends ActionSupport{
@@ -25,6 +27,27 @@ public class CalendarController extends ActionSupport{
     private List<Calendario> CalList;
     private List<Dirige> DirList = new ArrayList<>();
     private List<Sinodalia> SinList = new ArrayList<>();
+    
+    private int opcion;
+    private List<String> opciones = new ArrayList<>();
+
+    public int getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+
+    public List<String> getOpciones() {
+        return opciones;
+    }
+
+    public void setOpciones(List<String> opciones) {
+        this.opciones = opciones;
+    }
+    
+    
     
     private Dirige Dirige;
 
@@ -65,11 +88,15 @@ public class CalendarController extends ActionSupport{
 
     @Override
     public String execute() throws Exception{
-
         return "success";
     }
     public String calendar() throws Exception
     {
+        opciones.add("Calendario 1");
+        opciones.add("Calendario 2");
+        opciones.add("Calendario 3");
+        opciones.add("Calendario 4");
+        opciones.add("Calendario 5");
       CalList = orderCal(CalendarioBs.findByOption(1));
       return SUCCESS;
     }
@@ -118,5 +145,48 @@ public class CalendarController extends ActionSupport{
             }
         }
         return returnear;
+    }
+    
+    public String selectCal()
+    {
+        if(opcion == 1)return cal1();
+        if(opcion == 2)return cal2();
+        if(opcion == 3)return cal3();
+        if(opcion == 4)return cal4();
+        if(opcion == 5)return cal5();
+        return SUCCESS;
+    }
+    
+    public String cal1()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(1));
+        return SUCCESS;
+    }
+    public String cal2()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(2));
+        return SUCCESS;
+    }
+    public String cal3()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(3));
+        return SUCCESS;
+    }
+    public String cal4()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(4));
+        return SUCCESS;
+    }
+    public String cal5()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(5));
+        return SUCCESS;
+    }
+    
+    public String generaPDF()
+    {
+        PDF pdf = new PDF();
+        pdf.createPDF(new File("../Calendario"+opcion+".pdf"), opcion);
+        return SUCCESS;
     }
 }

@@ -8,7 +8,18 @@
         calendarizadas hasta el momento.
       </p>
     <h2>Calendario General :</h2>
-
+    <form action="selectCal">
+    <select name="opcion">
+            <option name = "1" value="1">Calendario 1</option>
+            <option name = "2" value="2">Calendario 2</option>
+            <option name = "3" value="3">Calendario 3</option>
+            <option name = "4" value="4">Calendario 4</option>
+            <option name = "5" value="5">Calendario 5</option>
+          </select>
+  
+      <s:submit value ="Seleccinar"></s:submit>
+    </form>
+    <s:a action="generaPDF" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Generar archivo PDF" ></s:a>
     </div>
     <div class="calendarZone">
     <table class="calendarTable">

@@ -105,6 +105,12 @@
       <action name="calendar" class="com.struts.controllers.CalendarController" method="calendar">
         <result>views/queries/queryCalendar.jsp</result>
       </action>
+      <action name="selectCal" class="com.struts.controllers.CalendarController" method="selectCal">
+        <result type="" >views/queries/queryCalendar.jsp</result>
+      </action>
+      <action name="generaPDF" class="com.struts.controllers.CalendarController" method="generaPDF">
+        <result type="" >views/queries/queryCalendar.jsp</result>
+      </action>
       <action name="calendarizacion" class="com.struts.controllers.HomeController" method="calendarizacion">
           <result type="redirectAction">
               <param name="actionName">home</param>
