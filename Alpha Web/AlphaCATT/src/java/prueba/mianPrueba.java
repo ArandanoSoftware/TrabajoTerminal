@@ -692,7 +692,7 @@ System.out.println("buscando profesores");
         tfin = System.currentTimeMillis();
         tiempo = tfin - tinicio;
         int min = (int) (tiempo / 60000);
-        System.out.println("Ya terminó !!!!! en " + min + " " + tiempo%60 + "seg");
+        System.out.println("Ya terminó !!!!! en " + min + "min.  " + tiempo%60 + "seg");
     }
     
     public List<Calendario> regresa()

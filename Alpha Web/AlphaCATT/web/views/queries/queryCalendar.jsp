@@ -21,18 +21,6 @@
               <th class="TableHead">DIRECTOR 2</th>
               <th class="TableHead" colspan="3">SINODALIA</th>
              </thead>
-     <tbody>
-       <tr>
-         <td>18:00 </td>
-         <td>Eduardo Torrijos</td>
-         <td>2016-A088</td>
-         <td>Sistema de claendarización</td>
-         <td>Pepe con Apellido</td>
-         <td>Toño con Apellido</td>
-         <td>El nombre debe de ser largo</td>
-         <td>el nombre tiene que ser largo</td>
-         <td>e                             </td>
-       </tr>
       <s:iterator value="CalList" status="estado">
        <tr>
          <td><s:property value="fecha"/></td>
