@@ -1,5 +1,6 @@
 package com.struts.controllers;
 
+import com.myapp.bs.DirigeBs;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,16 +10,60 @@ import com.myapp.model.Tt;
 //Operations and Bs Imports 
 import com.struts.operaciones.TTOperaciones;
 import com.myapp.bs.ProfesorBs;
+import com.myapp.bs.SinodaliaBs;
+import com.myapp.bs.TTBs;
+import com.myapp.model.Alumno;
+import com.myapp.model.Dirige;
+import com.myapp.model.Sinodalia;
 
 
 public class TTController  extends ActionSupport {
     
-    private List<Profesor> ProfList;
     private ArrayList<Tt> datos;
     
     private TTOperaciones ttOP;
     private ProfesorBs  profBs;
     private Tt tt;
+    
+    
+    
+    private List<Profesor> profList = ProfesorBs.findAll();
+    private Dirige directores;
+    private Sinodalia sinodales;
+    private Alumno alumno;
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+    
+
+    public ProfesorBs getProfBs() {
+        return profBs;
+    }
+
+    public void setProfBs(ProfesorBs profBs) {
+        this.profBs = profBs;
+    }
+
+    public Dirige getDirectores() {
+        return directores;
+    }
+
+    public void setDirectores(Dirige directores) {
+        this.directores = directores;
+    }
+
+    public Sinodalia getSinodales() {
+        return sinodales;
+    }
+
+    public void setSinodales(Sinodalia sinodales) {
+        this.sinodales = sinodales;
+    }
     
    
 
@@ -51,17 +96,11 @@ public class TTController  extends ActionSupport {
     }
 
     public List<Profesor> getProfList() {
-        return ProfList;
+        return profList;
     }
-    public void setProfList(List<Profesor> ProfList) {
-        this.ProfList = ProfList;
+    public void setProfList(List<Profesor> profList) {
+        this.profList = profList;
     } 
-    
-    @Override
-    public String execute() throws Exception
-        {
-          return SUCCESS;
-        }
 
     public String tts() throws Exception
     {
@@ -79,6 +118,21 @@ public class TTController  extends ActionSupport {
     }
     
     
+    
+    @Override
+    public String execute() throws Exception
+        {
+            profList = ProfesorBs.findAll();
+          return SUCCESS;
+        }
 
-
+    public String regTt()
+    {
+        TTBs.save(tt);
+        directores.setIdTt(tt.getIdTt());
+        sinodales.setIdTt(tt.getIdTt());
+        DirigeBs.save(directores);
+        SinodaliaBs.save(sinodales);
+        return SUCCESS;
+    }
 }

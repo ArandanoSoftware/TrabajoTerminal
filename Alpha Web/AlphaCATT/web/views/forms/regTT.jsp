@@ -87,64 +87,90 @@ Trabajo Terminal - pagina para registrar los trabajos terminales
       </tr>
       <tr>
         <th>Número de Trabajo  Terminal:</th>
-        <th><input type="text" name="" value=""></th>
+        <th><input type="text" name="tt.idTt"/></th>
       </tr>
       <tr>
         <th>Nombre del Trabajo  Terminal:</th>
-        <th><input type="text" name="" value=""></th>
+        <th><input type="text" name="tt.nombre"></th>
       </tr>
       <tr>
 
         <th>Nivel del Trabajo  Terminal:</th>
         <th>
-          <select name="nivel">
-            <option value="1">Trabajo Terminal 1</option>
-            <option value="2">Trabajo Terminal 2</option>
-            <option value="3">Trabajo Terminal Remedial</option>
+          <select name="tt.nivel">
+            <option name = "tt.nivel" value="1">Trabajo Terminal 1</option>
+            <option name = "tt.nivel" value="2">Trabajo Terminal 2</option>
+            <option name = "tt.nivel" value="3">Trabajo Terminal Remedial</option>
           </select>
         </th>
 
       </tr>
 
       <tr>
-        <th><h3>Ingresa el Nombre de tus Directores: </h3></th>
+        <th><h3>Ingresa el Nombre de los Directores: </h3></th>
       </tr>
 
       <tr>
         <th> Director 1:</th>
-        <th> <input type="text" name="" value=""></th>
+        <th><s:select name = "directores.profesorByD1" list="profList" headerKey="-1" headerValue="--- Select ---"/><!input type="text" name="" value=""></th>
       </tr>
       <tr>
         <th> Director 2:</th>
-        <th><input type="text" id="texBoxDirector" ></th>
-        <th><input type="checkbox" id="checkbox"
-          onclick="enableDisable(this.checked, 'texBoxDirector')"> No Nulo</th>
+        <th><s:select name = "directores.profesorByD2" list="profList" headerKey="-1" headerValue="--- Select ---"/>    <!input type="text" id="texBoxDirector" ></th>
+        <th><input type="checkbox" id="checkbox" onclick="enableDisable(this.checked, 'texBoxDirector')"> No Nulo</th>
       </tr>
       <tr>
-        <th><h3>Ingresa el Nombre de tus sinodales: </h3></th>
+        <th><h3>Ingresa el Nombre de los sinodales: </h3></th>
       </tr>
       <tr>
         <th> Sinodal 1:</th>
-        <th> <input type="text" name="" value=""></th>
+        <th><s:select name = "sinodales.profesorByS1" list="profList" headerKey="-1" headerValue="--- Select ---" /> <!input type="text" name="" value=""></th>
       </tr>
       <tr>
         <th> Sinodal 2:</th>
-        <th> <input type="text" name="" value=""></th>
+        <th><s:select name = "sinodales.profesorByS2" list="profList" headerKey="-1" headerValue="--- Select ---"/> <!input type="text" name="" value=""></th>
       </tr>
       <tr>
         <th> Sinodal 3:</th>
-        <th><input type="text" id="texBoxSinodal" disabled></th>
-        <th><input type="checkbox" id="checkbox" onclick="Enable()">No Nulo</th>
+        <th><s:select id="prueba" name = "sinodales.profesorByS3" list="profList" headerKey="-1" headerValue="--- Select ---"/><!input type="text" id="texBoxSinodal" disabled></th>
+    <th><input type="checkbox" onclick="Enable()">No Nulo</th>
+      </tr>        
         <script>
           function Enable(){
-                  document.getElementById("myText").enable = true;
+                  document.getElementById("prueba").enable = true;
                 }
           }
         </script>
+      <tr>
+        <th><h3>Datos del Alumno: </h3></th>
+      </tr>
+      <tr>
+        <th>Nombre: </th>
+        <th><input type="text" name="alumno.nombre"/></th>
+      </tr>
+      <tr>
+        <th>Primer apellido: </th>
+        <th><input type="text" name="alumno.apaterno"></th>
+      </tr>
+      <tr>
+        <th>Segundo apellido: </th>
+        <th><input type="text" name="alumno.amaterno"></th>
+      </tr>
+      <tr>
+        <th>Email: </th>
+        <th><input type="text" name="alumno.email"></th>
+      </tr>
+      <tr>
+        <th>Telefono: </th>
+        <th><input type="text" name="alumno.telefono"></th>
       </tr>
       </table>
       <s:submit onsubmit="Aviso();" value ="Eviar" ></s:submit>
-      </s:form>
+      </s:form><script>
+          function Aviso(){
+              alert("Informacion enviada para registro de Tranajo Termninal");
+          }
+        </script>
     </div>
   </body>
 </html>

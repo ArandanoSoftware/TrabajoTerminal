@@ -28,7 +28,7 @@ public class CalendarController extends ActionSupport{
     private List<Dirige> DirList = new ArrayList<>();
     private List<Sinodalia> SinList = new ArrayList<>();
     
-    private int opcion;
+    private int opcion = 1;
     private List<String> opciones = new ArrayList<>();
 
     public int getOpcion() {
@@ -88,6 +88,7 @@ public class CalendarController extends ActionSupport{
 
     @Override
     public String execute() throws Exception{
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nENTRAMOS AQUI?");
         return "success";
     }
     public String calendar() throws Exception
@@ -149,6 +150,8 @@ public class CalendarController extends ActionSupport{
     
     public String selectCal()
     {
+        PDF pdf = new PDF();
+        pdf.createPDF(new File("C:\\Users\\Hazzy76\\Documents\\ESCOM\\TrabajoTerminal\\Alpha Web\\Calendario"+opcion+".pdf"), opcion);
         if(opcion == 1)return cal1();
         if(opcion == 2)return cal2();
         if(opcion == 3)return cal3();
@@ -186,7 +189,12 @@ public class CalendarController extends ActionSupport{
     public String generaPDF()
     {
         PDF pdf = new PDF();
-        pdf.createPDF(new File("../Calendario"+opcion+".pdf"), opcion);
+        pdf.createPDF(new File("C:\\Users\\Hazzy76\\Documents\\ESCOM\\TrabajoTerminal\\Alpha Web\\Calendario"+opcion+".pdf"), opcion);
+        if(opcion == 1)return cal1();
+        if(opcion == 2)return cal2();
+        if(opcion == 3)return cal3();
+        if(opcion == 4)return cal4();
+        if(opcion == 5)return cal5();
         return SUCCESS;
     }
 }

@@ -93,12 +93,12 @@ Trabajo Terminal - Pagina para registrar los Profesores Externos
         <th> <input type="text" name="nombre" value="" required></th>
       </tr>
       <tr>
-        <th> Apellido paterno:</th>
+        <th> Primer apellido:</th>
         <th> <input type="text" name="APaterno" value="" required></th>
       </tr>
       <tr>
-        <th> Apellido materno:</th>
-        <th> <input type="text" name="AMaterno" value=""required></th>
+        <th> Segundo apellido:</th>
+        <th> <input type="text" name="AMaterno" value=""></th>
       </tr>
       <tr>
         <th> E-mail:</th>
