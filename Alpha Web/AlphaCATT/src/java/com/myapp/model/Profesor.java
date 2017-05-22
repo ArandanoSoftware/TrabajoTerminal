@@ -123,6 +123,11 @@ public class Profesor  implements java.io.Serializable {
         this.sinodaliasForS2 = sinodaliasForS2;
     }
 
+    @Override
+    public String toString() {
+        return apaterno + " " + amaterno + " " + nombre;
+    }
+
 
 
 

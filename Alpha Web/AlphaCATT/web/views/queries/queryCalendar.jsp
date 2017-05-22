@@ -29,13 +29,13 @@
          <td><s:property value="tt.nombre"/></td>
          <s:set var="id2" value="#estado.index" />
          <s:iterator value="DirList" begin="#id2" end="#id2">
-             <td><s:property value="profesorByD1.nombre"/></td>
-             <td><s:property value="profesorByD2.nombre"/></td>
+             <td><s:property value="profesorByD1"/></td>
+             <td><s:property value="profesorByD2"/></td>
          </s:iterator>
          <s:iterator value="SinList" begin="#id2" end="#id2">
-             <td><s:property value="profesorByS1.nombre"/></td>
-             <td><s:property value="profesorByS2.nombre"/></td>
-             <td><s:property value="profesorByS3.nombre"/></td>
+             <td><s:property value="profesorByS1"/></td>
+             <td><s:property value="profesorByS2"/></td>
+             <td><s:property value="profesorByS3"/></td>
          </s:iterator>
          </tr>
       </s:iterator>
