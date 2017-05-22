@@ -8,7 +8,19 @@
         calendarizadas hasta el momento.
       </p>
     <h2>Calendario General :</h2>
-
+    <h3>Opcion <s:property value="opcion"/></h3>
+    <form action="selectCal">
+        <select name="opcion">
+            <option name = "1" value="1">Calendario 1</option>
+            <option name = "2" value="2">Calendario 2</option>
+            <option name = "3" value="3">Calendario 3</option>
+            <option name = "4" value="4">Calendario 4</option>
+            <option name = "5" value="5">Calendario 5</option>
+        </select>
+  
+        <s:submit value ="Seleccinar"></s:submit>
+        <s:a action="generaPDF" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Generar archivo PDF" ></s:a>
+    </form>
     </div>
     <div class="calendarZone">
     <table class="calendarTable">
@@ -21,18 +33,6 @@
               <th class="TableHead">DIRECTOR 2</th>
               <th class="TableHead" colspan="3">SINODALIA</th>
              </thead>
-     <tbody>
-       <tr>
-         <td>18:00 </td>
-         <td>Eduardo Torrijos</td>
-         <td>2016-A088</td>
-         <td>Sistema de claendarización</td>
-         <td>Pepe con Apellido</td>
-         <td>Toño con Apellido</td>
-         <td>El nombre debe de ser largo</td>
-         <td>el nombre tiene que ser largo</td>
-         <td>e                             </td>
-       </tr>
       <s:iterator value="CalList" status="estado">
        <tr>
          <td><s:property value="fecha"/></td>
@@ -41,13 +41,13 @@
          <td><s:property value="tt.nombre"/></td>
          <s:set var="id2" value="#estado.index" />
          <s:iterator value="DirList" begin="#id2" end="#id2">
-             <td><s:property value="profesorByD1.nombre"/></td>
-             <td><s:property value="profesorByD2.nombre"/></td>
+             <td><s:property value="profesorByD1"/></td>
+             <td><s:property value="profesorByD2"/></td>
          </s:iterator>
          <s:iterator value="SinList" begin="#id2" end="#id2">
-             <td><s:property value="profesorByS1.nombre"/></td>
-             <td><s:property value="profesorByS2.nombre"/></td>
-             <td><s:property value="profesorByS3.nombre"/></td>
+             <td><s:property value="profesorByS1"/></td>
+             <td><s:property value="profesorByS2"/></td>
+             <td><s:property value="profesorByS3"/></td>
          </s:iterator>
          </tr>
       </s:iterator>

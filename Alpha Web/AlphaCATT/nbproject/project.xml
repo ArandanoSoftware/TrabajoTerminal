@@ -20,6 +20,7 @@
                 </library>
                 <library dirs="200">
                     <file>${libs.ApachePOI.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.poi-3.15.jar}</file>
@@ -27,9 +28,11 @@
                 </library>
                 <library dirs="200">
                     <file>${libs.JavaMail.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${libs.Itext.classpath}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.javax.mail.jar}</file>

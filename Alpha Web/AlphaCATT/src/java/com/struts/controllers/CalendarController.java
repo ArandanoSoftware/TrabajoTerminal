@@ -1,50 +1,53 @@
 
 package com.struts.controllers;
 
-import com.myapp.bs.AlumnoBs;
 import com.opensymphony.xwork2.ActionSupport;
-import com.struts.operaciones.CalendarOperaciones;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.myapp.model.Calendario;
-import com.myapp.dao.CalendarioDao;
 import com.myapp.bs.CalendarioBs;
 
 import com.myapp.bs.DirigeBs;
-import com.myapp.bs.SalaBs;
 import com.myapp.bs.SinodaliaBs;
-import com.myapp.bs.TTBs;
-import com.myapp.model.Alumno;
 import com.myapp.model.Dirige;
-import com.myapp.model.Sala;
 
 import com.myapp.model.Sinodalia;
-import com.myapp.model.Tt;
-import java.util.Date;
-import prueba.mianPrueba;
+import com.myapp.modulo.PDF;
+import java.io.File;
 
 
 public class CalendarController extends ActionSupport{
 
-    // Classes
-    //private CalendarioDao CalDao;
-    //private CalendarOperaciones CalOp;
-    //private CalendarioBs CalBs;
-    
-    //private  DirigeBs DirBs;
-
-   
-
     //Datos entrada
-    private String id = "4";
     
     
     //Listas de Salida
     private List<Calendario> CalList;
     private List<Dirige> DirList = new ArrayList<>();
     private List<Sinodalia> SinList = new ArrayList<>();
+    
+    private int opcion = 1;
+    private List<String> opciones = new ArrayList<>();
+
+    public int getOpcion() {
+        return opcion;
+    }
+
+    public void setOpcion(int opcion) {
+        this.opcion = opcion;
+    }
+
+    public List<String> getOpciones() {
+        return opciones;
+    }
+
+    public void setOpciones(List<String> opciones) {
+        this.opciones = opciones;
+    }
+    
+    
     
     private Dirige Dirige;
 
@@ -71,32 +74,6 @@ public class CalendarController extends ActionSupport{
     public void setSinList(List<Sinodalia> SinList) {
         this.SinList = SinList;
     }
-
-    
-    
-//    public CalendarioDao getCalDao() {
-//        return CalDao;
-//    }
-//
-//    public void setCalDao(CalendarioDao CalDao) {
-//        this.CalDao = CalDao;
-//    }
-//
-//    public CalendarOperaciones getCalOp() {
-//        return CalOp;
-//    }
-//
-//    public void setCalOp(CalendarOperaciones CalOp) {
-//        this.CalOp = CalOp;
-//    }
-//
-//    public CalendarioBs getCalBs() {
-//        return CalBs;
-//    }
-//
-//    public void setCalBs(CalendarioBs CalBs) {
-//        this.CalBs = CalBs;
-//    }
     public List<Calendario> getCalList() {
         return CalList;
     }
@@ -105,32 +82,23 @@ public class CalendarController extends ActionSupport{
     public void setCalList(List<Calendario> CalList) {
         this.CalList = CalList;
     }
-    
-    public String getId() {
-        return id;
-    }
-    
-    public void setId(String id) {
-        this.id = id;
-    }
 
   
     
 
     @Override
     public String execute() throws Exception{
-
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nENTRAMOS AQUI?");
         return "success";
     }
     public String calendar() throws Exception
     {
+        opciones.add("Calendario 1");
+        opciones.add("Calendario 2");
+        opciones.add("Calendario 3");
+        opciones.add("Calendario 4");
+        opciones.add("Calendario 5");
       CalList = orderCal(CalendarioBs.findByOption(1));
-      return SUCCESS;
-    }
-    public String Directors()
-    {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n id = " + id);
-      Dirige = DirigeBs.findById(id);
       return SUCCESS;
     }
     
@@ -178,5 +146,55 @@ public class CalendarController extends ActionSupport{
             }
         }
         return returnear;
+    }
+    
+    public String selectCal()
+    {
+        PDF pdf = new PDF();
+        pdf.createPDF(new File("C:\\Users\\Hazzy76\\Documents\\ESCOM\\TrabajoTerminal\\Alpha Web\\Calendario"+opcion+".pdf"), opcion);
+        if(opcion == 1)return cal1();
+        if(opcion == 2)return cal2();
+        if(opcion == 3)return cal3();
+        if(opcion == 4)return cal4();
+        if(opcion == 5)return cal5();
+        return SUCCESS;
+    }
+    
+    public String cal1()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(1));
+        return SUCCESS;
+    }
+    public String cal2()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(2));
+        return SUCCESS;
+    }
+    public String cal3()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(3));
+        return SUCCESS;
+    }
+    public String cal4()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(4));
+        return SUCCESS;
+    }
+    public String cal5()
+    {
+        CalList = orderCal(CalendarioBs.findByOption(5));
+        return SUCCESS;
+    }
+    
+    public String generaPDF()
+    {
+        PDF pdf = new PDF();
+        pdf.createPDF(new File("C:\\Users\\Hazzy76\\Documents\\ESCOM\\TrabajoTerminal\\Alpha Web\\Calendario"+opcion+".pdf"), opcion);
+        if(opcion == 1)return cal1();
+        if(opcion == 2)return cal2();
+        if(opcion == 3)return cal3();
+        if(opcion == 4)return cal4();
+        if(opcion == 5)return cal5();
+        return SUCCESS;
     }
 }
