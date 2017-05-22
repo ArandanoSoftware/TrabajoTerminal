@@ -26,7 +26,7 @@
         </interceptors>
 
       <!-- Login Action  -->
-      <action name="loginAction" class="com.struts.actions.LoginAction" method="login">   
+      <action name="loginAction" class="com.struts.actions.LoginAction" method="login">
          <result name="success" type="redirect">home</result>
          <result name="login">index.jsp</result>
       </action>
@@ -62,7 +62,13 @@
             <param name="actionName">qprof</param>
         </result>
       </action>
+      <!--restricciones  de Profesores -->
+      <action name="restprof" class="com.struts.controllers.ProfesorController" method="execute">
+        <result>views/forms/restProf.jsp
+        </result>
+      </action>
       <!--Autocomplete Profesor-->
+
 
 
 

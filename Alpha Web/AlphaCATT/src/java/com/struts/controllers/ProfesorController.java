@@ -1,4 +1,3 @@
-
 package com.struts.controllers;
 
 import com.opensymphony.xwork2.ActionSupport;

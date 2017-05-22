@@ -38,7 +38,7 @@
           <div class="dropdown-content">
             <s:a action="rprof" forceAddSchemeHostAndPort="true">Registro Profesores</s:a>
             <s:a action="qprof" forceAddSchemeHostAndPort="true">Gestión de Profesores</s:a>
-            <s:a action="" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
+            <s:a action="restprof" forceAddSchemeHostAndPort="true">Restricciones de Profesores</s:a>
           </div>
       </div>
       <div class="dropdown">
@@ -61,6 +61,12 @@
             <s:a action="calendar" forceAddSchemeHostAndPort="true">Ver calendario Generado</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Editor de Calendario</s:a>
             <s:a action="" forceAddSchemeHostAndPort="true">Opcion "C"</s:a>
+          </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn red">Directorio</button>
+          <div class="dropdown-content">
+            <s:a action="qusers" forceAddSchemeHostAndPort="true">Gesión del Directorio</s:a>
           </div>
       </div>
       <div class="dropdown">
