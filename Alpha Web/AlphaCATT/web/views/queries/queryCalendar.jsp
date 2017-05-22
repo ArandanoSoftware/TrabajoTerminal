@@ -1,6 +1,6 @@
     <%@ include file = "../../header.jsp" %>
     <div class="General">
-      <h1>Calendario de PresentaciÃ³n de Trabajos Terminales</h1>
+      <h1>Calendario de Presentación de Trabajos Terminales</h1>
       <hr />
       <h3>Instrucciones:</h3>
       <p>
@@ -26,9 +26,9 @@
          <td>18:00 </td>
          <td>Eduardo Torrijos</td>
          <td>2016-A088</td>
-         <td>Sistema de claendarizaciÃ³n</td>
+         <td>Sistema de claendarización</td>
          <td>Pepe con Apellido</td>
-         <td>ToÃ±o con Apellido</td>
+         <td>Toño con Apellido</td>
          <td>El nombre debe de ser largo</td>
          <td>el nombre tiene que ser largo</td>
          <td>e                             </td>
@@ -39,14 +39,18 @@
          <td><s:property value="sala"/></td>
          <td><s:property value="tt.idTt"/></td>
          <td><s:property value="tt.nombre"/></td>
+         <s:set var="id2" value="#estado.index" />
+         <s:iterator value="DirList" begin="#id2" end="#id2">
+             <td><s:property value="profesorByD1.nombre"/></td>
+             <td><s:property value="profesorByD2.nombre"/></td>
+         </s:iterator>
+         <s:iterator value="SinList" begin="#id2" end="#id2">
+             <td><s:property value="profesorByS1.nombre"/></td>
+             <td><s:property value="profesorByS2.nombre"/></td>
+             <td><s:property value="profesorByS3.nombre"/></td>
+         </s:iterator>
+         </tr>
       </s:iterator>
-      <s:iterator value="Dirige">
-      <s:param name="id" value="idTt" />
-         <td><s:property value="profesorByD1"/></td>
-         <td><s:property value=""/></td>
-      </s:iterator>
-
-       </tr>
      </tbody>
     </table>
   </div>

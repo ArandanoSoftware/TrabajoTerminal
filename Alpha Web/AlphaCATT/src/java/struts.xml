@@ -106,7 +106,9 @@
         <result>views/queries/queryCalendar.jsp</result>
       </action>
       <action name="calendarizacion" class="com.struts.controllers.HomeController" method="calendarizacion">
-          <result>views/home.jsp</result>
+          <result type="redirectAction">
+              <param name="actionName">home</param>
+          </result>
       </action>
 
       <!-- Usuarios  -->

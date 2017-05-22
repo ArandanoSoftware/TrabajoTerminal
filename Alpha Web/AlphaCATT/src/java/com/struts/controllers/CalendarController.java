@@ -14,6 +14,7 @@ import com.myapp.bs.CalendarioBs;
 
 import com.myapp.bs.DirigeBs;
 import com.myapp.bs.SalaBs;
+import com.myapp.bs.SinodaliaBs;
 import com.myapp.bs.TTBs;
 import com.myapp.model.Alumno;
 import com.myapp.model.Dirige;
@@ -37,13 +38,13 @@ public class CalendarController extends ActionSupport{
    
 
     //Datos entrada
-    private String id;
+    private String id = "4";
     
     
     //Listas de Salida
     private List<Calendario> CalList;
-    //private List<Dirige> DirList;
-    //private List<Sinodalia> SinList;
+    private List<Dirige> DirList = new ArrayList<>();
+    private List<Sinodalia> SinList = new ArrayList<>();
     
     private Dirige Dirige;
 
@@ -55,6 +56,24 @@ public class CalendarController extends ActionSupport{
         this.Dirige = Dirige;
     }
 
+    public List<Dirige> getDirList() {
+        return DirList;
+    }
+
+    public void setDirList(List<Dirige> DirList) {
+        this.DirList = DirList;
+    }
+
+    public List<Sinodalia> getSinList() {
+        return SinList;
+    }
+
+    public void setSinList(List<Sinodalia> SinList) {
+        this.SinList = SinList;
+    }
+
+    
+    
 //    public CalendarioDao getCalDao() {
 //        return CalDao;
 //    }
@@ -105,26 +124,12 @@ public class CalendarController extends ActionSupport{
     }
     public String calendar() throws Exception
     {
-        //Calendario tt = CalendarioBs.findById(7144);
-        //Alumno tt = AlumnoBs.findById(2012630055);
-      //List<Calendario> calendario = CalendarioBs.findByOption(1);
-      //Calendario cc = CalendarioBs.findById(7144);
-      //System.out.println("\n\n\n\n\n " + tt.getTt().getIdTt() + "\n\n\n\n");
-      //this.CalOp = new CalendarOperaciones();
-      CalList= orderCal(CalendarioBs.findByOption(1));// this.CalOp.getCalendar();
-      //this.DirBs = new DirigeBs();
-      //Dirige= this.DirBs.findById(Integer.toString(1))
-      //Calendario cc = new Calendario(TTBs.findById("2016-B088"), new Date(1993,7,6), new Sala("la sala xD"), 1);
-      //CalList.add(cc);
-        //mianPrueba prueba = new mianPrueba();
-        //prueba.regresa();
-        //String [] prub = new String[0];
-        //mianPrueba.main(prub);
+      CalList = orderCal(CalendarioBs.findByOption(1));
       return SUCCESS;
     }
     public String Directors()
     {
-      //this.DirBs = new DirigeBs();
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n id = " + id);
       Dirige = DirigeBs.findById(id);
       return SUCCESS;
     }
@@ -148,15 +153,16 @@ public class CalendarController extends ActionSupport{
         diez.addAll(cuatro);
         List<Calendario> calen = new ArrayList<>();
         Calendario temp;
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\nestoooooooooooooooooo " + diez.size());
         int tam = diez.size();
         for (int i=0; i < tam; i++)
         {
             temp = menor(diez);
             calen.add(temp);
+            Dirige dir = DirigeBs.findById(temp.getTt().getIdTt());
+            DirList.add(DirigeBs.findById(temp.getTt().getIdTt()));
+            SinList.add(SinodaliaBs.findById(temp.getTt().getIdTt()));
             diez.remove(temp);
         }
-        System.out.println(calen.size());
         return calen;
     }
     
