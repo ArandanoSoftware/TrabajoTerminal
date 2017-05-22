@@ -4,10 +4,10 @@ import com.myapp.bs.DirigeBs;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.ArrayList;
 import java.util.List;
-//Model imports 
+//Model imports
 import com.myapp.model.Profesor;
 import com.myapp.model.Tt;
-//Operations and Bs Imports 
+//Operations and Bs Imports
 import com.struts.operaciones.TTOperaciones;
 import com.myapp.bs.ProfesorBs;
 import com.myapp.bs.SinodaliaBs;
@@ -18,15 +18,15 @@ import com.myapp.model.Sinodalia;
 
 
 public class TTController  extends ActionSupport {
-    
+
     private ArrayList<Tt> datos;
-    
+
     private TTOperaciones ttOP;
     private ProfesorBs  profBs;
     private Tt tt;
-    
-    
-    
+
+
+
     private List<Profesor> profList = ProfesorBs.findAll();
     private Dirige directores;
     private Sinodalia sinodales;
@@ -39,7 +39,7 @@ public class TTController  extends ActionSupport {
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
-    
+
 
     public ProfesorBs getProfBs() {
         return profBs;
@@ -64,10 +64,10 @@ public class TTController  extends ActionSupport {
     public void setSinodales(Sinodalia sinodales) {
         this.sinodales = sinodales;
     }
-    
-   
 
-    
+
+
+
     private String  id;
 
     public String  getId() {
@@ -100,7 +100,7 @@ public class TTController  extends ActionSupport {
     }
     public void setProfList(List<Profesor> profList) {
         this.profList = profList;
-    } 
+    }
 
     public String tts() throws Exception
     {
@@ -116,9 +116,9 @@ public class TTController  extends ActionSupport {
          this.ttOP.deleteTt(id);
          return SUCCESS;
     }
-    
-    
-    
+
+
+
     @Override
     public String execute() throws Exception
         {
@@ -130,9 +130,10 @@ public class TTController  extends ActionSupport {
     {
         TTBs.save(tt);
         directores.setIdTt(tt.getIdTt());
-        sinodales.setIdTt(tt.getIdTt());
         DirigeBs.save(directores);
-        SinodaliaBs.save(sinodales);
+        //sinodales.setIdTt(tt.getIdTt());
+
+        //SinodaliaBs.save(sinodales);
         return SUCCESS;
     }
 }

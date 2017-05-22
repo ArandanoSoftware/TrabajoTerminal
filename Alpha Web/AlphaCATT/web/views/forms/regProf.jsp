@@ -10,7 +10,7 @@
       puedes registrarlos de manera manual en el siguiente formulario.
     </p>
     <h3>Cargador de Excel:</h3>
-    <s:form action="doUpload" method="post" enctype="multipart/form-data">
+    <s:form action="doUpload" method="post" enctype="multipart/form-data" value="Cargar Archivo: ">
         <s:file name="upload" label="File"/>
       <s:submit value="Subir"/>
     </s:form>
@@ -34,7 +34,7 @@
         <th> <input type="email" name="Email" value=""></th>
       </tr>
     </table>
-        <s:submit onsubmit="Aviso();" value ="Eviar" ></s:submit>
+        <s:submit onsubmit="Aviso();" value ="Enviar" ></s:submit>
     </s:form>
     <script>
       function Aviso(){

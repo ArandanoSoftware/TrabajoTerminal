@@ -78,7 +78,7 @@
         <result>views/forms/regTT.jsp</result>
       </action>
       <action name="regTt" class="com.struts.controllers.TTController" method="regTt">
-        <result>views/forms/regTT.jsp</result>
+        <result type="redirectAction">rtt</result>
       </action>
       <!-- Consulta de Trabajos Terminales-->
       <action name="qtt" class="com.struts.controllers.TTController" method="tts">
