@@ -13,7 +13,7 @@ informar sobre la situaci�n actual para la generaci�n de� calendario
       font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
       }
     </style>
-    <div class="loader loader-default is-active"></div>
+    <div id="loading" class=""></div>
     <div class="General">
         <h2>Bienvenido: <s:property value="#session.loginId"></s:property></h2>
       <h1>Sistema de calendarizacion  de presentaciones de trabajos terminales </h1>
@@ -80,6 +80,7 @@ informar sobre la situaci�n actual para la generaci�n de� calendario
           </table>
         <script>
           function iniciado(){
+              document.getElementById("loading").className = "loader loader-default is-active";
               alert("La calendarizacion ha comenzado");
           }
         </script>
