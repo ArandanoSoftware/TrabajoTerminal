@@ -7,7 +7,16 @@
       de los profesores, esto para no calendarizar presentaciones de trabajo terminal
       en esas fechas.
       </p>
-  
+      <s:form action="regTt">
+        <table>
+          <tr>
+            <td> Director 1:</td>
+            <td><s:select name = "" list="" headerKey="-1" headerValue="--- Secciona ---" /></td>
+          </tr>
+        </table>
+      </s:form>
+
+
     </div>
  </body>
 </html>

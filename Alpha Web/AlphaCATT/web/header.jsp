@@ -9,12 +9,16 @@
 
       <%--PersonalCSS--%>
       <link rel="stylesheet" href="css/master.css">
+      <link rel="stylesheet" href="css/css-loader.css">
       <%--Javascript--%>
       <script type="text/javascript" src="js/master.js"></script>
       <script type="text/javascript" src="js/jspdf.min.js"></script>
       <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
       <script type="text/javascript" src="js/html2canvas.js"></script>
       <script type="text/javascript" src="js/calendarioGeneral.js"></script>
+
+
+
 
       <title> Sistema CATT </title>
     </head>

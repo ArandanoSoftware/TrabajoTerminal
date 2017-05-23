@@ -1,36 +1,45 @@
 <%--
 Trabajo Terminal- Sistema de cal
-Función home:
+Funciï¿½n home:
 Mostrar las opciones.
-informar sobre la situación actual para la generación deñ calendario
+informar sobre la situaciï¿½n actual para la generaciï¿½n deï¿½ calendario
 --%>
     <%@ include file = "header.jsp" %>
+    <style>
+      .container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      }
+    </style>
+    <div class="loader loader-default is-active"></div>
     <div class="General">
         <h2>Bienvenido: <s:property value="#session.loginId"></s:property></h2>
-      <h1>Sistema de calendarización  de presentaciones de trabajos terminales </h1>
+      <h1>Sistema de calendarizacion  de presentaciones de trabajos terminales </h1>
       <hr />
       <p>
-        El siguiente sistema tiene como propósito agendar las fechas de para
+        El siguiente sistema tiene como proposito agendar las fechas de para
         las presentaciones de trabajos terminales, para realizar esta tarea el
-        sistema hace uso de la siguiente información:
+        sistema hace uso de la siguiente informaciÃ³n:
       </p>
       <ul>
         <li>Horario de clases de los profesores</li>
-        <li>Salas Disponibles para presentación de trabajos terminales</li>
+        <li>Salas Disponibles para presentacion de trabajos terminales</li>
         <li>El registro de los trabajos terminales que presentaran</li>
-        <li>Las restricciones personales para los profesores, es decir que días no están disponibles para presentar</li>
+        <li>Las restricciones personales para los profesores, es decir que dï¿½as no estï¿½n disponibles para presentar</li>
         <li>Las restricciones para el uso de las salas</li>
       </ul>
       <p>
         Este sistema esta dividido en secciones para facilitar el uso del mismo.
         <br>
         <br>
-        Este sistema solo ofrece opciones de presentación de trabajos terminales,
-        la decisión final dependerá del personal de la CATT así como de las
+        Este sistema solo ofrece opciones de presentacion de trabajos terminales,
+        la decisiÃ³n final dependera del personal de la CATT asÃ­ como de las
         autoridades pertinentes.
       </p>
 
-        <h2 align="center"> Estado de la Calendarización: </h2>
+        <h2 align="center"> Estado de la CalendarizaciÃ³n: </h2>
           <table class="StatusTable">
             <tr>
               <th colspan="2"> Profesores: </th>
@@ -61,8 +70,8 @@ informar sobre la situación actual para la generación deñ calendario
               <th colspan="2" > Calendario: </th>
             </tr>
             <tr>
-              <td> Iniciar proceso de calendarización: </td>
-              <td><s:a action="calendarizacion" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Iniciar Calendarización" ></s:a> </td>
+              <td> Iniciar proceso de calendarizaciÃ³n: </td>
+              <td><s:a action="calendarizacion" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Iniciar Calendarizaciï¿½n" ></s:a> </td>
             </tr>
             <tr>
               <td> Editar Fecha de Trabajo Terminal:  </td>
