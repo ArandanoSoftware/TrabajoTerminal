@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE struts PUBLIC
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
 "http://struts.apache.org/dtds/struts-2.0.dtd">
@@ -8,6 +8,7 @@
   <constant name="struts.multipart.saveDir" value="/" />
   <package name="default" extends="struts-default">
   </package>
+
   <!--Requiere de 3 paramentros el paquere
       name, namespace, extends
       name: Nombre del paquete que representa
