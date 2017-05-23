@@ -23,7 +23,7 @@ public class ProfesorBs {
         ProfesorDao profesorDao = new ProfesorDao();
         Profesor p;
         p = profesorDao.finfById(id);
-        //p.setHorarios(new HashSet<>(HorarioBs.findByProf(p)));
+        p.setHorarios(new HashSet<>(HorarioBs.findByProf(p)));
         return p;
     }
     
@@ -31,10 +31,10 @@ public class ProfesorBs {
     {
         ProfesorDao profesorDao = new ProfesorDao();
         List<Profesor> p = profesorDao.findAll();
-//        for(int i = 0; i < p.size();i++)
-//        {
-//            p.get(i).setHorarios(new HashSet<>(HorarioBs.findByProf(p.get(i))));
-//        }
+        for(int i = 0; i < p.size();i++)
+        {
+            p.get(i).setHorarios(new HashSet<>(HorarioBs.findByProf(p.get(i))));
+        }
         return p;
     }
     

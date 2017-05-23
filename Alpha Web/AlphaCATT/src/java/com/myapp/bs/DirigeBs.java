@@ -18,8 +18,8 @@ public class DirigeBs {
     {
         DirigeDao dirigeDao = new DirigeDao();
         Dirige dirige = dirigeDao.findById(id);
-//        dirige.setProfesorByD1(ProfesorBs.findById(dirige.getProfesorByD1().getIdProfesor()));
-//        try{dirige.setProfesorByD2(ProfesorBs.findById(dirige.getProfesorByD2().getIdProfesor()));}catch(Exception e){}
+        dirige.setProfesorByD1(ProfesorBs.findById(dirige.getProfesorByD1().getIdProfesor()));
+        try{dirige.setProfesorByD2(ProfesorBs.findById(dirige.getProfesorByD2().getIdProfesor()));}catch(Exception e){}
         return dirige;
     }
     
@@ -27,11 +27,11 @@ public class DirigeBs {
     {
         DirigeDao dirigeDao = new DirigeDao();
         List<Dirige> dirige = dirigeDao.findAll();
-//        for(int i = 0; i < dirige.size(); i++)
-//        {
-//            dirige.get(i).setProfesorByD1(ProfesorBs.findById(dirige.get(i).getProfesorByD1().getIdProfesor()));
-//            try{dirige.get(i).setProfesorByD2(ProfesorBs.findById(dirige.get(i).getProfesorByD2().getIdProfesor()));}catch(Exception e){}
-//        }
+        for(int i = 0; i < dirige.size(); i++)
+        {
+            dirige.get(i).setProfesorByD1(ProfesorBs.findById(dirige.get(i).getProfesorByD1().getIdProfesor()));
+            try{dirige.get(i).setProfesorByD2(ProfesorBs.findById(dirige.get(i).getProfesorByD2().getIdProfesor()));}catch(Exception e){}
+        }
         return dirige;
     }
     

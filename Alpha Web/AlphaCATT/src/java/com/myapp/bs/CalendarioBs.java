@@ -39,11 +39,11 @@ public class CalendarioBs {
     {
         CalendarioDao calendarioDao = new CalendarioDao();
         List<Calendario> calendario = calendarioDao.findByOption(opcion);
-//        for(int i = 0; i < calendario.size(); i++)
-//        {
-//            calendario.get(i).setSala(SalaBs.findById(calendario.get(i).getSala().getIdSala()));
-//            calendario.get(i).setTt(TTBs.findById(calendario.get(i).getTt().getIdTt()));
-//        }
+        for(int i = 0; i < calendario.size(); i++)
+        {
+            calendario.get(i).setSala(SalaBs.findById(calendario.get(i).getSala().getIdSala()));
+            calendario.get(i).setTt(TTBs.findById(calendario.get(i).getTt().getIdTt()));
+        }
         return calendario;
     }
     
