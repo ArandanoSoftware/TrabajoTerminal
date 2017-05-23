@@ -99,6 +99,7 @@
 
         <s:submit value ="Seleccinar"></s:submit>
         <s:a action="generaPDF" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Generar archivo PDF" ></s:a>
+        <a class="botonCalendar" href="/calendarios/calendarios.pdf" download></a>
     </form>
     </div>
     <div class="calendarZone">

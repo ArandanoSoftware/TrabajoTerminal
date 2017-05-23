@@ -12,6 +12,7 @@ informar sobre la situaci�n actual para la generaci�n de� calendario
       margin: 0 auto;
       font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
       }
+      
     </style>
     <div id="loading" class=""></div>
     <div class="General">
@@ -71,7 +72,7 @@ informar sobre la situaci�n actual para la generaci�n de� calendario
             </tr>
             <tr>
               <td> Iniciar proceso de calendarización: </td>
-              <td><s:a action="calendarizacion" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Iniciar Calendarizaci�n" ></s:a> </td>
+              <td><s:a action="calendarizacion" onclick="iniciado();"> <input type="button" class="botonCalendar" value="Iniciar Calendarizacion" ></s:a> </td>
             </tr>
             <tr>
               <td> Editar Fecha de Trabajo Terminal:  </td>
