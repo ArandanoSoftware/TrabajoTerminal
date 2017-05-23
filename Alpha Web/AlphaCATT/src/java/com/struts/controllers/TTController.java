@@ -131,8 +131,8 @@ public class TTController  extends ActionSupport {
         TTBs.save(tt);
         directores.setIdTt(tt.getIdTt());
         DirigeBs.save(directores);
-        //sinodales.setIdTt(tt.getIdTt());
 
+        //sinodales.setIdTt(tt.getIdTt());
         //SinodaliaBs.save(sinodales);
         return SUCCESS;
     }

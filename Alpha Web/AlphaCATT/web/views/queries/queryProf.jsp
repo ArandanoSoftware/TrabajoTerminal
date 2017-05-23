@@ -30,7 +30,7 @@
                   <td>
                     <s:a action="dprof">
                     <s:param name="id" value="idProfesor" />
-                    <i class="material-icons">delete</i>
+                    <span class="icon-bin"></span>
                     </s:a>
                   </td>
               </tr>

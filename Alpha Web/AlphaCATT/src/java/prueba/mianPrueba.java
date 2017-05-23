@@ -350,17 +350,17 @@ System.out.println("buscando profesores");
                 
         
 //        List<Restriccion> restricciones;
-        Date inicio;
-//        inicio.setDate(2);
-//        inicio.setMonth(4);
-        Date fin;
-//        fin.setDate(6);
-//        fin.setMonth(5);
-//        
-//        Rango rango = new Rango();
-//        rango.setFecha1(inicio);
-//        rango.setFecha2(fin);
-//        RangoBs.save(rango);
+        Date inicio = new Date();
+        inicio.setDate(2);
+        inicio.setMonth(4);
+        Date fin = new Date();
+        fin.setDate(6);
+        fin.setMonth(5);
+        
+        Rango rango = new Rango();
+        rango.setFecha1(inicio);
+        rango.setFecha2(fin);
+        RangoBs.save(rango);
         
         
         
